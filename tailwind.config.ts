@@ -17,6 +17,9 @@ export default {
       fontFamily: {
         sans: ["var(--font-inter)"],
       },
+      colors: {
+        "gcd-green": "#A8CF43",
+      },
     },
   },
   future: {
