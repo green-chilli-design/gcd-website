@@ -124,6 +124,8 @@ export async function getPostAndMorePosts(
   };
 }
 
+/******** BEGIN PAGE API FUNCTIONS ************/
+
 /**
  * Page API functions
  */
@@ -147,8 +149,6 @@ const PAGE_GRAPHQL_FIELDS = `
 `;
 
 export async function getPageBySlug(slug: string | null): Promise<any> {
-  console.log("getPageBySlug", slug);
-
   const entry = await fetchGraphQL(
     `query {
         pageCollection(where: { slug: "${slug}" }, preview: false, limit: 1) {
@@ -157,10 +157,9 @@ export async function getPageBySlug(slug: string | null): Promise<any> {
           }
         }
       }`,
-    true
+    true,
+    ["pages"]
   );
-
-  console.log("getPageBySlug", entry);
 
   return extractPage(entry);
 }
