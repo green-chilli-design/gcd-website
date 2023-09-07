@@ -36,11 +36,7 @@ function generateContentBlocks(contentBody: any[]) {
   });
 }
 
-export default async function HomePage({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function HomePage() {
   const { title, slug, description, pageContentCollection } =
     await getPageBySlug("home");
 

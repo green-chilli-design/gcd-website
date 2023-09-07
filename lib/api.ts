@@ -125,6 +125,9 @@ export async function getPostAndMorePosts(
 }
 
 /******** BEGIN PAGE API FUNCTIONS ************/
+/**
+ * TODO: All of these functions should be refactored into either something reusable or reside with the appropriate component
+ */
 
 /**
  * Page API functions
