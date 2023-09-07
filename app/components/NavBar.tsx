@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function NavBar() {
   return (
-    <nav className="flex w-full justify-between items-center bg-black">
+    <nav className="flex w-full justify-between items-center  mb-10">
       <div className="flex items-center">
         <Link href="/">
           <Image
@@ -22,6 +22,14 @@ export default function NavBar() {
             className="font-bold text-xl hover:text-gcd-green transition duration-300"
           >
             Services
+          </Link>
+        </div>
+        <div>
+          <Link
+            href="/Portfolio"
+            className="font-bold text-xl hover:text-gcd-green transition duration-300"
+          >
+            Portfolio
           </Link>
         </div>
         <div>

@@ -22,7 +22,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="flex min-h-screen flex-col items-center justify-start px-20 py-10  m-0 text-white bg-slate-950">
+        <main className="flex min-h-screen flex-col justify-start px-20 py-10  m-0 text-white bg-slate-950">
           <NavBar />
           <div>{children}</div>
           <Footer />
