@@ -26,15 +26,20 @@ const POST_GRAPHQL_FIELDS = `
       }
     }
   }
-`
+`;
 
-async function fetchGraphQL(query: string, preview = false): Promise<any> {
+async function fetchGraphQL(
+  query: string,
+  preview = false,
+  tags = ["posts"]
+): Promise<any> {
   return fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
     {
-      method: 'POST',
+      cache: `${process.env.DISABLE_CACHING ? "no-cache" : "force-cache"}`, // Disables caching when true
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${
           preview
             ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
@@ -42,17 +47,17 @@ async function fetchGraphQL(query: string, preview = false): Promise<any> {
         }`,
       },
       body: JSON.stringify({ query }),
-      next: { tags: ['posts'] },
+      next: { tags: tags },
     }
-  ).then((response) => response.json())
+  ).then((response) => response.json());
 }
 
 function extractPost(fetchResponse: any): any {
-  return fetchResponse?.data?.postCollection?.items?.[0]
+  return fetchResponse?.data?.postCollection?.items?.[0];
 }
 
 function extractPostEntries(fetchResponse: any): any[] {
-  return fetchResponse?.data?.postCollection?.items
+  return fetchResponse?.data?.postCollection?.items;
 }
 
 export async function getPreviewPostBySlug(slug: string | null): Promise<any> {
@@ -65,15 +70,15 @@ export async function getPreviewPostBySlug(slug: string | null): Promise<any> {
       }
     }`,
     true
-  )
-  return extractPost(entry)
+  );
+  return extractPost(entry);
 }
 
 export async function getAllPosts(isDraftMode: boolean): Promise<any[]> {
   const entries = await fetchGraphQL(
     `query {
       postCollection(where: { slug_exists: true }, order: date_DESC, preview: ${
-        isDraftMode ? 'true' : 'false'
+        isDraftMode ? "true" : "false"
       }) {
         items {
           ${POST_GRAPHQL_FIELDS}
@@ -81,8 +86,8 @@ export async function getAllPosts(isDraftMode: boolean): Promise<any[]> {
       }
     }`,
     isDraftMode
-  )
-  return extractPostEntries(entries)
+  );
+  return extractPostEntries(entries);
 }
 
 export async function getPostAndMorePosts(
@@ -92,7 +97,7 @@ export async function getPostAndMorePosts(
   const entry = await fetchGraphQL(
     `query {
       postCollection(where: { slug: "${slug}" }, preview: ${
-      preview ? 'true' : 'false'
+      preview ? "true" : "false"
     }, limit: 1) {
         items {
           ${POST_GRAPHQL_FIELDS}
@@ -100,11 +105,11 @@ export async function getPostAndMorePosts(
       }
     }`,
     preview
-  )
+  );
   const entries = await fetchGraphQL(
     `query {
       postCollection(where: { slug_not_in: "${slug}" }, order: date_DESC, preview: ${
-      preview ? 'true' : 'false'
+      preview ? "true" : "false"
     }, limit: 2) {
         items {
           ${POST_GRAPHQL_FIELDS}
@@ -112,9 +117,58 @@ export async function getPostAndMorePosts(
       }
     }`,
     preview
-  )
+  );
   return {
     post: extractPost(entry),
     morePosts: extractPostEntries(entries),
-  }
+  };
+}
+
+/**
+ * Page API functions
+ */
+
+const PAGE_GRAPHQL_FIELDS = `
+  title
+  slug
+  description
+  pageContentCollection {
+    items { 
+      __typename
+      ... on ContentBlock {
+        heading
+        subHeading
+        contentBody {
+          json 
+        }
+      }
+    }
+}
+`;
+
+export async function getPageBySlug(slug: string | null): Promise<any> {
+  console.log("getPageBySlug", slug);
+
+  const entry = await fetchGraphQL(
+    `query {
+        pageCollection(where: { slug: "${slug}" }, preview: false, limit: 1) {
+          items {
+            ${PAGE_GRAPHQL_FIELDS}
+          }
+        }
+      }`,
+    true
+  );
+
+  console.log("getPageBySlug", entry);
+
+  return extractPage(entry);
+}
+
+function extractPage(fetchResponse: any): any {
+  return fetchResponse?.data?.pageCollection?.items?.[0];
+}
+
+function extractPageEntries(fetchResponse: any): any[] {
+  return fetchResponse?.data?.pageCollection?.items;
 }

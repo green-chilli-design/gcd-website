@@ -25,8 +25,10 @@ _Built upon_: [Next.js Contentful Starter](https://github.com/vercel/next.js/blo
 
 # ToDo:
 
-- [ ] Figure out how to handle Contentful model for single page content
+- [x] Figure out how to handle Contentful model for single page content
+- [ ] Update `Content Block` model to allow specifying background colour
 - [ ] Set up new Content models
+  - [ ] Allow linking of services to Portfolio items
 - [ ] Force cache revalidation on all posts
 - [ ] Deploy a permanent preview environment
 - [ ] Set up Doppler integration
