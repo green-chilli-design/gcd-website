@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 
+// TODO: This should be moved into each component, and if possible populated by Contentful page title
 export const metadata = {
   title: `GCD | Digital Strategy & Software Development`,
   description: `Digital Strategy & Software Development to Drive Your Business Success.`,

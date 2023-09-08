@@ -1,3 +1,4 @@
+// TODO: This should be refactored into something reusable
 const POST_GRAPHQL_FIELDS = `
   slug
   title

@@ -3,6 +3,8 @@ import { Markdown } from "@/lib/markdown";
 import Link from "next/link";
 
 /**
+ * TODO: This should be turned into some global re-usable component factory
+ *
  * This function generates the content blocks for the home page
  *
  * Depending on the type of content block, it will render a different component (TODO)
