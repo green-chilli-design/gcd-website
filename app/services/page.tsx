@@ -65,6 +65,7 @@ function AllServices({ services }: { services: any[] }) {
 export default async function Page() {
   const { isEnabled } = draftMode();
   const allServices = await getAllServices(isEnabled);
+  console.log(allServices);
 
   return (
     <div className="container mx-auto px-5">

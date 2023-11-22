@@ -7,7 +7,6 @@ import Avatar from "../avatar";
 import MoreStories from "../more-stories";
 
 import { getAllPosts } from "@/lib/api";
-import { CMS_NAME, CMS_URL } from "@/lib/constants";
 
 function Intro() {
   return (
@@ -71,7 +70,7 @@ export default async function Page() {
   return (
     <div className="container mx-auto px-5">
       <Intro />
-      {/* {heroPost && (
+      {heroPost && (
         <HeroPost
           title={heroPost.title}
           coverImage={heroPost.coverImage}
@@ -80,7 +79,7 @@ export default async function Page() {
           slug={heroPost.slug}
           excerpt={heroPost.excerpt}
         />
-      )} */}
+      )}
       <MoreStories morePosts={morePosts} />
     </div>
   );
