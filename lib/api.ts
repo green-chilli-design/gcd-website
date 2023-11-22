@@ -29,6 +29,29 @@ const POST_GRAPHQL_FIELDS = `
   }
 `;
 
+const SERVICE_GRAPHQL_FIELDS = `
+  slug
+  title
+  coverImage {
+    url
+  }
+  description
+  content {
+    json
+    links {
+      assets {
+        block {
+          sys {
+            id
+          }
+          url
+          description
+        }
+      }
+    }
+  }
+`;
+
 async function fetchGraphQL(
   query: string,
   preview = false,
@@ -52,6 +75,8 @@ async function fetchGraphQL(
     }
   ).then((response) => response.json());
 }
+
+/******** BEGIN POST API FUNCTIONS ************/
 
 function extractPost(fetchResponse: any): any {
   return fetchResponse?.data?.postCollection?.items?.[0];
@@ -123,6 +148,28 @@ export async function getPostAndMorePosts(
     post: extractPost(entry),
     morePosts: extractPostEntries(entries),
   };
+}
+
+/******** BEGIN SERVICES API FUNCTIONS ************/
+
+function extractServiceEntries(fetchResponse: any): any[] {
+  return fetchResponse?.data?.serviceCollection?.items;
+}
+
+export async function getAllServices(isDraftMode: boolean): Promise<any[]> {
+  const entries = await fetchGraphQL(
+    `query {
+      serviceCollection(where: { slug_exists: true }, preview: ${
+        isDraftMode ? "true" : "false"
+      }) {
+        items {
+          ${SERVICE_GRAPHQL_FIELDS}
+        }
+      }
+    }`,
+    isDraftMode
+  );
+  return extractServiceEntries(entries);
 }
 
 /******** BEGIN PAGE API FUNCTIONS ************/
