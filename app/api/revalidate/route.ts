@@ -1,13 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 
-const CONTENT_TAGS = ["posts", "pages"];
+const CONTENT_TAGS = ["page", "post", "posts", "service", "services"];
 
 /**
- * TODO: Implement revalidation for Contentful
- * Currently this route only works for posts, but it should be updated to either:
- *  - revalidate all tags
- * - revalidate a specific tag (which it would take as a parameter from each Contentful webhook)
+ * TODO:
+ * Currently this route revalidate all tags, but it could be updated to
+ * revalidate a specific tag (which it would take as a parameter from each Contentful webhook)
  */
 export async function POST(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);

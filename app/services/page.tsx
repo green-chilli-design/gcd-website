@@ -20,26 +20,31 @@ function Intro() {
 
 function ServicePreview({
   title,
-  description,
+  summary,
   coverImage,
   slug,
 }: {
   title: string;
-  description: string;
+  summary: string;
   coverImage: any;
   slug: string;
 }) {
   return (
     <div>
       <div className="mb-5">
-        <CoverImage title={title} slug={slug} url={coverImage.url} />
+        <CoverImage
+          title={title}
+          path="/services"
+          slug={slug}
+          url={coverImage.url}
+        />
       </div>
       <h3 className="text-3xl mb-3 leading-snug">
         <Link href={`/services/${slug}`} className="hover:underline">
           {title}
         </Link>
       </h3>
-      <p className="text-lg leading-relaxed mb-4">{description}</p>
+      <p className="text-lg leading-relaxed mb-4">{summary}</p>
     </div>
   );
 }
@@ -54,7 +59,7 @@ function AllServices({ services }: { services: any[] }) {
             title={service.title}
             coverImage={service.coverImage}
             slug={service.slug}
-            description={service.description}
+            summary={service.summary}
           />
         ))}
       </div>
@@ -65,7 +70,6 @@ function AllServices({ services }: { services: any[] }) {
 export default async function Page() {
   const { isEnabled } = draftMode();
   const allServices = await getAllServices(isEnabled);
-  console.log(allServices);
 
   return (
     <div className="container mx-auto px-5">
