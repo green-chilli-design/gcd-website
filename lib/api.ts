@@ -58,7 +58,7 @@ async function fetchGraphQL(
   tags = ["posts"]
 ): Promise<any> {
   return fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
+    `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${process.env.CONTENTFUL_ENVIRONMENT}`,
     {
       cache: `${process.env.DISABLE_CACHING ? "no-cache" : "force-cache"}`, // Disables caching when true
       method: "POST",
