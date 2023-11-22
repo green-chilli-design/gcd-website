@@ -29,6 +29,38 @@ const POST_GRAPHQL_FIELDS = `
   }
 `;
 
+const SERVICES_GRAPHQL_FIELDS = `
+  slug
+  title
+  coverImage {
+    url
+  }
+  summary
+`;
+
+const SERVICE_GRAPHQL_FIELDS = `
+  slug
+  title
+  coverImage {
+    url
+  }
+  summary
+  description {
+    json
+    links {
+      assets {
+        block {
+          sys {
+            id
+          }
+          url
+          description
+        }
+      }
+    }
+  }
+`;
+
 async function fetchGraphQL(
   query: string,
   preview = false,
@@ -53,6 +85,8 @@ async function fetchGraphQL(
   ).then((response) => response.json());
 }
 
+/******** BEGIN POST API FUNCTIONS ************/
+
 function extractPost(fetchResponse: any): any {
   return fetchResponse?.data?.postCollection?.items?.[0];
 }
@@ -75,18 +109,19 @@ export async function getPreviewPostBySlug(slug: string | null): Promise<any> {
   return extractPost(entry);
 }
 
-export async function getAllPosts(isDraftMode: boolean): Promise<any[]> {
+export async function getAllPosts(preview: boolean): Promise<any[]> {
   const entries = await fetchGraphQL(
     `query {
       postCollection(where: { slug_exists: true }, order: date_DESC, preview: ${
-        isDraftMode ? "true" : "false"
+        preview ? "true" : "false"
       }) {
         items {
           ${POST_GRAPHQL_FIELDS}
         }
       }
     }`,
-    isDraftMode
+    preview,
+    ["posts"]
   );
   return extractPostEntries(entries);
 }
@@ -105,7 +140,8 @@ export async function getPostAndMorePosts(
         }
       }
     }`,
-    preview
+    preview,
+    ["post"]
   );
   const entries = await fetchGraphQL(
     `query {
@@ -117,12 +153,58 @@ export async function getPostAndMorePosts(
         }
       }
     }`,
-    preview
+    preview,
+    ["posts"]
   );
   return {
     post: extractPost(entry),
     morePosts: extractPostEntries(entries),
   };
+}
+
+/******** BEGIN SERVICES API FUNCTIONS ************/
+
+function extractServiceEntries(fetchResponse: any): any[] {
+  return fetchResponse?.data?.serviceCollection?.items;
+}
+
+function extractService(fetchResponse: any): any {
+  return fetchResponse?.data?.serviceCollection?.items?.[0];
+}
+
+export async function getAllServices(preview: boolean): Promise<any[]> {
+  const entries = await fetchGraphQL(
+    `query {
+      serviceCollection(where: { slug_exists: true }, preview: ${
+        preview ? "true" : "false"
+      }) {
+        items {
+          ${SERVICES_GRAPHQL_FIELDS}
+        }
+      }
+    }`,
+    preview,
+    ["services"]
+  );
+  return extractServiceEntries(entries);
+}
+
+export async function getServiceBySlug(
+  slug: string | null,
+  preview: boolean = false
+): Promise<any> {
+  const entry = await fetchGraphQL(
+    `query {
+        serviceCollection(where: { slug: "${slug}" }, preview: ${preview}, limit: 1) {
+          items {
+            ${SERVICE_GRAPHQL_FIELDS}
+          }
+        }
+      }`,
+    preview,
+    ["service"]
+  );
+  return extractService(entry);
 }
 
 /******** BEGIN PAGE API FUNCTIONS ************/
@@ -164,14 +246,9 @@ export async function getPageBySlug(slug: string | null): Promise<any> {
     true,
     ["pages"]
   );
-
   return extractPage(entry);
 }
 
 function extractPage(fetchResponse: any): any {
   return fetchResponse?.data?.pageCollection?.items?.[0];
-}
-
-function extractPageEntries(fetchResponse: any): any[] {
-  return fetchResponse?.data?.pageCollection?.items;
 }

@@ -24,8 +24,6 @@ export default async function PostPage({
 }) {
   const { isEnabled } = draftMode();
   const { post, morePosts } = await getPostAndMorePosts(params.slug, isEnabled);
-  // console.log({ post, morePosts });
-  console.log(post.content);
 
   return (
     <div className="container mx-auto px-5">
