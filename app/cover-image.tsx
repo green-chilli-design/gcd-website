@@ -8,10 +8,12 @@ function cn(...classes: any[]) {
 export default function CoverImage({
   title,
   url,
+  path,
   slug,
 }: {
   title: string;
   url: string;
+  path?: string;
   slug?: string;
 }) {
   const image = (
@@ -30,7 +32,7 @@ export default function CoverImage({
   return (
     <div className="sm:mx-0">
       {slug ? (
-        <Link href={`/posts/${slug}`} aria-label={title}>
+        <Link href={`${path}/${slug}`} aria-label={title}>
           {image}
         </Link>
       ) : (
