@@ -16,41 +16,41 @@ export default function NavBar() {
         </Link>
       </div>
       <div className="flex items-center gap-5">
-        <div>
+        {/* <div>
           <Link
             href="/services"
             className="font-bold text-xl hover:text-gcd-green transition duration-300"
           >
             Services
           </Link>
-        </div>
+        </div> */}
         <div>
           <Link
-            href="/Portfolio"
+            href="/case-studies"
             className="font-bold text-xl hover:text-gcd-green transition duration-300"
           >
-            Portfolio
+            Case Studies
           </Link>
         </div>
-        <div>
+        {/* <div>
           <Link
             href="/blog"
             className="font-bold text-xl hover:text-gcd-green transition duration-300"
           >
             Blog
           </Link>
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <Link
             href="/about"
             className="font-bold text-xl hover:text-gcd-green transition duration-300"
           >
             About
           </Link>
-        </div>
+        </div> */}
         <div>
           <Link
-            href="/Contact"
+            href="/contact"
             className="font-bold text-xl hover:text-gcd-green transition duration-300"
           >
             Contact
