@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Jost } from "next/font/google";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 
@@ -9,8 +9,8 @@ export const metadata = {
   description: `Digital Strategy & Software Development to Drive Your Business Success.`,
 };
 
-const inter = Inter({
-  variable: "--font-inter",
+const jost = Jost({
+  variable: "--font-jost",
   subsets: ["latin"],
   display: "swap",
 });
@@ -22,8 +22,8 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <main className="flex min-h-screen flex-col justify-start px-20 py-10  m-0 text-white bg-slate-950">
+      <body className={jost.className}>
+        <main className="flex min-h-screen flex-col justify-start px-20 py-10  m-0 text-black bg-neutral">
           <NavBar />
           <div>{children}</div>
           <Footer />

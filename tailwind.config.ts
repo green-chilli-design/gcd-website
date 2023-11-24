@@ -15,10 +15,15 @@ export default {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        sans: ["var(--font-inter)"],
+        sans: ["var(--font-jost)"],
       },
       colors: {
-        "gcd-green": "#A8CF43",
+        black: "#080708",
+        green: "#A8CF43",
+        neutral: "#F5F5F5",
+        "dark-grey": "#7C8D85",
+        "light-grey": "BEC6C2",
+        "dark-green": "#262C29",
       },
     },
   },

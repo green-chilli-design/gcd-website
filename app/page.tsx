@@ -19,7 +19,7 @@ function generateContentBlocks(contentBody: any[]) {
         return (
           <section
             key={value}
-            className="even:rounded-2xl even:shadow-md even:border even:border-gcd-green even:shadow-gcd-green my-5 p-16 even:hover:shadow-lg even:transition-all even:duration-500 even:ease-in-out even:bg-gradient-to-tr even:from-slate-950 even:via-slate-900 even:to-slate-950"
+            className="even:rounded-2xl even:shadow-md even:border even:border-green even:shadow-green my-5 p-16 even:hover:shadow-lg even:transition-all even:duration-500 even:ease-in-out even:bg-gradient-to-tr even:from-slate-950 even:via-slate-900 even:to-slate-950"
           >
             {value.heading && (
               <div className="text-4xl font-medium mb-5">{value.heading}</div>
@@ -48,7 +48,7 @@ export default async function HomePage() {
     <article className="mb-20">
       <section className="text-bold text-6xl md:text-8xl mt-5 md:mt-20">
         <div className="relative">
-          <div className="absolute -inset-1 rounded-lg  from-gcd-green via-slate-700 bg-gradient-conic  to-slate-950 opacity-50 blur-3xl"></div>
+          <div className="absolute -inset-1 rounded-lg  from-green via-slate-700 bg-gradient-conic  to-slate-950 opacity-50 blur-3xl"></div>
           Don’t just build. <br />
           Build better.
         </div>
@@ -60,7 +60,7 @@ export default async function HomePage() {
           Success.
         </div>
         <Link href="/contact">
-          <div className="bg-gcd-green w-36 h-36 flex justify-center items-center  rounded-full text-black hover:scale-110 hover:bg-white transition duration-300">
+          <div className="bg-green w-36 h-36 flex justify-center items-center  rounded-full text-black hover:scale-110 hover:bg-white transition duration-300">
             Get in touch
           </div>
         </Link>

@@ -19,7 +19,7 @@ export default function NavBar() {
         {/* <div>
           <Link
             href="/services"
-            className="font-bold text-xl hover:text-gcd-green transition duration-300"
+            className="font-bold text-xl hover:text-green transition duration-300"
           >
             Services
           </Link>
@@ -27,7 +27,7 @@ export default function NavBar() {
         <div>
           <Link
             href="/case-studies"
-            className="font-bold text-xl hover:text-gcd-green transition duration-300"
+            className="font-bold text-xl hover:text-green transition duration-300"
           >
             Case Studies
           </Link>
@@ -35,7 +35,7 @@ export default function NavBar() {
         {/* <div>
           <Link
             href="/blog"
-            className="font-bold text-xl hover:text-gcd-green transition duration-300"
+            className="font-bold text-xl hover:text-green transition duration-300"
           >
             Blog
           </Link>
@@ -43,7 +43,7 @@ export default function NavBar() {
         {/* <div>
           <Link
             href="/about"
-            className="font-bold text-xl hover:text-gcd-green transition duration-300"
+            className="font-bold text-xl hover:text-green transition duration-300"
           >
             About
           </Link>
@@ -51,7 +51,7 @@ export default function NavBar() {
         <div>
           <Link
             href="/contact"
-            className="font-bold text-xl hover:text-gcd-green transition duration-300"
+            className="font-bold text-xl hover:text-green transition duration-300"
           >
             Contact
           </Link>
