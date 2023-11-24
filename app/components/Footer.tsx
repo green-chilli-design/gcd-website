@@ -13,7 +13,9 @@ export default function Footer() {
           height={80}
         />
       </div>
-      <div>Green Chilli Design · Copyright © {new Date().getFullYear()}</div>
+      <div className="text-end">
+        Green Chilli Design · Copyright © {new Date().getFullYear()}
+      </div>
     </footer>
   );
 }
