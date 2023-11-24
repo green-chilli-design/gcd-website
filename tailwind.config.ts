@@ -8,6 +8,16 @@ export default {
     "./lib/**/*.{ts,tsx}",
   ],
   theme: {
+    fontSize: {
+      tiny: "0.75rem" /* 12px */,
+      xs: "0.875rem" /* 14px */,
+      sm: "1.125rem" /* 18px */,
+      base: "1.25rem" /* 20px */,
+      lg: "1.5rem" /* 24px */,
+      xl: "1.875rem" /* 30px */,
+      "2xl": "2.5rem" /* 40px */,
+      "3xl": "5rem" /* 80px */,
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
