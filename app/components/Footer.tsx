@@ -7,7 +7,7 @@ export default function Footer() {
       <div>Social Media Links</div>
       <div>
         <Image
-          src="/gcd-logo-white-text.svg"
+          src="/gcd-logo-square-green.svg"
           alt="Green Chilli Design Logo"
           width={80}
           height={80}

@@ -7,7 +7,7 @@ export default function NavBar() {
       <div className="flex items-center">
         <Link href="/">
           <Image
-            src="/gcd-logo-white-text.svg"
+            src="/gcd-logo-round-black.svg"
             alt="Green Chilli Design Logo"
             width={80}
             height={80}
