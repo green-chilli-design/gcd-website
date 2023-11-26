@@ -30,13 +30,13 @@
     line-height: 1.806rem; /* 28.9px */
     text-transform: uppercase;
   }
-  p {
+  body {
     font-size: theme("fontSize.base");
     line-height: 1.806rem; /* 28.9px */
-    &.small {
-      font-size: theme("fontSize.sm");
-      line-height: 1.625rem; /* 26px */
-    }
+  }
+  .small {
+    font-size: theme("fontSize.sm");
+    line-height: 1.625rem; /* 26px */
   }
   .label {
     font-size: theme("fontSize.xs");
