@@ -39,8 +39,7 @@ function generateContentBlocks(contentBody: any[]) {
 }
 
 export default async function HomePage() {
-  const { title, slug, description, pageContentCollection } =
-    await getPageBySlug("home");
+  const { subtitle, pageContentCollection } = await getPageBySlug("home");
 
   let contentBlocks = generateContentBlocks(pageContentCollection.items);
 
@@ -55,15 +54,25 @@ export default async function HomePage() {
       </section>
       <hr className="w-1/3 mt-20 mb-5" />
       <section className="flex flex-row justify-between">
-        <div className="w-1/3 text-2xl">
-          Digital Strategy & Software Development to Drive Your Business
-          Success.
-        </div>
+        <div className="w-1/3 text-2xl">{subtitle}</div>
         <Link href="/contact">
           <div className="bg-green w-36 h-36 flex justify-center items-center  rounded-full text-black hover:scale-110 hover:bg-white transition duration-300">
             Get in touch
           </div>
         </Link>
+      </section>
+
+      <section>
+        <h1>H1</h1>
+        <h2>H2</h2>
+        <h3>H3</h3>
+        <h4>H4</h4>
+        <h5>H5</h5>
+        <p>Paragraph</p>
+        <p className="small">Paragraph small</p>
+        <label className="label">label</label>
+        <label className="label small">small label</label>
+        <div>just a div</div>
       </section>
 
       <main>{contentBlocks}</main>
