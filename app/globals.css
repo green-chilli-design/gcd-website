@@ -36,9 +36,6 @@
     &.small {
       font-size: theme("fontSize.sm");
       line-height: 1.625rem; /* 26px */
-      &.bold {
-        font-weight: 500;
-      }
     }
   }
   .label {
