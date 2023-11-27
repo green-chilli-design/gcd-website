@@ -19,19 +19,28 @@ export default async function ContactPage() {
               <span className="material-symbols-outlined icon-20 mr-2">
                 location_on
               </span>
-              2.4 Whatever Building, 18 Sale Street, Auckland 1010
+              <a
+                href="https://maps.app.goo.gl/52MW8aJLZVwuGmQ47"
+                className="hover:text-green"
+              >
+                2.4 Whatever Building, 18 Sale Street, Auckland 1010
+              </a>
             </p>
             <p className="small flex items-center mb-5">
               <span className="material-symbols-outlined icon-20 mr-2">
                 call
               </span>
-              +64 09 300 3039
+              <a href="tel:+64 09 300 3039" className="hover:text-green">
+                +64 09 300 3039
+              </a>
             </p>
             <p className="small flex items-center mb-12">
-              <span className="material-symbols-outlined icon-20 mr-2">
+              <span className="material-symbols-outlined icon-20 mr-2 ">
                 email
               </span>
-              hello@gcd.nz
+              <a href="mailto:hello@gcd.nz" className="hover:text-green">
+                hello@gcd.nz
+              </a>
             </p>
 
             <p>Our opening hours are Monday - Friday 8:30am - 5:30pm.</p>
@@ -93,7 +102,7 @@ export default async function ContactPage() {
 
             <button
               type="submit"
-              className="bg-green hover:bg-neutral border hover:border-green rounded-full w-32 h-16 mt-12"
+              className="bg-green hover:bg-white border hover:border-green rounded-full w-32 h-16 mt-12"
             >
               Submit
             </button>
