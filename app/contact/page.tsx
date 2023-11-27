@@ -15,28 +15,22 @@ export default async function ContactPage() {
         <section className="grid grid-cols-1 lg:grid-cols-2 mb-11">
           <div className="mr-12 mb-12">
             <h5 className="font-semibold mb-5">Auckland, New Zealand</h5>
-            <p className="small flex mb-5">
-              <img
-                className="inline-block mr-2"
-                src="/icons/location_on.svg"
-                alt="location icon"
-              />
+            <p className="small flex items-center mb-5">
+              <span className="material-symbols-outlined icon-20 mr-2">
+                location_on
+              </span>
               2.4 Whatever Building, 18 Sale Street, Auckland 1010
             </p>
-            <p className="small flex mb-5">
-              <img
-                className="inline-block mr-2"
-                src="/icons/call.svg"
-                alt="call icon"
-              />
+            <p className="small flex items-center mb-5">
+              <span className="material-symbols-outlined icon-20 mr-2">
+                call
+              </span>
               +64 09 300 3039
             </p>
-            <p className="small flex mb-12">
-              <img
-                className="inline-block mr-2"
-                src="/icons/mail.svg"
-                alt="email icon"
-              />
+            <p className="small flex items-center mb-12">
+              <span className="material-symbols-outlined icon-20 mr-2">
+                email
+              </span>
               hello@gcd.nz
             </p>
 
@@ -108,16 +102,14 @@ export default async function ContactPage() {
       </div>
 
       <div>
-        <p className="small uppercase flex mb-2.5 px-5">
-          <img
-            className="inline-block mr-2"
-            src="/icons/visibility.svg"
-            alt="eye icon"
-          />
+        <p className="small uppercase flex items-center mb-2.5 px-5 cursor-pointer">
+          <span className="material-symbols-outlined icon-20 mr-2">
+            visibility
+          </span>
           View Parking Instructions
         </p>
 
-        <div className="bg-[url('/images/map.png')] bg-cover bg-center"></div>
+        <div className="bg-[url('/images/map.png')] bg-cover bg-center h-96"></div>
       </div>
     </div>
   );
