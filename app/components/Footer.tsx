@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="w-full flex flex-row justify-between mt-10">
+    <footer className="w-full flex flex-row justify-between mt-10 px-5">
       <div>Social Media Links</div>
       <div>
         <Image
