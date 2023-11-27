@@ -7,7 +7,9 @@
 */
 @layer base {
   h1 {
-    font-size: theme("fontSize.3xl");
+    font-size: theme(
+      "fontSize.3xl"
+    ); /* for responsive do something like: @apply text-lg lg:text-2xl xl:text-3xl; */
     line-height: 7.225rem; /* 115.6px */
     font-weight: 500;
   }
@@ -38,12 +40,12 @@
     font-size: theme("fontSize.sm");
     line-height: 1.625rem; /* 26px */
   }
-  .label {
+  label {
     font-size: theme("fontSize.xs");
     line-height: 1.264rem; /* 20.23px */
-    &.small {
-      font-size: theme("fontSize.tiny");
-      line-height: 1.084rem; /* 17.34px */
-    }
+  }
+  label.small {
+    font-size: theme("fontSize.tiny");
+    line-height: 1.084rem; /* 17.34px */
   }
 }
