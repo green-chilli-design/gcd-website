@@ -8,6 +8,17 @@ export default {
     "./lib/**/*.{ts,tsx}",
   ],
   theme: {
+    screens: {
+      xs: "320px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1920px",
+    },
+    container: {
+      center: true,
+      padding: "1.25rem",
+    },
     fontSize: {
       tiny: "0.75rem" /* 12px */,
       xs: "0.875rem" /* 14px */,

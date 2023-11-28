@@ -6,7 +6,7 @@ export default async function ContactPage() {
 
   return (
     <div>
-      <div className="container mx-auto px-5">
+      <div className="container">
         <section className="mb-24">
           <h2 className="mb-5">{subtitle}</h2>
           <p className="max-w-2xl">{description}</p>
