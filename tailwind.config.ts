@@ -51,7 +51,7 @@ export default {
       colors: {
         black: "#080708",
         green: "#A8CF43",
-        neutral: "#F5F5F5",
+        neutral: "#F7F4F3",
         "dark-grey": "#7C8D85",
         "light-grey": "BEC6C2",
         "dark-green": "#262C29",
