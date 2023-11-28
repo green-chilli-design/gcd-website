@@ -54,7 +54,7 @@ export default async function ContactPage() {
               </label>
               <input
                 id="first-name"
-                className="p-2.5 border border-dark-grey rounded-md w-full h-full"
+                className="p-2.5 border border-dark-grey rounded-md w-full h-14"
                 type="text"
               />
             </div>
@@ -64,7 +64,7 @@ export default async function ContactPage() {
               </label>
               <input
                 id="last-name"
-                className="p-2.5 border border-dark-grey rounded-md w-full h-full"
+                className="p-2.5 border border-dark-grey rounded-md w-full h-14"
                 type="text"
               />
             </div>
@@ -74,7 +74,7 @@ export default async function ContactPage() {
               </label>
               <input
                 id="email"
-                className="p-2.5 border border-dark-grey rounded-md w-full h-full"
+                className="p-2.5 border border-dark-grey rounded-md w-full h-14"
                 type="email"
               />
             </div>
@@ -84,7 +84,7 @@ export default async function ContactPage() {
               </label>
               <input
                 id="website"
-                className="p-2.5 border border-dark-grey rounded-md w-full h-full"
+                className="p-2.5 border border-dark-grey rounded-md w-full h-14"
                 type="text"
               />
             </div>
@@ -94,7 +94,7 @@ export default async function ContactPage() {
               </label>
               <textarea
                 id="message"
-                className="p-2.5 border border-dark-grey rounded-md w-full h-full"
+                className="p-2.5 border border-dark-grey rounded-md w-full h-28"
                 name="message"
               />
             </div>
@@ -112,7 +112,7 @@ export default async function ContactPage() {
 
       <div>
         <p className="small uppercase flex items-center mb-2.5 px-5 cursor-pointer">
-          <span className="material-symbols-outlined icon-20 mr-2">
+          <span className="material-symbols-outlined icon-24 mr-2">
             visibility
           </span>
           View Parking Instructions
