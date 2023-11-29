@@ -44,11 +44,11 @@ export default async function HomePage() {
   let contentBlocks = generateContentBlocks(pageContentCollection.items);
 
   return (
-    <article className="mb-20">
+    <div className="container mb-20">
       <section className="text-bold text-6xl md:text-8xl mt-5 md:mt-20">
         <div className="relative">
           <div className="absolute -inset-1 rounded-lg  from-green via-slate-700 bg-gradient-conic  to-slate-950 opacity-50 blur-3xl"></div>
-          Don’t just build. <br />
+          Don't just build. <br />
           Build better.
         </div>
       </section>
@@ -76,6 +76,6 @@ export default async function HomePage() {
       </section>
 
       <main>{contentBlocks}</main>
-    </article>
+    </div>
   );
 }

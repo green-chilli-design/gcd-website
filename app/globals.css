@@ -7,45 +7,39 @@
 */
 @layer base {
   h1 {
-    font-size: theme(
-      "fontSize.3xl"
-    ); /* for responsive do something like: @apply text-lg lg:text-2xl xl:text-3xl; */
-    line-height: 7.225rem; /* 115.6px */
+    @apply text-9xl lg:text-10xl xl:text-11xl;
     font-weight: 500;
   }
   h2 {
-    font-size: theme("fontSize.2xl");
-    line-height: 3.613rem; /* 57.8px */
+    @apply text-6xl lg:text-7xl xl:text-8xl;
     font-weight: 500;
   }
   h3 {
-    font-size: theme("fontSize.xl");
-    line-height: 2.709rem; /* 43.3px */
+    @apply text-2xl lg:text-4xl xl:text-5xl;
     font-weight: 500;
   }
   h4 {
-    font-size: theme("fontSize.lg");
-    line-height: 2.168rem; /* 34.68px */
+    @apply text-base lg:text-xl xl:text-3xl;
   }
   h5 {
-    font-size: theme("fontSize.base");
-    line-height: 1.806rem; /* 28.9px */
+    @apply text-sm lg:text-base xl:text-lg;
     text-transform: uppercase;
   }
   body {
-    font-size: theme("fontSize.base");
-    line-height: 1.806rem; /* 28.9px */
+    @apply text-sm lg:text-base;
   }
   .small {
-    font-size: theme("fontSize.sm");
-    line-height: 1.625rem; /* 26px */
+    @apply text-xs lg:text-sm;
+  }
+  button {
+    @apply text-sm lg:text-base;
   }
   label {
-    font-size: theme("fontSize.xs");
-    line-height: 1.264rem; /* 20.23px */
+    @apply text-2xs;
+    font-weight: 500;
   }
   label.small {
-    font-size: theme("fontSize.tiny");
-    line-height: 1.084rem; /* 17.34px */
+    @apply text-3xs;
+    font-weight: 500;
   }
 }

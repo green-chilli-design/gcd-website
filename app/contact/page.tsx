@@ -6,7 +6,7 @@ export default async function ContactPage() {
 
   return (
     <div>
-      <div className="container mx-auto px-5">
+      <div className="container">
         <section className="mb-24">
           <h2 className="mb-5">{subtitle}</h2>
           <p className="max-w-2xl">{description}</p>
@@ -15,29 +15,32 @@ export default async function ContactPage() {
         <section className="grid grid-cols-1 lg:grid-cols-2 mb-11">
           <div className="mr-12 mb-12">
             <h5 className="font-semibold mb-5">Auckland, New Zealand</h5>
-            <p className="small flex mb-5">
-              <img
-                className="inline-block mr-2"
-                src="/icons/location_on.svg"
-                alt="location icon"
-              />
-              2.4 Whatever Building, 18 Sale Street, Auckland 1010
+            <p className="small flex items-center mb-5">
+              <span className="material-symbols-outlined icon-20 mr-2">
+                location_on
+              </span>
+              <a
+                href="https://maps.app.goo.gl/52MW8aJLZVwuGmQ47"
+                className="hover:text-green"
+              >
+                2.4 Whatever Building, 18 Sale Street, Auckland 1010
+              </a>
             </p>
-            <p className="small flex mb-5">
-              <img
-                className="inline-block mr-2"
-                src="/icons/call.svg"
-                alt="call icon"
-              />
-              +64 09 300 3039
+            <p className="small flex items-center mb-5">
+              <span className="material-symbols-outlined icon-20 mr-2">
+                call
+              </span>
+              <a href="tel:+64 09 300 3039" className="hover:text-green">
+                +64 09 300 3039
+              </a>
             </p>
-            <p className="small flex mb-12">
-              <img
-                className="inline-block mr-2"
-                src="/icons/mail.svg"
-                alt="email icon"
-              />
-              hello@gcd.nz
+            <p className="small flex items-center mb-12">
+              <span className="material-symbols-outlined icon-20 mr-2 ">
+                email
+              </span>
+              <a href="mailto:hello@gcd.nz" className="hover:text-green">
+                hello@gcd.nz
+              </a>
             </p>
 
             <p>Our opening hours are Monday - Friday 8:30am - 5:30pm.</p>
@@ -51,7 +54,7 @@ export default async function ContactPage() {
               </label>
               <input
                 id="first-name"
-                className="p-2.5 border border-dark-grey rounded-md w-full h-full"
+                className="p-2.5 border border-dark-grey rounded-md w-full h-14"
                 type="text"
               />
             </div>
@@ -61,7 +64,7 @@ export default async function ContactPage() {
               </label>
               <input
                 id="last-name"
-                className="p-2.5 border border-dark-grey rounded-md w-full h-full"
+                className="p-2.5 border border-dark-grey rounded-md w-full h-14"
                 type="text"
               />
             </div>
@@ -71,7 +74,7 @@ export default async function ContactPage() {
               </label>
               <input
                 id="email"
-                className="p-2.5 border border-dark-grey rounded-md w-full h-full"
+                className="p-2.5 border border-dark-grey rounded-md w-full h-14"
                 type="email"
               />
             </div>
@@ -81,7 +84,7 @@ export default async function ContactPage() {
               </label>
               <input
                 id="website"
-                className="p-2.5 border border-dark-grey rounded-md w-full h-full"
+                className="p-2.5 border border-dark-grey rounded-md w-full h-14"
                 type="text"
               />
             </div>
@@ -91,7 +94,7 @@ export default async function ContactPage() {
               </label>
               <textarea
                 id="message"
-                className="p-2.5 border border-dark-grey rounded-md w-full h-full"
+                className="p-2.5 border border-dark-grey rounded-md w-full h-28"
                 name="message"
               />
             </div>
@@ -99,7 +102,7 @@ export default async function ContactPage() {
 
             <button
               type="submit"
-              className="bg-green hover:bg-neutral border hover:border-green rounded-full w-32 h-16 mt-12"
+              className="bg-green hover:bg-white border hover:border-green rounded-full w-32 h-16 mt-12"
             >
               Submit
             </button>
@@ -108,16 +111,14 @@ export default async function ContactPage() {
       </div>
 
       <div>
-        <p className="small uppercase flex mb-2.5 px-5">
-          <img
-            className="inline-block mr-2"
-            src="/icons/visibility.svg"
-            alt="eye icon"
-          />
+        <p className="small uppercase flex items-center mb-2.5 px-5 cursor-pointer">
+          <span className="material-symbols-outlined icon-24 mr-2">
+            visibility
+          </span>
           View Parking Instructions
         </p>
 
-        <div className="bg-[url('/images/map.png')] bg-cover bg-center"></div>
+        <div className="bg-[url('/images/map.png')] bg-cover bg-center h-96"></div>
       </div>
     </div>
   );
