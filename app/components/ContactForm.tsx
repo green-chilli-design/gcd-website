@@ -1,5 +1,6 @@
 "use client";
 
+// @ts-ignore
 import { useFormState } from "react-dom";
 // @ts-ignore
 import { useFormStatus } from "react-dom";
