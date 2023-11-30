@@ -62,19 +62,6 @@ export default async function HomePage() {
         </Link>
       </section>
 
-      <section>
-        <h1>H1</h1>
-        <h2>H2</h2>
-        <h3>H3</h3>
-        <h4>H4</h4>
-        <h5>H5</h5>
-        <p>Paragraph</p>
-        <p className="small">Paragraph small</p>
-        <label className="label">label</label>
-        <label className="label small">small label</label>
-        <div>just a div</div>
-      </section>
-
       <main>{contentBlocks}</main>
     </div>
   );
