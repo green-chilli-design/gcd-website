@@ -1,5 +1,6 @@
 import { getPageBySlug } from "@/lib/api";
 import React from "react";
+import { ContactForm } from "../components/ContactForm";
 
 export default async function ContactPage() {
   const { subtitle, description } = await getPageBySlug("contact");
@@ -46,67 +47,7 @@ export default async function ContactPage() {
             <p>Our opening hours are Monday - Friday 8:30am - 5:30pm.</p>
           </div>
 
-          <form name="contact" className="flex flex-col gap-5">
-            <input type="hidden" name="form-name" value="contact" />
-            <div className="mb-5">
-              <label htmlFor="first-name" className="small text-dark-grey">
-                First Name
-              </label>
-              <input
-                id="first-name"
-                className="p-2.5 border border-dark-grey rounded-md w-full h-14"
-                type="text"
-              />
-            </div>
-            <div className="mb-5">
-              <label htmlFor="last-name" className="small text-dark-grey">
-                Last Name
-              </label>
-              <input
-                id="last-name"
-                className="p-2.5 border border-dark-grey rounded-md w-full h-14"
-                type="text"
-              />
-            </div>
-            <div className="mb-5">
-              <label htmlFor="email" className="small text-dark-grey">
-                Email
-              </label>
-              <input
-                id="email"
-                className="p-2.5 border border-dark-grey rounded-md w-full h-14"
-                type="email"
-              />
-            </div>
-            <div className="mb-5">
-              <label htmlFor="website" className="small text-dark-grey">
-                Company Website (if any)
-              </label>
-              <input
-                id="website"
-                className="p-2.5 border border-dark-grey rounded-md w-full h-14"
-                type="text"
-              />
-            </div>
-            <div className="mb-5">
-              <label htmlFor="message" className="small text-dark-grey">
-                Message
-              </label>
-              <textarea
-                id="message"
-                className="p-2.5 border border-dark-grey rounded-md w-full h-28"
-                name="message"
-              />
-            </div>
-            {/* <div>TODO: Recaptcha</div> */}
-
-            <button
-              type="submit"
-              className="bg-green hover:bg-white border hover:border-green rounded-full w-32 h-16 mt-12"
-            >
-              Submit
-            </button>
-          </form>
+          <ContactForm />
         </section>
       </div>
 
