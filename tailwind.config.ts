@@ -17,7 +17,11 @@ export default {
     },
     container: {
       center: true,
-      padding: "1.25rem",
+      padding: {
+        DEFAULT: "0",
+        md: "2em",
+        xl: "10em",
+      },
     },
     fontSize: {
       /* [font-size, line-height] */
