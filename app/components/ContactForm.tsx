@@ -4,10 +4,9 @@
 import { useFormState } from "react-dom";
 // @ts-ignore
 import { useFormStatus } from "react-dom";
-
 import { sendContact } from "../actions";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import { useCallback, useRef } from "react";
+import { useRef } from "react";
 
 const initialState = {
   message: null,
@@ -20,10 +19,16 @@ function SubmitButton() {
   return (
     <button
       type="submit"
+      disabled={pending}
       aria-disabled={pending}
-      className="bg-green hover:bg-white border hover:border-green rounded-full w-32 h-16 mt-12"
+      className="btn green w-32 mt-12"
     >
-      Submit
+      {pending && (
+        <span className="material-symbols-outlined icon-24 m-2.5 animate-spin">
+          progress_activity
+        </span>
+      )}
+      {!pending && "Submit"}
     </button>
   );
 }
@@ -99,7 +104,7 @@ export function ContactForm() {
           </span>
         )}
       </div>
-      <div className="mb-5">
+      <div>
         <label htmlFor="website" className="small text-dark-grey">
           Company Website (if any)
         </label>
@@ -115,7 +120,7 @@ export function ContactForm() {
           </span>
         )}
       </div>
-      <div className="mb-5">
+      <div className="mt-5">
         <label htmlFor="message" className="small text-dark-grey">
           Message
         </label>
