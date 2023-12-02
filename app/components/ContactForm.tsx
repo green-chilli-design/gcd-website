@@ -33,7 +33,7 @@ function SubmitButton() {
   );
 }
 
-export function ContactForm() {
+export default function ContactForm() {
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [state, formAction] = useFormState(sendContact, initialState);
   const ref = useRef<HTMLFormElement>(null);
