@@ -1,6 +1,7 @@
 import { getPageBySlug } from "@/lib/api";
 import React from "react";
-import { ContactForm } from "../components/ContactForm";
+import ContactForm from "../components/ContactForm";
+import ParkingModal from "../components/ParkingModal";
 
 export default async function ContactPage() {
   const { subtitle, description } = await getPageBySlug("contact");
@@ -51,16 +52,9 @@ export default async function ContactPage() {
         </section>
       </div>
 
-      <div>
-        <p className="small uppercase flex items-center mb-2.5 px-5 cursor-pointer">
-          <span className="material-symbols-outlined icon-24 mr-2">
-            visibility
-          </span>
-          View Parking Instructions
-        </p>
+      <ParkingModal />
 
-        <div className="bg-[url('/images/map.png')] bg-cover bg-center h-96"></div>
-      </div>
+      <div className="bg-[url('/images/map.png')] bg-cover bg-center h-96"></div>
     </div>
   );
 }

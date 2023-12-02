@@ -1,7 +1,8 @@
-import type { Config } from "tailwindcss";
+/** @type {import('tailwindcss').Config} */
 import typography from "@tailwindcss/typography";
 
-export default {
+module.exports = {
+  darkMode: ["class"],
   content: [
     "./app/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -59,11 +60,31 @@ export default {
         "dark-grey": "#7C8D85",
         "light-grey": "BEC6C2",
         "dark-green": "#262C29",
+        "green-shadow": "#A8CF4399",
+        "dark-shadow": "#7C8D8599",
+        "light-shadow": "#D9D9D9",
+      },
+      boxShadow: {
+        "hover-btn": "0px 10px 20px 0px rgba(8, 7, 8, 0.25)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
   future: {
     hoverOnlyWhenSupported: true,
   },
-  plugins: [typography],
-} satisfies Config;
+  plugins: [require("tailwindcss-animate"), typography],
+};

@@ -6,6 +6,7 @@
 * Brand Guide
 */
 @layer base {
+  /* Typography */
   h1 {
     @apply text-9xl lg:text-10xl xl:text-11xl;
     font-weight: 500;
@@ -31,9 +32,6 @@
   .small {
     @apply text-xs lg:text-sm;
   }
-  button {
-    @apply text-sm lg:text-base;
-  }
   label {
     @apply text-2xs;
     font-weight: 500;
@@ -41,5 +39,21 @@
   label.small {
     @apply text-3xs;
     font-weight: 500;
+  }
+
+  /* Buttons */
+  button.btn {
+    @apply text-sm lg:text-base;
+    @apply rounded-full;
+    height: 60px;
+  }
+  .btn.green {
+    @apply bg-green hover:shadow-hover-btn hover:shadow-green-shadow;
+  }
+  .btn.dark {
+    @apply bg-black hover:shadow-hover-btn hover:shadow-dark-shadow;
+  }
+  .btn.light {
+    @apply bg-neutral hover:shadow-hover-btn hover:shadow-light-shadow;
   }
 }
