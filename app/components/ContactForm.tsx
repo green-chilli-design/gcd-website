@@ -7,9 +7,12 @@ import { useFormStatus } from "react-dom";
 
 import { sendContact } from "../actions";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { useCallback, useRef } from "react";
 
 const initialState = {
   message: null,
+  type: null,
+  errors: null,
 };
 
 function SubmitButton() {
@@ -26,25 +29,27 @@ function SubmitButton() {
 }
 
 export function ContactForm() {
-  // const { executeRecaptcha } = useGoogleReCaptcha();
-  // const sendContactWithRecaptcha = async () => {
-  //   if (!executeRecaptcha) {
-  //     console.log("Execute Recaptcha not yet available");
-  //     return;
-  //   }
-  //   const token = await executeRecaptcha("contact");
-  //   console.log("Recaptcha Token: ", token);
-  //   return sendContact.bind(null, token);
-  // };
-
-  const [state, formAction] = useFormState(
-    sendContact,
-    // sendContactWithRecaptcha,
-    initialState
-  );
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const [state, formAction] = useFormState(sendContact, initialState);
+  const ref = useRef<HTMLFormElement>(null);
+  const onSubmit = async (formData: FormData) => {
+    if (!executeRecaptcha) {
+      console.log("Execute Recaptcha not yet available");
+      return;
+    }
+    const token = await executeRecaptcha("contact");
+    formData.set("g-recaptcha-response", token);
+    ref.current?.reset();
+    await formAction(formData);
+  };
 
   return (
-    <form name="contact" className="flex flex-col gap-5" action={formAction}>
+    <form
+      name="contact"
+      className="flex flex-col gap-5"
+      ref={ref}
+      action={onSubmit}
+    >
       <input type="hidden" name="form-name" value="contact" />
       <div className="mb-5">
         <label htmlFor="first-name" className="small text-dark-grey">
@@ -121,7 +126,7 @@ export function ContactForm() {
         />
       </div>
 
-      <div id="recaptcha-badge"></div>
+      {/* <div id="recaptcha-badge"></div> */}
 
       <SubmitButton />
 

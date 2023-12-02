@@ -1,25 +1,19 @@
 "use server";
-
-import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
 const contactFormSchema = z.object({
-  firstName: z.string().min(1, { message: "First name can't be empty" }),
-  lastName: z.string().min(1, { message: "Last name can't be empty" }),
-  email: z.string().email({ message: "Invalid email address" }),
+  firstName: z.string().min(1, { message: "Required" }),
+  lastName: z.string().min(1, { message: "Required" }),
+  email: z.string().email(),
   website: z.string(),
   message: z.string(),
+  gRecaptchaResponse: z.string(),
 });
 
-export async function sendContact(
-  prevState: any,
-  formData: FormData,
-  recaptchaResponse: string
-) {
+export async function sendContact(prevState: any, formData: FormData) {
   "use server";
   try {
     console.log(formData);
-    console.log(recaptchaResponse);
 
     const data = contactFormSchema.parse({
       firstName: formData.get("first-name") ?? "",
@@ -27,23 +21,34 @@ export async function sendContact(
       email: formData.get("email") ?? "",
       website: formData.get("website") ?? "",
       message: formData.get("message") ?? "",
+      gRecaptchaResponse: formData.get("g-recaptcha-response") ?? "",
     });
 
-    // if (recaptchaResponse) {
-    //   await validateRecaptcha(recaptchaResponse);
-    // } else {
-    //   throw new Error("reCAPTCHA verification failed");
-    // }
+    if (data.gRecaptchaResponse) {
+      await validateRecaptcha(data.gRecaptchaResponse);
+    } else {
+      throw new Error("There was no reCAPTCHA token in the request");
+    }
 
     await sendEmail(data);
+
     await sendSlackNotification(data);
-    revalidatePath("/");
+
     return { type: "success" as const, message: "Message sent" };
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
     if (error instanceof z.ZodError) {
       const fieldErrors = error.flatten().fieldErrors;
       return { type: "error" as const, errors: fieldErrors };
+    }
+    if (
+      error instanceof Error &&
+      error.message === "reCAPTCHA verification failed"
+    ) {
+      return {
+        type: "error" as const,
+        message: error.message,
+      };
     }
     return { type: "error" as const, message: "Something went wrong :(" };
   }
@@ -64,14 +69,16 @@ async function validateRecaptcha(recaptchaResponse: string) {
       cache: "no-cache",
     }
   );
-  if (!response.ok) {
+
+  const recaptchaResult = await response.json();
+  console.log(recaptchaResult);
+  if (
+    !response.ok ||
+    !recaptchaResult.success ||
+    recaptchaResult.score <= 0.5
+  ) {
     throw new Error("reCAPTCHA verification failed");
   }
-  const recaptcha = await response.json();
-  if (!recaptcha.success || recaptcha.score <= 0.5) {
-    throw new Error("reCAPTCHA verification failed");
-  }
-  return recaptcha;
 }
 
 async function sendEmail(data: any): Promise<Response> {
