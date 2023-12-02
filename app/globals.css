@@ -47,13 +47,13 @@
     @apply rounded-full;
     height: 60px;
   }
-  button.green {
+  .btn.green {
     @apply bg-green hover:shadow-hover-btn hover:shadow-green-shadow;
   }
-  button.dark {
+  .btn.dark {
     @apply bg-black hover:shadow-hover-btn hover:shadow-dark-shadow;
   }
-  button.light {
+  .btn.light {
     @apply bg-neutral hover:shadow-hover-btn hover:shadow-light-shadow;
   }
 }
