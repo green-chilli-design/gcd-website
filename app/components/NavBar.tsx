@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function NavBar() {
   return (
-    <nav className="flex w-full justify-between items-center  mb-10">
+    <nav className="flex w-full justify-between items-center px-5 mb-10">
       <div className="flex items-center">
         <Link href="/">
           <Image
@@ -19,7 +19,7 @@ export default function NavBar() {
         {/* <div>
           <Link
             href="/services"
-            className="font-bold text-xl hover:text-green transition duration-300"
+            className="font-bold text-sm hover:text-green transition duration-300"
           >
             Services
           </Link>
@@ -27,7 +27,7 @@ export default function NavBar() {
         <div>
           <Link
             href="/case-studies"
-            className="font-bold text-xl hover:text-green transition duration-300"
+            className="font-bold text-sm hover:text-green transition duration-300"
           >
             Case Studies
           </Link>
@@ -35,7 +35,7 @@ export default function NavBar() {
         {/* <div>
           <Link
             href="/blog"
-            className="font-bold text-xl hover:text-green transition duration-300"
+            className="font-bold text-sm hover:text-green transition duration-300"
           >
             Blog
           </Link>
@@ -43,7 +43,7 @@ export default function NavBar() {
         {/* <div>
           <Link
             href="/about"
-            className="font-bold text-xl hover:text-green transition duration-300"
+            className="font-bold text-sm hover:text-green transition duration-300"
           >
             About
           </Link>
@@ -51,9 +51,9 @@ export default function NavBar() {
         <div>
           <Link
             href="/contact"
-            className="font-bold text-xl hover:text-green transition duration-300"
+            className="font-bold text-sm hover:text-green transition duration-300"
           >
-            Contact
+            Contact Us
           </Link>
         </div>
       </div>

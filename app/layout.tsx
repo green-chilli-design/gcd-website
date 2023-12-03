@@ -1,7 +1,9 @@
 import "./globals.css";
+import "./globalicons.css";
 import { Jost } from "next/font/google";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import { Providers } from "./providers";
 
 // TODO: This should be moved into each component, and if possible populated by Contentful page title
 export const metadata = {
@@ -23,11 +25,13 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={jost.className}>
-        <main className="flex min-h-screen flex-col justify-start px-20 py-10  m-0 text-black bg-neutral">
-          <NavBar />
-          <div>{children}</div>
-          <Footer />
-        </main>
+        <Providers>
+          <main className="flex min-h-screen flex-col justify-start py-10 m-0 text-black bg-neutral">
+            <NavBar />
+            <div>{children}</div>
+            <Footer />
+          </main>
+        </Providers>
       </body>
     </html>
   );

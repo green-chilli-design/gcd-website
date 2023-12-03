@@ -285,6 +285,7 @@ export async function getCaseStudyBySlug(
 
 const PAGE_GRAPHQL_FIELDS = `
   title
+  subtitle
   slug
   description
   pageContentCollection {

@@ -72,7 +72,7 @@ export default async function Page() {
   const allServices = await getAllServices(isEnabled);
 
   return (
-    <div className="container mx-auto px-5">
+    <div className="container">
       <Intro />
       <AllServices services={allServices} />
     </div>
