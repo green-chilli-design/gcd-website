@@ -44,8 +44,10 @@ export default function ContactForm() {
     }
     const token = await executeRecaptcha("contact");
     formData.set("g-recaptcha-response", token);
-    ref.current?.reset();
-    await formAction(formData);
+    const result = await formAction(formData);
+    if (result.type === "success") {
+      ref.current?.reset();
+    }
   };
 
   return (
