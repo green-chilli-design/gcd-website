@@ -26,7 +26,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={jost.className}>
         <Providers>
-          <main className="flex min-h-screen flex-col justify-start py-10 m-0 text-black bg-neutral">
+          <main className="flex min-h-screen flex-col justify-start m-0 text-black bg-neutral">
             <NavBar />
             <div>{children}</div>
             <Footer />
