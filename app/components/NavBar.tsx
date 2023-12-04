@@ -47,7 +47,7 @@ export default function NavBar() {
           const isActive = pathname.startsWith(href);
 
           return (
-            <div>
+            <div key={label}>
               <Link
                 href={href}
                 className={`font-bold text-sm ${
