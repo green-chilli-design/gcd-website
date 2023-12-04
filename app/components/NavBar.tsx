@@ -1,7 +1,34 @@
-import Image, { ImageLoader } from "next/image";
+"use client";
+
+import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function NavBar() {
+  const pathname = usePathname();
+  const navlinks = [
+    // {
+    //   href: "/services",
+    //   label: "Services",
+    // },
+    {
+      href: "/case-studies",
+      label: "Case Studies",
+    },
+    // {
+    //   href: "/blog",
+    //   label: "Blog",
+    // },
+    // {
+    //   href: "/about",
+    //   label: "About",
+    // },
+    {
+      href: "/contact",
+      label: "Contact Us",
+    },
+  ];
+
   return (
     <nav className="flex w-full justify-between items-center px-5 mb-10">
       <div className="flex items-center">
@@ -16,46 +43,22 @@ export default function NavBar() {
         </Link>
       </div>
       <div className="flex items-center gap-5">
-        {/* <div>
-          <Link
-            href="/services"
-            className="font-bold text-sm hover:text-green transition duration-300"
-          >
-            Services
-          </Link>
-        </div> */}
-        <div>
-          <Link
-            href="/case-studies"
-            className="font-bold text-sm hover:text-green transition duration-300"
-          >
-            Case Studies
-          </Link>
-        </div>
-        {/* <div>
-          <Link
-            href="/blog"
-            className="font-bold text-sm hover:text-green transition duration-300"
-          >
-            Blog
-          </Link>
-        </div> */}
-        {/* <div>
-          <Link
-            href="/about"
-            className="font-bold text-sm hover:text-green transition duration-300"
-          >
-            About
-          </Link>
-        </div> */}
-        <div>
-          <Link
-            href="/contact"
-            className="font-bold text-sm hover:text-green transition duration-300"
-          >
-            Contact Us
-          </Link>
-        </div>
+        {navlinks.map(({ href, label }) => {
+          const isActive = pathname.startsWith(href);
+
+          return (
+            <div>
+              <Link
+                href={href}
+                className={`font-bold text-sm ${
+                  isActive ? "text-green" : "hover:text-green hover:underline"
+                } transition duration-300`}
+              >
+                {label}
+              </Link>
+            </div>
+          );
+        })}
       </div>
     </nav>
   );
