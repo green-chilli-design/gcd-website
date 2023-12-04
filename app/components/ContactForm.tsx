@@ -4,14 +4,14 @@
 import { useFormState } from "react-dom";
 // @ts-ignore
 import { useFormStatus } from "react-dom";
-import { sendContact } from "../actions";
+import { ActionResponse, sendContact } from "../actions";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { useRef } from "react";
 
-const initialState = {
-  message: null,
+const initialState: ActionResponse = {
   type: null,
-  errors: null,
+  message: "",
+  errors: {},
 };
 
 function SubmitButton() {
@@ -44,8 +44,8 @@ export default function ContactForm() {
     }
     const token = await executeRecaptcha("contact");
     formData.set("g-recaptcha-response", token);
-    const result = await formAction(formData);
-    if (result.type === "success") {
+    await formAction(formData);
+    if (state?.type === "success") {
       ref.current?.reset();
     }
   };

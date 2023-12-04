@@ -1,6 +1,12 @@
 "use server";
 import { z } from "zod";
 
+export interface ActionResponse {
+  type: "success" | "error" | null;
+  message?: string;
+  errors?: { [key: string]: string[] | undefined };
+}
+
 const contactFormSchema = z.object({
   firstName: z.string().min(1, { message: "Required" }),
   lastName: z.string().min(1, { message: "Required" }),
@@ -10,7 +16,10 @@ const contactFormSchema = z.object({
   gRecaptchaResponse: z.string(),
 });
 
-export async function sendContact(prevState: any, formData: FormData) {
+export async function sendContact(
+  prevState: any,
+  formData: FormData
+): Promise<ActionResponse> {
   "use server";
   try {
     console.log(formData);
@@ -34,23 +43,23 @@ export async function sendContact(prevState: any, formData: FormData) {
 
     await sendSlackNotification(data);
 
-    return { type: "success" as const, message: "Message sent" };
+    return { type: "success", message: "Message sent" };
   } catch (error: any) {
     console.log(error);
     if (error instanceof z.ZodError) {
       const fieldErrors = error.flatten().fieldErrors;
-      return { type: "error" as const, errors: fieldErrors };
+      return { type: "error", errors: fieldErrors };
     }
     if (
       error instanceof Error &&
       error.message === "reCAPTCHA verification failed"
     ) {
       return {
-        type: "error" as const,
+        type: "error",
         message: error.message,
       };
     }
-    return { type: "error" as const, message: "Something went wrong :(" };
+    return { type: "error", message: "Something went wrong :(" };
   }
 }
 
@@ -140,6 +149,74 @@ async function sendSlackNotification(data: any): Promise<Response> {
 
   if (!response.ok) {
     throw new Error("Slack webhook failed");
+  }
+
+  return response;
+}
+
+const subscribeFormSchema = z.object({
+  email: z.string().email(),
+  gRecaptchaResponse: z.string(),
+});
+
+export async function sendSubscribe(prevState: any, formData: FormData) {
+  "use server";
+  try {
+    console.log(formData);
+
+    const data = subscribeFormSchema.parse({
+      email: formData.get("email") ?? "",
+      gRecaptchaResponse: formData.get("g-recaptcha-response") ?? "",
+    });
+
+    if (data.gRecaptchaResponse) {
+      await validateRecaptcha(data.gRecaptchaResponse);
+    } else {
+      throw new Error("There was no reCAPTCHA token in the request");
+    }
+
+    // TODO: implement this
+    // await createSubscription(data.email);
+
+    return { type: "success" as const, message: "Subscribed!" };
+  } catch (error: any) {
+    console.log(error);
+    if (error instanceof z.ZodError) {
+      const fieldErrors = error.flatten().fieldErrors;
+      return { type: "error" as const, errors: fieldErrors };
+    }
+    if (
+      error instanceof Error &&
+      error.message === "reCAPTCHA verification failed"
+    ) {
+      return {
+        type: "error" as const,
+        message: error.message,
+      };
+    }
+    return { type: "error" as const, message: "Something went wrong :(" };
+  }
+}
+
+// TODO: Replace with actual API call
+async function createSubscription(email: string): Promise<Response> {
+  const response = await fetch(`https://example.com`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Token SECRET`,
+    },
+    body: JSON.stringify({
+      email,
+    }),
+    cache: "no-cache",
+  });
+
+  if (!response.ok) {
+    console.log(response);
+    const body = await response.json();
+    console.log(body);
+    throw new Error("Subscription creation failed");
   }
 
   return response;
