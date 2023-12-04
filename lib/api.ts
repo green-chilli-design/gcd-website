@@ -1,4 +1,30 @@
 // TODO: This should be refactored into something reusable
+
+async function fetchGraphQL(
+  query: string,
+  preview = false,
+  tags = ["posts"]
+): Promise<any> {
+  return fetch(
+    `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${process.env.CONTENTFUL_ENVIRONMENT}`,
+    {
+      cache: `${process.env.DISABLE_CACHING ? "no-cache" : "force-cache"}`, // Disables caching when true
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${
+          preview
+            ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
+            : process.env.CONTENTFUL_ACCESS_TOKEN
+        }`,
+      },
+      body: JSON.stringify({ query }),
+      next: { tags: tags },
+    }
+  ).then((response) => response.json());
+}
+
+/******** BEGIN POST API FUNCTIONS ************/
 const POST_GRAPHQL_FIELDS = `
   slug
   title
@@ -28,82 +54,6 @@ const POST_GRAPHQL_FIELDS = `
     }
   }
 `;
-
-const SERVICES_GRAPHQL_FIELDS = `
-  slug
-  title
-  coverImage {
-    url
-  }
-  summary
-`;
-
-const SERVICE_GRAPHQL_FIELDS = `
-  slug
-  title
-  coverImage {
-    url
-  }
-  summary
-  description {
-    json
-    links {
-      assets {
-        block {
-          sys {
-            id
-          }
-          url
-          description
-        }
-      }
-    }
-  }
-`;
-
-const CASE_STUDIES_GRAPHQL_FIELDS = `
-  slug
-  title
-  coverImage {
-    url
-  }
-  summary
-`;
-
-const CASE_STUDY_GRAPHQL_FIELDS = `
-  slug
-  title
-  coverImage {
-    url
-  }
-  summary
-`;
-
-async function fetchGraphQL(
-  query: string,
-  preview = false,
-  tags = ["posts"]
-): Promise<any> {
-  return fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${process.env.CONTENTFUL_ENVIRONMENT}`,
-    {
-      cache: `${process.env.DISABLE_CACHING ? "no-cache" : "force-cache"}`, // Disables caching when true
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${
-          preview
-            ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
-            : process.env.CONTENTFUL_ACCESS_TOKEN
-        }`,
-      },
-      body: JSON.stringify({ query }),
-      next: { tags: tags },
-    }
-  ).then((response) => response.json());
-}
-
-/******** BEGIN POST API FUNCTIONS ************/
 
 function extractPost(fetchResponse: any): any {
   return fetchResponse?.data?.postCollection?.items?.[0];
@@ -184,6 +134,37 @@ export async function getPostAndMorePosts(
 }
 
 /******** BEGIN SERVICES API FUNCTIONS ************/
+const SERVICES_GRAPHQL_FIELDS = `
+  slug
+  title
+  coverImage {
+    url
+  }
+  summary
+`;
+
+const SERVICE_GRAPHQL_FIELDS = `
+  slug
+  title
+  coverImage {
+    url
+  }
+  summary
+  description {
+    json
+    links {
+      assets {
+        block {
+          sys {
+            id
+          }
+          url
+          description
+        }
+      }
+    }
+  }
+`;
 
 function extractServiceEntries(fetchResponse: any): any[] {
   return fetchResponse?.data?.serviceCollection?.items;
@@ -229,6 +210,23 @@ export async function getServiceBySlug(
 }
 
 /******** BEGIN CASE STUDIES API FUNCTIONS ************/
+const CASE_STUDIES_GRAPHQL_FIELDS = `
+  slug
+  title
+  coverImage {
+    url
+  }
+  summary
+`;
+
+const CASE_STUDY_GRAPHQL_FIELDS = `
+  slug
+  title
+  coverImage {
+    url
+  }
+  summary
+`;
 
 function extractCaseStudiesEntries(fetchResponse: any): any[] {
   return fetchResponse?.data?.caseStudyCollection?.items;
