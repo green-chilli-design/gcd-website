@@ -3,17 +3,13 @@ import { draftMode } from "next/headers";
 
 import CoverImage from "../cover-image";
 
-import { getAllCaseStudies } from "@/lib/api";
+import { getAllCaseStudies, getPageBySlug } from "@/lib/api";
 
-function Intro() {
+function Intro({ title, subtitle }: { title: string; subtitle: string }) {
   return (
-    <section className="flex-col md:flex-row flex items-center md:justify-between mb-16 md:mb-12">
-      <h1 className="text-xl md:text-5xl font-bold tracking-tighter leading-tight md:pr-8">
-        Case Studies.
-      </h1>
-      <h2 className="text-center md:text-left text-lg mt-5 md:pl-8">
-        Proudly delivering the technology behind our clients' success stories.
-      </h2>
+    <section className="mb-16 md:mb-24">
+      <h2 className="mb-5">{title}</h2>
+      <h4>{subtitle}</h4>
     </section>
   );
 }
@@ -69,11 +65,14 @@ function AllCaseStudies({ caseStudies }: { caseStudies: any[] }) {
 
 export default async function Page() {
   const { isEnabled } = draftMode();
+  const { title, subtitle, pageContentCollection } = await getPageBySlug(
+    "case-studies"
+  );
   const allCaseStudies = await getAllCaseStudies(isEnabled);
 
   return (
-    <div className="container">
-      <Intro />
+    <div className="bg-black">
+      <Intro title={title} subtitle={subtitle} />
       <AllCaseStudies caseStudies={allCaseStudies} />
     </div>
   );
