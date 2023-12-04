@@ -1,42 +1,6 @@
 import { getPageBySlug } from "@/lib/api";
-import { Markdown } from "@/lib/markdown";
+import { generateContentBlocks } from "@/lib/contentful-content-blocks";
 import Link from "next/link";
-
-/**
- * TODO: This should be turned into some global re-usable component factory
- *
- * This function generates the content blocks for the home page
- *
- * Depending on the type of content block, it will render a different component (TODO)
- *
- * @param contentBody
- * @returns A list of content blocks
- */
-function generateContentBlocks(contentBody: any[]) {
-  return Object.entries(contentBody).map(([key, value]) => {
-    switch (value.__typename) {
-      case "ContentBlock":
-        return (
-          <section
-            key={value}
-            className="even:rounded-2xl even:shadow-md even:border even:border-green even:shadow-green my-5 p-16 even:hover:shadow-lg even:transition-all even:duration-500 even:ease-in-out even:bg-gradient-to-tr even:from-slate-950 even:via-slate-900 even:to-slate-950"
-          >
-            {value.heading && (
-              <div className="text-4xl font-medium mb-5">{value.heading}</div>
-            )}
-            {value.subHeading && (
-              <div className="text-xl font-medium mb-2">{value.subHeading}</div>
-            )}
-            <Markdown content={value.contentBody} />
-          </section>
-        );
-      case "ImageBlock":
-      // return <ImageBlock block={value} />; // TODO: Enable different reusable content blocks -> React Components here
-      case "VideoBlock":
-      // return <VideoBlock block={value} />;
-    }
-  });
-}
 
 export default async function HomePage() {
   const { subtitle, pageContentCollection } = await getPageBySlug("home");
