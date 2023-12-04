@@ -1,44 +1,50 @@
-import Image from 'next/image'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { BLOCKS } from '@contentful/rich-text-types'
+import Image from "next/image";
+import {
+  Options,
+  documentToReactComponents,
+} from "@contentful/rich-text-react-renderer";
+import { BLOCKS } from "@contentful/rich-text-types";
 
 interface Asset {
   sys: {
-    id: string
-  }
-  url: string
-  description: string
+    id: string;
+  };
+  url: string;
+  description: string;
 }
 
 interface AssetLink {
-  block: Asset[]
+  block: Asset[];
 }
 
 interface Content {
-  json: any
+  json: any;
   links: {
-    assets: AssetLink
-  }
+    assets: AssetLink;
+  };
 }
 
 function RichTextAsset({
   id,
   assets,
 }: {
-  id: string
-  assets: Asset[] | undefined
+  id: string;
+  assets: Asset[] | undefined;
 }) {
-  const asset = assets?.find((asset) => asset.sys.id === id)
+  const asset = assets?.find((asset) => asset.sys.id === id);
 
   if (asset?.url) {
-    return <Image src={asset.url} layout="fill" alt={asset.description} />
+    return <Image src={asset.url} layout="fill" alt={asset.description} />;
   }
 
-  return null
+  return null;
 }
 
 export function Markdown({ content }: { content: Content }) {
-  return documentToReactComponents(content.json, {
+  const options: Options = {
+    renderText: (text) =>
+      // Change newlines to <br /> tags
+      text.split("\n").flatMap((text, i) => [i > 0 && <br />, text]),
     renderNode: {
       [BLOCKS.EMBEDDED_ASSET]: (node: any) => (
         <RichTextAsset
@@ -46,6 +52,23 @@ export function Markdown({ content }: { content: Content }) {
           assets={content.links.assets.block}
         />
       ),
+      [BLOCKS.UL_LIST]: (node, children) => (
+        <ul className="list-disc list-outside ml-5">{children}</ul>
+      ),
+      [BLOCKS.HR]: () => (
+        <hr className="border-0 border-t-2 border-green my-3" />
+      ),
+      [BLOCKS.PARAGRAPH]: (node, children) => (
+        <p className="mb-3">{children}</p>
+      ),
+      [BLOCKS.HEADING_2]: (node, children) => (
+        <h2 className="my-4">{children}</h2>
+      ),
+      [BLOCKS.HEADING_3]: (node, children) => (
+        <h3 className=" my-3">{children}</h3>
+      ),
     },
-  })
+  };
+
+  return documentToReactComponents(content.json, options);
 }
