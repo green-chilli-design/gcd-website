@@ -5,14 +5,16 @@ import SubscribeForm from "./SubscribeForm";
 
 export default function Footer() {
   return (
-    <footer className="w-full pt-[50px] pb-5 px-[18px] lg:py-[50px] lg:px-[80px]">
+    <footer className="w-full pt-[50px] pb-5 lg:py-[50px] container">
       <div className="mb-[50px]">
-        <Image
-          src="/gcd-logo-square-green.svg"
-          alt="Green Chilli Design Logo"
-          width={100}
-          height={90}
-        />
+        <Link href="/">
+          <Image
+            src="/gcd-logo-square-green.svg"
+            alt="Green Chilli Design Logo"
+            width={100}
+            height={90}
+          />
+        </Link>
       </div>
       <div className="flex flex-col lg:flex-row justify-end lg:gap-10 mb-[50px]">
         {/* TODO: Disabled Subscribe form for MVP */}

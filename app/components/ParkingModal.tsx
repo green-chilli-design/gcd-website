@@ -60,7 +60,7 @@ export default function ParkingModal() {
   return (
     <Dialog>
       <DialogTrigger>
-        <p className="small uppercase flex items-center mb-2.5 px-5 cursor-pointer">
+        <p className="small uppercase flex items-center mb-2.5 cursor-pointer">
           <span className="material-symbols-outlined icon-24 mr-2">
             visibility
           </span>

@@ -9,8 +9,8 @@ export default async function ContactPage() {
 
   return (
     <div>
-      <div className="container">
-        <section className="mb-24">
+      <div className="container mt-24 lg:mt-28">
+        <section className="mb-24 ">
           <h2 className="mb-5">{subtitle}</h2>
           <p className="max-w-2xl">{description}</p>
         </section>
@@ -51,9 +51,9 @@ export default async function ContactPage() {
 
           <ContactForm />
         </section>
-      </div>
 
-      <ParkingModal />
+        <ParkingModal />
+      </div>
 
       <LocationMap />
     </div>
