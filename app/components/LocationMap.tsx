@@ -62,5 +62,5 @@ export default function LocationMap() {
     initMap();
   }, []);
 
-  return <div ref={mapRef} className="w-full h-96"></div>;
+  return <div ref={mapRef} className="w-full h-[388px]"></div>;
 }
