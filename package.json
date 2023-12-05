@@ -9,6 +9,7 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.17.1",
     "@contentful/rich-text-types": "^16.2.1",
+    "@googlemaps/js-api-loader": "^1.16.2",
     "@radix-ui/react-dialog": "^1.0.5",
     "@tailwindcss/typography": "0.5.9",
     "@types/node": "^20.5.0",
@@ -29,5 +30,8 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.1.6",
     "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/google.maps": "^3.54.10"
   }
 }

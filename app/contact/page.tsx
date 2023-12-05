@@ -2,6 +2,7 @@ import { getPageBySlug } from "@/lib/api";
 import React from "react";
 import ContactForm from "../components/ContactForm";
 import ParkingModal from "../components/ParkingModal";
+import LocationMap from "../components/LocationMap";
 
 export default async function ContactPage() {
   const { subtitle, description } = await getPageBySlug("contact");
@@ -54,7 +55,7 @@ export default async function ContactPage() {
 
       <ParkingModal />
 
-      <div className="bg-[url('/images/map.png')] bg-cover bg-center h-96"></div>
+      <LocationMap />
     </div>
   );
 }
