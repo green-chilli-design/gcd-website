@@ -17,11 +17,14 @@ export default function LocationMap() {
         apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
         version: "weekly",
       });
+
       const { Map, InfoWindow } = await loader.importLibrary("maps");
+
       const { AdvancedMarkerElement, PinElement } =
         (await google.maps.importLibrary(
           "marker"
         )) as google.maps.MarkerLibrary;
+
       const mapOptions: google.maps.MapOptions = {
         center,
         zoom: 18,
@@ -29,7 +32,6 @@ export default function LocationMap() {
       };
 
       const map = new Map(mapRef.current as HTMLDivElement, mapOptions);
-      const infoWindow = new InfoWindow();
 
       // Customise the pin
       const greenCircle = document.createElement("span");
@@ -49,10 +51,8 @@ export default function LocationMap() {
           "WHATEVER Building 2.4/18 Sale Street, Auckland CBD, Auckland 1010, New Zealand",
       });
 
-      const infoWindowOptions: google.maps.InfoWindowOptions = {};
-
+      const infoWindow = new InfoWindow();
       marker.addListener("click", () => {
-        console.log("ran");
         infoWindow.close();
         infoWindow.setContent(marker.title);
         infoWindow.open(marker.map, marker);
