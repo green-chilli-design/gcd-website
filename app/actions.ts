@@ -159,7 +159,11 @@ const subscribeFormSchema = z.object({
   gRecaptchaResponse: z.string(),
 });
 
-export async function sendSubscribe(prevState: any, formData: FormData) {
+// TODO: just a dummy function at the moment / disabled for MVP
+export async function sendSubscribe(
+  prevState: any,
+  formData: FormData
+): Promise<ActionResponse> {
   "use server";
   try {
     console.log(formData);
@@ -178,23 +182,23 @@ export async function sendSubscribe(prevState: any, formData: FormData) {
     // TODO: implement this
     // await createSubscription(data.email);
 
-    return { type: "success" as const, message: "Subscribed!" };
+    return { type: "success", message: "Subscribed!" };
   } catch (error: any) {
     console.log(error);
     if (error instanceof z.ZodError) {
       const fieldErrors = error.flatten().fieldErrors;
-      return { type: "error" as const, errors: fieldErrors };
+      return { type: "error", errors: fieldErrors };
     }
     if (
       error instanceof Error &&
       error.message === "reCAPTCHA verification failed"
     ) {
       return {
-        type: "error" as const,
+        type: "error",
         message: error.message,
       };
     }
-    return { type: "error" as const, message: "Something went wrong :(" };
+    return { type: "error", message: "Something went wrong :(" };
   }
 }
 
