@@ -52,27 +52,26 @@ export default function NavBar() {
           </Link>
         </div>
 
-        {/* sm screens upwards */}
+        {/* menu - sm screens upwards */}
         <div className="hidden sm:flex items-center gap-5">
           {navlinks.map(({ href, label }) => {
             const isActive = pathname.startsWith(href);
 
             return (
-              <div key={label}>
-                <Link
-                  href={href}
-                  className={`font-bold text-sm ${
-                    isActive ? "text-green" : "hover:text-green hover:underline"
-                  } transition duration-300`}
-                >
-                  {label}
-                </Link>
-              </div>
+              <Link
+                key={label}
+                href={href}
+                className={`font-bold text-sm ${
+                  isActive ? "text-green" : "hover:text-green hover:underline"
+                } transition duration-300`}
+              >
+                {label}
+              </Link>
             );
           })}
         </div>
 
-        {/* mobile menu */}
+        {/* menu - mobile */}
         <div
           className={
             menuIcon
@@ -83,7 +82,7 @@ export default function NavBar() {
           <Link
             href="/"
             onClick={handleMenuIcon}
-            className={`font-bold text-sm ${
+            className={`mb-5 font-bold text-sm ${
               pathname.length === 1
                 ? "text-green"
                 : "hover:text-green hover:underline"
@@ -96,17 +95,16 @@ export default function NavBar() {
             const isActive = pathname.startsWith(href);
 
             return (
-              <div key={label}>
-                <Link
-                  onClick={handleMenuIcon}
-                  href={href}
-                  className={`font-bold text-sm ${
-                    isActive ? "text-green" : "hover:text-green hover:underline"
-                  } transition duration-300`}
-                >
-                  {label}
-                </Link>
-              </div>
+              <Link
+                key={label}
+                onClick={handleMenuIcon}
+                href={href}
+                className={`mb-5 font-bold text-sm ${
+                  isActive ? "text-green" : "hover:text-green hover:underline"
+                } transition duration-300`}
+              >
+                {label}
+              </Link>
             );
           })}
         </div>
