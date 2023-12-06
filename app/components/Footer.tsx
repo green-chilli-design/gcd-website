@@ -5,7 +5,7 @@ import SubscribeForm from "./SubscribeForm";
 
 export default function Footer() {
   return (
-    <footer className="w-full pt-[50px] pb-5 lg:py-[50px] container">
+    <footer className="w-full pt-[50px] pb-5 lg:py-[50px] md:container md:mx-auto mx-[18px]">
       <div className="mb-[50px]">
         <Link href="/">
           <Image

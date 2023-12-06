@@ -3,63 +3,123 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+
+const navlinks = [
+  // {
+  //   href: "/services",
+  //   label: "Services",
+  // },
+  {
+    href: "/case-studies",
+    label: "Case Studies",
+  },
+  // {
+  //   href: "/blog",
+  //   label: "Blog",
+  // },
+  // {
+  //   href: "/about",
+  //   label: "About",
+  // },
+  {
+    href: "/contact",
+    label: "Contact Us",
+  },
+];
 
 export default function NavBar() {
   const pathname = usePathname();
-  const navlinks = [
-    // {
-    //   href: "/services",
-    //   label: "Services",
-    // },
-    {
-      href: "/case-studies",
-      label: "Case Studies",
-    },
-    // {
-    //   href: "/blog",
-    //   label: "Blog",
-    // },
-    // {
-    //   href: "/about",
-    //   label: "About",
-    // },
-    {
-      href: "/contact",
-      label: "Contact Us",
-    },
-  ];
+
+  const [menuIcon, setMenuIcon] = useState(false);
+
+  const handleMenuIcon = () => {
+    setMenuIcon(!menuIcon);
+  };
 
   return (
-    <nav className="flex w-full justify-between items-center px-5 mb-10">
-      <div className="flex items-center">
-        <Link href="/">
-          <Image
-            src="/gcd-logo-round-black.svg"
-            alt="Green Chilli Design Logo"
-            width={80}
-            height={80}
-            className="hover:scale-110 transition duration-500"
-          />
-        </Link>
-      </div>
-      <div className="flex items-center gap-5">
-        {navlinks.map(({ href, label }) => {
-          const isActive = pathname.startsWith(href);
+    <header className="w-full z-10 ease-in duration-300">
+      <nav className="flex justify-between items-center py-5 lg:pt-[30px] lg:pb-5 md:container md:mx-auto mx-[18px]">
+        <div className="flex items-center">
+          <Link href="/">
+            <Image
+              src="/gcd-logo-round-black.svg"
+              alt="Green Chilli Design Logo"
+              width={80}
+              height={80}
+              className="hover:scale-110 transition duration-500"
+            />
+          </Link>
+        </div>
 
-          return (
-            <div key={label}>
-              <Link
-                href={href}
-                className={`font-bold text-sm ${
-                  isActive ? "text-green" : "hover:text-green hover:underline"
-                } transition duration-300`}
-              >
-                {label}
-              </Link>
-            </div>
-          );
-        })}
-      </div>
-    </nav>
+        {/* sm screens upwards */}
+        <div className="hidden sm:flex items-center gap-5">
+          {navlinks.map(({ href, label }) => {
+            const isActive = pathname.startsWith(href);
+
+            return (
+              <div key={label}>
+                <Link
+                  href={href}
+                  className={`font-bold text-sm ${
+                    isActive ? "text-green" : "hover:text-green hover:underline"
+                  } transition duration-300`}
+                >
+                  {label}
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* mobile menu */}
+        <div
+          className={
+            menuIcon
+              ? "sm:hidden absolute top-[120px] pb-[120px] right-0 bottom-0 left-0 flex flex-col justify-center items-center w-full h-screen bg-black text-neutral ease-in duration-300"
+              : "sm:hidden absolute top-[120px] pb-[120px] right-0 bottom-0 left-[-100%] flex flex-col justify-center items-center w-full h-screen bg-black text-neutral text-center ease-out duration-300"
+          }
+        >
+          <Link
+            href="/"
+            onClick={handleMenuIcon}
+            className={`font-bold text-sm ${
+              pathname.length === 1
+                ? "text-green"
+                : "hover:text-green hover:underline"
+            } transition duration-300`}
+          >
+            Home
+          </Link>
+
+          {navlinks.map(({ href, label }) => {
+            const isActive = pathname.startsWith(href);
+
+            return (
+              <div key={label}>
+                <Link
+                  onClick={handleMenuIcon}
+                  href={href}
+                  className={`font-bold text-sm ${
+                    isActive ? "text-green" : "hover:text-green hover:underline"
+                  } transition duration-300`}
+                >
+                  {label}
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* menu icons */}
+        <div onClick={handleMenuIcon} className="flex sm:hidden">
+          {menuIcon ? (
+            <span className="material-symbols-outlined icon-48">close</span>
+          ) : (
+            <span className="material-symbols-outlined icon-48">menu</span>
+          )}
+        </div>
+      </nav>
+    </header>
   );
 }

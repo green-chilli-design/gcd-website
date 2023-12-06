@@ -8,7 +8,7 @@ export default async function PrivacyPolicyPage() {
   let contentBlocks = generateContentBlocks(pageContentCollection.items);
 
   return (
-    <div className="container mb-20">
+    <div className="md:container md:mx-auto mx-[18px] mb-20">
       <main>{contentBlocks}</main>
     </div>
   );

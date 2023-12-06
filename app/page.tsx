@@ -8,7 +8,7 @@ export default async function HomePage() {
   let contentBlocks = generateContentBlocks(pageContentCollection.items);
 
   return (
-    <div className="container mb-20">
+    <div className="md:container md:mx-auto mx-[18px] mb-20">
       <section className="text-bold text-6xl md:text-8xl mt-5 md:mt-20">
         <div className="relative">
           <div className="absolute -inset-1 rounded-lg  from-green via-slate-700 bg-gradient-conic  to-slate-950 opacity-50 blur-3xl"></div>
