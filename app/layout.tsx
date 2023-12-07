@@ -28,7 +28,7 @@ export default async function RootLayout({
         <Providers>
           <main className="flex min-h-screen flex-col justify-start m-0 text-black bg-neutral">
             <NavBar />
-            <div>{children}</div>
+            <div className="flex-1">{children}</div>
             <Footer />
           </main>
         </Providers>
