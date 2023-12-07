@@ -2,9 +2,17 @@
 
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { ThemeProvider } from "next-themes";
+import { usePathname } from "next/navigation";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const recaptchaPublicKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? "";
+
+  // set theme based on page
+  let defaultTheme = "light";
+  const pathname = usePathname();
+  if (pathname.startsWith("/case-studies")) {
+    defaultTheme = "dark";
+  }
 
   return (
     <>
@@ -20,7 +28,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       </GoogleReCaptchaProvider>
       <ThemeProvider
         attribute="class"
-        themes={["light", "dark"]}
+        defaultTheme={defaultTheme}
         enableSystem={false}
       >
         {children}
