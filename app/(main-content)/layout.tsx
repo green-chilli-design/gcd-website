@@ -2,8 +2,10 @@ import "@/app/globals.css";
 import "@/app/globalicons.css";
 import { Jost } from "next/font/google";
 import NavBar from "@/app/components/NavBar";
-import Footer from "@/app/components/Footer";
-import { Providers } from "@/app/providers";
+import Footer from "@/app//components/Footer";
+
+import dynamic from "next/dynamic";
+const Providers = dynamic(() => import("../providers"), { ssr: false });
 
 // TODO: This should be moved into each component, and if possible populated by Contentful page title
 export const metadata = {

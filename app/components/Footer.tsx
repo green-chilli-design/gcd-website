@@ -11,8 +11,8 @@ export default function Footer() {
           <Image
             src="/gcd-logo-square-green.svg"
             alt="Green Chilli Design Logo"
-            width={100}
-            height={90}
+            width={90}
+            height={29}
           />
         </Link>
       </div>
