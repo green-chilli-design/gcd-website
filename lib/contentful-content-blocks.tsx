@@ -15,7 +15,7 @@ export function generateContentBlocks(contentBody: any[]) {
     switch (value.__typename) {
       case "ContentBlock":
         return (
-          <section key={value} className="my-5 p-5 lg:p-16">
+          <section key={value} className="py-5 lg:py-16">
             {value.heading && <h2 className="mb-5">{value.heading}</h2>}
             {value.subHeading && <h5 className="mb-2">{value.subHeading}</h5>}
             <Markdown content={value.contentBody} />

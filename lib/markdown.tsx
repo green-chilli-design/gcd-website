@@ -61,6 +61,9 @@ export function Markdown({ content }: { content: Content }) {
       [BLOCKS.PARAGRAPH]: (node, children) => (
         <p className="mb-3">{children}</p>
       ),
+      [BLOCKS.HEADING_1]: (node, children) => (
+        <h1 className="my-8">{children}</h1>
+      ),
       [BLOCKS.HEADING_2]: (node, children) => (
         <h2 className="my-4">{children}</h2>
       ),
