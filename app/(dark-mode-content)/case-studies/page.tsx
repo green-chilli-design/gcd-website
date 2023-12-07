@@ -71,7 +71,7 @@ export default async function Page() {
   const allCaseStudies = await getAllCaseStudies(isEnabled);
 
   return (
-    <div className="bg-black">
+    <div className="md:container md:mx-auto mx-[18px] mb-20">
       <Intro title={title} subtitle={subtitle} />
       <AllCaseStudies caseStudies={allCaseStudies} />
     </div>

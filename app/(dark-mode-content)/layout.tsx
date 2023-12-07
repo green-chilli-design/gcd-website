@@ -32,7 +32,7 @@ export default function RootLayout({
       <body className={jost.className}>
         <ProvidersTheme>
           <Providers>
-            <main className="flex min-h-screen flex-col justify-start m-0 text-black bg-neutral">
+            <main className="flex min-h-screen flex-col justify-start m-0 text-black bg-neutral dark:bg-black dark:text-neutral">
               <NavBar />
               <div className="flex-1">{children}</div>
               <Footer />
