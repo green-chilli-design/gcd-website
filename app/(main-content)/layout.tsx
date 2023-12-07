@@ -4,8 +4,12 @@ import { Jost } from "next/font/google";
 import NavBar from "@/app/components/NavBar";
 import Footer from "@/app//components/Footer";
 
+import Providers from "../providers";
+
 import dynamic from "next/dynamic";
-const Providers = dynamic(() => import("../providers"), { ssr: false });
+const ProvidersTheme = dynamic(() => import("../providers-theme"), {
+  ssr: false,
+});
 
 // TODO: This should be moved into each component, and if possible populated by Contentful page title
 export const metadata = {
@@ -27,13 +31,15 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={jost.className}>
-        <Providers>
-          <main className="flex min-h-screen flex-col justify-start m-0 text-black bg-neutral">
-            <NavBar />
-            <div className="flex-1">{children}</div>
-            <Footer />
-          </main>
-        </Providers>
+        <ProvidersTheme>
+          <Providers>
+            <main className="flex min-h-screen flex-col justify-start m-0 text-black bg-neutral">
+              <NavBar />
+              <div className="flex-1">{children}</div>
+              <Footer />
+            </main>
+          </Providers>
+        </ProvidersTheme>
       </body>
     </html>
   );
