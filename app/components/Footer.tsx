@@ -1,15 +1,24 @@
+"use client";
+
 import Link from "next/link";
 import "@/app/globals.css";
 import Image from "next/image";
 import SubscribeForm from "@/app/components/SubscribeForm";
+import { useTheme } from "next-themes";
 
 export default function Footer() {
+  const { resolvedTheme } = useTheme();
+  let logoSrc = "/gcd-logo-square-green.svg";
+  if (resolvedTheme === "dark") {
+    logoSrc = "/gcd-logo-square-white.svg";
+  }
+
   return (
     <footer className="w-full pt-[50px] pb-5 lg:py-[50px] md:container md:mx-auto mx-[18px]">
       <div className="mb-[50px]">
         <Link href="/">
           <Image
-            src="/gcd-logo-square-green.svg"
+            src={logoSrc}
             alt="Green Chilli Design Logo"
             width={90}
             height={29}
