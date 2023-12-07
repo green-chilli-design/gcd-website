@@ -1,51 +1,51 @@
 import Link from "next/link";
 import { draftMode } from "next/headers";
 
-import CoverImage from "../../cover-image";
+import CoverImage from "@/app/cover-image";
 import { Markdown } from "@/lib/markdown";
 
-import { getAllCaseStudies, getCaseStudyBySlug } from "@/lib/api";
+import { getAllServices, getServiceBySlug } from "@/lib/api";
 
 export async function generateStaticParams() {
-  const allCaseStudies = await getAllCaseStudies(false);
+  const allServices = await getAllServices(false);
 
-  return allCaseStudies.map((caseStudy) => ({
-    slug: caseStudy.slug,
+  return allServices.map((service) => ({
+    slug: service.slug,
   }));
 }
 
-export default async function CaseStudyPage({
+export default async function ServicePage({
   params,
 }: {
   params: { slug: string };
 }) {
   const { isEnabled } = draftMode();
-  const caseStudy = await getCaseStudyBySlug(params.slug, isEnabled);
+  const service = await getServiceBySlug(params.slug, isEnabled);
 
   return (
     <div className="md:container md:mx-auto mx-[18px]">
       <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
-        <Link href="/case-studies" className="hover:underline">
-          Case Studies
+        <Link href="/services" className="hover:underline">
+          Services
         </Link>
         .
       </h2>
       <article>
         <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight md:leading-none mb-12 text-center md:text-left">
-          {caseStudy.title}
+          {service.title}
         </h1>
         <div className="mb-8 md:mb-16 sm:mx-0">
-          <CoverImage title={caseStudy.title} url={caseStudy.coverImage.url} />
+          <CoverImage title={service.title} url={service.coverImage.url} />
         </div>
         <div className="max-w-2xl mx-auto">
           <div className="mb-6 text-lg">
-            <p>{caseStudy.summary}</p>
+            <p>{service.summary}</p>
           </div>
         </div>
 
         <div className="max-w-2xl mx-auto">
           <div className="prose">
-            {/* <Markdown content={caseStudy.content} /> */}
+            <Markdown content={service.description} />
           </div>
         </div>
       </article>
