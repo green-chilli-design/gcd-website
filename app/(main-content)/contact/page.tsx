@@ -1,8 +1,8 @@
 import { getPageBySlug } from "@/lib/api";
 import React from "react";
-import ContactForm from "../components/ContactForm";
-import ParkingModal from "../components/ParkingModal";
-import LocationMap from "../components/LocationMap";
+import ContactForm from "@/app/components/ContactForm";
+import ParkingModal from "@/app/components/ParkingModal";
+import LocationMap from "@/app/components/LocationMap";
 
 export default async function ContactPage() {
   const { subtitle, description } = await getPageBySlug("contact");

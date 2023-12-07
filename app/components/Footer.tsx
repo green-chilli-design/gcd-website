@@ -1,7 +1,7 @@
 import Link from "next/link";
-import "../globals.css";
+import "@/app/globals.css";
 import Image from "next/image";
-import SubscribeForm from "./SubscribeForm";
+import SubscribeForm from "@/app/components/SubscribeForm";
 
 export default function Footer() {
   return (

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { draftMode } from "next/headers";
 
-import CoverImage from "../cover-image";
+import CoverImage from "@/app/cover-image";
 
 import { getAllCaseStudies, getPageBySlug } from "@/lib/api";
 
