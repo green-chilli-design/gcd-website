@@ -1,5 +1,6 @@
 import "@/app/globals.css";
-import { Providers } from "@/app/theme-provider";
+import dynamic from "next/dynamic";
+const Providers = dynamic(() => import("../theme-provider"), { ssr: false });
 import { Jost } from "next/font/google";
 import NavBar from "@/app/components/NavBar";
 import Footer from "@/app/components/Footer";
