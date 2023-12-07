@@ -110,7 +110,10 @@ export default function NavBar() {
         </div>
 
         {/* menu icons */}
-        <div onClick={handleMenuIcon} className="flex sm:hidden">
+        <div
+          onClick={handleMenuIcon}
+          className="flex sm:hidden hover:scale-110 transition duration-500 cursor-pointer"
+        >
           {menuIcon ? (
             <span className="material-symbols-outlined icon-48">close</span>
           ) : (
