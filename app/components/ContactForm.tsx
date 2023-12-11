@@ -45,10 +45,11 @@ export default function ContactForm() {
     const token = await executeRecaptcha("contact");
     formData.set("g-recaptcha-response", token);
     await formAction(formData);
-    if (state?.type === "success") {
-      ref.current?.reset();
-    }
   };
+
+  if (state?.type === "success") {
+    ref.current?.reset();
+  }
 
   return (
     <form
