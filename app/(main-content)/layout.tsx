@@ -1,20 +1,21 @@
 import "@/app/globals.css";
 import "@/app/globalicons.css";
+
 import { Jost } from "next/font/google";
 import NavBar from "@/app/components/NavBar";
 import Footer from "@/app//components/Footer";
 
 import Providers from "../providers";
-
 import dynamic from "next/dynamic";
 const ProvidersTheme = dynamic(() => import("../providers-theme"), {
   ssr: false,
 });
 
-// TODO: This should be moved into each component, and if possible populated by Contentful page title
-export const metadata = {
-  title: `GCD | Digital Strategy & Software Development`,
-  description: `Digital Strategy & Software Development to Drive Your Business Success.`,
+import { Metadata } from "next";
+import { sharedMetadata } from "../metadata";
+
+export const metadata: Metadata = {
+  ...sharedMetadata,
 };
 
 const jost = Jost({
