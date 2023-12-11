@@ -1,9 +1,9 @@
 "use client";
 
-import { ThemeProvider } from "next-themes";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { usePathname } from "next/navigation";
 
-export default function ProvidersTheme({
+export default function ThemeProvider({
   children,
 }: {
   children: React.ReactNode;
@@ -11,17 +11,17 @@ export default function ProvidersTheme({
   // set theme based on page
   let defaultTheme = "light";
   const pathname = usePathname();
-  if (pathname.startsWith("/case-studies")) {
+  if (pathname === "/case-studies") {
     defaultTheme = "dark";
   }
 
   return (
-    <ThemeProvider
+    <NextThemesProvider
       attribute="class"
       defaultTheme={defaultTheme}
       enableSystem={false}
     >
       {children}
-    </ThemeProvider>
+    </NextThemesProvider>
   );
 }

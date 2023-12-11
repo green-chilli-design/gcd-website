@@ -5,11 +5,14 @@ import { Jost } from "next/font/google";
 import NavBar from "@/app/components/NavBar";
 import Footer from "@/app/components/Footer";
 
-import Providers from "../providers";
+import RecaptchaProvider from "@/app/components/providers/recaptcha-provider";
 import dynamic from "next/dynamic";
-const ProvidersTheme = dynamic(() => import("../providers-theme"), {
-  ssr: false,
-});
+const ThemeProvider = dynamic(
+  () => import("@/app/components/providers/theme-provider"),
+  {
+    ssr: false,
+  },
+);
 
 import { Metadata } from "next";
 import { sharedMetadata } from "../metadata";
@@ -32,15 +35,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={jost.className}>
-        <ProvidersTheme>
-          <Providers>
+        <ThemeProvider>
+          <RecaptchaProvider>
             <main className="m-0 flex min-h-screen flex-col justify-start bg-neutral text-black dark:bg-black dark:text-neutral">
               <NavBar />
               <div className="flex-1">{children}</div>
               <Footer />
             </main>
-          </Providers>
-        </ProvidersTheme>
+          </RecaptchaProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
