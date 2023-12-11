@@ -15,6 +15,14 @@ const twitterUsername = "@gcdigital_tweet";
 export const sharedMetadata: Metadata = {
   title: title,
   description: description,
+  icons: [
+    {
+      url: "/favicon.ico",
+      rel: "icon",
+      type: "image/x-icon",
+    },
+    // TODO: add more icons
+  ],
   openGraph: {
     title: title,
     url: siteUrl,
