@@ -1,9 +1,18 @@
 import Link from "next/link";
 import { draftMode } from "next/headers";
-
 import CoverImage from "@/app/cover-image";
-
 import { getAllCaseStudies, getPageBySlug } from "@/lib/api";
+
+const title = "GCD | Case Studies";
+export const metadata = {
+  title,
+  openGraph: {
+    title,
+  },
+  twitter: {
+    title,
+  },
+};
 
 function Intro({ title, subtitle }: { title: string; subtitle: string }) {
   return (

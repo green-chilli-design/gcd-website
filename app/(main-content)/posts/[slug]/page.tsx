@@ -7,7 +7,35 @@ import Date from "@/app/date";
 import CoverImage from "@/app/cover-image";
 
 import { Markdown } from "@/lib/markdown";
-import { getAllPosts, getPostAndMorePosts } from "@/lib/api";
+import { getAllPosts, getPostAndMorePosts, getPostBySlug } from "@/lib/api";
+
+import { ResolvingMetadata, Metadata } from "next";
+
+export async function generateMetadata(
+  {
+    params,
+  }: {
+    params: { slug: string };
+  },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const post = await getPostBySlug(params.slug, false);
+
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: `GCD | ${post.title}`,
+    openGraph: {
+      title: `GCD | ${post.title}`,
+      images: [post.coverImage.url, ...previousImages],
+    },
+    twitter: {
+      title: `GCD | ${post.title}`,
+      images: [post.coverImage.url, ...previousImages],
+    },
+  };
+}
 
 export async function generateStaticParams() {
   const allPosts = await getAllPosts(false);

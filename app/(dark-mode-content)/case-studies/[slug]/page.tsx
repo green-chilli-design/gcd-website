@@ -5,6 +5,33 @@ import CoverImage from "@/app/cover-image";
 import { Markdown } from "@/lib/markdown";
 
 import { getAllCaseStudies, getCaseStudyBySlug } from "@/lib/api";
+import { ResolvingMetadata, Metadata } from "next";
+
+export async function generateMetadata(
+  {
+    params,
+  }: {
+    params: { slug: string };
+  },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const caseStudy = await getCaseStudyBySlug(params.slug, false);
+
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: `GCD | ${caseStudy.title}`,
+    openGraph: {
+      title: `GCD | ${caseStudy.title}`,
+      images: [caseStudy.coverImage.url, ...previousImages],
+    },
+    twitter: {
+      title: `GCD | ${caseStudy.title}`,
+      images: [caseStudy.coverImage.url, ...previousImages],
+    },
+  };
+}
 
 export async function generateStaticParams() {
   const allCaseStudies = await getAllCaseStudies(false);

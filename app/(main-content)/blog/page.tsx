@@ -8,6 +8,17 @@ import MoreStories from "@/app/more-stories";
 
 import { getAllPosts } from "@/lib/api";
 
+const title = "GCD | Blog";
+export const metadata = {
+  title,
+  openGraph: {
+    title,
+  },
+  twitter: {
+    title,
+  },
+};
+
 function Intro() {
   return (
     <section className="flex-col md:flex-row flex items-center md:justify-between mb-16 md:mb-12">

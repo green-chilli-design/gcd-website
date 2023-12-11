@@ -6,6 +6,34 @@ import { Markdown } from "@/lib/markdown";
 
 import { getAllServices, getServiceBySlug } from "@/lib/api";
 
+import { ResolvingMetadata, Metadata } from "next";
+
+export async function generateMetadata(
+  {
+    params,
+  }: {
+    params: { slug: string };
+  },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const service = await getServiceBySlug(params.slug, false);
+
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: `GCD | ${service.title}`,
+    openGraph: {
+      title: `GCD | ${service.title}`,
+      images: [service.coverImage.url, ...previousImages],
+    },
+    twitter: {
+      title: `GCD | ${service.title}`,
+      images: [service.coverImage.url, ...previousImages],
+    },
+  };
+}
+
 export async function generateStaticParams() {
   const allServices = await getAllServices(false);
 

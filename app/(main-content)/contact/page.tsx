@@ -4,6 +4,17 @@ import ContactForm from "@/app/components/ContactForm";
 import ParkingModal from "@/app/components/ParkingModal";
 import LocationMap from "@/app/components/LocationMap";
 
+const title = "GCD | Contact Us";
+export const metadata = {
+  title,
+  openGraph: {
+    title,
+  },
+  twitter: {
+    title,
+  },
+};
+
 export default async function ContactPage() {
   const { subtitle, description } = await getPageBySlug("contact");
 
