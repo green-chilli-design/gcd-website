@@ -44,8 +44,8 @@ export default function NavBar() {
   }
 
   return (
-    <header className="w-full z-10 ease-in duration-300 dark:text-neutral dark:bg-black">
-      <nav className="flex justify-between items-center py-5 lg:pt-[30px] lg:pb-5 md:container md:mx-auto mx-[18px]">
+    <header className="z-10 w-full duration-300 ease-in dark:bg-black dark:text-neutral">
+      <nav className="mx-[18px] flex items-center justify-between py-5 md:container md:mx-auto lg:pb-5 lg:pt-[30px]">
         <div className="flex items-center">
           <Link href="/">
             <Image
@@ -53,13 +53,13 @@ export default function NavBar() {
               alt="Green Chilli Design Logo"
               width={80}
               height={80}
-              className="hover:scale-110 transition duration-500"
+              className="transition duration-500 hover:scale-110"
             />
           </Link>
         </div>
 
         {/* menu - sm screens upwards */}
-        <div className="hidden sm:flex items-center gap-5">
+        <div className="hidden items-center gap-5 sm:flex">
           {navlinks.map(({ href, label }) => {
             const isActive = pathname.startsWith(href);
 
@@ -67,7 +67,7 @@ export default function NavBar() {
               <Link
                 key={label}
                 href={href}
-                className={`font-bold text-sm ${
+                className={`text-sm font-bold ${
                   isActive ? "text-green" : "hover:text-green hover:underline"
                 } transition duration-300`}
               >
@@ -81,14 +81,14 @@ export default function NavBar() {
         <div
           className={
             menuIcon
-              ? "sm:hidden absolute top-[120px] pb-[120px] right-0 bottom-0 left-0 flex flex-col justify-center items-center w-full h-screen bg-black text-neutral ease-in duration-300"
-              : "sm:hidden absolute top-[120px] pb-[120px] right-0 bottom-0 left-[-100%] flex flex-col justify-center items-center w-full h-screen bg-black text-neutral text-center ease-out duration-300"
+              ? "absolute bottom-0 left-0 right-0 top-[120px] flex h-screen w-full flex-col items-center justify-center bg-black pb-[120px] text-neutral duration-300 ease-in sm:hidden"
+              : "absolute bottom-0 left-[-100%] right-0 top-[120px] flex h-screen w-full flex-col items-center justify-center bg-black pb-[120px] text-center text-neutral duration-300 ease-out sm:hidden"
           }
         >
           <Link
             href="/"
             onClick={handleMenuIcon}
-            className={`mb-5 font-bold text-sm ${
+            className={`mb-5 text-sm font-bold ${
               pathname.length === 1
                 ? "text-green"
                 : "hover:text-green hover:underline"
@@ -105,7 +105,7 @@ export default function NavBar() {
                 key={label}
                 onClick={handleMenuIcon}
                 href={href}
-                className={`mb-5 font-bold text-sm ${
+                className={`mb-5 text-sm font-bold ${
                   isActive ? "text-green" : "hover:text-green hover:underline"
                 } transition duration-300`}
               >
@@ -118,7 +118,7 @@ export default function NavBar() {
         {/* menu icons */}
         <div
           onClick={handleMenuIcon}
-          className="flex sm:hidden hover:scale-110 transition duration-500 cursor-pointer"
+          className="flex cursor-pointer transition duration-500 hover:scale-110 sm:hidden"
         >
           {menuIcon ? (
             <span className="material-symbols-outlined icon-48">close</span>

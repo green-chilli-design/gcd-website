@@ -18,11 +18,11 @@ export const metadata = {
 
 function Intro() {
   return (
-    <section className="flex-col md:flex-row flex items-center md:justify-between mb-16 md:mb-12">
-      <h1 className="text-xl md:text-5xl font-bold tracking-tighter leading-tight md:pr-8">
+    <section className="mb-16 flex flex-col items-center md:mb-12 md:flex-row md:justify-between">
+      <h1 className="text-xl font-bold leading-tight tracking-tighter md:pr-8 md:text-5xl">
         Services.
       </h1>
-      <h2 className="text-center md:text-left text-lg mt-5 md:pl-8">
+      <h2 className="mt-5 text-center text-lg md:pl-8 md:text-left">
         What we offer.
       </h2>
     </section>
@@ -50,12 +50,12 @@ function ServicePreview({
           url={coverImage.url}
         />
       </div>
-      <h3 className="text-3xl mb-3 leading-snug">
+      <h3 className="mb-3 text-3xl leading-snug">
         <Link href={`/services/${slug}`} className="hover:underline">
           {title}
         </Link>
       </h3>
-      <p className="text-lg leading-relaxed mb-4">{summary}</p>
+      <p className="mb-4 text-lg leading-relaxed">{summary}</p>
     </div>
   );
 }
@@ -63,7 +63,7 @@ function ServicePreview({
 function AllServices({ services }: { services: any[] }) {
   return (
     <section>
-      <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32">
+      <div className="mb-32 grid grid-cols-1 gap-y-20 md:grid-cols-2 md:gap-x-16 md:gap-y-32 lg:gap-x-32">
         {services?.map((service) => (
           <ServicePreview
             key={service.slug}
@@ -83,7 +83,7 @@ export default async function Page() {
   const allServices = await getAllServices(isEnabled);
 
   return (
-    <div className="md:container md:mx-auto mx-[18px]">
+    <div className="mx-[18px] md:container md:mx-auto">
       <Intro />
       <AllServices services={allServices} />
     </div>

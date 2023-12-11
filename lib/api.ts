@@ -3,7 +3,7 @@
 async function fetchGraphQL(
   query: string,
   preview = false,
-  tags = ["posts"]
+  tags = ["posts"],
 ): Promise<any> {
   return fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${process.env.CONTENTFUL_ENVIRONMENT}`,
@@ -20,7 +20,7 @@ async function fetchGraphQL(
       },
       body: JSON.stringify({ query }),
       next: { tags: tags },
-    }
+    },
   ).then((response) => response.json());
 }
 
@@ -65,7 +65,7 @@ function extractPostEntries(fetchResponse: any): any[] {
 
 export async function getPostBySlug(
   slug: string | null,
-  preview: boolean = false
+  preview: boolean = false,
 ): Promise<any> {
   const entry = await fetchGraphQL(
     `query {
@@ -75,7 +75,7 @@ export async function getPostBySlug(
         }
       }
     }`,
-    preview
+    preview,
   );
   return extractPost(entry);
 }
@@ -92,40 +92,40 @@ export async function getAllPosts(preview: boolean): Promise<any[]> {
       }
     }`,
     preview,
-    ["posts"]
+    ["posts"],
   );
   return extractPostEntries(entries);
 }
 
 export async function getPostAndMorePosts(
   slug: string,
-  preview: boolean
+  preview: boolean,
 ): Promise<any> {
   const entry = await fetchGraphQL(
     `query {
       postCollection(where: { slug: "${slug}" }, preview: ${
-      preview ? "true" : "false"
-    }, limit: 1) {
+        preview ? "true" : "false"
+      }, limit: 1) {
         items {
           ${POST_GRAPHQL_FIELDS}
         }
       }
     }`,
     preview,
-    ["post"]
+    ["post"],
   );
   const entries = await fetchGraphQL(
     `query {
       postCollection(where: { slug_not_in: "${slug}" }, order: date_DESC, preview: ${
-      preview ? "true" : "false"
-    }, limit: 2) {
+        preview ? "true" : "false"
+      }, limit: 2) {
         items {
           ${POST_GRAPHQL_FIELDS}
         }
       }
     }`,
     preview,
-    ["posts"]
+    ["posts"],
   );
   return {
     post: extractPost(entry),
@@ -186,14 +186,14 @@ export async function getAllServices(preview: boolean): Promise<any[]> {
       }
     }`,
     preview,
-    ["services"]
+    ["services"],
   );
   return extractServiceEntries(entries);
 }
 
 export async function getServiceBySlug(
   slug: string | null,
-  preview: boolean = false
+  preview: boolean = false,
 ): Promise<any> {
   const entry = await fetchGraphQL(
     `query {
@@ -204,7 +204,7 @@ export async function getServiceBySlug(
         }
       }`,
     preview,
-    ["service"]
+    ["service"],
   );
   return extractService(entry);
 }
@@ -248,7 +248,7 @@ export async function getAllCaseStudies(preview: boolean): Promise<any[]> {
       }
     }`,
     preview,
-    ["caseStudies"]
+    ["caseStudies"],
   );
   console.log(entries);
   return extractCaseStudiesEntries(entries);
@@ -256,7 +256,7 @@ export async function getAllCaseStudies(preview: boolean): Promise<any[]> {
 
 export async function getCaseStudyBySlug(
   slug: string | null,
-  preview: boolean = false
+  preview: boolean = false,
 ): Promise<any> {
   const entry = await fetchGraphQL(
     `query {
@@ -267,7 +267,7 @@ export async function getCaseStudyBySlug(
         }
       }`,
     preview,
-    ["caseStudy"]
+    ["caseStudy"],
   );
   return extractCaseStudy(entry);
 }
@@ -310,7 +310,7 @@ export async function getPageBySlug(slug: string | null): Promise<any> {
         }
       }`,
     true,
-    ["pages"]
+    ["pages"],
   );
   return extractPage(entry);
 }

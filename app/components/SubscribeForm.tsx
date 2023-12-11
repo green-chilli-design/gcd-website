@@ -65,7 +65,7 @@ export default function SubscribeForm() {
           <input
             id="email"
             name="email"
-            className="p-2.5 border border-dark-grey rounded-md w-full h-14"
+            className="h-14 w-full rounded-md border border-dark-grey p-2.5"
             type="email"
             placeholder="Email address"
           />
@@ -82,7 +82,7 @@ export default function SubscribeForm() {
       </div>
       {state?.type === "success" && (
         <p
-          className="text-2xs text-green mt-2"
+          className="mt-2 text-2xs text-green"
           aria-live="polite"
           role="status"
         >
@@ -91,7 +91,7 @@ export default function SubscribeForm() {
       )}
       {state?.type === "error" && state?.message && (
         <p
-          className="text-2xs text-rose-500 mt-2"
+          className="mt-2 text-2xs text-rose-500"
           aria-live="polite"
           role="status"
         >

@@ -22,7 +22,7 @@ export default function LocationMap() {
 
       const { AdvancedMarkerElement, PinElement } =
         (await google.maps.importLibrary(
-          "marker"
+          "marker",
         )) as google.maps.MarkerLibrary;
 
       const mapOptions: google.maps.MapOptions = {
@@ -62,5 +62,5 @@ export default function LocationMap() {
     initMap();
   }, []);
 
-  return <div ref={mapRef} className="w-full h-[388px]"></div>;
+  return <div ref={mapRef} className="h-[388px] w-full"></div>;
 }

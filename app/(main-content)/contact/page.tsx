@@ -20,16 +20,16 @@ export default async function ContactPage() {
 
   return (
     <div>
-      <div className="md:container md:mx-auto mx-[18px] mt-24 lg:mt-28">
+      <div className="mx-[18px] mt-24 md:container md:mx-auto lg:mt-28">
         <section className="mb-24">
           <h2 className="mb-5">{subtitle}</h2>
           <p className="max-w-2xl">{description}</p>
         </section>
 
-        <section className="grid grid-cols-1 lg:grid-cols-2 mb-11">
-          <div className="mr-12 mb-12">
-            <h5 className="font-semibold mb-5">Auckland, New Zealand</h5>
-            <p className="small flex items-center mb-5">
+        <section className="mb-11 grid grid-cols-1 lg:grid-cols-2">
+          <div className="mb-12 mr-12">
+            <h5 className="mb-5 font-semibold">Auckland, New Zealand</h5>
+            <p className="small mb-5 flex items-center">
               <span className="material-symbols-outlined icon-20 mr-2">
                 location_on
               </span>
@@ -40,7 +40,7 @@ export default async function ContactPage() {
                 2.4 Whatever Building, 18 Sale Street, Auckland 1010
               </a>
             </p>
-            <p className="small flex items-center mb-5">
+            <p className="small mb-5 flex items-center">
               <span className="material-symbols-outlined icon-20 mr-2">
                 call
               </span>
@@ -48,7 +48,7 @@ export default async function ContactPage() {
                 +64 09 300 3039
               </a>
             </p>
-            <p className="small flex items-center mb-12">
+            <p className="small mb-12 flex items-center">
               <span className="material-symbols-outlined icon-20 mr-2 ">
                 email
               </span>

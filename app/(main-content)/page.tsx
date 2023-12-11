@@ -8,19 +8,19 @@ export default async function HomePage() {
   let contentBlocks = generateContentBlocks(pageContentCollection.items);
 
   return (
-    <div className="md:container md:mx-auto mx-[18px] mb-20">
-      <section className="text-bold text-6xl md:text-8xl mt-5 md:mt-20">
+    <div className="mx-[18px] mb-20 md:container md:mx-auto">
+      <section className="text-bold mt-5 text-6xl md:mt-20 md:text-8xl">
         <div className="relative">
-          <div className="absolute -inset-1 rounded-lg  from-green via-slate-700 bg-gradient-conic  to-slate-950 opacity-50 blur-3xl"></div>
+          <div className="absolute -inset-1 rounded-lg  bg-gradient-conic from-green via-slate-700  to-slate-950 opacity-50 blur-3xl"></div>
           Don't just build. <br />
           Build better.
         </div>
       </section>
-      <hr className="w-1/3 mt-20 mb-5" />
+      <hr className="mb-5 mt-20 w-1/3" />
       <section className="flex flex-row justify-between">
         <div className="w-1/3 text-2xl">{subtitle}</div>
         <Link href="/contact">
-          <div className="bg-green w-36 h-36 flex justify-center items-center  rounded-full text-black hover:scale-110 hover:bg-white transition duration-300">
+          <div className="flex h-36 w-36 items-center justify-center rounded-full  bg-green text-black transition duration-300 hover:scale-110 hover:bg-white">
             Get in touch
           </div>
         </Link>

@@ -18,7 +18,7 @@ const contactFormSchema = z.object({
 
 export async function sendContact(
   prevState: any,
-  formData: FormData
+  formData: FormData,
 ): Promise<ActionResponse> {
   "use server";
   try {
@@ -71,12 +71,12 @@ async function validateRecaptcha(recaptchaResponse: string) {
   }
   const response = await fetch(
     `https://www.google.com/recaptcha/api/siteverify?secret=${encodeURIComponent(
-      secretKey
+      secretKey,
     )}&response=${encodeURIComponent(recaptchaResponse)}`,
     {
       method: "POST",
       cache: "no-cache",
-    }
+    },
   );
 
   const recaptchaResult = await response.json();
@@ -162,7 +162,7 @@ const subscribeFormSchema = z.object({
 // TODO: just a dummy function at the moment / disabled for MVP
 export async function sendSubscribe(
   prevState: any,
-  formData: FormData
+  formData: FormData,
 ): Promise<ActionResponse> {
   "use server";
   try {

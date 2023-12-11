@@ -53,10 +53,10 @@ export function Markdown({ content }: { content: Content }) {
         />
       ),
       [BLOCKS.UL_LIST]: (node, children) => (
-        <ul className="list-disc list-outside ml-5">{children}</ul>
+        <ul className="ml-5 list-outside list-disc">{children}</ul>
       ),
       [BLOCKS.HR]: () => (
-        <hr className="border-0 border-t-2 border-green my-3" />
+        <hr className="my-3 border-0 border-t-2 border-green" />
       ),
       [BLOCKS.PARAGRAPH]: (node, children) => (
         <p className="mb-3">{children}</p>

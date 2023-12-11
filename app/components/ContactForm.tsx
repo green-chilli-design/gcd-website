@@ -21,7 +21,7 @@ function SubmitButton() {
       type="submit"
       disabled={pending}
       aria-disabled={pending}
-      className="btn green w-32 mt-12"
+      className="btn green mt-12 w-32"
     >
       {pending && (
         <span className="material-symbols-outlined icon-24 m-2.5 animate-spin">
@@ -65,7 +65,7 @@ export default function ContactForm() {
         <input
           id="first-name"
           name="first-name"
-          className="p-2.5 border border-dark-grey rounded-md w-full h-14"
+          className="h-14 w-full rounded-md border border-dark-grey p-2.5"
           type="text"
         />
         {state?.errors?.firstName && (
@@ -81,7 +81,7 @@ export default function ContactForm() {
         <input
           id="last-name"
           name="last-name"
-          className="p-2.5 border border-dark-grey rounded-md w-full h-14"
+          className="h-14 w-full rounded-md border border-dark-grey p-2.5"
           type="text"
         />
         {state?.errors?.lastName && (
@@ -97,7 +97,7 @@ export default function ContactForm() {
         <input
           id="email"
           name="email"
-          className="p-2.5 border border-dark-grey rounded-md w-full h-14"
+          className="h-14 w-full rounded-md border border-dark-grey p-2.5"
           type="email"
         />
         {state?.errors?.email && (
@@ -113,7 +113,7 @@ export default function ContactForm() {
         <input
           id="website"
           name="website"
-          className="p-2.5 border border-dark-grey rounded-md w-full h-14"
+          className="h-14 w-full rounded-md border border-dark-grey p-2.5"
           type="text"
         />
         {state?.errors?.website && (
@@ -128,7 +128,7 @@ export default function ContactForm() {
         </label>
         <textarea
           id="message"
-          className="p-2.5 border border-dark-grey rounded-md w-full h-28"
+          className="h-28 w-full rounded-md border border-dark-grey p-2.5"
           name="message"
         />
       </div>
@@ -139,7 +139,7 @@ export default function ContactForm() {
 
       {state?.type === "success" && (
         <p
-          className="text-2xs text-green mt-2"
+          className="mt-2 text-2xs text-green"
           aria-live="polite"
           role="status"
         >
@@ -148,7 +148,7 @@ export default function ContactForm() {
       )}
       {state?.type === "error" && state?.message && (
         <p
-          className="text-2xs text-rose-500 mt-2"
+          className="mt-2 text-2xs text-rose-500"
           aria-live="polite"
           role="status"
         >

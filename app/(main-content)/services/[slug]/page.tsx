@@ -14,7 +14,7 @@ export async function generateMetadata(
   }: {
     params: { slug: string };
   },
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const service = await getServiceBySlug(params.slug, false);
 
@@ -51,27 +51,27 @@ export default async function ServicePage({
   const service = await getServiceBySlug(params.slug, isEnabled);
 
   return (
-    <div className="md:container md:mx-auto mx-[18px]">
-      <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
+    <div className="mx-[18px] md:container md:mx-auto">
+      <h2 className="mb-20 mt-8 text-2xl font-bold leading-tight tracking-tight md:text-4xl md:tracking-tighter">
         <Link href="/services" className="hover:underline">
           Services
         </Link>
         .
       </h2>
       <article>
-        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight md:leading-none mb-12 text-center md:text-left">
+        <h1 className="mb-12 text-center text-6xl font-bold leading-tight tracking-tighter md:text-left md:text-7xl md:leading-none lg:text-8xl">
           {service.title}
         </h1>
-        <div className="mb-8 md:mb-16 sm:mx-0">
+        <div className="mb-8 sm:mx-0 md:mb-16">
           <CoverImage title={service.title} url={service.coverImage.url} />
         </div>
-        <div className="max-w-2xl mx-auto">
+        <div className="mx-auto max-w-2xl">
           <div className="mb-6 text-lg">
             <p>{service.summary}</p>
           </div>
         </div>
 
-        <div className="max-w-2xl mx-auto">
+        <div className="mx-auto max-w-2xl">
           <div className="prose">
             <Markdown content={service.description} />
           </div>
