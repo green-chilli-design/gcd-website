@@ -50,7 +50,7 @@ export default async function CaseStudyPage({
   const caseStudy = await getCaseStudyBySlug(params.slug, isEnabled);
 
   return (
-    <div className="mx-[18px] md:container md:mx-auto">
+    <div className="main-content">
       <h2 className="mb-20 mt-8 text-2xl font-bold leading-tight tracking-tight md:text-4xl md:tracking-tighter">
         <Link href="/case-studies" className="hover:underline">
           Case Studies

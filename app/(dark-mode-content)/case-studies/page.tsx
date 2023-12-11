@@ -79,7 +79,7 @@ export default async function Page() {
   const allCaseStudies = await getAllCaseStudies(isEnabled);
 
   return (
-    <div className="mx-[18px] mb-20 mt-24 md:container md:mx-auto lg:mt-28">
+    <div className="main-content mb-20 mt-24 lg:mt-28">
       <Intro title={title} subtitle={subtitle} />
       <AllCaseStudies caseStudies={allCaseStudies} />
     </div>

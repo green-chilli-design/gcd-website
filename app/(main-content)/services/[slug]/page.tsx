@@ -51,7 +51,7 @@ export default async function ServicePage({
   const service = await getServiceBySlug(params.slug, isEnabled);
 
   return (
-    <div className="mx-[18px] md:container md:mx-auto">
+    <div className="main-content">
       <h2 className="mb-20 mt-8 text-2xl font-bold leading-tight tracking-tight md:text-4xl md:tracking-tighter">
         <Link href="/services" className="hover:underline">
           Services

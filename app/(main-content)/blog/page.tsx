@@ -84,7 +84,7 @@ export default async function Page() {
   const morePosts = allPosts.slice(1);
 
   return (
-    <div className="mx-[18px] md:container md:mx-auto">
+    <div className="main-content">
       <Intro />
       {heroPost && (
         <HeroPost

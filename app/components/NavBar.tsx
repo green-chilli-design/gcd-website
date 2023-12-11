@@ -45,7 +45,7 @@ export default function NavBar() {
 
   return (
     <header className="z-10 w-full duration-300 ease-in dark:bg-black dark:text-neutral">
-      <nav className="mx-[18px] flex items-center justify-between py-5 md:container md:mx-auto lg:pb-5 lg:pt-[30px]">
+      <nav className="main-content flex items-center justify-between py-5 lg:pb-5 lg:pt-[30px]">
         <div className="flex items-center">
           <Link href="/">
             <Image

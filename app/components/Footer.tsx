@@ -14,7 +14,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="mx-[18px] w-full pb-5 pt-[50px] md:container md:mx-auto lg:py-[50px]">
+    <footer className="main-content pb-5 pt-[50px] lg:py-[50px]">
       <div className="mb-[50px]">
         <Link href="/">
           <Image

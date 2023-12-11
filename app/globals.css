@@ -40,6 +40,9 @@
     @apply text-3xs;
     font-weight: 500;
   }
+  .main-content {
+    @apply w-full px-[18px] md:px-[10em];
+  }
 
   /* Buttons */
   button.btn {
