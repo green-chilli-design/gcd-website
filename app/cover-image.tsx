@@ -22,9 +22,7 @@ export default function CoverImage({
       priority
       width={1000}
       height={500}
-      className={cn("shadow-small", {
-        "hover:shadow-medium transition-shadow duration-200": slug,
-      })}
+      className={"rounded-br-[30px] rounded-tl-[30px]"}
       src={url}
     />
   );
