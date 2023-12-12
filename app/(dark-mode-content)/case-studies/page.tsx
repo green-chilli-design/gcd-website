@@ -72,15 +72,47 @@ function AllCaseStudies({ caseStudies }: { caseStudies: any[] }) {
   );
 }
 
+function FeaturedCaseStudy({ caseStudy }: { caseStudy: any }) {
+  if (!caseStudy) return null;
+  return (
+    <section className="mb-32">
+      <div className="mb-8">
+        <CoverImage
+          title={caseStudy.title}
+          path="/case-studies"
+          slug={caseStudy.slug}
+          url={caseStudy.coverImage.url}
+        />
+      </div>
+      <h3 className="mb-4 text-3xl leading-snug">
+        <Link
+          href={`/case-studies/${caseStudy.slug}`}
+          className="hover:underline"
+        >
+          {caseStudy.title}
+        </Link>
+      </h3>
+      <p className="mb-4 text-lg leading-relaxed">{caseStudy.summary}</p>
+    </section>
+  );
+}
+
 export default async function Page() {
   const { isEnabled } = draftMode();
-  const { title, subtitle, pageContentCollection } =
-    await getPageBySlug("case-studies");
+  const { title, subtitle } = await getPageBySlug("case-studies");
   const allCaseStudies = await getAllCaseStudies(isEnabled);
+  let featuredCaseStudy = allCaseStudies.find((c) => c.featured);
+  if (featuredCaseStudy) {
+    allCaseStudies.splice(allCaseStudies.indexOf(featuredCaseStudy), 1);
+  } else {
+    featuredCaseStudy = allCaseStudies[0];
+    allCaseStudies.splice(0, 1);
+  }
 
   return (
     <div className="main-content mb-20 mt-24 lg:mt-28">
       <Intro title={title} subtitle={subtitle} />
+      <FeaturedCaseStudy caseStudy={featuredCaseStudy} />
       <AllCaseStudies caseStudies={allCaseStudies} />
     </div>
   );

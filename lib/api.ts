@@ -217,6 +217,7 @@ const CASE_STUDIES_GRAPHQL_FIELDS = `
     url
   }
   summary
+  featured
 `;
 
 const CASE_STUDY_GRAPHQL_FIELDS = `
@@ -239,7 +240,7 @@ function extractCaseStudy(fetchResponse: any): any {
 export async function getAllCaseStudies(preview: boolean): Promise<any[]> {
   const entries = await fetchGraphQL(
     `query {
-      caseStudyCollection(where: { slug_exists: true }, preview: ${
+      caseStudyCollection(where: { slug_exists: true }, order: sys_publishedAt_DESC, preview: ${
         preview ? "true" : "false"
       }) {
         items {
