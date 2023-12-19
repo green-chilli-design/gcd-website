@@ -66,7 +66,7 @@ export default function ContactForm() {
         <input
           id="first-name"
           name="first-name"
-          className="h-14 w-full rounded-md border border-dark-grey p-2.5"
+          className="h-14 w-full rounded-md border border-dark-grey bg-neutral p-2.5"
           type="text"
         />
         {state?.errors?.firstName && (
@@ -82,7 +82,7 @@ export default function ContactForm() {
         <input
           id="last-name"
           name="last-name"
-          className="h-14 w-full rounded-md border border-dark-grey p-2.5"
+          className="h-14 w-full rounded-md border border-dark-grey bg-neutral p-2.5"
           type="text"
         />
         {state?.errors?.lastName && (
@@ -98,7 +98,7 @@ export default function ContactForm() {
         <input
           id="email"
           name="email"
-          className="h-14 w-full rounded-md border border-dark-grey p-2.5"
+          className="h-14 w-full rounded-md border border-dark-grey bg-neutral p-2.5"
           type="email"
         />
         {state?.errors?.email && (
@@ -114,7 +114,7 @@ export default function ContactForm() {
         <input
           id="website"
           name="website"
-          className="h-14 w-full rounded-md border border-dark-grey p-2.5"
+          className="h-14 w-full rounded-md border border-dark-grey bg-neutral p-2.5"
           type="text"
         />
         {state?.errors?.website && (
@@ -129,7 +129,7 @@ export default function ContactForm() {
         </label>
         <textarea
           id="message"
-          className="h-28 w-full rounded-md border border-dark-grey p-2.5"
+          className="h-28 w-full rounded-md border border-dark-grey bg-neutral p-2.5"
           name="message"
         />
       </div>

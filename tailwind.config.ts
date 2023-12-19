@@ -44,6 +44,11 @@ module.exports = {
       "10xl": ["5rem", "0.8"] /* 80px */,
       "11xl": ["6.25rem", "1.1"] /* 100px */,
     },
+    fontWeight: {
+      normal: 400,
+      medium: 500,
+      bold: 600,
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
