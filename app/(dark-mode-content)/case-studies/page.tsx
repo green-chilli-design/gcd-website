@@ -37,7 +37,7 @@ function CaseStudyPreview({
 }) {
   return (
     <div>
-      <div className="mb-5">
+      <div className="mb-10">
         <CoverImage
           title={title}
           path="/case-studies"
