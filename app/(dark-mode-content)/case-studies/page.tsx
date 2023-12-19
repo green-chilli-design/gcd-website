@@ -2,6 +2,7 @@ import Link from "next/link";
 import { draftMode } from "next/headers";
 import CoverImage from "@/app/cover-image";
 import { getAllCaseStudies, getPageBySlug } from "@/lib/api";
+import ViewMore from "@/app/components/ViewMore";
 
 const title = "GCD | Case Studies";
 export const metadata = {
@@ -18,7 +19,7 @@ function Intro({ title, subtitle }: { title: string; subtitle: string }) {
   return (
     <section className="mb-16 md:mb-24">
       <h2 className="mb-5">{title}</h2>
-      <h4>{subtitle}</h4>
+      <h4 className="max-w-[629px]">{subtitle}</h4>
     </section>
   );
 }
@@ -44,12 +45,11 @@ function CaseStudyPreview({
           url={coverImage.url}
         />
       </div>
-      <h3 className="mb-3 text-3xl leading-snug">
-        <Link href={`/case-studies/${slug}`} className="hover:underline">
-          {title}
-        </Link>
-      </h3>
-      <p className="mb-4 text-lg leading-relaxed">{summary}</p>
+      <div className="w-full">
+        <h3 className="mb-5 text-4xl">{title}</h3>
+        <p className="mb-5">{summary}</p>
+        <ViewMore path={`/case-studies/${slug}`} />
+      </div>
     </div>
   );
 }
@@ -76,7 +76,7 @@ function FeaturedCaseStudy({ caseStudy }: { caseStudy: any }) {
   if (!caseStudy) return null;
   return (
     <section className="mb-32">
-      <div className="mb-8">
+      <div className="mb-10">
         <CoverImage
           title={caseStudy.title}
           path="/case-studies"
@@ -84,15 +84,11 @@ function FeaturedCaseStudy({ caseStudy }: { caseStudy: any }) {
           url={caseStudy.coverImage.url}
         />
       </div>
-      <h3 className="mb-4 text-3xl leading-snug">
-        <Link
-          href={`/case-studies/${caseStudy.slug}`}
-          className="hover:underline"
-        >
-          {caseStudy.title}
-        </Link>
-      </h3>
-      <p className="mb-4 text-lg leading-relaxed">{caseStudy.summary}</p>
+      <div className="max-w-[740px]">
+        <h3 className="mb-5 text-4xl">{caseStudy.title}</h3>
+        <p className="mb-5">{caseStudy.summary}</p>
+        <ViewMore path={`/case-studies/${caseStudy.slug}`} />
+      </div>
     </section>
   );
 }
