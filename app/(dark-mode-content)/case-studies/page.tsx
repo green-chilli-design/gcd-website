@@ -57,7 +57,7 @@ function CaseStudyPreview({
 function AllCaseStudies({ caseStudies }: { caseStudies: any[] }) {
   return (
     <section>
-      <div className="mb-32 grid grid-cols-1 gap-y-20 md:grid-cols-2 md:gap-x-16 md:gap-y-32 lg:gap-x-32">
+      <div className="mb-32 grid grid-cols-1 gap-x-5 gap-y-20 md:grid-cols-2">
         {caseStudies?.map((caseStudy) => (
           <CaseStudyPreview
             key={caseStudy.slug}
