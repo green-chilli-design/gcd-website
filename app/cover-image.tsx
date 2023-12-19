@@ -1,10 +1,6 @@
 import ContentfulImage from "@/lib/contentful-image";
 import Link from "next/link";
 
-function cn(...classes: any[]) {
-  return classes.filter(Boolean).join(" ");
-}
-
 export default function CoverImage({
   title,
   url,
@@ -22,13 +18,12 @@ export default function CoverImage({
       priority
       width={1000}
       height={500}
-      className={"rounded-br-[30px] rounded-tl-[30px]"}
       src={url}
     />
   );
 
   return (
-    <div className="sm:mx-0">
+    <div className="relative h-[500px] overflow-hidden rounded-br-[30px] rounded-tl-[30px] sm:mx-0">
       {slug ? (
         <Link href={`${path}/${slug}`} aria-label={title}>
           {image}
