@@ -21,7 +21,7 @@ function SubmitButton() {
       type="submit"
       disabled={pending}
       aria-disabled={pending}
-      className="btn green mt-12 w-32"
+      className="btn green mt-10 w-32"
     >
       {pending && (
         <span className="material-symbols-outlined icon-24 m-2.5 animate-spin">
@@ -52,14 +52,9 @@ export default function ContactForm() {
   }
 
   return (
-    <form
-      name="contact"
-      className="flex flex-col gap-5"
-      ref={ref}
-      action={onSubmit}
-    >
+    <form name="contact" className="flex flex-col" ref={ref} action={onSubmit}>
       <input type="hidden" name="form-name" value="contact" />
-      <div className="mb-5">
+      <div className="mb-4">
         <label htmlFor="first-name" className="small text-dark-grey">
           First Name
         </label>
@@ -75,7 +70,7 @@ export default function ContactForm() {
           </span>
         )}
       </div>
-      <div className="mb-5">
+      <div className="mb-4">
         <label htmlFor="last-name" className="small text-dark-grey">
           Last Name
         </label>
@@ -91,7 +86,7 @@ export default function ContactForm() {
           </span>
         )}
       </div>
-      <div className="mb-5">
+      <div className="mb-4">
         <label htmlFor="email" className="small text-dark-grey">
           Email
         </label>
@@ -107,7 +102,7 @@ export default function ContactForm() {
           </span>
         )}
       </div>
-      <div>
+      <div className="mb-4">
         <label htmlFor="website" className="small text-dark-grey">
           Company Website (if any)
         </label>
@@ -123,7 +118,7 @@ export default function ContactForm() {
           </span>
         )}
       </div>
-      <div className="mt-5">
+      <div>
         <label htmlFor="message" className="small text-dark-grey">
           Message
         </label>
