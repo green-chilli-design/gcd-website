@@ -2,7 +2,7 @@
 
 import CoverImage from "@/app/cover-image";
 import { useState } from "react";
-import ViewMore from "./ViewMore";
+import ViewMore from "../components/ViewMore";
 
 function CaseStudyPreview({
   title,
@@ -25,7 +25,7 @@ function CaseStudyPreview({
           url={coverImage.url}
         />
       </div>
-      <div className="flex w-full  justify-between">
+      <div className="flex w-full justify-between">
         <div>
           <h3 className="mb-5 text-4xl">{title}</h3>
           <p className="mb-5">{summary}</p>

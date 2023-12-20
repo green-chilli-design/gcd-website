@@ -2,7 +2,7 @@ import { draftMode } from "next/headers";
 import CoverImage from "@/app/cover-image";
 import { getAllCaseStudies, getPageBySlug } from "@/lib/api";
 import ViewMore from "@/app/components/ViewMore";
-import AllCaseStudies from "../components/all-case-studies";
+import AllCaseStudies from "./all-case-studies";
 
 const title = "GCD | Case Studies";
 export const metadata = {

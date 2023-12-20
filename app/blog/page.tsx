@@ -4,7 +4,7 @@ import { draftMode } from "next/headers";
 import Date from "@/app/date";
 import CoverImage from "@/app/cover-image";
 import Avatar from "@/app/avatar";
-import MoreStories from "@/app/more-stories";
+import MoreStories from "@/app/blog/more-stories";
 
 import { getAllPosts } from "@/lib/api";
 
