@@ -3,7 +3,7 @@
 import Link from "next/link";
 import "@/app/globals.css";
 import Image from "next/image";
-import SubscribeForm from "@/app/components/SubscribeForm";
+import SubscribeForm from "@/app/components/forms/SubscribeForm";
 import { useTheme } from "next-themes";
 
 export default function Footer() {

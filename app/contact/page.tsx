@@ -1,6 +1,6 @@
 import { getAssetByTitle, getPageBySlug } from "@/lib/api";
 import React from "react";
-import ContactForm from "@/app/components/ContactForm";
+import ContactForm from "@/app/components/forms/ContactForm";
 import ParkingModal from "@/app/components/ParkingModal";
 import LocationMap from "@/app/components/LocationMap";
 

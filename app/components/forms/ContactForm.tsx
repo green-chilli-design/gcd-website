@@ -4,7 +4,7 @@
 import { useFormState } from "react-dom";
 // @ts-ignore
 import { useFormStatus } from "react-dom";
-import { ActionResponse, sendContact } from "../actions";
+import { ActionResponse, sendContact } from "../../actions";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { useRef } from "react";
 

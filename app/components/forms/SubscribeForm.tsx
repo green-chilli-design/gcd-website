@@ -5,7 +5,7 @@ import { useFormState } from "react-dom";
 // @ts-ignore
 import { useFormStatus } from "react-dom";
 import { useRef } from "react";
-import { sendSubscribe } from "../actions";
+import { sendSubscribe } from "../../actions";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 const initialState = {
