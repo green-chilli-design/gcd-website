@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useTheme } from "next-themes";
+import ThemeSwitch from "./ThemeSwitch";
 
 const navlinks = [
   // {
@@ -44,7 +45,7 @@ export default function NavBar() {
   }
 
   return (
-    <header className="z-10 w-full duration-300 ease-in dark:bg-black dark:text-neutral">
+    <header className="z-10 w-full">
       <nav className="main-content flex items-center justify-between py-5 lg:pb-5 lg:pt-[30px]">
         <div className="flex items-center">
           <Link href="/">
@@ -69,20 +70,21 @@ export default function NavBar() {
                 href={href}
                 className={`text-sm font-bold ${
                   isActive ? "text-green" : "hover:text-green hover:underline"
-                } transition duration-300`}
+                }`}
               >
                 {label}
               </Link>
             );
           })}
+          <ThemeSwitch />
         </div>
 
         {/* menu - mobile */}
         <div
           className={
             menuIcon
-              ? "absolute bottom-0 left-0 right-0 top-[120px] flex h-screen w-full flex-col items-center justify-center bg-black pb-[120px] text-neutral duration-300 ease-in sm:hidden"
-              : "absolute bottom-0 left-[-100%] right-0 top-[120px] flex h-screen w-full flex-col items-center justify-center bg-black pb-[120px] text-center text-neutral duration-300 ease-out sm:hidden"
+              ? "absolute bottom-0 left-0 right-0 top-[120px] flex h-screen w-full flex-col items-center justify-center bg-neutral pb-[120px] duration-300 ease-in dark:bg-black sm:hidden"
+              : "absolute bottom-0 left-[-100%] right-0 top-[120px] flex h-screen w-full flex-col items-center justify-center bg-neutral pb-[120px] text-center duration-300 ease-out dark:bg-black sm:hidden"
           }
         >
           <Link
@@ -92,7 +94,7 @@ export default function NavBar() {
               pathname.length === 1
                 ? "text-green"
                 : "hover:text-green hover:underline"
-            } transition duration-300`}
+            }`}
           >
             Home
           </Link>
@@ -107,12 +109,13 @@ export default function NavBar() {
                 href={href}
                 className={`mb-5 text-sm font-bold ${
                   isActive ? "text-green" : "hover:text-green hover:underline"
-                } transition duration-300`}
+                }`}
               >
                 {label}
               </Link>
             );
           })}
+          <ThemeSwitch />
         </div>
 
         {/* menu icons */}
