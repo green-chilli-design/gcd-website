@@ -27,7 +27,7 @@ function Intro({ title, subtitle }: { title: string; subtitle: string }) {
 function FeaturedCaseStudy({ caseStudy }: { caseStudy: any }) {
   if (!caseStudy) return null;
   return (
-    <section className="mb-32">
+    <section className="mb-24">
       <div className="mb-10">
         <CoverImage
           title={caseStudy.title}
