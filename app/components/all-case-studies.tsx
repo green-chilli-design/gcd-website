@@ -1,10 +1,8 @@
 "use client";
 
-import ViewMore from "@/app/components/ViewMore";
-
 import CoverImage from "@/app/cover-image";
-import ThemedButton from "../components/ThemedButton";
 import { useState } from "react";
+import ViewMore from "./ViewMore";
 
 function CaseStudyPreview({
   title,
@@ -27,10 +25,14 @@ function CaseStudyPreview({
           url={coverImage.url}
         />
       </div>
-      <div className="w-full">
-        <h3 className="mb-5 text-4xl">{title}</h3>
-        <p className="mb-5">{summary}</p>
-        <ViewMore path={`/case-studies/${slug}`} />
+      <div className="flex w-full  justify-between">
+        <div>
+          <h3 className="mb-5 text-4xl">{title}</h3>
+          <p className="mb-5">{summary}</p>
+        </div>
+        <div className="ml-10 shrink-0">
+          <ViewMore path={`/case-studies/${slug}`} />
+        </div>
       </div>
     </div>
   );
@@ -68,7 +70,13 @@ export default function AllCaseStudies({
 
       {showMore && (
         <div className="flex justify-center">
-          <ThemedButton text="Load More" onClick={handleClick} />
+          <button
+            type="button"
+            onClick={handleClick}
+            className="btn dark:light dark w-32 text-neutral dark:text-black"
+          >
+            Load More
+          </button>
         </div>
       )}
     </section>
