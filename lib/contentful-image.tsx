@@ -14,15 +14,17 @@ const contentfulLoader = ({ src, width, quality }: ContentfulImageProps) => {
 };
 
 export default function ContentfulImage(props: ContentfulImageProps) {
-  return (
+  return props.style?.objectFit ? (
     <Image
       fill
       alt={props.alt}
       loader={contentfulLoader}
       src={props.src}
       style={{
-        objectFit: "cover",
+        objectFit: props.style?.objectFit,
       }}
     />
+  ) : (
+    <Image alt={props.alt} loader={contentfulLoader} {...props} />
   );
 }
