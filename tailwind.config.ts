@@ -60,8 +60,10 @@ module.exports = {
       },
       colors: {
         black: "#080708",
+        "black-80": "#0E0F0E",
         green: "#A8CF43",
         neutral: "#F7F4F3",
+        "white-120": "#EFE9E7",
         "dark-grey": "#7C8D85",
         "light-grey": "#BEC6C2",
         "dark-green": "#262C29",
@@ -73,6 +75,14 @@ module.exports = {
         "hover-btn": "0px 10px 20px 0px rgba(8, 7, 8, 0.25)",
       },
       keyframes: {
+        "spin-right": {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(180deg)" },
+        },
+        "spin-left": {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(-180deg)" },
+        },
         "accordion-down": {
           from: { height: 0 },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -83,6 +93,8 @@ module.exports = {
         },
       },
       animation: {
+        "spin-right": "spin-right 500ms ease-in-out",
+        "spin-left": "spin-left 500ms ease-in-out",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },

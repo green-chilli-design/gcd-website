@@ -3,7 +3,7 @@ import "@/app/globalicons.css";
 
 import { Jost } from "next/font/google";
 import NavBar from "@/app/components/NavBar";
-import Footer from "@/app/components/Footer";
+import Footer from "@/app//components/Footer";
 
 import RecaptchaProvider from "@/app/components/providers/recaptcha-provider";
 import dynamic from "next/dynamic";
@@ -15,7 +15,7 @@ const ThemeProvider = dynamic(
 );
 
 import { Metadata } from "next";
-import { sharedMetadata } from "../metadata";
+import { sharedMetadata } from "./metadata";
 
 export const metadata: Metadata = {
   ...sharedMetadata,
@@ -27,7 +27,7 @@ const jost = Jost({
   display: "swap",
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;

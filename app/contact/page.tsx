@@ -1,4 +1,4 @@
-import { getPageBySlug } from "@/lib/api";
+import { getAssetByTitle, getPageBySlug } from "@/lib/api";
 import React from "react";
 import ContactForm from "@/app/components/ContactForm";
 import ParkingModal from "@/app/components/ParkingModal";
@@ -17,6 +17,7 @@ export const metadata = {
 
 export default async function ContactPage() {
   const { subtitle, description } = await getPageBySlug("contact");
+  const parkingMap = await getAssetByTitle("Parking Map");
 
   return (
     <div>
@@ -28,7 +29,7 @@ export default async function ContactPage() {
 
         <section className="mb-11 grid grid-cols-1 lg:grid-cols-2">
           <div className="mb-12 mr-12">
-            <h5 className="mb-5 font-semibold">Auckland, New Zealand</h5>
+            <h5 className="font-semibold mb-5">Auckland, New Zealand</h5>
             <p className="small mb-5 flex items-center">
               <span className="material-symbols-outlined icon-20 mr-2">
                 location_on
@@ -63,7 +64,12 @@ export default async function ContactPage() {
           <ContactForm />
         </section>
 
-        <ParkingModal />
+        <ParkingModal
+          url={parkingMap.url}
+          description={parkingMap.description}
+          width={parkingMap.width}
+          height={parkingMap.height}
+        />
       </div>
 
       <LocationMap />

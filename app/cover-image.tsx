@@ -16,9 +16,10 @@ export default function CoverImage({
     <ContentfulImage
       alt={`Cover Image for ${title}`}
       priority
-      width={1000}
-      height={500}
       src={url}
+      style={{
+        objectFit: "cover",
+      }}
     />
   );
 

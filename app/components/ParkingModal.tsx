@@ -43,7 +43,7 @@ const DialogContent = React.forwardRef<
     >
       {children}
       <DialogPrimitive.Close className="data-[state=open]:bg-neutral-100 data-[state=open]:text-neutral-500 dark:data-[state=open]:bg-neutral-800 dark:data-[state=open]:text-neutral-400 absolute right-6 top-4 rounded-sm hover:opacity-80 focus:outline-none disabled:pointer-events-none">
-        <div className="h-12 w-12 rounded-full bg-white">
+        <div className="h-12 w-12 rounded-full bg-neutral dark:bg-black dark:text-neutral">
           <span className="material-symbols-outlined icon-48">close</span>
           <span className="sr-only">Close</span>
         </div>
@@ -53,10 +53,17 @@ const DialogContent = React.forwardRef<
 ));
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 
-export default function ParkingModal() {
-  const url =
-    "https://images.ctfassets.net/r9ulzvk6fhkd/12SEqVv6aXGxlUhtEmSGN9/c0717f01ec86a2eae28783cc9847ac69/parking.png";
-
+export default async function ParkingModal({
+  url,
+  description,
+  width,
+  height,
+}: {
+  url: string;
+  description: string;
+  width: number;
+  height: number;
+}) {
   return (
     <Dialog>
       <DialogTrigger>
@@ -69,10 +76,10 @@ export default function ParkingModal() {
       </DialogTrigger>
       <DialogContent className="py-0 pt-6 lg:py-6">
         <ContentfulImage
-          alt="parking map"
+          alt={description}
           priority
-          width={1000}
-          height={500}
+          width={width}
+          height={height}
           quality={100}
           className="h-full w-full rounded-br-[30px] rounded-tl-[30px] pt-14"
           src={url}

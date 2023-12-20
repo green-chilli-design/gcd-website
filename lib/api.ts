@@ -251,7 +251,6 @@ export async function getAllCaseStudies(preview: boolean): Promise<any[]> {
     preview,
     ["caseStudies"],
   );
-  console.log(entries);
   return extractCaseStudiesEntries(entries);
 }
 
@@ -318,4 +317,36 @@ export async function getPageBySlug(slug: string | null): Promise<any> {
 
 function extractPage(fetchResponse: any): any {
   return fetchResponse?.data?.pageCollection?.items?.[0];
+}
+
+/******** BEGIN ASSETS API FUNCTIONS ************/
+/**
+ * Assets API functions
+ */
+
+const ASSET_GRAPHQL_FIELDS = `
+  title
+  description
+  url
+  width
+  height
+`;
+
+function extractAsset(fetchResponse: any): any {
+  return fetchResponse?.data?.assetCollection?.items?.[0];
+}
+
+export async function getAssetByTitle(title: string | null): Promise<any> {
+  const entry = await fetchGraphQL(
+    `query {
+        assetCollection(where: { title: "${title}" }, preview: false, limit: 1) {
+          items {
+            ${ASSET_GRAPHQL_FIELDS}
+          }
+        }
+      }`,
+    true,
+    ["assets"],
+  );
+  return extractAsset(entry);
 }

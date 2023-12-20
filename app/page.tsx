@@ -20,7 +20,7 @@ export default async function HomePage() {
       <section className="flex flex-row justify-between">
         <div className="w-1/3 text-2xl">{subtitle}</div>
         <Link href="/contact">
-          <div className="flex h-36 w-36 items-center justify-center rounded-full  bg-green text-black transition duration-300 hover:scale-110 hover:bg-white">
+          <div className="flex h-36 w-36 items-center justify-center rounded-full  bg-green text-black hover:scale-110 hover:bg-white">
             Get in touch
           </div>
         </Link>
