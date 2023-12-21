@@ -3,6 +3,7 @@
 import CoverImage from "@/app/cover-image";
 import { useState } from "react";
 import ViewMore from "../components/ViewMore";
+import ReactNative from "../components/ReactNative";
 
 function CaseStudyPreview({
   title,
@@ -54,7 +55,7 @@ export default function AllCaseStudies({
 
   return (
     <section>
-      <div className="mb-24 grid grid-cols-1 gap-x-5 gap-y-20 md:grid-cols-2">
+      <div className="main-content mb-24 grid grid-cols-1 gap-x-5 gap-y-20 md:grid-cols-2">
         {caseStudies
           ?.slice(0, itemNum)
           .map((caseStudy) => (
@@ -69,7 +70,7 @@ export default function AllCaseStudies({
       </div>
 
       {showMore && (
-        <div className="flex justify-center">
+        <div className="mb-24 flex justify-center">
           <button
             type="button"
             onClick={handleClick}
@@ -79,6 +80,8 @@ export default function AllCaseStudies({
           </button>
         </div>
       )}
+
+      <ReactNative />
     </section>
   );
 }

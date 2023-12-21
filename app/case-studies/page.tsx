@@ -17,7 +17,7 @@ export const metadata = {
 
 function Intro({ title, subtitle }: { title: string; subtitle: string }) {
   return (
-    <section className="mb-16 md:mb-24">
+    <section className="main-content mb-16 md:mb-24">
       <h2 className="mb-5">{title}</h2>
       <h4 className="max-w-[629px]">{subtitle}</h4>
     </section>
@@ -27,7 +27,7 @@ function Intro({ title, subtitle }: { title: string; subtitle: string }) {
 function FeaturedCaseStudy({ caseStudy }: { caseStudy: any }) {
   if (!caseStudy) return null;
   return (
-    <section className="mb-24">
+    <section className="main-content mb-24">
       <div className="mb-10">
         <CoverImage
           title={caseStudy.title}
@@ -62,7 +62,7 @@ export default async function Page() {
   }
 
   return (
-    <div className="main-content mb-20 mt-24 lg:mt-28">
+    <div className="mb-20 mt-24 lg:mt-28">
       <Intro title={title} subtitle={subtitle} />
       <FeaturedCaseStudy caseStudy={featuredCaseStudy} />
       <AllCaseStudies caseStudies={allCaseStudies} showMore={true} />
