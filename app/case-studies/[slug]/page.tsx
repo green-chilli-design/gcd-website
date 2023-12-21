@@ -7,6 +7,7 @@ import { Markdown } from "@/lib/markdown";
 import { getAllCaseStudies, getCaseStudyBySlug } from "@/lib/api";
 import { ResolvingMetadata, Metadata } from "next";
 import ContentfulImage from "@/lib/contentful-image";
+import ReactNative from "@/app/components/ReactNative";
 
 export async function generateMetadata(
   {
@@ -52,12 +53,12 @@ export default async function CaseStudyPage({
 
   return (
     <div>
-      <section className="main-content">
-        <h1 className="mb-[318px] mt-[210px] max-w-[522px] leading-[84px]">
+      <section className="main-content w-1/3">
+        <h1 className="mb-[318px] mt-[210px]  max-w-[522px] leading-[84px]">
           {caseStudy.title}
         </h1>
       </section>
-      <div className="absolute right-0 top-[140px] bg-scroll">
+      <div className="max-w-2/3 absolute right-0 top-0 bg-scroll">
         <ContentfulImage
           priority
           width={812}
@@ -75,18 +76,23 @@ export default async function CaseStudyPage({
       )}
 
       {caseStudy.featureSection && (
-        <section className="main-content flex flex-row flex-wrap justify-between">
-          <Markdown content={caseStudy.featureSection} />
+        <section className="main-content mb-[120px] flex flex-row flex-wrap items-center justify-between lg:flex-nowrap lg:gap-16 xl:gap-32">
+          <div>
+            <Markdown content={caseStudy.featureSection} />
+          </div>
+
           <ContentfulImage
             priority
-            width={812}
-            height={812}
+            width={374}
+            height={499}
             src={caseStudy.featureImage.url}
             alt={"Feature Image"}
-            className="rounded-br-[30px]"
+            className="shrink-0 rounded-br-[30px] rounded-tl-[30px]"
           />
         </section>
       )}
+
+      <ReactNative />
     </div>
   );
 }

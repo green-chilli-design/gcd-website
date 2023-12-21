@@ -9,7 +9,7 @@ export default function ReactNative() {
   const background = "/images/framework.png";
 
   return (
-    <div>
+    <div className="mb-[120px]">
       <section className="relative mb-[120px] flex w-full items-center">
         <div className="main-content absolute z-10 text-neutral">
           <h1 className="max-w-[847px] leading-[84px]">
