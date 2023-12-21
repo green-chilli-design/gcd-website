@@ -225,8 +225,43 @@ const CASE_STUDY_GRAPHQL_FIELDS = `
   title
   coverImage {
     url
+    width
+    height
   }
   summary
+  description {
+    json
+    links {
+      assets {
+        block {
+          sys {
+            id
+          }
+          url
+          description
+        }
+      }
+    }
+  }
+  featureSection {
+    json
+    links {
+      assets {
+        block {
+          sys {
+            id
+          }
+          url
+          description
+        }
+      }
+    }
+  }
+  featureImage {
+    url
+    width
+    height
+  }
 `;
 
 function extractCaseStudiesEntries(fetchResponse: any): any[] {

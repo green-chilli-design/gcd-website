@@ -6,6 +6,7 @@ import { Markdown } from "@/lib/markdown";
 
 import { getAllCaseStudies, getCaseStudyBySlug } from "@/lib/api";
 import { ResolvingMetadata, Metadata } from "next";
+import ContentfulImage from "@/lib/contentful-image";
 
 export async function generateMetadata(
   {
@@ -50,32 +51,42 @@ export default async function CaseStudyPage({
   const caseStudy = await getCaseStudyBySlug(params.slug, isEnabled);
 
   return (
-    <div className="main-content">
-      <h2 className="mb-20 mt-8 text-2xl font-bold leading-tight tracking-tight md:text-4xl md:tracking-tighter">
-        <Link href="/case-studies" className="hover:underline">
-          Case Studies
-        </Link>
-        .
-      </h2>
-      <article>
-        <h1 className="mb-12 text-center text-6xl font-bold leading-tight tracking-tighter md:text-left md:text-7xl md:leading-none lg:text-8xl">
+    <div>
+      <section className="main-content">
+        <h1 className="mb-[318px] mt-[210px] max-w-[522px] leading-[84px]">
           {caseStudy.title}
         </h1>
-        <div className="mb-8 sm:mx-0 md:mb-16">
-          <CoverImage title={caseStudy.title} url={caseStudy.coverImage.url} />
-        </div>
-        <div className="mx-auto max-w-2xl">
-          <div className="mb-6 text-lg">
-            <p>{caseStudy.summary}</p>
-          </div>
-        </div>
+      </section>
+      <div className="absolute right-0 top-[140px] bg-scroll">
+        <ContentfulImage
+          priority
+          width={812}
+          height={812}
+          src={caseStudy.coverImage.url}
+          alt={caseStudy.title}
+          className="rounded-br-[30px]"
+        />
+      </div>
 
-        <div className="mx-auto max-w-2xl">
-          <div className="prose">
-            {/* <Markdown content={caseStudy.content} /> */}
-          </div>
-        </div>
-      </article>
+      {caseStudy.description && (
+        <section className="mx-auto mb-32 max-w-[846px] px-0">
+          <Markdown content={caseStudy.description} />
+        </section>
+      )}
+
+      {caseStudy.featureSection && (
+        <section className="main-content flex flex-row flex-wrap justify-between">
+          <Markdown content={caseStudy.featureSection} />
+          <ContentfulImage
+            priority
+            width={812}
+            height={812}
+            src={caseStudy.featureImage.url}
+            alt={"Feature Image"}
+            className="rounded-br-[30px]"
+          />
+        </section>
+      )}
     </div>
   );
 }
