@@ -60,7 +60,7 @@ export default function DiscoveryProcess() {
         <div className="grow">
           {processSteps.map((step, index) => {
             return (
-              <Accordion type="single" collapsible>
+              <Accordion type="single" collapsible key={index}>
                 <AccordionItem value={index.toString()}>
                   <AccordionTrigger className="text-left text-base font-medium uppercase">
                     {step.title}
