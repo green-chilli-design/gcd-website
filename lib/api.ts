@@ -325,6 +325,11 @@ const PAGE_GRAPHQL_FIELDS = `
   title
   subtitle
   slug
+  heroImage {
+    url
+    width
+    height
+  }
   description
   pageContentCollection {
     items { 

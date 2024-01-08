@@ -1,32 +1,38 @@
 import { getPageBySlug } from "@/lib/api";
 import { generateContentBlocks } from "@/lib/contentful-content-blocks";
-import Link from "next/link";
+import ContentfulImage from "@/lib/contentful-image";
 
 export default async function HomePage() {
-  const { subtitle, pageContentCollection } = await getPageBySlug("home");
+  const { subtitle, pageContentCollection, heroImage } =
+    await getPageBySlug("home");
 
   let contentBlocks = generateContentBlocks(pageContentCollection.items);
 
   return (
-    <div className="main-content mb-20">
-      <section className="text-bold mt-5 text-6xl md:mt-20 md:text-8xl">
-        <div className="relative">
-          <div className="absolute -inset-1 rounded-lg  bg-gradient-conic from-green via-slate-700  to-slate-950 opacity-50 blur-3xl"></div>
-          Don't just build. <br />
-          Build better.
+    <div className="gradient from-black">
+      {heroImage?.url && (
+        <div className="absolute right-0 top-0 z-0 h-[776px] w-full bg-scroll">
+          <ContentfulImage
+            priority
+            src={heroImage.url}
+            alt="GCD Hero Image"
+            className="rounded-br-[30px]"
+            style={{
+              objectFit: "cover",
+            }}
+          />
+        </div>
+      )}
+      <section className="main-content relative z-10 flex h-[646px] items-center text-neutral lg:h-[656px]">
+        <div>
+          <h1 className="mb-5 leading-[84px]">
+            Don't just <br /> build.Build better.
+          </h1>
+          <h4 className="max-w-[629px]">{subtitle}</h4>
         </div>
       </section>
-      <hr className="mb-5 mt-20 w-1/3" />
-      <section className="flex flex-row justify-between">
-        <div className="w-1/3 text-2xl">{subtitle}</div>
-        <Link href="/contact">
-          <div className="flex h-36 w-36 items-center justify-center rounded-full  bg-green text-black hover:scale-110 hover:bg-white">
-            Get in touch
-          </div>
-        </Link>
-      </section>
 
-      <main>{contentBlocks}</main>
+      <main className="main-content">{contentBlocks}</main>
     </div>
   );
 }
