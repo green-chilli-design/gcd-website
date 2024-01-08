@@ -262,6 +262,11 @@ const CASE_STUDY_GRAPHQL_FIELDS = `
     width
     height
   }
+  backgroundImage {
+    url
+    width
+    height
+  }
 `;
 
 function extractCaseStudiesEntries(fetchResponse: any): any[] {

@@ -8,6 +8,7 @@ import { getAllCaseStudies, getCaseStudyBySlug } from "@/lib/api";
 import { ResolvingMetadata, Metadata } from "next";
 import ContentfulImage from "@/lib/contentful-image";
 import ReactNative from "@/app/components/ReactNative";
+import DiscoveryProcess from "@/app/components/DiscoveryProcess";
 
 export async function generateMetadata(
   {
@@ -75,12 +76,13 @@ export default async function CaseStudyPage({
         </section>
       )}
 
-      {caseStudy.featureSection && (
-        <section className="main-content mb-[120px] flex flex-row flex-wrap items-center justify-between lg:flex-nowrap lg:gap-16 xl:gap-32">
+      <section className="main-content mb-[120px] flex flex-row flex-wrap items-center justify-between lg:flex-nowrap lg:gap-16 xl:gap-32">
+        {caseStudy.featureSection && (
           <div>
             <Markdown content={caseStudy.featureSection} />
           </div>
-
+        )}
+        {caseStudy.featureImage?.url && (
           <ContentfulImage
             priority
             width={374}
@@ -89,8 +91,21 @@ export default async function CaseStudyPage({
             alt={"Feature Image"}
             className="shrink-0 rounded-br-[30px] rounded-tl-[30px]"
           />
+        )}
+      </section>
+
+      {caseStudy.backgroundImage?.url && (
+        <section>
+          <div
+            className="h-[400px] w-full bg-cover bg-fixed"
+            style={{
+              backgroundImage: `url(${caseStudy.backgroundImage.url})`,
+            }}
+          ></div>
         </section>
       )}
+
+      {/* <DiscoveryProcess /> */}
 
       <ReactNative />
     </div>
