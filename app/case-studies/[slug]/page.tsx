@@ -105,7 +105,7 @@ export default async function CaseStudyPage({
         </section>
       )}
 
-      {/* <DiscoveryProcess /> */}
+      <DiscoveryProcess />
 
       <ReactNative />
     </div>
