@@ -46,8 +46,8 @@ export default function DiscoveryProcess() {
 
   return (
     <div className="mb-[120px] mt-20">
-      <section className="main-content flex flex-wrap gap-20">
-        <div className="mb-10 max-w-[522px] flex-initial">
+      <section className="main-content flex flex-wrap gap-20 lg:flex-nowrap">
+        <div className="mb-10 basis-full lg:basis-2/5">
           <h2 className="mb-5">Discovery process outline</h2>
           <p className="text-xl">
             The GC Digital Discovery Process ensures a thorough understanding of
@@ -57,7 +57,7 @@ export default function DiscoveryProcess() {
           </p>
         </div>
 
-        <div className="grow">
+        <div className="basis-full lg:basis-3/5">
           {processSteps.map((step, index) => {
             return (
               <Accordion type="single" collapsible key={index}>
