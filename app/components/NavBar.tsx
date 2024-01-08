@@ -40,7 +40,7 @@ export default function NavBar() {
 
   const { resolvedTheme } = useTheme();
   let logoSrc = "/gcd-logo-round-black.svg";
-  if (resolvedTheme === "dark") {
+  if (resolvedTheme === "dark" || pathname === "/") {
     logoSrc = "/gcd-logo-round-white.svg";
   }
 
@@ -69,6 +69,8 @@ export default function NavBar() {
                 key={label}
                 href={href}
                 className={`text-sm font-bold ${
+                  pathname === "/" ? "text-neutral" : ""
+                } ${
                   isActive ? "text-green" : "hover:text-green hover:underline"
                 }`}
               >
