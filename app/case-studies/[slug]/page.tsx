@@ -97,7 +97,7 @@ export default async function CaseStudyPage({
       {caseStudy.backgroundImage?.url && (
         <section>
           <div
-            className="h-[400px] w-full bg-cover bg-fixed"
+            className="h-[400px] w-full rounded-br-[30px] rounded-tl-[30px] bg-cover bg-fixed"
             style={{
               backgroundImage: `url(${caseStudy.backgroundImage.url})`,
             }}
