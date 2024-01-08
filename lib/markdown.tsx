@@ -11,6 +11,8 @@ interface Asset {
   };
   url: string;
   description: string;
+  width: number;
+  height: number;
 }
 
 interface AssetLink {
@@ -34,7 +36,16 @@ function RichTextAsset({
   const asset = assets?.find((asset) => asset.sys.id === id);
 
   if (asset?.url) {
-    return <Image src={asset.url} layout="fill" alt={asset.description} />;
+    return (
+      <Image
+        src={asset.url}
+        width={asset.width}
+        height={asset.height}
+        objectPosition="relative"
+        alt={asset.description}
+        className="rounded-br-[30px] rounded-tl-[30px]"
+      />
+    );
   }
 
   return null;
@@ -46,12 +57,15 @@ export function Markdown({ content }: { content: Content }) {
       // Change newlines to <br /> tags
       text.split("\n").flatMap((text, i) => [i > 0 && <br />, text]),
     renderNode: {
-      [BLOCKS.EMBEDDED_ASSET]: (node: any) => (
-        <RichTextAsset
-          id={node.data.target.sys.id}
-          assets={content.links.assets.block}
-        />
-      ),
+      [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
+        console.log(node);
+        return (
+          <RichTextAsset
+            id={node.data.target.sys.id}
+            assets={content.links.assets.block}
+          />
+        );
+      },
       [BLOCKS.UL_LIST]: (node, children) => (
         <ul className="ml-5 list-outside list-disc">{children}</ul>
       ),

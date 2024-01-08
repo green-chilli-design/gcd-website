@@ -331,18 +331,31 @@ const PAGE_GRAPHQL_FIELDS = `
     height
   }
   description
-  pageContentCollection {
+  pageContentCollection(limit: 10) {
     items { 
       __typename
       ... on ContentBlock {
         heading
         subHeading
         contentBody {
-          json 
+          json
+          links {
+            assets {
+              block {
+                sys {
+                  id
+                }
+                url
+                description
+                width
+                height
+              }
+            }
+          }
         }
       }
     }
-}
+  }
 `;
 
 export async function getPageBySlug(slug: string | null): Promise<any> {
