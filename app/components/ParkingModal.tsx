@@ -43,7 +43,7 @@ const DialogContent = React.forwardRef<
     >
       {children}
       <DialogPrimitive.Close className="data-[state=open]:bg-neutral-100 data-[state=open]:text-neutral-500 dark:data-[state=open]:bg-neutral-800 dark:data-[state=open]:text-neutral-400 absolute right-6 top-4 rounded-sm hover:opacity-80 focus:outline-none disabled:pointer-events-none">
-        <div className="h-12 w-12 rounded-full bg-neutral dark:bg-black dark:text-neutral">
+        <div className="h-12 w-12 rounded-full bg-neutral dark:bg-neutral dark:text-black">
           <span className="material-symbols-outlined icon-48">close</span>
           <span className="sr-only">Close</span>
         </div>
@@ -75,15 +75,17 @@ export default async function ParkingModal({
         </p>
       </DialogTrigger>
       <DialogContent className="py-0 pt-6 lg:py-6">
-        <ContentfulImage
-          alt={description}
-          priority
-          width={width}
-          height={height}
-          quality={100}
-          className="h-full w-full rounded-br-[30px] rounded-tl-[30px] pt-14"
-          src={url}
-        />
+        <div className="pt-14">
+          <ContentfulImage
+            alt={description}
+            priority
+            width={width}
+            height={height}
+            quality={100}
+            className="relative h-full w-full rounded-br-[30px] rounded-tl-[30px]"
+            src={url}
+          />
+        </div>
       </DialogContent>
     </Dialog>
   );
