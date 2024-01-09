@@ -117,7 +117,7 @@ export default function NavBar() {
               </Link>
             );
           })}
-          <ThemeSwitch />
+          <ThemeSwitch isMobile={true} />
         </div>
 
         {/* menu icons */}
@@ -126,9 +126,21 @@ export default function NavBar() {
           className="flex cursor-pointer transition duration-500 hover:scale-110 sm:hidden"
         >
           {menuIcon ? (
-            <span className="material-symbols-outlined icon-48">close</span>
+            <span
+              className={`material-symbols-outlined icon-48 ${
+                pathname === "/" ? "text-neutral" : ""
+              }`}
+            >
+              close
+            </span>
           ) : (
-            <span className="material-symbols-outlined icon-48">menu</span>
+            <span
+              className={`material-symbols-outlined icon-48 ${
+                pathname === "/" ? "text-neutral" : ""
+              }`}
+            >
+              menu
+            </span>
           )}
         </div>
       </nav>
