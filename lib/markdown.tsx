@@ -57,15 +57,12 @@ export function Markdown({ content }: { content: Content }) {
       // Change newlines to <br /> tags
       text.split("\n").flatMap((text, i) => [i > 0 && <br />, text]),
     renderNode: {
-      [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
-        console.log(node);
-        return (
-          <RichTextAsset
-            id={node.data.target.sys.id}
-            assets={content.links.assets.block}
-          />
-        );
-      },
+      [BLOCKS.EMBEDDED_ASSET]: (node: any) => (
+        <RichTextAsset
+          id={node.data.target.sys.id}
+          assets={content.links.assets.block}
+        />
+      ),
       [BLOCKS.UL_LIST]: (node, children) => (
         <ul className="ml-5 list-outside list-disc">{children}</ul>
       ),

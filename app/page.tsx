@@ -24,7 +24,7 @@ export default async function HomePage() {
           />
         </div>
       )}
-      <section className="main-content relative z-10 flex h-[646px] items-center text-neutral lg:h-[656px]">
+      <section className="main-content relative flex h-[646px] items-center text-neutral lg:h-[656px]">
         <div>
           <h1 className="mb-5 leading-[84px]">
             Don't just <br /> build.Build better.
