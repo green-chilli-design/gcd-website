@@ -10,18 +10,22 @@ export default async function HomePage() {
   );
 
   return (
-    <div className="gradient from-black">
+    <div>
       {homePage.heroImage?.url && (
-        <div className="absolute right-0 top-0 z-0 h-[776px] w-full bg-scroll">
-          <ContentfulImage
-            priority
-            src={homePage.heroImage.url}
-            alt="GCD Hero Image"
-            className="rounded-br-[30px]"
-            style={{
-              objectFit: "cover",
-            }}
-          />
+        <div className="absolute right-0 top-0  h-[776px] w-full rounded-br-[30px] bg-light-grey bg-scroll">
+          <div className="relative h-full  mix-blend-multiply">
+            <ContentfulImage
+              priority
+              src={homePage.heroImage.url}
+              alt="GCD Hero Image"
+              className="absolute"
+              style={{
+                objectFit: "cover",
+              }}
+            />
+            <div className="absolute h-full w-2/3 bg-gradient-to-r from-[#000000]"></div>
+            <div className="absolute h-2/3 w-full bg-gradient-to-b from-black"></div>
+          </div>
         </div>
       )}
       <section className="main-content relative flex h-[646px] items-center text-neutral lg:h-[656px]">
@@ -33,7 +37,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <main className="main-content">{contentBlocks}</main>
+      <main className="main-content mt-[200px]">{contentBlocks}</main>
     </div>
   );
 }
