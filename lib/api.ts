@@ -334,6 +334,18 @@ const PAGE_GRAPHQL_FIELDS = `
   pageContentCollection(limit: 10) {
     items { 
       __typename
+      ... on ContentBlockWithImage {
+        heading
+        body {
+          json
+        }
+        image {
+          url
+          width
+          height
+        }
+        imagePosition
+      }
       ... on ContentBlock {
         heading
         subHeading
