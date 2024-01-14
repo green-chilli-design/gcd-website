@@ -344,6 +344,11 @@ const PAGE_GRAPHQL_FIELDS = `
           width
           height
         }
+        darkModeImage {
+          url
+          width
+          height
+        }
         imagePosition
       }
       ... on ContentBlock {
