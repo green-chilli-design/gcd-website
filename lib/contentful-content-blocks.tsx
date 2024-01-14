@@ -26,7 +26,7 @@ export function generateContentBlocks(contentBody: any[]) {
         return (
           <section
             key={value.heading}
-            className={`flex flex-wrap items-start justify-center gap-20 py-5 lg:flex-nowrap lg:py-16 ${
+            className={`flex flex-wrap items-center justify-center gap-20 py-5 lg:flex-nowrap lg:py-16 ${
               value.imagePosition === "Left" ? "flex-row-reverse" : "flex-row"
             }`}
           >
