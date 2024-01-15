@@ -425,3 +425,145 @@ export async function getAssetByTitle(title: string | null): Promise<any> {
   );
   return extractAsset(entry);
 }
+
+/******** BEGIN CONTENT BLOCK API FUNCTIONS ************/
+/**
+ * Content Blocks API functions
+ */
+
+const CONTENT_BLOCK_GRAPHQL_FIELDS = `
+  heading
+  subheading
+  contentBody {
+    json
+    links {
+      assets {
+        block {
+          sys {
+            id
+          }
+          url
+          description
+          width
+          height
+        }
+      }
+    }
+  }
+`;
+
+function extractContentBlock(fetchResponse: any): any {
+  return fetchResponse?.data?.contentBlockCollection?.items?.[0];
+}
+
+export async function getContentBlockByName(name: string | null): Promise<any> {
+  const entry = await fetchGraphQL(
+    `query {
+        contentBlockCollection(where: { name: "${name}" }, preview: false, limit: 1) {
+          items {
+            ${CONTENT_BLOCK_GRAPHQL_FIELDS}
+          }
+        }
+      }`,
+    true,
+    ["contentBlocks"],
+  );
+  return extractContentBlock(entry);
+}
+
+/******** BEGIN PERSON API FUNCTIONS ************/
+/**
+ * Person API functions
+ */
+
+const TEAM_GRAPHQL_FIELDS = `
+  items {
+    firstName
+    lastName
+    role
+    actionShot {
+      url
+    }
+    organisationIcon {
+      url
+    }
+  }
+`;
+
+const PERSON_GRAPHQL_FIELDS = `
+  items {
+    firstName
+    lastName
+    role
+    isCurrentTeamMember
+    avatar {
+      url
+    }
+    actionShot {
+      url
+    }
+    organisationIcon {
+      url
+    }
+    bio {
+      json
+      links {
+        assets {
+          block {
+            sys {
+              id
+            }
+            url
+            description
+            width
+            height
+          }
+        }
+      }
+    }
+  }
+`;
+
+function extractPersons(fetchResponse: any): any {
+  return fetchResponse?.data?.personCollection?.items;
+}
+
+function extractPerson(fetchResponse: any): any {
+  return fetchResponse?.data?.personCollection?.items?.[0];
+}
+
+export async function getAllPersons(
+  isCurrentTeamMember: boolean | null,
+): Promise<any> {
+  const entries = await fetchGraphQL(
+    `query {
+        personCollection(where: {isCurrentTeamMember: ${isCurrentTeamMember}}, preview: false) {
+          items {
+            ${TEAM_GRAPHQL_FIELDS}
+          }
+        }
+      }`,
+    true,
+    ["persons"],
+  );
+  return extractPersons(entries);
+}
+
+export async function getPersonByName(
+  firstName: string,
+  lastName: string,
+): Promise<any> {
+  const entry = await fetchGraphQL(
+    `query {
+        personCollection(where: {firstName: "${firstName}", lastName: "${lastName}"}, preview: false, limit: 1) {
+          items {
+            ${PERSON_GRAPHQL_FIELDS}
+          }
+        }
+      }`,
+    true,
+    ["person"],
+  );
+
+  return extractPerson(entry);
+}

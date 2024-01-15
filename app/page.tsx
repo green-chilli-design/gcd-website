@@ -1,6 +1,7 @@
 import { getPageBySlug } from "@/lib/api";
 import { generateContentBlocks } from "@/lib/contentful-content-blocks";
 import ContentfulImage from "@/lib/contentful-image";
+import OurTeam from "./components/OurTeam";
 
 export default async function HomePage() {
   const homePage = await getPageBySlug("home");
@@ -38,6 +39,8 @@ export default async function HomePage() {
       </section>
 
       <main className="main-content mt-[200px]">{contentBlocks}</main>
+
+      <OurTeam />
     </div>
   );
 }
