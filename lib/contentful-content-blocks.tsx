@@ -1,3 +1,4 @@
+import OurTeam from "@/app/components/contentful-content-blocks/OurTeam";
 import ContentBlock from "@/app/components/contentful-content-blocks/ContentBlock";
 import ContentBlockWithImage from "@/app/components/contentful-content-blocks/ContentBlockWithImage";
 
@@ -13,6 +14,9 @@ export function generateContentBlocks(contentBody: any[]) {
   return Object.entries(contentBody).map(([key, value]) => {
     switch (value.__typename) {
       case "ContentBlock":
+        if (value.heading === "Our Team") {
+          return <OurTeam key={value.heading} contentBlock={value} />;
+        }
         return <ContentBlock key={value.heading} contentBlock={value} />;
       case "ContentBlockWithImage":
         return (

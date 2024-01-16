@@ -19,7 +19,7 @@ export default function ContentBlockWithImage({
   return (
     <section
       key={contentBlock.heading}
-      className={`flex flex-wrap items-center justify-center gap-20 py-5 lg:flex-nowrap lg:py-16 ${
+      className={`main-content flex flex-wrap items-center justify-center gap-20 py-5 lg:flex-nowrap lg:py-16 ${
         contentBlock.imagePosition === "Left" ? "flex-row-reverse" : "flex-row"
       }`}
     >

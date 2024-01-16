@@ -2,7 +2,7 @@
 
 async function fetchGraphQL(
   query: string,
-  preview = false,
+  preview: boolean = false,
   tags = ["posts"],
 ): Promise<any> {
   return fetch(
@@ -80,7 +80,7 @@ export async function getPostBySlug(
   return extractPost(entry);
 }
 
-export async function getAllPosts(preview: boolean): Promise<any[]> {
+export async function getAllPosts(preview: boolean = false): Promise<any[]> {
   const entries = await fetchGraphQL(
     `query {
       postCollection(where: { slug_exists: true }, order: date_DESC, preview: ${
@@ -99,7 +99,7 @@ export async function getAllPosts(preview: boolean): Promise<any[]> {
 
 export async function getPostAndMorePosts(
   slug: string,
-  preview: boolean,
+  preview: boolean = false,
 ): Promise<any> {
   const entry = await fetchGraphQL(
     `query {
@@ -174,12 +174,10 @@ function extractService(fetchResponse: any): any {
   return fetchResponse?.data?.serviceCollection?.items?.[0];
 }
 
-export async function getAllServices(preview: boolean): Promise<any[]> {
+export async function getAllServices(preview: boolean = false): Promise<any[]> {
   const entries = await fetchGraphQL(
     `query {
-      serviceCollection(where: { slug_exists: true }, preview: ${
-        preview ? "true" : "false"
-      }) {
+      serviceCollection(where: { slug_exists: true }, preview: ${preview}) {
         items {
           ${SERVICES_GRAPHQL_FIELDS}
         }
@@ -277,12 +275,12 @@ function extractCaseStudy(fetchResponse: any): any {
   return fetchResponse?.data?.caseStudyCollection?.items?.[0];
 }
 
-export async function getAllCaseStudies(preview: boolean): Promise<any[]> {
+export async function getAllCaseStudies(
+  preview: boolean = false,
+): Promise<any[]> {
   const entries = await fetchGraphQL(
     `query {
-      caseStudyCollection(where: { slug_exists: true }, order: sys_publishedAt_DESC, preview: ${
-        preview ? "true" : "false"
-      }) {
+      caseStudyCollection(where: { slug_exists: true }, order: sys_publishedAt_DESC, preview: ${preview}) {
         items {
           ${CASE_STUDIES_GRAPHQL_FIELDS}
         }
@@ -375,16 +373,19 @@ const PAGE_GRAPHQL_FIELDS = `
   }
 `;
 
-export async function getPageBySlug(slug: string | null): Promise<any> {
+export async function getPageBySlug(
+  slug: string | null,
+  preview: boolean = false,
+): Promise<any> {
   const entry = await fetchGraphQL(
     `query {
-        pageCollection(where: { slug: "${slug}" }, preview: false, limit: 1) {
+        pageCollection(where: { slug: "${slug}" }, preview: ${preview}, limit: 1) {
           items {
             ${PAGE_GRAPHQL_FIELDS}
           }
         }
       }`,
-    true,
+    preview,
     ["pages"],
   );
   return extractPage(entry);
@@ -411,16 +412,19 @@ function extractAsset(fetchResponse: any): any {
   return fetchResponse?.data?.assetCollection?.items?.[0];
 }
 
-export async function getAssetByTitle(title: string | null): Promise<any> {
+export async function getAssetByTitle(
+  title: string | null,
+  preview: boolean = false,
+): Promise<any> {
   const entry = await fetchGraphQL(
     `query {
-        assetCollection(where: { title: "${title}" }, preview: false, limit: 1) {
+        assetCollection(where: { title: "${title}" }, preview: ${preview}, limit: 1) {
           items {
             ${ASSET_GRAPHQL_FIELDS}
           }
         }
       }`,
-    true,
+    preview,
     ["assets"],
   );
   return extractAsset(entry);
@@ -432,8 +436,9 @@ export async function getAssetByTitle(title: string | null): Promise<any> {
  */
 
 const CONTENT_BLOCK_GRAPHQL_FIELDS = `
+  __typename
   heading
-  subheading
+  subHeading
   contentBody {
     json
     links {
@@ -456,16 +461,19 @@ function extractContentBlock(fetchResponse: any): any {
   return fetchResponse?.data?.contentBlockCollection?.items?.[0];
 }
 
-export async function getContentBlockByName(name: string | null): Promise<any> {
+export async function getContentBlockByName(
+  name: string | null,
+  preview: boolean = false,
+): Promise<any> {
   const entry = await fetchGraphQL(
     `query {
-        contentBlockCollection(where: { name: "${name}" }, preview: false, limit: 1) {
+        contentBlockCollection(where: { name: "${name}" }, preview: ${preview}, limit: 1) {
           items {
             ${CONTENT_BLOCK_GRAPHQL_FIELDS}
           }
         }
       }`,
-    true,
+    preview,
     ["contentBlocks"],
   );
   return extractContentBlock(entry);
@@ -476,17 +484,15 @@ export async function getContentBlockByName(name: string | null): Promise<any> {
  * Person API functions
  */
 
-const TEAM_GRAPHQL_FIELDS = `
-  items {
-    firstName
-    lastName
-    role
-    actionShot {
-      url
-    }
-    organisationIcon {
-      url
-    }
+const PERSONS_GRAPHQL_FIELDS = `
+  firstName
+  lastName
+  role
+  actionShot {
+    url
+  }
+  organisationIcon {
+    url
   }
 `;
 
@@ -533,17 +539,18 @@ function extractPerson(fetchResponse: any): any {
 }
 
 export async function getAllPersons(
-  isCurrentTeamMember: boolean | null,
+  isCurrentTeamMember: boolean | null = null,
+  preview: boolean = false,
 ): Promise<any> {
   const entries = await fetchGraphQL(
     `query {
-        personCollection(where: {isCurrentTeamMember: ${isCurrentTeamMember}}, preview: false) {
+        personCollection(where: {isCurrentTeamMember: ${isCurrentTeamMember}}) {
           items {
-            ${TEAM_GRAPHQL_FIELDS}
+            ${PERSONS_GRAPHQL_FIELDS}
           }
         }
       }`,
-    true,
+    preview,
     ["persons"],
   );
   return extractPersons(entries);
@@ -552,16 +559,17 @@ export async function getAllPersons(
 export async function getPersonByName(
   firstName: string,
   lastName: string,
+  preview: boolean = false,
 ): Promise<any> {
   const entry = await fetchGraphQL(
     `query {
-        personCollection(where: {firstName: "${firstName}", lastName: "${lastName}"}, preview: false, limit: 1) {
+        personCollection(where: {firstName: "${firstName}", lastName: "${lastName}"}, preview: ${preview}, limit: 1) {
           items {
             ${PERSON_GRAPHQL_FIELDS}
           }
         }
       }`,
-    true,
+    preview,
     ["person"],
   );
 
