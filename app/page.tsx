@@ -1,7 +1,6 @@
 import { getPageBySlug } from "@/lib/api";
 import { generateContentBlocks } from "@/lib/contentful-content-blocks";
 import ContentfulImage from "@/lib/contentful-image";
-import OurTeam from "./components/contentful-content-blocks/OurTeam";
 
 export default async function HomePage() {
   const homePage = await getPageBySlug("home");
@@ -14,7 +13,7 @@ export default async function HomePage() {
     <div>
       {homePage.heroImage?.url && (
         <div className="absolute right-0 top-0  h-[776px] w-full rounded-br-[30px] bg-light-shadow bg-scroll">
-          <div className="relative h-full  mix-blend-multiply">
+          <div className="relative h-full mix-blend-multiply">
             <ContentfulImage
               priority
               src={homePage.heroImage.url}
