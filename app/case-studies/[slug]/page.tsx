@@ -54,21 +54,23 @@ export default async function CaseStudyPage({
 
   return (
     <div>
-      <section className="main-content w-1/3">
-        <h1 className="mb-[318px] mt-[210px]  max-w-[522px] leading-[84px]">
-          {caseStudy.title}
-        </h1>
+      <section>
+        <div className="main-content w-2/3">
+          <h1 className="mb-[318px] mt-[210px] leading-[84px]">
+            {caseStudy.title}
+          </h1>
+        </div>
+        <div className="absolute right-0 top-0 w-1/2 bg-scroll">
+          <ContentfulImage
+            priority
+            width={812}
+            height={812}
+            src={caseStudy.coverImage.url}
+            alt={caseStudy.title}
+            className="rounded-br-[30px]"
+          />
+        </div>
       </section>
-      <div className="max-w-2/3 absolute right-0 top-0 bg-scroll">
-        <ContentfulImage
-          priority
-          width={812}
-          height={812}
-          src={caseStudy.coverImage.url}
-          alt={caseStudy.title}
-          className="rounded-br-[30px]"
-        />
-      </div>
 
       {caseStudy.description && (
         <section className="mx-auto mb-32 max-w-[846px] px-0">
