@@ -1,17 +1,20 @@
-import type { Preview } from "@storybook/react";
 import "@/app/globals.css";
+import "tailwindcss/tailwind.css";
+import "!style-loader!css-loader!postcss-loader!tailwindcss/tailwind.css";
 
-import { withThemeByClassName } from "@storybook/addon-themes";
+import type { Preview } from "@storybook/react";
 
-export const decorators = [
-  withThemeByClassName({
-    themes: {
-      light: "light",
-      dark: "dark",
-    },
-    defaultTheme: "light",
-  }),
-];
+// import { withThemeByClassName } from "@storybook/addon-themes";
+
+// export const decorators = [
+//   withThemeByClassName({
+//     themes: {
+//       light: "light",
+//       dark: "dark",
+//     },
+//     defaultTheme: "light",
+//   }),
+// ];
 
 const preview: Preview = {
   parameters: {

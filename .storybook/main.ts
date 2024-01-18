@@ -11,14 +11,15 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
-    "@storybook/addon-themes"
   ],
   framework: {
     name: "@storybook/nextjs",
+
     options: {
       nextConfigPath: path.resolve(__dirname, "../next.config.js"),
     },
   },
+  staticDirs: ["../public"],
   webpackFinal: async (config: any) => {
     // Add path aliases
     config.resolve.alias["@/app"] = path.resolve(__dirname, "../app");
@@ -27,7 +28,10 @@ const config: StorybookConfig = {
       "../app/components",
     );
     config.resolve.alias["@/public"] = path.resolve(__dirname, "../public");
-
+    config.module.rules.push({
+      test: /\.scss$/,
+      use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
+    });
     return config;
   },
   docs: {
