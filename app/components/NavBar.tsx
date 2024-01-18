@@ -1,17 +1,25 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
-import NavMenu from "./NavMenu";
-import NavMenuMobile from "./NavMenuMobile";
 
 export default function NavBar() {
   const pathname = usePathname();
-  const { resolvedTheme } = useTheme();
+  const [menuIcon, setMenuIcon] = useState(false);
 
+  const handleMenuIcon = () => {
+    setMenuIcon(!menuIcon);
+  };
+
+  const { resolvedTheme } = useTheme();
   let logoSrc = "/gcd-logo-round-black.svg";
+
+  const handleMenuIconClick = () => {
+    setHamberIconVisible(!hamburgerIconVisible);
+  };
+
   if (resolvedTheme === "dark" || pathname === "/") {
     logoSrc = "/gcd-logo-round-white.svg";
   }
@@ -31,9 +39,89 @@ export default function NavBar() {
           </Link>
         </div>
 
-        <div>
-          <NavMenu />
-          <NavMenuMobile />
+        {/* menu - sm screens upwards */}
+        <div className="hidden items-center gap-5 sm:flex">
+          {navlinks.map(({ href, label }) => {
+            const isActive = pathname.startsWith(href);
+
+            return (
+              <Link
+                key={label}
+                href={href}
+                className={`text-sm font-bold ${
+                  pathname === "/" ? "text-neutral" : ""
+                } ${
+                  isActive ? "text-green" : "hover:text-green hover:underline"
+                }`}
+              >
+                {label}
+              </Link>
+            );
+          })}
+          <ThemeSwitch />
+        </div>
+
+        {/* menu - mobile */}
+        <div
+          className={
+            menuIcon
+              ? "absolute bottom-0 left-0 right-0 top-[120px] flex h-screen w-full flex-col items-center justify-center bg-neutral pb-[120px] duration-300 ease-in dark:bg-black sm:hidden"
+              : "absolute bottom-0 left-[-100%] right-0 top-[120px] flex h-screen w-full flex-col items-center justify-center bg-neutral pb-[120px] text-center duration-300 ease-out dark:bg-black sm:hidden"
+          }
+        >
+          <Link
+            href="/"
+            onClick={handleMenuIcon}
+            className={`mb-5 text-sm font-bold ${
+              pathname.length === 1
+                ? "text-green"
+                : "hover:text-green hover:underline"
+            }`}
+          >
+            Home
+          </Link>
+
+          {navlinks.map(({ href, label }) => {
+            const isActive = pathname.startsWith(href);
+
+            return (
+              <Link
+                key={label}
+                onClick={handleMenuIcon}
+                href={href}
+                className={`mb-5 text-sm font-bold ${
+                  isActive ? "text-green" : "hover:text-green hover:underline"
+                }`}
+              >
+                {label}
+              </Link>
+            );
+          })}
+          <ThemeSwitch isMobile={true} />
+        </div>
+
+        {/* menu icons */}
+        <div
+          onClick={handleMenuIcon}
+          className="flex cursor-pointer transition duration-500 hover:scale-110 sm:hidden"
+        >
+          {menuIcon ? (
+            <span
+              className={`material-symbols-outlined icon-48 ${
+                pathname === "/" ? "text-neutral" : ""
+              }`}
+            >
+              close
+            </span>
+          ) : (
+            <span
+              className={`material-symbols-outlined icon-48 ${
+                pathname === "/" ? "text-neutral" : ""
+              }`}
+            >
+              menu
+            </span>
+          )}
         </div>
       </nav>
     </header>
