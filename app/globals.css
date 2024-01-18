@@ -60,9 +60,3 @@
     @apply bg-neutral hover:shadow-hover-btn hover:shadow-light-shadow;
   }
 }
-
-/* SwiperJS */
-.swiper {
-  height: 100%;
-  width: 100%;
-}

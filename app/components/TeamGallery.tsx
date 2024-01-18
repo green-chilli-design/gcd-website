@@ -41,6 +41,7 @@ export default function TeamGallery({ gcdTeam }: { gcdTeam: any }) {
         breakpoints={breakpoints}
         autoplay={autoplay}
         modules={[Autoplay]}
+        className="h-full w-full"
       >
         {gcdTeam?.map((teamMember: any) => (
           <SwiperSlide
