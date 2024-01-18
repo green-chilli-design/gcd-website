@@ -599,3 +599,37 @@ export async function getPersonByName(
 
   return extractPerson(entry);
 }
+
+/******** BEGIN CLIENT API FUNCTIONS ************/
+/**
+ * Client API functions
+ */
+
+const CLIENTS_GRAPHQL_FIELDS = `
+  name
+  url
+  logo {
+    url
+    width
+    height
+  }
+`;
+
+function extractClients(fetchResponse: any): any {
+  return fetchResponse?.data?.clientCollection?.items;
+}
+
+export async function getAllClients(preview: boolean = false): Promise<any> {
+  const entries = await fetchGraphQL(
+    `query {
+        clientCollection(order: priority_ASC, preview: ${preview}) {
+          items {
+            ${CLIENTS_GRAPHQL_FIELDS}
+          }
+        }
+      }`,
+    preview,
+    ["clients"],
+  );
+  return extractClients(entries);
+}

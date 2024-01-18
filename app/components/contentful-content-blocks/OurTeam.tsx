@@ -6,7 +6,7 @@ export default async function OurTeam({ contentBlock }: { contentBlock: any }) {
   const gcdTeam = await getAllPersons(true);
 
   return (
-    <section className="flex flex-col items-center">
+    <section className="mb-20 flex flex-col items-center">
       <ContentBlock contentBlock={contentBlock} />
       <TeamGallery gcdTeam={gcdTeam} />
     </section>

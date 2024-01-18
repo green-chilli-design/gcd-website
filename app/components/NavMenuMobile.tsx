@@ -32,7 +32,6 @@ export default function NavMenuMobile() {
 
         {NAV_LINKS.map(({ href, label }) => {
           const isActive = pathname.startsWith(href);
-
           return (
             <Link
               key={label}
@@ -46,6 +45,7 @@ export default function NavMenuMobile() {
             </Link>
           );
         })}
+
         <ThemeSwitch isMobile={true} />
       </div>
 
