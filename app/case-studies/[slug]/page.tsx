@@ -1,14 +1,11 @@
-import Link from "next/link";
 import { draftMode } from "next/headers";
-
-import CoverImage from "@/app/cover-image";
 import { Markdown } from "@/lib/markdown";
-
 import { getAllCaseStudies, getCaseStudyBySlug } from "@/lib/api";
 import { ResolvingMetadata, Metadata } from "next";
 import ContentfulImage from "@/lib/contentful-image";
 import ReactNative from "@/app/components/ReactNative";
 import DiscoveryProcess from "@/app/components/DiscoveryProcess";
+import { generateContentBlocks } from "@/lib/contentful-content-blocks";
 
 export async function generateMetadata(
   {
@@ -51,6 +48,9 @@ export default async function CaseStudyPage({
 }) {
   const { isEnabled } = draftMode();
   const caseStudy = await getCaseStudyBySlug(params.slug, isEnabled);
+  let contentBlocks = generateContentBlocks(
+    caseStudy.pageContentCollection.items,
+  );
 
   return (
     <div>
@@ -78,23 +78,7 @@ export default async function CaseStudyPage({
         </section>
       )}
 
-      <section className="main-content mb-[120px] flex flex-row flex-wrap items-center justify-between lg:flex-nowrap lg:gap-16 xl:gap-32">
-        {caseStudy.featureSection && (
-          <div>
-            <Markdown content={caseStudy.featureSection} />
-          </div>
-        )}
-        {caseStudy.featureImage?.url && (
-          <ContentfulImage
-            priority
-            width={374}
-            height={499}
-            src={caseStudy.featureImage.url}
-            alt={"Feature Image"}
-            className="shrink-0 rounded-br-[30px] rounded-tl-[30px]"
-          />
-        )}
-      </section>
+      <main className="mt-[200px]">{contentBlocks}</main>
 
       {caseStudy.backgroundImage?.url && (
         <section>

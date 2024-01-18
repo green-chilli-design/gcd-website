@@ -241,24 +241,47 @@ const CASE_STUDY_GRAPHQL_FIELDS = `
       }
     }
   }
-  featureSection {
-    json
-    links {
-      assets {
-        block {
-          sys {
-            id
-          }
+  pageContentCollection(limit: 5) {
+    items { 
+      __typename
+      ... on ContentBlockWithImage {
+        heading
+        body {
+          json
+        }
+        image {
           url
-          description
+          width
+          height
+        }
+        darkModeImage {
+          url
+          width
+          height
+        }
+        imagePosition
+      }
+      ... on ContentBlock {
+        heading
+        subHeading
+        contentBody {
+          json
+          links {
+            assets {
+              block {
+                sys {
+                  id
+                }
+                url
+                description
+                width
+                height
+              }
+            }
+          }
         }
       }
     }
-  }
-  featureImage {
-    url
-    width
-    height
   }
   backgroundImage {
     url
@@ -307,6 +330,7 @@ export async function getCaseStudyBySlug(
     preview,
     ["caseStudy"],
   );
+  console.log(entry);
   return extractCaseStudy(entry);
 }
 
