@@ -18,6 +18,7 @@ export default async function SuccessSection({
           (category: any) =>
             category.coverImage && (
               <Card
+                key={category.name}
                 title={category.name}
                 image={category.coverImage.url}
                 link={`/case-studies?category=${category.name}`}

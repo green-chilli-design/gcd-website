@@ -13,7 +13,6 @@ export default function Card({
   return (
     <Link
       href={link}
-      key={title}
       className="relative h-[440px] w-[440px] cursor-pointer overflow-hidden rounded-br-[30px] rounded-tl-[30px] bg-black-80"
     >
       <ContentfulImage
