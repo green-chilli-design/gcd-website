@@ -2,6 +2,7 @@ import OurTeam from "@/app/components/contentful-content-blocks/OurTeam";
 import ContentBlock from "@/app/components/contentful-content-blocks/ContentBlock";
 import ContentBlockWithImage from "@/app/components/contentful-content-blocks/ContentBlockWithImage";
 import OurClients from "@/app/components/contentful-content-blocks/OurClients";
+import SuccessSection from "@/app/components/contentful-content-blocks/SuccessSection";
 
 /**
  * This function generates the content blocks for pages with content blocks
@@ -20,6 +21,9 @@ export function generateContentBlocks(contentBody: any[]) {
         }
         if (value.heading === "Our Clients") {
           return <OurClients key={value.heading} contentBlock={value} />;
+        }
+        if (value.heading === "Success") {
+          return <SuccessSection key={value.heading} contentBlock={value} />;
         }
         return <ContentBlock key={value.heading} contentBlock={value} />;
       case "ContentBlockWithImage":

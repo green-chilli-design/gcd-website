@@ -633,3 +633,44 @@ export async function getAllClients(preview: boolean = false): Promise<any> {
   );
   return extractClients(entries);
 }
+
+/******** BEGIN CATEGORIES API FUNCTIONS ************/
+/**
+ * Category API functions
+ */
+
+const CATEGORY_GRAPHQL_FIELDS = `
+  name
+  subCategoriesCollection {
+    items {
+      name
+      coverImage {
+        url
+      }
+    }
+  }
+`;
+
+function extractCategory(fetchResponse: any): any {
+  return fetchResponse?.data?.categoryCollection?.items?.[0];
+}
+
+export type Category = "Case Studies" | "Services";
+
+export async function getCategoryByName(
+  category: Category,
+  preview: boolean = false,
+): Promise<any> {
+  const entries = await fetchGraphQL(
+    `query {
+        categoryCollection(where: {name: "${category}"}, limit: 1, preview: ${preview}) {
+          items {
+            ${CATEGORY_GRAPHQL_FIELDS}
+          }
+        }
+      }`,
+    preview,
+    ["category"],
+  );
+  return extractCategory(entries);
+}
