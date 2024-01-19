@@ -517,6 +517,8 @@ const PERSONS_GRAPHQL_FIELDS = `
   }
   organisationIcon {
     url
+    width
+    height
   }
 `;
 

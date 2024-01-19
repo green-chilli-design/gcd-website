@@ -44,19 +44,31 @@ export default function TeamGallery({ gcdTeam }: { gcdTeam: any }) {
         className="h-full w-full"
       >
         {gcdTeam?.map((teamMember: any) => (
-          <SwiperSlide
-            key={teamMember.firstName + teamMember.lastName}
-            className="h-[300px] w-[300px]"
-          >
+          <SwiperSlide key={teamMember.firstName + teamMember.lastName}>
             {teamMember.actionShot && (
-              <ContentfulImage
-                priority
-                src={teamMember.actionShot.url}
-                alt={teamMember.firstName}
-                style={{
-                  objectFit: "cover",
-                }}
-              />
+              <div className="absolute h-[300px] w-full">
+                <div className="hover:opacity-0">
+                  <ContentfulImage
+                    priority
+                    src={teamMember.actionShot.url}
+                    alt={teamMember.firstName}
+                    style={{
+                      objectFit: "cover",
+                    }}
+                  />
+                </div>
+                <div className="absolute flex h-full w-full flex-col items-center justify-end bg-black p-8 text-black opacity-0 hover:opacity-100">
+                  <ContentfulImage
+                    priority
+                    src={teamMember.organisationIcon.url}
+                    alt={teamMember.role}
+                    width={teamMember.organisationIcon.width}
+                    height={teamMember.organisationIcon.height}
+                    className="mb-20"
+                  />
+                  <p className="text-sm text-white">{teamMember.firstName}</p>
+                </div>
+              </div>
             )}
           </SwiperSlide>
         ))}
