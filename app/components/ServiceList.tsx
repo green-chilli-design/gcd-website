@@ -30,20 +30,28 @@ function ServicePreview({ service }: { service: SubCategoryItem }) {
 }
 
 export default function ServiceList({ services }: { services: Category }) {
-  const [selectedService, setSelectedService] =
-    useState<SubCategoryItem | null>(null);
+  const [selectedService, setSelectedService] = useState<SubCategoryItem>(
+    services?.subCategoriesCollection?.items[0],
+  );
+  const [hovered, setHovered] = useState(false);
 
   return (
     <div className="main-content flex w-full flex-wrap items-start justify-center gap-24 sm:flex-nowrap">
       <ul className="w-full">
         {services?.subCategoriesCollection?.items.map((category: any) => (
           <li
-            onMouseEnter={() => setSelectedService(category)}
+            onMouseEnter={() => {
+              setSelectedService(category), setHovered(true);
+            }}
             key={category.name}
-            className="flex items-center justify-between border-b-2 border-black hover:border-green dark:border-neutral dark:hover:border-green"
+            className={`flex items-center justify-between border-b-2 hover:border-green dark:hover:border-green ${
+              hovered && selectedService.name === category.name
+                ? "border-green"
+                : "border-black dark:border-neutral"
+            }`}
           >
             <h5>{category.name}</h5>
-            {selectedService?.name === category.name ? (
+            {hovered && selectedService.name === category.name ? (
               <span className="icon-24 material-symbols-outlined">
                 arrow_outward
               </span>
