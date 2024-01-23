@@ -481,6 +481,30 @@ const CONTENT_BLOCK_GRAPHQL_FIELDS = `
   }
 `;
 
+export interface ContentBlock {
+  __typename: string;
+  heading: string;
+  subHeading: string;
+  contentBody: ContentBlockBody;
+}
+
+export interface ContentBlockBody {
+  json: any;
+  links: any;
+}
+
+export interface ContentBlockWithImage extends ContentBlock {
+  image: ContentfulImage;
+  darkModeImage: ContentfulImage;
+  imagePosition: "Left" | "Right";
+}
+
+export interface ContentfulImage {
+  url: string;
+  width: number;
+  height: number;
+}
+
 function extractContentBlock(fetchResponse: any): any {
   return fetchResponse?.data?.contentBlockCollection?.items?.[0];
 }
@@ -646,6 +670,7 @@ const CATEGORY_GRAPHQL_FIELDS = `
   subCategoriesCollection {
     items {
       name
+      description
       coverImage {
         url
       }
