@@ -330,7 +330,6 @@ export async function getCaseStudyBySlug(
     preview,
     ["caseStudy"],
   );
-  console.log(entry);
   return extractCaseStudy(entry);
 }
 

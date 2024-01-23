@@ -50,7 +50,6 @@ export default function AllCaseStudies({
   function handleClick() {
     setItemNum((prevItemNum) => prevItemNum + 2);
   }
-  console.log(caseStudies.length, itemNum);
   itemNum >= caseStudies.length ? (showMore = false) : (showMore = true);
 
   return (
