@@ -41,7 +41,7 @@
     font-weight: 500;
   }
   .main-content {
-    @apply w-full px-[18px] md:px-[80px] lg:px-[10em] xl:px-[20%];
+    @apply w-full px-[18px] md:px-[80px] lg:px-[10rem] xl:px-[20%];
   }
 
   /* Buttons */

@@ -55,25 +55,27 @@ export default async function CaseStudyPage({
   return (
     <div>
       <section>
-        <div className="main-content w-2/3">
-          <h1 className="mb-[318px] mt-[210px] leading-[84px]">
+        <div className="main-content lg:w-1/3">
+          <h1 className="mb-5 mt-16 leading-[84px] lg:mb-[318px] lg:mt-[210px]">
             {caseStudy.title}
           </h1>
         </div>
-        <div className="absolute right-0 top-0 w-1/2 bg-scroll">
+        <div className="relative mb-32 h-[450px] w-full bg-scroll sm:h-[700px] md:h-[812px] lg:absolute lg:right-0 lg:top-0 lg:w-1/2">
           <ContentfulImage
             priority
-            width={812}
-            height={812}
             src={caseStudy.coverImage.url}
             alt={caseStudy.title}
             className="rounded-br-[30px]"
+            fill
+            style={{
+              objectFit: "cover",
+            }}
           />
         </div>
       </section>
 
       {caseStudy.description && (
-        <section className="mx-auto mb-32 max-w-[846px] px-0">
+        <section className="main-content mb-32 flex items-center justify-center lg:max-w-[846px]">
           <Markdown content={caseStudy.description} />
         </section>
       )}
