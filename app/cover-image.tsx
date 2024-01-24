@@ -17,9 +17,11 @@ export default function CoverImage({
       alt={`Cover Image for ${title}`}
       priority
       src={url}
+      fill={true}
       style={{
         objectFit: "cover",
       }}
+      sizes="100vw"
     />
   );
 

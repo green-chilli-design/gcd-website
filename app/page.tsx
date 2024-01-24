@@ -20,9 +20,11 @@ export default async function HomePage() {
               src={homePage.heroImage.url}
               alt="GCD Hero Image"
               className="absolute"
+              fill={true}
               style={{
                 objectFit: "cover",
               }}
+              sizes="100vw"
             />
             <div className="absolute h-full w-2/3 bg-gradient-to-r from-black"></div>
             <div className="absolute h-2/3 w-full bg-gradient-to-b from-black"></div>

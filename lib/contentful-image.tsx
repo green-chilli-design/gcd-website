@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
 
 interface ContentfulImageProps {
   src: string;
@@ -14,19 +14,28 @@ const contentfulLoader = ({ src, width, quality }: ContentfulImageProps) => {
 };
 
 export default function ContentfulImage(props: ContentfulImageProps) {
+  const placeholder = "blur";
+  const blurDataURL =
+    "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOsrgcAAXsA/KZ1G74AAAAASUVORK5CYII=";
+
   return props.style?.objectFit ? (
     <Image
-      fill
       alt={props.alt}
       loader={contentfulLoader}
-      src={props.src}
       style={{
         objectFit: props.style?.objectFit,
       }}
-      placeholder="blur"
-      blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOsrgcAAXsA/KZ1G74AAAAASUVORK5CYII="
+      placeholder={placeholder}
+      blurDataURL={blurDataURL}
+      {...props}
     />
   ) : (
-    <Image alt={props.alt} loader={contentfulLoader} {...props} />
+    <Image
+      alt={props.alt}
+      loader={contentfulLoader}
+      placeholder={placeholder}
+      blurDataURL={blurDataURL}
+      {...props}
+    />
   );
 }

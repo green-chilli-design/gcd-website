@@ -13,7 +13,9 @@ export default function CallToActionBlock() {
         quality={100}
         sizes="100vw"
         fill={true}
-        objectFit="cover"
+        style={{
+          objectFit: "cover",
+        }}
         className="mix-blend-difference dark:mix-blend-normal"
       />
       <div className="main-content absolute my-[200px] dark:text-black">

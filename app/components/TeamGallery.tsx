@@ -40,26 +40,26 @@ export default function TeamGallery({ gcdTeam }: { gcdTeam: any }) {
         loop={true}
         breakpoints={breakpoints}
         autoplay={autoplay}
+        speed={3500}
         modules={[Autoplay]}
         className="h-full w-full"
       >
         {gcdTeam?.map((teamMember: any) => (
           <SwiperSlide key={teamMember.firstName + teamMember.lastName}>
             {teamMember.actionShot && (
-              <div className="absolute h-[300px] w-full">
-                <div className="hover:opacity-0">
-                  <ContentfulImage
-                    priority
-                    src={teamMember.actionShot.url}
-                    alt={teamMember.firstName}
-                    style={{
-                      objectFit: "cover",
-                    }}
-                  />
-                </div>
+              <div className="relative h-[300px] w-full">
+                <ContentfulImage
+                  src={teamMember.actionShot.url}
+                  alt={teamMember.firstName}
+                  fill={true}
+                  style={{
+                    objectFit: "cover",
+                  }}
+                  className="hover:opacity-0"
+                  sizes="(max-width: 320px) 50vw, 320px"
+                />
                 <div className="absolute flex h-full w-full flex-col items-center justify-end bg-black p-8 text-black opacity-0 hover:opacity-100">
                   <ContentfulImage
-                    priority
                     src={teamMember.organisationIcon.url}
                     alt={teamMember.role}
                     width={teamMember.organisationIcon.width}

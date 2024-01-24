@@ -16,13 +16,16 @@ export default function ReactNative() {
             Building mobile apps in the React Native framework
           </h1>
         </div>
-        <div className="h-[430px] w-full">
+        <div className="relative h-[430px] w-full">
           <Image
             priority
             src={background}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
+            fill={true}
+            style={{
+              objectFit: "cover",
+              objectPosition: "center",
+            }}
+            sizes="100vw"
             alt="React Native Framework"
             className="rounded-br-[30px] rounded-tl-[30px] mix-blend-darken dark:mix-blend-lighten"
           />
