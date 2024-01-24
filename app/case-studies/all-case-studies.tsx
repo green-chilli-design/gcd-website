@@ -46,15 +46,15 @@ export default function AllCaseStudies({
   caseStudies: any[];
   showMore: boolean;
 }) {
-  const [itemNum, setItemNum] = useState(2);
+  const [itemNum, setItemNum] = useState(4);
   function handleClick() {
-    setItemNum((prevItemNum) => prevItemNum + 2);
+    setItemNum((prevItemNum) => prevItemNum + 4);
   }
   itemNum >= caseStudies.length ? (showMore = false) : (showMore = true);
 
   return (
     <section>
-      <div className="main-content mb-24 grid grid-cols-1 gap-x-5 gap-y-20 md:grid-cols-2">
+      <div className="main-content mb-24 grid grid-cols-1 gap-20 md:grid-cols-2 xl:grid-cols-3">
         {caseStudies
           ?.slice(0, itemNum)
           .map((caseStudy) => (

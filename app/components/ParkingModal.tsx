@@ -78,7 +78,6 @@ export default async function ParkingModal({
         <div className="pt-14">
           <ContentfulImage
             alt={description}
-            priority
             width={width}
             height={height}
             quality={100}

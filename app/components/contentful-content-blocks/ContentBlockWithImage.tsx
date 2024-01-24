@@ -23,19 +23,21 @@ export default function ContentBlockWithImage({
         contentBlock.imagePosition === "Left" ? "flex-row-reverse" : "flex-row"
       }`}
     >
-      <div>
+      <div className="w-full lg:w-3/5">
         {contentBlock.heading && (
           <h2 className="mb-5">{contentBlock.heading}</h2>
         )}
-        <Markdown content={contentBlock.body} />
+        <div className="max-w-[740px]">
+          <Markdown content={contentBlock.body} />
+        </div>
       </div>
       <ContentfulImage
-        priority
+        sizes="(max-width: 768px) 66vw, 33vw"
         width={image.width}
         height={image.height}
         src={image.url}
         alt={contentBlock.heading}
-        className="rounded-br-[30px] rounded-tl-[30px]"
+        className="w-full rounded-br-[30px] rounded-tl-[30px] sm:w-2/3 lg:w-2/5"
       />
     </section>
   );

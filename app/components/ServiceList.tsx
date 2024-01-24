@@ -13,7 +13,6 @@ function ServicePreview({ service }: { service: SubCategoryItem }) {
       <div className="flex w-full flex-col">
         {service.coverImage?.url && (
           <ContentfulImage
-            priority
             src={service.coverImage.url}
             alt={service.name}
             width={440}

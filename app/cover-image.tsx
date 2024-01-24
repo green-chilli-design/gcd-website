@@ -21,7 +21,7 @@ export default function CoverImage({
       style={{
         objectFit: "cover",
       }}
-      sizes="100vw"
+      sizes="(max-width: 320px) 90vw, 80vw"
     />
   );
 

@@ -20,7 +20,7 @@ export default async function HomePage() {
               src={homePage.heroImage.url}
               alt="GCD Hero Image"
               className="absolute"
-              fill={true}
+              fill
               style={{
                 objectFit: "cover",
               }}
