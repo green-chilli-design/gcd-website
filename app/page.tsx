@@ -1,6 +1,7 @@
 import { getPageBySlug } from "@/lib/api";
 import { generateContentBlocks } from "@/lib/contentful-content-blocks";
 import ContentfulImage from "@/lib/contentful-image";
+import CallToActionBlock from "./components/contentful-content-blocks/CallToActionBlock";
 
 export default async function HomePage() {
   const homePage = await getPageBySlug("home");
@@ -38,6 +39,9 @@ export default async function HomePage() {
       </section>
 
       <main className="mt-[200px]">{contentBlocks}</main>
+
+      {/* TODO: move this into contentful as a content type */}
+      <CallToActionBlock />
     </div>
   );
 }
