@@ -23,6 +23,8 @@ export default function ContentfulImage(props: ContentfulImageProps) {
       style={{
         objectFit: props.style?.objectFit,
       }}
+      placeholder="blur"
+      blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOsrgcAAXsA/KZ1G74AAAAASUVORK5CYII="
     />
   ) : (
     <Image alt={props.alt} loader={contentfulLoader} {...props} />
