@@ -2,6 +2,7 @@ import Image from "next/image";
 import backgroundImage from "@/public/images/home-bg.png";
 import Link from "next/link";
 
+// TODO: Make this a proper content block in Contentful
 export default function CallToActionBlock() {
   return (
     <section className="relative h-[830px] w-full bg-white">
