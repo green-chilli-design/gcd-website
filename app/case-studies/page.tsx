@@ -3,6 +3,8 @@ import CoverImage from "@/app/cover-image";
 import { getAllCaseStudies, getPageBySlug } from "@/lib/api";
 import ViewMore from "@/app/components/ViewMore";
 import AllCaseStudies from "./all-case-studies";
+import CaseStudySearchBar from "./case-study-search-bar";
+import { Suspense } from "react";
 
 const title = "GCD | Case Studies";
 export const metadata = {
@@ -14,6 +16,14 @@ export const metadata = {
     title,
   },
 };
+
+// This component passed as a fallback to the Suspense boundary
+// will be rendered in place of the search bar in the initial HTML.
+// When the value is available during React hydration the fallback
+// will be replaced with the `<SearchBar>` component.
+function SearchBarFallback() {
+  return <>placeholder</>;
+}
 
 function Intro({ title, subtitle }: { title: string; subtitle: string }) {
   return (
@@ -49,7 +59,14 @@ function FeaturedCaseStudy({ caseStudy }: { caseStudy: any }) {
   );
 }
 
-export default async function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  // TODO: use the search params (category) to filter case studies, and add a search bar / filter UI
+  console.log(searchParams);
+
   const { isEnabled } = draftMode();
   const { title, subtitle } = await getPageBySlug("case-studies");
   const allCaseStudies = await getAllCaseStudies(isEnabled);
@@ -63,6 +80,9 @@ export default async function Page() {
 
   return (
     <div className="mb-20 mt-24 lg:mt-28">
+      <Suspense fallback={<SearchBarFallback />}>
+        <CaseStudySearchBar />
+      </Suspense>
       <Intro title={title} subtitle={subtitle} />
       <FeaturedCaseStudy caseStudy={featuredCaseStudy} />
       <AllCaseStudies caseStudies={allCaseStudies} showMore={true} />
