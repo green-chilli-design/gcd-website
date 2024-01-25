@@ -12,7 +12,7 @@ export default function ReactNative() {
     <div className="mb-[120px]">
       <section className="relative mb-[120px] flex w-full items-center">
         <div className="main-content absolute z-10 text-neutral">
-          <h1 className="max-w-[847px] leading-[84px]">
+          <h1 className="max-w-[847px]">
             Building mobile apps in the React Native framework
           </h1>
         </div>

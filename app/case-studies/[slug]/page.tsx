@@ -56,7 +56,7 @@ export default async function CaseStudyPage({
     <div>
       <section className="xl:mb-[44rem]">
         <div className="main-content lg:w-1/3 ">
-          <h1 className="mb-5 mt-16 leading-[84px] lg:mb-[318px] lg:mt-[210px]">
+          <h1 className="mb-5 mt-16 lg:mb-[318px] lg:mt-[210px]">
             {caseStudy.title}
           </h1>
         </div>

@@ -33,7 +33,7 @@ export default async function HomePage() {
       )}
       <section className="main-content relative flex h-[646px] items-center text-neutral lg:h-[656px]">
         <div>
-          <h1 className="mb-5 leading-[84px]">
+          <h1 className="mb-5">
             Don't just <br /> build.Build better.
           </h1>
           <h4 className="max-w-[629px]">{homePage.subtitle}</h4>
