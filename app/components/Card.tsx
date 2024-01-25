@@ -1,6 +1,5 @@
 import ContentfulImage from "@/lib/contentful-image";
 import Link from "next/link";
-import { objectUtil } from "zod";
 
 export default function Card({
   title,
