@@ -15,19 +15,19 @@ export default function NavMenuMobile() {
   return (
     <div>
       <div
-        className={`absolute bottom-0 right-0 top-[120px] flex h-screen w-full flex-col items-center justify-center bg-neutral pb-[120px] duration-300 ease-in-out dark:bg-black sm:hidden
+        className={`main-content absolute bottom-0 right-0 top-[120px] flex h-screen w-full flex-col bg-neutral pb-[120px] pt-14 duration-300 ease-in-out dark:bg-black sm:hidden
         ${menuOpen ? "left-0" : "left-[-100%]"}`}
       >
         <Link
           href="/"
           onClick={handleMenu}
-          className={`mb-5 text-sm font-bold ${
+          className={`mb-10 ${
             pathname.length === 1
               ? "text-green"
               : "hover:text-green hover:underline"
           }`}
         >
-          Home
+          <h4>Home</h4>
         </Link>
 
         {NAV_LINKS.map(({ href, label }) => {
@@ -37,11 +37,11 @@ export default function NavMenuMobile() {
               key={label}
               onClick={handleMenu}
               href={href}
-              className={`mb-5 text-sm font-bold ${
+              className={`mb-10 ${
                 isActive ? "text-green" : "hover:text-green hover:underline"
               }`}
             >
-              {label}
+              <h4>{label}</h4>
             </Link>
           );
         })}
@@ -60,7 +60,7 @@ export default function NavMenuMobile() {
               pathname === "/" ? "text-neutral" : ""
             }`}
           >
-            close
+            horizontal_rule
           </span>
         ) : (
           <span
