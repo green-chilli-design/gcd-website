@@ -67,7 +67,7 @@ export default function DiscoveryProcess() {
             return (
               <Accordion type="single" collapsible key={index}>
                 <AccordionItem value={index.toString()}>
-                  <AccordionTrigger className="text-left text-base font-medium uppercase">
+                  <AccordionTrigger className="text-left text-xl font-medium uppercase">
                     {step.title}
                   </AccordionTrigger>
                   <AccordionContent className="text-base">
