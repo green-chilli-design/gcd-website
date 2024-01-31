@@ -64,6 +64,7 @@ export default async function Page({ searchParams }: { searchParams: any }) {
   const { isEnabled } = draftMode();
   const { title, subtitle } = await getPageBySlug("case-studies");
   const caseStudies = await getCaseStudies(isEnabled, category);
+  const total = caseStudies?.length;
   const caseStudyCategories = await getCategoryByName("Case Studies");
 
   let featuredCaseStudy;
@@ -80,19 +81,20 @@ export default async function Page({ searchParams }: { searchParams: any }) {
   return (
     <div className="mb-20 mt-24 lg:mt-28">
       <Intro title={title} subtitle={subtitle} />
-      <Suspense fallback={<SearchBarFallback />}>
-        <CaseStudySearchBar
-          categories={caseStudyCategories?.subCategoriesCollection?.items}
-        />
-      </Suspense>
+      <div className="main-content mb-5 flex w-full flex-col gap-5">
+        <Suspense fallback={<SearchBarFallback />}>
+          <CaseStudySearchBar
+            categories={caseStudyCategories?.subCategoriesCollection?.items}
+          />
+        </Suspense>
+
+        <label>{total === 1 ? `${total} result` : `${total} results`}</label>
+        <hr />
+      </div>
 
       {featuredCaseStudy && <FeaturedCaseStudy caseStudy={featuredCaseStudy} />}
-      {caseStudies.length ? (
+      {total > 0 && (
         <AllCaseStudies caseStudies={caseStudies} showMore={true} />
-      ) : (
-        <div className="my-20 flex justify-center">
-          Looks like there's nothing here... please try changing the filters.
-        </div>
       )}
     </div>
   );
