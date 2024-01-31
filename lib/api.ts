@@ -216,6 +216,9 @@ const CASE_STUDIES_GRAPHQL_FIELDS = `
   }
   summary
   featured
+  category {
+    name
+  }
 `;
 
 const CASE_STUDY_GRAPHQL_FIELDS = `
@@ -298,20 +301,21 @@ function extractCaseStudy(fetchResponse: any): any {
   return fetchResponse?.data?.caseStudyCollection?.items?.[0];
 }
 
-export async function getAllCaseStudies(
+export async function getCaseStudies(
   preview: boolean = false,
+  categoryFilter: string | null,
 ): Promise<any[]> {
-  const entries = await fetchGraphQL(
-    `query {
-      caseStudyCollection(where: { slug_exists: true }, order: sys_publishedAt_DESC, preview: ${preview}) {
-        items {
-          ${CASE_STUDIES_GRAPHQL_FIELDS}
-        }
+  const query = `query {
+    caseStudyCollection(where: { slug_exists: true, category: { name: ${
+      categoryFilter ? `"` + categoryFilter + `"` : null
+    } } } , order: sys_publishedAt_DESC, preview: ${preview}) {
+      items {
+        ${CASE_STUDIES_GRAPHQL_FIELDS}
       }
-    }`,
-    preview,
-    ["caseStudies"],
-  );
+    }
+  }`;
+
+  const entries = await fetchGraphQL(query, preview, ["caseStudies"]);
   return extractCaseStudiesEntries(entries);
 }
 
