@@ -35,4 +35,9 @@ module.exports = {
       { protocol: "https", hostname: "images.ctfassets.net", pathname: "**" },
     ],
   },
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
 };
