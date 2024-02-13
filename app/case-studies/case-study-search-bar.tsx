@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/select";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { SubCategoryItem } from "../components/contentful-content-blocks/ServicesSection";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 
 export default function CaseStudySearchBar({
   categories,
@@ -17,7 +17,7 @@ export default function CaseStudySearchBar({
   categories: SubCategoryItem[];
 }) {
   const searchParams = useSearchParams();
-  const category = searchParams.get("category");
+  const selectedCategory = searchParams.get("category");
   const router = useRouter();
   const pathname = usePathname();
 
@@ -49,14 +49,45 @@ export default function CaseStudySearchBar({
   }
 
   return (
-    <section className="flex flex-col gap-2">
-      <label>Category:</label>
-      <div className="nowrap flex items-center gap-5 md:max-w-[300px]">
+    <section>
+      {/* desktop filter */}
+      <div className="flex hidden w-full flex-wrap items-center gap-6 border border-x-0 border-y-black py-5 dark:border-y-neutral md:flex lg:justify-between">
+        <button
+          type="button"
+          onClick={() => selectCategory("All")}
+          className={`text-sm uppercase hover:text-green ${
+            selectedCategory === "All" || !selectedCategory
+              ? "text-green"
+              : "text-black dark:text-neutral"
+          }`}
+        >
+          All
+        </button>
+        {categories.map((category) => (
+          <button
+            type="button"
+            onClick={() => selectCategory(category.name)}
+            className={`text-sm uppercase hover:text-green ${
+              selectedCategory === category.name
+                ? "text-green"
+                : "text-black dark:text-neutral"
+            }`}
+            key={category.name}
+          >
+            {category.name}
+          </button>
+        ))}
+      </div>
+
+      {/* mobile filter */}
+      <div className="flex items-center gap-5 md:hidden">
         <Select onValueChange={(value) => selectCategory(value)}>
-          <SelectTrigger className="text-black">
-            <SelectValue placeholder={category ? category : "All"} />
+          <SelectTrigger>
+            <SelectValue
+              placeholder={selectedCategory ? selectedCategory : "All"}
+            />
           </SelectTrigger>
-          <SelectContent className="text-black">
+          <SelectContent>
             <SelectItem value="All">All</SelectItem>
             {categories.map((category) => (
               <SelectItem key={category.name} value={category.name}>

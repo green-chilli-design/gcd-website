@@ -81,15 +81,12 @@ export default async function Page({ searchParams }: { searchParams: any }) {
   return (
     <div className="mb-20 mt-24 lg:mt-28">
       <Intro title={title} subtitle={subtitle} />
-      <div className="main-content mb-5 flex w-full flex-col gap-5">
+      <div className="main-content mb-20 flex w-full flex-col gap-5">
         <Suspense fallback={<SearchBarFallback />}>
           <CaseStudySearchBar
             categories={caseStudyCategories?.subCategoriesCollection?.items}
           />
         </Suspense>
-
-        <label>{total === 1 ? `${total} result` : `${total} results`}</label>
-        <hr />
       </div>
 
       {featuredCaseStudy && <FeaturedCaseStudy caseStudy={featuredCaseStudy} />}
