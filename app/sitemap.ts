@@ -1,4 +1,4 @@
-import { getAllCaseStudies, getAllPosts, getAllServices } from "@/lib/api";
+import { getCaseStudies, getAllPosts, getAllServices } from "@/lib/api";
 import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -41,7 +41,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   try {
     // Fetch all case study pages
-    const caseStudies = await getAllCaseStudies(false);
+    const caseStudies = await getCaseStudies(false, null);
     const caseStudyPages = caseStudies.map((caseStudy) => {
       return {
         url: `${baseUrl}/case-studies/${caseStudy.slug}`,

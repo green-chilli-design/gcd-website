@@ -1,6 +1,6 @@
 import { draftMode } from "next/headers";
 import { Markdown } from "@/lib/markdown";
-import { getAllCaseStudies, getCaseStudyBySlug } from "@/lib/api";
+import { getCaseStudies, getCaseStudyBySlug } from "@/lib/api";
 import { ResolvingMetadata, Metadata } from "next";
 import ContentfulImage from "@/lib/contentful-image";
 import ReactNative from "@/app/components/ReactNative";
@@ -34,7 +34,7 @@ export async function generateMetadata(
 }
 
 export async function generateStaticParams() {
-  const allCaseStudies = await getAllCaseStudies(false);
+  const allCaseStudies = await getCaseStudies(false, null);
 
   return allCaseStudies.map((caseStudy) => ({
     slug: caseStudy.slug,
