@@ -2,6 +2,7 @@ import "@/app/globals.css";
 import "@/app/globalicons.css";
 
 import { Analytics } from "@vercel/analytics/react";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Jost } from "next/font/google";
 import NavBar from "@/app/components/NavBar";
 import Footer from "@/app//components/Footer";
@@ -47,6 +48,7 @@ export default async function RootLayout({
           </RecaptchaProvider>
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId="G-Z5E8C9JM8E" />
     </html>
   );
 }
