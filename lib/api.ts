@@ -685,10 +685,10 @@ function extractCategory(fetchResponse: any): any {
   return fetchResponse?.data?.categoryCollection?.items?.[0];
 }
 
-export type Category = "Case Studies" | "Services";
+export type TopLevelCategory = "Case Studies" | "Services";
 
 export async function getCategoryByName(
-  category: Category,
+  category: TopLevelCategory,
   preview: boolean = false,
 ): Promise<any> {
   const entries = await fetchGraphQL(

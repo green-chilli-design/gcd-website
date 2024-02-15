@@ -8,8 +8,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { SubCategoryItem } from "../components/contentful-content-blocks/ServicesSection";
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
+import { SubCategoryItem } from "../types/contentful-types";
 
 export default function CaseStudySearchBar({
   categories,
