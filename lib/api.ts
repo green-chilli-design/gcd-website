@@ -177,7 +177,7 @@ function extractService(fetchResponse: any): any {
 export async function getAllServices(preview: boolean = false): Promise<any[]> {
   const entries = await fetchGraphQL(
     `query {
-      serviceCollection(where: { slug_exists: true }, preview: ${preview}) {
+      serviceCollection(where: { slug_exists: true }, order: order_ASC, preview: ${preview}) {
         items {
           ${SERVICES_GRAPHQL_FIELDS}
         }
