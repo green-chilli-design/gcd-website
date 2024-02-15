@@ -22,6 +22,9 @@ export async function sendContact(
 ): Promise<ActionResponse> {
   "use server";
   try {
+    if (!formData) {
+      return { type: "error", message: "Something went wrong :(" };
+    }
     console.log(formData);
 
     const data = contactFormSchema.parse({
@@ -166,6 +169,9 @@ export async function sendSubscribe(
 ): Promise<ActionResponse> {
   "use server";
   try {
+    if (!formData) {
+      return { type: "error", message: "Something went wrong :(" };
+    }
     console.log(formData);
 
     const data = subscribeFormSchema.parse({
