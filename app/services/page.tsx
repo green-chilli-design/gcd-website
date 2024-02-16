@@ -43,12 +43,14 @@ function ServicePreview({
   return (
     <div>
       <div className="mb-5">
-        <CoverImage
-          title={title}
-          path="/services"
-          slug={slug}
-          url={coverImage.url}
-        />
+        {coverImage?.url && (
+          <CoverImage
+            title={title}
+            path="/services"
+            slug={slug}
+            url={coverImage.url}
+          />
+        )}
       </div>
       <h3 className="mb-3 text-3xl leading-snug">
         <Link href={`/services/${slug}`} className="hover:underline">

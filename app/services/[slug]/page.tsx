@@ -25,11 +25,11 @@ export async function generateMetadata(
     title: `GCD | ${service.title}`,
     openGraph: {
       title: `GCD | ${service.title}`,
-      images: [service.coverImage.url, ...previousImages],
+      images: [service.coverImage?.url, ...previousImages],
     },
     twitter: {
       title: `GCD | ${service.title}`,
-      images: [service.coverImage.url, ...previousImages],
+      images: [service.coverImage?.url, ...previousImages],
     },
   };
 }
@@ -62,9 +62,11 @@ export default async function ServicePage({
         <h1 className="mb-12 text-center text-6xl font-bold leading-tight tracking-tighter md:text-left md:text-7xl md:leading-none lg:text-8xl">
           {service.title}
         </h1>
-        <div className="mb-8 sm:mx-0 md:mb-16">
-          <CoverImage title={service.title} url={service.coverImage.url} />
-        </div>
+        {service.coverImage?.url && (
+          <div className="mb-8 sm:mx-0 md:mb-16">
+            <CoverImage title={service.title} url={service.coverImage.url} />
+          </div>
+        )}
         <div className="mx-auto max-w-2xl">
           <div className="mb-6 text-lg">
             <p>{service.summary}</p>
@@ -73,7 +75,7 @@ export default async function ServicePage({
 
         <div className="mx-auto max-w-2xl">
           <div className="prose">
-            <Markdown content={service.description} />
+            {service.description && <Markdown content={service.description} />}
           </div>
         </div>
       </article>
