@@ -12,8 +12,8 @@ function ServicePreview({ service }: { service: any }) {
           <ContentfulImage
             src={service.coverImage.url}
             alt={service.title}
-            width={440}
-            height={440}
+            width={522}
+            height={300}
             className="mb-5 rounded-br-[30px] rounded-tl-[30px]"
           />
         )}
@@ -30,7 +30,7 @@ export default function ServiceList({ services }: { services: any }) {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <div className="main-content flex w-full flex-wrap items-start justify-center gap-24 sm:flex-nowrap">
+    <div className="flex w-full flex-wrap items-start justify-center gap-24 px-[18px] sm:flex-nowrap md:px-[80px] lg:px-[10rem] xl:px-[20%]">
       <ul className="w-full">
         {services?.map((service: any) => (
           <li
@@ -38,7 +38,7 @@ export default function ServiceList({ services }: { services: any }) {
               setSelectedService(service), setHovered(true);
             }}
             key={service.title}
-            className={`flex items-center justify-between border-b-2 hover:border-green dark:hover:border-green ${
+            className={`flex items-center justify-between border-b-2 p-2 hover:border-green dark:hover:border-green ${
               hovered && selectedService.title === service.title
                 ? "border-green"
                 : "border-black dark:border-neutral"
