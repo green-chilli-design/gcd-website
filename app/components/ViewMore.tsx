@@ -1,9 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ViewMore({ path }: { path: string }) {
   return (
     <Link href={path || ""} className="flex items-center">
-      <img
+      <Image
         src="./icons/arrow_forward.svg"
         alt="View More"
         className="transition duration-500 hover:scale-110"

@@ -34,9 +34,9 @@ export default async function SuccessSection({
               A decade working alongside Milford Asset Management
             </h3>
             <p>
-              It's a privilege to be part of Milford's 10 years of growth from
-              under $2 billion to more than $15 billion of client funds under
-              management.
+              It&apos;s a privilege to be part of Milford&apos;s 10 years of
+              growth from under $2 billion to more than $15 billion of client
+              funds under management.
             </p>
           </div>
           <div>
@@ -52,8 +52,8 @@ export default async function SuccessSection({
             <h3 className="mb-5">New Digital Advice Tool</h3>
             <p>
               As FMA rules allowed for online digital advice we designed and
-              developed Milford Asset Management's highly rated KiwiSaver advice
-              tool.
+              developed Milford Asset Management&apos;s highly rated KiwiSaver
+              advice tool.
             </p>
           </div>
           <div>

@@ -53,7 +53,7 @@ const DialogContent = React.forwardRef<
 ));
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 
-export default async function ParkingModal({
+export default function ParkingModal({
   url,
   description,
   width,

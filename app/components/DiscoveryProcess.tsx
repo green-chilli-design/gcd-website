@@ -58,7 +58,7 @@ export default function DiscoveryProcess() {
             The GC Digital Discovery Process ensures a thorough understanding of
             your business and user needs, creating a tailored solution.
             Stakeholders are involved to grasp requirements before building,
-            with flexibility to adapt to your project's specific needs.
+            with flexibility to adapt to your project&apos;s specific needs.
           </h4>
         </div>
 

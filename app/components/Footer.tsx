@@ -53,16 +53,16 @@ export default function Footer() {
         </div>
         <div className="mb-[37px] flex flex-row gap-5 lg:mb-0">
           <a href="https://www.facebook.com/GCDigitalFB" target="_blank">
-            <img src={"/icons/facebook.svg"} alt="facebook logo" />
+            <Image src={"/icons/facebook.svg"} alt="facebook logo" />
           </a>
           <a href="https://twitter.com/gcdigital_tweet" target="_blank">
-            <img src={"/icons/twitter.svg"} alt="twitter logo" />
+            <Image src={"/icons/twitter.svg"} alt="twitter logo" />
           </a>
           <a
             href="https://www.linkedin.com/company/green-chilli-digital/"
             target="_blank"
           >
-            <img src={"/icons/linkedin.svg"} alt="linkedin logo" />
+            <Image src={"/icons/linkedin.svg"} alt="linkedin logo" />
           </a>
         </div>
       </div>
