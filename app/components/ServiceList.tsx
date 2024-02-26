@@ -38,7 +38,7 @@ export default function ServiceList({ services }: { services: any }) {
               setSelectedService(service), setHovered(true);
             }}
             key={service.title}
-            className={`flex items-center justify-between border-b-2 p-2 hover:border-green dark:hover:border-green ${
+            className={`flex items-center justify-between border-b-2 p-[0.8rem] hover:border-green dark:hover:border-green ${
               hovered && selectedService.title === service.title
                 ? "border-green"
                 : "border-black dark:border-neutral"
