@@ -5,12 +5,18 @@ import "@/app/globals.css";
 import Image from "next/image";
 import SubscribeForm from "@/app/components/forms/SubscribeForm";
 import { useTheme } from "next-themes";
+import gcdLogoGreen from "@/public/gcd-logo-square-green.svg";
+import gcdLogoWhite from "@/public/gcd-logo-square-white.svg";
+import paehokohokoLogo from "@/public/images/pae-hokohoko-marketplace.png";
+import paehokohokoLogoWhite from "@/public/images/pae-hokohoko-marketplace-white.svg";
 
 export default function Footer() {
   const { resolvedTheme } = useTheme();
-  let logoSrc = "/gcd-logo-square-green.svg";
+  let logoSrc = gcdLogoGreen;
+  let paehokohokoLogoSrc = paehokohokoLogo;
   if (resolvedTheme === "dark") {
-    logoSrc = "/gcd-logo-square-white.svg";
+    logoSrc = gcdLogoWhite;
+    paehokohokoLogoSrc = paehokohokoLogoWhite;
   }
 
   return (
@@ -52,7 +58,7 @@ export default function Footer() {
           <Image
             width={99}
             height={31}
-            src={"/images/pae-hokohoko-marketplace.png"}
+            src={paehokohokoLogoSrc}
             alt="pae hokohoko marketplace logo"
           />
         </Link>
