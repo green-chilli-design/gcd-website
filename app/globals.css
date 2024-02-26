@@ -28,6 +28,8 @@
   }
   body {
     @apply text-sm lg:text-base;
+  }
+  p {
     font-weight: 300;
   }
   .small {
