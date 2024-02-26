@@ -19,7 +19,7 @@ export default function CallToActionBlock() {
         className="mix-blend-difference dark:mix-blend-normal"
       />
       <div className="main-content absolute my-[200px] dark:text-black">
-        <div className="flex w-full flex-col rounded-br-[30px] rounded-tl-[30px] bg-neutral px-5 py-16 lg:px-28 lg:py-20">
+        <div className="flex w-full flex-col rounded-br-[100px] rounded-tl-[100px] bg-neutral px-5 py-16 lg:px-28 lg:py-20">
           <h1>Ready to build better?</h1>
           <h3 className="my-5 max-w-[850px]">
             If you value long-term partnership, transparency and joint success,

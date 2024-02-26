@@ -27,7 +27,7 @@ export default function ReactNative() {
             }}
             sizes="100vw"
             alt="React Native Framework"
-            className="rounded-br-[30px] rounded-tl-[30px] mix-blend-darken dark:mix-blend-lighten"
+            className="rounded-br-[100px] rounded-tl-[100px] mix-blend-darken dark:mix-blend-lighten"
           />
         </div>
       </section>

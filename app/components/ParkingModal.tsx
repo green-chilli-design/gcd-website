@@ -81,7 +81,7 @@ export default function ParkingModal({
             width={width}
             height={height}
             quality={100}
-            className="relative h-full w-full rounded-br-[30px] rounded-tl-[30px]"
+            className="relative h-full w-full rounded-br-[100px] rounded-tl-[100px]"
             src={url}
           />
         </div>

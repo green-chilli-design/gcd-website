@@ -37,7 +37,7 @@ export default function ContentBlockWithImage({
         height={image.height}
         src={image.url}
         alt={contentBlock.heading}
-        className="lg:1/2 w-full rounded-br-[30px] rounded-tl-[30px] sm:w-2/3 xl:w-1/3"
+        className="lg:1/2 w-full rounded-br-[100px] rounded-tl-[100px] sm:w-2/3 xl:w-1/3"
       />
     </section>
   );

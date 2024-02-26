@@ -26,7 +26,7 @@ export default function CoverImage({
   );
 
   return (
-    <div className="relative h-[500px] overflow-hidden rounded-br-[30px] rounded-tl-[30px] sm:mx-0">
+    <div className="relative h-[500px] overflow-hidden rounded-br-[100px] rounded-tl-[100px] sm:mx-0">
       {slug ? (
         <Link href={`${path}/${slug}`} aria-label={title}>
           {image}

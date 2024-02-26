@@ -43,7 +43,7 @@ function RichTextAsset({
         height={asset.height}
         objectPosition="relative"
         alt={asset.description}
-        className="rounded-br-[30px] rounded-tl-[30px]"
+        className="rounded-br-[100px] rounded-tl-[100px]"
       />
     );
   }
