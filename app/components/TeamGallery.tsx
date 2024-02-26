@@ -32,10 +32,16 @@ export default function TeamGallery({ gcdTeam }: { gcdTeam: any }) {
     1920: {
       slidesPerView: 6,
     },
+    2560: {
+      slidesPerView: 7,
+    },
+    3840: {
+      slidesPerView: 8,
+    },
   };
 
   return (
-    <div className="h-[300px] w-full max-w-[1920px]">
+    <div className="h-[300px] w-full lg:h-[350px] xl:h-[400px]">
       <Swiper
         loop={true}
         breakpoints={breakpoints}
@@ -47,7 +53,7 @@ export default function TeamGallery({ gcdTeam }: { gcdTeam: any }) {
         {gcdTeam?.map((teamMember: any) => (
           <SwiperSlide key={teamMember.firstName + teamMember.lastName}>
             {teamMember.actionShot && (
-              <div className="relative h-[300px] w-full">
+              <div className="relative h-full w-full">
                 <ContentfulImage
                   src={teamMember.actionShot.url}
                   alt={teamMember.firstName}
