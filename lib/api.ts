@@ -244,6 +244,20 @@ const CASE_STUDY_GRAPHQL_FIELDS = `
       }
     }
   }
+  body {
+    json
+    links {
+      assets {
+        block {
+          sys {
+            id
+          }
+          url
+          description
+        }
+      }
+    }
+  }
   pageContentCollection(limit: 5) {
     items { 
       __typename

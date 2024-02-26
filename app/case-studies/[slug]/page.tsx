@@ -65,7 +65,7 @@ export default async function CaseStudyPage({
             priority
             src={caseStudy.coverImage.url}
             alt={caseStudy.title}
-            className="rounded-br-[30px]"
+            className="rounded-br-[100px]"
             fill
             style={{
               objectFit: "cover",
@@ -76,8 +76,16 @@ export default async function CaseStudyPage({
 
       {caseStudy.description && (
         <section className="main-content mb-32 flex justify-center">
-          <div className=" w-full lg:max-w-[846px] xl:max-w-[1274px]">
+          <div className="w-full lg:max-w-[846px] xl:max-w-[1274px]">
             <Markdown content={caseStudy.description} />
+          </div>
+        </section>
+      )}
+
+      {caseStudy.body && (
+        <section className="main-content mb-32 flex justify-center">
+          <div className="w-full lg:max-w-[846px]">
+            <Markdown content={caseStudy.body} />
           </div>
         </section>
       )}
@@ -87,7 +95,7 @@ export default async function CaseStudyPage({
       {caseStudy.backgroundImage?.url && (
         <section>
           <div
-            className="h-[400px] w-full rounded-br-[30px] rounded-tl-[30px] bg-cover bg-fixed"
+            className="h-[400px] w-full rounded-br-[100px] rounded-tl-[100px] bg-cover bg-fixed"
             style={{
               backgroundImage: `url(${caseStudy.backgroundImage.url})`,
             }}
