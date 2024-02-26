@@ -28,6 +28,7 @@
   }
   body {
     @apply text-sm lg:text-base;
+    font-weight: 300;
   }
   .small {
     @apply text-xs lg:text-sm;
