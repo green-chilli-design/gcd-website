@@ -656,6 +656,11 @@ const CLIENTS_GRAPHQL_FIELDS = `
     width
     height
   }
+  logoDarkMode {
+    url
+    width
+    height
+  }
 `;
 
 function extractClients(fetchResponse: any): any {
