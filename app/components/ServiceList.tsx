@@ -14,7 +14,7 @@ function ServicePreview({ service }: { service: any }) {
             alt={service.title}
             width={522}
             height={300}
-            className="mb-5 rounded-br-[30px] rounded-tl-[30px]"
+            className="mb-5 h-[300px] rounded-br-[30px] rounded-tl-[30px]"
           />
         )}
 
