@@ -10,7 +10,7 @@ export default async function ServicesSection({
   const services = await getAllServices();
 
   return (
-    <section className="rounded-br-[100px] rounded-tl-[100px] bg-white-120 pb-[100px] dark:bg-black-80">
+    <section className="rounded-br-[100px] rounded-tl-[100px] bg-white-120 pb-[100px] pt-20 dark:bg-black-80">
       <ContentBlock contentBlock={contentBlock} />
       <ServiceList services={services} />
     </section>

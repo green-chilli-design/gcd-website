@@ -13,23 +13,23 @@ export default async function SuccessSection({
     <section>
       <ContentBlock contentBlock={contentBlock} />
 
-      <div className="main-content mb-[200px] flex w-full flex-wrap items-center justify-center gap-5">
+      <div className="main-content mb-[200px] grid w-full grid-cols-1 justify-center gap-5 md:grid-cols-2 lg:-mt-20 lg:grid-cols-3">
         {caseStudyCategory?.subCategoriesCollection?.items.map(
           (category: any) =>
             category.coverImage && (
               <Card
                 key={category.name}
                 title={category.name}
-                image={category.coverImage.url}
+                image={category.coverImage}
                 link={`/case-studies?category=${category.name}`}
               />
             ),
         )}
       </div>
 
-      <div className="rounded-br-[100px] rounded-tl-[100px] bg-white-120 dark:bg-black-80">
+      <div className="mb-[200px] rounded-br-[100px] rounded-tl-[100px] bg-white-120 dark:bg-black-80">
         <div className="main-content grid grid-cols-1 justify-items-center gap-20 py-[200px] md:grid-cols-3">
-          <div className="flex w-full flex-col items-center justify-between text-center md:items-start md:text-left">
+          <div className="flex max-w-[374px] flex-col items-center justify-between text-center md:items-start md:text-left">
             <div>
               <h3 className="mb-5">
                 A decade working alongside Milford Asset Management

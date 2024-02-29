@@ -41,7 +41,7 @@ export default function TeamGallery({ gcdTeam }: { gcdTeam: any }) {
   };
 
   return (
-    <div className="h-[300px] w-full lg:h-[350px] xl:h-[400px]">
+    <div className="h-[300px] w-full lg:-mt-20 lg:h-[350px] xl:h-[400px]">
       <Swiper
         loop={true}
         breakpoints={breakpoints}

@@ -10,7 +10,7 @@ export default async function OurClients({
   const clients = await getAllClients();
 
   return (
-    <section className="mb-20 flex flex-col items-center">
+    <section className="my-20 flex flex-col items-center">
       <ContentBlock contentBlock={contentBlock} />
       <ClientGallery clients={clients} />
     </section>
