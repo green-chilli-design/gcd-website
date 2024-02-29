@@ -7,19 +7,18 @@ export default function Card({
   link,
 }: {
   title: string;
-  image: string;
+  image: any;
   link: string;
 }) {
   return (
     <Link
       href={link}
-      className="relative h-[440px] w-[440px] cursor-pointer overflow-hidden rounded-br-[30px] rounded-tl-[30px] bg-black-80"
+      className="relative h-[440px] w-full max-w-[800px] cursor-pointer overflow-hidden rounded-br-[30px] rounded-tl-[30px] bg-black-80 transition duration-500 hover:scale-105"
     >
       <ContentfulImage
         priority
-        src={image}
+        src={image.url}
         alt={title}
-        className="absolute"
         fill={true}
         style={{
           objectFit: "cover",
