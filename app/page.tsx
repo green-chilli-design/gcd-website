@@ -13,7 +13,7 @@ export default async function HomePage() {
   return (
     <div>
       {homePage.heroImage?.url && (
-        <div className="absolute right-0 top-0 h-[776px] w-full bg-scroll lg:h-[980px]">
+        <div className="absolute right-0 top-0 h-[776px] w-full lg:h-[980px]">
           <div className="relative h-full mix-blend-multiply dark:mix-blend-normal">
             <ContentfulImage
               priority
