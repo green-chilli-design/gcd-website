@@ -7,7 +7,7 @@ export default function NavMenu() {
   const pathname = usePathname();
 
   return (
-    <div className="hidden items-center gap-5 sm:flex">
+    <div className="hidden items-center gap-16 sm:flex">
       {NAV_LINKS.map(({ href, label }) => {
         const isActive = pathname.startsWith(href);
 
