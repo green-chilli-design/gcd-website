@@ -2,7 +2,7 @@
 import { z } from "zod";
 
 export interface ActionResponse {
-  type: "success" | "error" | null;
+  type: "success" | "error";
   message?: string;
   errors?: { [key: string]: string[] | undefined };
 }
