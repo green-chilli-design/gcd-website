@@ -35,7 +35,7 @@ export default function ContactForm() {
     }
     const token = await executeRecaptcha("contact");
     formData.set("g-recaptcha-response", token);
-    await formAction(formData);
+    formAction(formData);
   };
 
   if (state?.type === "success") {
