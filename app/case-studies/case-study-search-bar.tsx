@@ -51,7 +51,7 @@ export default function CaseStudySearchBar({
   return (
     <section>
       {/* desktop filter */}
-      <div className="flex hidden w-full flex-wrap items-center gap-6 border border-x-0 border-y-black py-5 dark:border-y-neutral md:flex lg:justify-between">
+      <div className="hidden w-full flex-wrap items-center gap-6 border border-x-0 border-y-black py-5 dark:border-y-neutral md:flex lg:justify-between">
         <button
           type="button"
           onClick={() => selectCategory("All")}
