@@ -7,9 +7,10 @@ import Avatar from "@/app/avatar";
 import MoreStories from "@/app/blog/more-stories";
 
 import { getAllPosts } from "@/lib/api";
+import type { Metadata } from "next";
 
 const title = "GCD | Blog";
-export const metadata = {
+export const metadata: Metadata = {
   title,
   openGraph: {
     title,

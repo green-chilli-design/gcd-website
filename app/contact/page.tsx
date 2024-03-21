@@ -3,9 +3,10 @@ import React from "react";
 import ContactForm from "@/app/components/forms/ContactForm";
 import ParkingModal from "@/app/components/ParkingModal";
 import LocationMap from "@/app/components/LocationMap";
+import type { Metadata } from "next";
 
 const title = "GCD | Contact Us";
-export const metadata = {
+export const metadata: Metadata = {
   title,
   openGraph: {
     title,
@@ -29,7 +30,7 @@ export default async function ContactPage() {
 
         <section className="mb-11 grid grid-cols-1 lg:grid-cols-2">
           <div className="mb-12 mr-12">
-            <h5 className="font-semibold mb-5">Auckland, New Zealand</h5>
+            <h5 className="mb-5 font-semibold">Auckland, New Zealand</h5>
             <p className="small mb-5 flex items-center">
               <span className="material-symbols-outlined icon-20 mr-2">
                 location_on

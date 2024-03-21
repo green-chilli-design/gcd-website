@@ -6,7 +6,7 @@ import { Markdown } from "@/lib/markdown";
 
 import { getAllServices, getServiceBySlug } from "@/lib/api";
 
-import { ResolvingMetadata, Metadata } from "next";
+import type { ResolvingMetadata, Metadata } from "next";
 
 export async function generateMetadata(
   {

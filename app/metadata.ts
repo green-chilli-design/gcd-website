@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 const title = "GCD | Digital Strategy & Software Development";
 const description =

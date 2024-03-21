@@ -1,7 +1,8 @@
+import type { Metadata } from "next";
 import React from "react";
 
 const title = "GCD | About";
-export const metadata = {
+export const metadata: Metadata = {
   title,
   openGraph: {
     title,

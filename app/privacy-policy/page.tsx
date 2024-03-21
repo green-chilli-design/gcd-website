@@ -1,9 +1,10 @@
 import { getPageBySlug } from "@/lib/api";
 import { generateContentBlocks } from "@/lib/contentful-content-blocks";
 import React from "react";
+import type { Metadata } from "next";
 
 const title = "GCD | Privacy Policy";
-export const metadata = {
+export const metadata: Metadata = {
   title,
   openGraph: {
     title,

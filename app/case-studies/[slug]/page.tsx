@@ -1,7 +1,7 @@
 import { draftMode } from "next/headers";
 import { Markdown } from "@/lib/markdown";
 import { getCaseStudies, getCaseStudyBySlug } from "@/lib/api";
-import { ResolvingMetadata, Metadata } from "next";
+import type { ResolvingMetadata, Metadata } from "next";
 import ContentfulImage from "@/lib/contentful-image";
 import ReactNative from "@/app/components/ReactNative";
 import DiscoveryProcess from "@/app/components/DiscoveryProcess";

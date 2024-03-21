@@ -5,9 +5,10 @@ import ViewMore from "@/app/components/ViewMore";
 import AllCaseStudies from "./all-case-studies";
 import CaseStudySearchBar from "./case-study-search-bar";
 import { Suspense } from "react";
+import type { Metadata } from "next";
 
 const title = "GCD | Case Studies";
-export const metadata = {
+export const metadata: Metadata = {
   title,
   openGraph: {
     title,
