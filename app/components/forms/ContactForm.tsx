@@ -1,18 +1,9 @@
 "use client";
 
-// @ts-ignore
-import { useFormState } from "react-dom";
-// @ts-ignore
-import { useFormStatus } from "react-dom";
-import { ActionResponse, sendContact } from "../../actions";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { useRef } from "react";
-
-const initialState: ActionResponse = {
-  type: null,
-  message: "",
-  errors: {},
-};
+import { useFormState, useFormStatus } from "react-dom";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { sendContact } from "../../actions";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -35,7 +26,7 @@ function SubmitButton() {
 
 export default function ContactForm() {
   const { executeRecaptcha } = useGoogleReCaptcha();
-  const [state, formAction] = useFormState(sendContact, initialState);
+  const [state, formAction] = useFormState(sendContact, null);
   const ref = useRef<HTMLFormElement>(null);
   const onSubmit = async (formData: FormData) => {
     if (!executeRecaptcha) {
@@ -44,7 +35,7 @@ export default function ContactForm() {
     }
     const token = await executeRecaptcha("contact");
     formData.set("g-recaptcha-response", token);
-    await formAction(formData);
+    formAction(formData);
   };
 
   if (state?.type === "success") {
