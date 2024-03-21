@@ -9,7 +9,7 @@ const CONTENT_TAGS = [
   "services",
   "caseStudy",
   "caseStudies",
-];
+] as const;
 
 /**
  * TODO:
