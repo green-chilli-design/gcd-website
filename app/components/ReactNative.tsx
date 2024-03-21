@@ -2,11 +2,11 @@
 
 import { useTheme } from "next-themes";
 import Image from "next/image";
+import frameworkImg from "@/public/images/framework.jpg";
 
 export default function ReactNative() {
   const { resolvedTheme } = useTheme();
   const colour = resolvedTheme === "dark" ? "#F7F4F3" : "#0E0F0E";
-  const background = "/images/framework.png";
 
   return (
     <div className="mb-[120px]">
@@ -19,7 +19,7 @@ export default function ReactNative() {
         <div className="relative h-[430px] w-full">
           <Image
             priority
-            src={background}
+            src={frameworkImg}
             fill={true}
             style={{
               objectFit: "cover",
