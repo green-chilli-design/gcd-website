@@ -44,13 +44,7 @@
   /* Buttons */
   .btn {
     @apply text-sm lg:text-base;
-    @apply rounded-full;
-    height: 60px;
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-    text-decoration: none;
-    color: currentColor;
+    @apply h-[60px] rounded-full;
   }
   .btn.green {
     @apply bg-green hover:shadow-hover-btn hover:shadow-green-shadow;
