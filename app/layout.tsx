@@ -6,18 +6,10 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { Jost } from "next/font/google";
 import NavBar from "@/app/components/NavBar";
 import Footer from "@/app//components/Footer";
-
 import RecaptchaProvider from "@/app/components/providers/recaptcha-provider";
-import dynamic from "next/dynamic";
-const ThemeProvider = dynamic(
-  () => import("@/app/components/providers/theme-provider"),
-  {
-    ssr: false,
-  },
-);
-
 import type { Metadata } from "next";
 import { sharedMetadata } from "./metadata";
+import ThemeProvider from "./components/providers/theme-provider";
 
 export const metadata: Metadata = {
   ...sharedMetadata,

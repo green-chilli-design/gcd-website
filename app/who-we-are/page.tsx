@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import React from "react";
 
 const title = "GCD | Who We Are";
 export const metadata: Metadata = {
@@ -12,7 +11,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function WhoWeArePage() {
+export default function WhoWeArePage() {
   return (
     <div>
       <section className="main-content my-32">
