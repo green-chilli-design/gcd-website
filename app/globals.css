@@ -8,40 +8,34 @@
 @layer base {
   /* Typography */
   h1 {
-    @apply text-9xl lg:text-10xl xl:text-11xl;
-    font-weight: 500;
+    @apply text-9xl font-medium lg:text-10xl xl:text-11xl;
   }
   h2 {
-    @apply text-6xl lg:text-7xl xl:text-8xl;
-    font-weight: 500;
+    @apply text-6xl font-medium lg:text-7xl xl:text-8xl;
   }
   h3 {
-    @apply text-2xl lg:text-4xl xl:text-5xl;
-    font-weight: 500;
+    @apply text-2xl font-medium lg:text-4xl xl:text-5xl;
   }
   h4 {
     @apply text-base lg:text-xl xl:text-3xl;
   }
   h5 {
-    @apply text-sm lg:text-base xl:text-lg;
-    text-transform: uppercase;
+    @apply text-sm uppercase lg:text-base xl:text-lg;
   }
   body {
     @apply text-sm lg:text-base;
   }
   p {
-    font-weight: 300;
+    @apply font-light;
   }
   .small {
     @apply text-xs lg:text-sm;
   }
   label {
-    @apply text-2xs;
-    font-weight: 500;
+    @apply text-2xs font-medium;
   }
   label.small {
-    @apply text-3xs;
-    font-weight: 500;
+    @apply text-3xs font-medium;
   }
   .main-content {
     @apply w-full px-[18px] md:px-[80px] lg:px-[5rem] xl:px-[10%];
@@ -56,7 +50,7 @@
     -moz-appearance: button;
     appearance: button;
     text-decoration: none;
-    color: initial;
+    color: currentColor;
   }
   .btn.green {
     @apply bg-green hover:shadow-hover-btn hover:shadow-green-shadow;

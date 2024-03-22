@@ -46,9 +46,10 @@ export default function AllCaseStudies({
   caseStudies: any[];
   showMore: boolean;
 }) {
-  const [itemNum, setItemNum] = useState(4);
+  const initialItemNum = 4;
+  const [itemNum, setItemNum] = useState(initialItemNum);
   function handleClick() {
-    setItemNum((prevItemNum) => prevItemNum + 4);
+    setItemNum((prevItemNum) => prevItemNum + initialItemNum);
   }
   itemNum >= caseStudies.length ? (showMore = false) : (showMore = true);
 

@@ -9,7 +9,7 @@ import CoverImage from "@/app/cover-image";
 import { Markdown } from "@/lib/markdown";
 import { getAllPosts, getPostAndMorePosts, getPostBySlug } from "@/lib/api";
 
-import { ResolvingMetadata, Metadata } from "next";
+import type { ResolvingMetadata, Metadata } from "next";
 
 export async function generateMetadata(
   {
