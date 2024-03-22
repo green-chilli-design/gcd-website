@@ -16,16 +16,11 @@ const contactFormSchema = z.object({
   gRecaptchaResponse: z.string(),
 });
 
-export async function sendContact(
-  prevState: any,
-  formData: FormData,
-): Promise<ActionResponse> {
-  "use server";
+export async function sendContact(formData: FormData): Promise<ActionResponse> {
   try {
     if (!formData) {
       return { type: "error", message: "Something went wrong :(" };
     }
-    console.log(formData);
 
     const data = contactFormSchema.parse({
       firstName: formData.get("first-name") ?? "",
@@ -36,11 +31,11 @@ export async function sendContact(
       gRecaptchaResponse: formData.get("g-recaptcha-response") ?? "",
     });
 
-    if (data.gRecaptchaResponse) {
-      await validateRecaptcha(data.gRecaptchaResponse);
-    } else {
+    if (!data.gRecaptchaResponse) {
       throw new Error("There was no reCAPTCHA token in the request");
     }
+
+    await validateRecaptcha(data.gRecaptchaResponse);
 
     await sendEmail(data);
 
@@ -83,7 +78,6 @@ async function validateRecaptcha(recaptchaResponse: string) {
   );
 
   const recaptchaResult = await response.json();
-  console.log(recaptchaResult);
   if (
     !response.ok ||
     !recaptchaResult.success ||
@@ -164,10 +158,8 @@ const subscribeFormSchema = z.object({
 
 // TODO: just a dummy function at the moment / disabled for MVP
 export async function sendSubscribe(
-  prevState: any,
   formData: FormData,
 ): Promise<ActionResponse> {
-  "use server";
   try {
     if (!formData) {
       return { type: "error", message: "Something went wrong :(" };
@@ -179,11 +171,11 @@ export async function sendSubscribe(
       gRecaptchaResponse: formData.get("g-recaptcha-response") ?? "",
     });
 
-    if (data.gRecaptchaResponse) {
-      await validateRecaptcha(data.gRecaptchaResponse);
-    } else {
+    if (!data.gRecaptchaResponse) {
       throw new Error("There was no reCAPTCHA token in the request");
     }
+
+    await validateRecaptcha(data.gRecaptchaResponse);
 
     // TODO: implement this
     // await createSubscription(data.email);
