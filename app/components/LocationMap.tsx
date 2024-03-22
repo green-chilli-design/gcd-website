@@ -10,11 +10,15 @@ const center = {
 
 export default function LocationMap() {
   const mapRef = React.useRef<HTMLDivElement>(null);
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+  if (!apiKey) {
+    throw new Error("Missing Google Maps API key");
+  }
 
   useEffect(() => {
     const initMap = async () => {
       const loader = new Loader({
-        apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
+        apiKey,
         version: "weekly",
       });
 
