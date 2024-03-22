@@ -57,7 +57,7 @@ export default function NavMenuMobile() {
         {menuOpen ? (
           <span
             className={`material-symbols-outlined icon-48 ${
-              pathname === "/" ? "text-neutral" : ""
+              pathname === "/" && "text-neutral"
             }`}
           >
             horizontal_rule

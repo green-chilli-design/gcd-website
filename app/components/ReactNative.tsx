@@ -21,13 +21,9 @@ export default function ReactNative() {
             priority
             src={frameworkImg}
             fill={true}
-            style={{
-              objectFit: "cover",
-              objectPosition: "center",
-            }}
             sizes="100vw"
             alt="React Native Framework"
-            className="rounded-br-[100px] rounded-tl-[100px] mix-blend-darken dark:mix-blend-lighten"
+            className="rounded-br-[100px] rounded-tl-[100px] object-cover object-center mix-blend-darken dark:mix-blend-lighten"
           />
         </div>
       </section>

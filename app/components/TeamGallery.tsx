@@ -6,11 +6,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 import { Autoplay } from "swiper/modules";
-import { AutoplayOptions } from "swiper/types";
+import { AutoplayOptions, SwiperOptions } from "swiper/types";
 
 export default function TeamGallery({ gcdTeam }: { gcdTeam: any }) {
-  const swiperEl = document.querySelector("swiper-container");
-
   const autoplay: AutoplayOptions = {
     delay: 2000,
     pauseOnMouseEnter: true,
@@ -38,7 +36,7 @@ export default function TeamGallery({ gcdTeam }: { gcdTeam: any }) {
     3840: {
       slidesPerView: 8,
     },
-  };
+  } as const satisfies { [width: number]: SwiperOptions };
 
   return (
     <div className="h-[300px] w-full lg:-mt-20 lg:h-[350px] xl:h-[400px]">

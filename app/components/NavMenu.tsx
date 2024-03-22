@@ -16,7 +16,7 @@ export default function NavMenu() {
             key={label}
             href={href}
             className={`text-sm font-bold ${
-              pathname === "/" ? "text-neutral" : ""
+              pathname === "/" && "text-neutral"
             } ${isActive ? "text-green" : "hover:text-green hover:underline"}`}
           >
             {label}
