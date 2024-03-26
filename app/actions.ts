@@ -46,7 +46,7 @@ export async function sendContact(
     await sendSlackNotification(data);
 
     return { type: "success", message: "Message sent" };
-  } catch (error: any) {
+  } catch (error) {
     console.log(error);
     Sentry.captureException(error);
     if (error instanceof z.ZodError) {
@@ -73,9 +73,10 @@ async function validateRecaptcha(recaptchaResponse: string) {
     throw new Error("reCAPTCHA secret key not set");
   }
   const response = await fetch(
-    `https://www.google.com/recaptcha/api/siteverify?secret=${encodeURIComponent(
-      secretKey,
-    )}&response=${encodeURIComponent(recaptchaResponse)}`,
+    `https://www.google.com/recaptcha/api/siteverify?${new URLSearchParams({
+      secret: encodeURIComponent(secretKey),
+      response: encodeURIComponent(recaptchaResponse),
+    }).toString()}`,
     {
       method: "POST",
       cache: "no-cache",
@@ -178,7 +179,6 @@ export async function sendSubscribe(
     if (!formData) {
       return { type: "error", message: "Something went wrong :(" };
     }
-    console.log(formData);
 
     const data = subscribeFormSchema.parse({
       email: formData.get("email") ?? "",
@@ -195,7 +195,7 @@ export async function sendSubscribe(
     // await createSubscription(data.email);
 
     return { type: "success", message: "Subscribed!" };
-  } catch (error: any) {
+  } catch (error) {
     console.log(error);
     Sentry.captureException(error);
     if (error instanceof z.ZodError) {
