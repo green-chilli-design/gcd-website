@@ -13,10 +13,7 @@ export default function CallToActionBlock() {
         quality={100}
         sizes="100vw"
         fill={true}
-        style={{
-          objectFit: "cover",
-        }}
-        className="mix-blend-difference dark:mix-blend-normal"
+        className="object-cover mix-blend-difference dark:mix-blend-normal"
       />
       <div className="main-content absolute my-[200px] dark:text-black">
         <div className="flex w-full flex-col rounded-br-[100px] rounded-tl-[100px] bg-neutral px-5 py-16 lg:px-28 lg:py-20">

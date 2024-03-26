@@ -1,5 +1,6 @@
 "use server";
 import { z } from "zod";
+import * as Sentry from "@sentry/nextjs";
 
 export interface ActionResponse {
   type: "success" | "error";
@@ -47,6 +48,7 @@ export async function sendContact(
     return { type: "success", message: "Message sent" };
   } catch (error: any) {
     console.log(error);
+    Sentry.captureException(error);
     if (error instanceof z.ZodError) {
       const fieldErrors = error.flatten().fieldErrors;
       return { type: "error", errors: fieldErrors };
@@ -90,7 +92,9 @@ async function validateRecaptcha(recaptchaResponse: string) {
   }
 }
 
-async function sendEmail(data: any): Promise<Response> {
+async function sendEmail(
+  data: z.infer<typeof contactFormSchema>,
+): Promise<Response> {
   const smptp2goApiKey = process.env.SMTP2GO_API_KEY;
   if (!smptp2goApiKey) {
     throw new Error("SMTP2GO API key not set");
@@ -120,16 +124,20 @@ async function sendEmail(data: any): Promise<Response> {
   });
 
   if (!response.ok) {
-    console.log(response);
     const body = await response.json();
-    console.log(body);
-    throw new Error("Email sending failed");
+    throw new Error(
+      `Failed to send email: ${response.status} ${
+        response.statusText
+      }, ${JSON.stringify(body)}`,
+    );
   }
 
   return response;
 }
 
-async function sendSlackNotification(data: any): Promise<Response> {
+async function sendSlackNotification(
+  data: z.infer<typeof contactFormSchema>,
+): Promise<Response> {
   const slackUrl = process.env.SLACK_WEBHOOK_URL;
 
   if (!slackUrl) {
@@ -148,7 +156,9 @@ async function sendSlackNotification(data: any): Promise<Response> {
   });
 
   if (!response.ok) {
-    throw new Error("Slack webhook failed");
+    throw new Error(
+      `Slack webhook failed. ${response.status} ${response.statusText}`,
+    );
   }
 
   return response;
@@ -187,6 +197,7 @@ export async function sendSubscribe(
     return { type: "success", message: "Subscribed!" };
   } catch (error: any) {
     console.log(error);
+    Sentry.captureException(error);
     if (error instanceof z.ZodError) {
       const fieldErrors = error.flatten().fieldErrors;
       return { type: "error", errors: fieldErrors };
@@ -219,10 +230,9 @@ async function createSubscription(email: string): Promise<Response> {
   });
 
   if (!response.ok) {
-    console.log(response);
-    const body = await response.json();
-    console.log(body);
-    throw new Error("Subscription creation failed");
+    throw new Error(
+      `Subscription creation failed. ${response.status} ${response.statusText}`,
+    );
   }
 
   return response;
