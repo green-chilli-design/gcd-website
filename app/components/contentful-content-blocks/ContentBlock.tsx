@@ -1,9 +1,16 @@
 import { Markdown } from "@/lib/markdown";
+import { ContentBlock } from "@/lib/api";
 
-export default function ContentBlock({ contentBlock }: { contentBlock: any }) {
+export default function ContentBlock({
+  contentBlock,
+}: {
+  contentBlock: ContentBlock;
+}) {
   return (
     <section className="main-content flex justify-center py-5 lg:py-40">
-      <div className="max-w-[846px] text-center">
+      <div
+        className={`max-w-[846px] text-${contentBlock.textAlignment.toLowerCase()}`}
+      >
         {contentBlock.heading && (
           <h2 className="mb-5">{contentBlock.heading}</h2>
         )}

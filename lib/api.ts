@@ -281,6 +281,7 @@ const CASE_STUDY_GRAPHQL_FIELDS = `
       ... on ContentBlock {
         heading
         subHeading
+        textAlignment
         contentBody {
           json
           links {
@@ -393,6 +394,7 @@ const PAGE_GRAPHQL_FIELDS = `
       ... on ContentBlock {
         heading
         subHeading
+        textAlignment
         contentBody {
           json
           links {
@@ -480,6 +482,7 @@ const CONTENT_BLOCK_GRAPHQL_FIELDS = `
   __typename
   heading
   subHeading
+  textAlignment
   contentBody {
     json
     links {
@@ -502,6 +505,7 @@ export interface ContentBlock {
   __typename: string;
   heading: string;
   subHeading: string;
+  textAlignment: "Center" | "Left" | "Right" | "Justify";
   contentBody: ContentBlockBody;
 }
 
