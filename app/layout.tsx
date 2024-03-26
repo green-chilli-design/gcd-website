@@ -9,7 +9,18 @@ import Footer from "@/app//components/Footer";
 import RecaptchaProvider from "@/app/components/providers/recaptcha-provider";
 import type { Metadata } from "next";
 import { sharedMetadata } from "./metadata";
-import ThemeProvider from "./components/providers/theme-provider";
+
+// temp fix for https://github.com/pacocoursey/next-themes/issues/169
+// basically forces it to be client side, which is not ideal
+// TODO: remove this once the issue is fixed or investigate a better solution
+import dynamic from "next/dynamic";
+const ThemeProvider = dynamic(
+  () => import("@/app/components/providers/theme-provider"),
+  {
+    ssr: false,
+  },
+);
+// end temp fix
 
 export const metadata: Metadata = {
   ...sharedMetadata,
