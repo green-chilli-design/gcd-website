@@ -1,5 +1,6 @@
 import { getCaseStudies, getAllPosts, getAllServices } from "@/lib/api";
 import { MetadataRoute } from "next";
+import * as Sentry from "@sentry/nextjs";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://gcd.nz";
@@ -73,6 +74,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // dynamicPages.push(...postPages);
   } catch (error) {
     console.log(error);
+    Sentry.captureException(error);
   }
 
   return [...staticPages, ...dynamicPages];
