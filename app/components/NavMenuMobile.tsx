@@ -2,7 +2,7 @@ import { useState } from "react";
 import ThemeSwitch from "./ThemeSwitch";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { NAV_LINKS } from "@/lib/constants";
+import { NAV_LINKS } from "./NavMenu";
 
 export default function NavMenuMobile() {
   const pathname = usePathname();

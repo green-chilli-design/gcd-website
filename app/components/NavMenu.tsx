@@ -1,7 +1,29 @@
-import { NAV_LINKS } from "@/lib/constants";
 import ThemeSwitch from "./ThemeSwitch";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+export const NAV_LINKS = [
+  // {
+  //   href: "/services",
+  //   label: "Services",
+  // },
+  {
+    href: "/case-studies",
+    label: "Case Studies",
+  },
+  // {
+  //   href: "/blog",
+  //   label: "Blog",
+  // },
+  // {
+  //   href: "/about",
+  //   label: "About",
+  // },
+  {
+    href: "/contact",
+    label: "Contact Us",
+  },
+];
 
 export default function NavMenu() {
   const pathname = usePathname();
