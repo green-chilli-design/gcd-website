@@ -1,4 +1,4 @@
-import ContentfulMedia from "@/lib/contentful-image";
+import ContentfulMedia from "@/lib/contentful-media";
 import Link from "next/link";
 
 export default function Card({

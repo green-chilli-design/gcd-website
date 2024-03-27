@@ -1,6 +1,6 @@
 import { getPageBySlug } from "@/lib/api";
 import { generateContentBlocks } from "@/lib/contentful-content-blocks";
-import ContentfulMedia from "@/lib/contentful-image";
+import ContentfulMedia from "@/lib/contentful-media";
 import CallToActionBlock from "./components/contentful-content-blocks/CallToActionBlock";
 
 export default async function HomePage() {

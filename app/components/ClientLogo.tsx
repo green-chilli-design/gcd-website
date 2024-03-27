@@ -1,5 +1,5 @@
 "use client";
-import ContentfulMedia from "@/lib/contentful-image";
+import ContentfulMedia from "@/lib/contentful-media";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 

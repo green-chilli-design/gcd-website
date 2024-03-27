@@ -2,7 +2,7 @@ import DiscoveryProcess from "@/app/components/DiscoveryProcess";
 import ReactNative from "@/app/components/ReactNative";
 import { getCaseStudies, getCaseStudyBySlug } from "@/lib/api";
 import { generateContentBlocks } from "@/lib/contentful-content-blocks";
-import ContentfulMedia from "@/lib/contentful-image";
+import ContentfulMedia from "@/lib/contentful-media";
 import { Markdown } from "@/lib/markdown";
 import type { Metadata, ResolvingMetadata } from "next";
 import { draftMode } from "next/headers";

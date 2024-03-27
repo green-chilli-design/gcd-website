@@ -1,5 +1,5 @@
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import ContentfulMedia from "@/lib/contentful-image";
+import ContentfulMedia from "@/lib/contentful-media";
 
 export default function ParkingModal({
   url,

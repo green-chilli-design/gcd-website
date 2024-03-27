@@ -1,6 +1,6 @@
 "use client";
 
-import ContentfulMedia from "@/lib/contentful-image";
+import ContentfulMedia from "@/lib/contentful-media";
 import { Markdown } from "@/lib/markdown";
 import { useTheme } from "next-themes";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import ContentfulMedia from "@/lib/contentful-image";
+import ContentfulMedia from "@/lib/contentful-media";
 import { useState } from "react";
 
 function ServicePreview({ service }: { service: any }) {
