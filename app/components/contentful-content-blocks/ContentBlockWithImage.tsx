@@ -1,6 +1,6 @@
 "use client";
 
-import ContentfulImage from "@/lib/contentful-image";
+import ContentfulMedia from "@/lib/contentful-image";
 import { Markdown } from "@/lib/markdown";
 import { useTheme } from "next-themes";
 
@@ -31,13 +31,16 @@ export default function ContentBlockWithImage({
           <Markdown content={contentBlock.body} />
         </div>
       </div>
-      <ContentfulImage
-        sizes="(max-width: 768px) 66vw, (max-width: 1024px) 50vw, 33vw"
-        width={image.width}
-        height={image.height}
+      <ContentfulMedia
         src={image.url}
         alt={contentBlock.heading}
-        className="lg:1/2 w-full rounded-br-[100px] rounded-tl-[100px] sm:w-2/3 xl:w-1/3"
+        imageProps={{
+          width: image.width,
+          height: image.height,
+          className:
+            "lg:1/2 w-full rounded-br-[100px] rounded-tl-[100px] sm:w-2/3 xl:w-1/3",
+          sizes: "(max-width: 768px) 66vw, (max-width: 1024px) 50vw, 33vw",
+        }}
       />
     </section>
   );

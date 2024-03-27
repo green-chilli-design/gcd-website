@@ -2,64 +2,53 @@
 
 import Image, { ImageProps } from "next/image";
 
-interface ContentfulImageProps {
-  src: string;
-  width?: number;
-  quality?: number;
-  [key: string]: any; // For other props that might be passed
-}
-
-const contentfulLoader = ({ src, width, quality }: ContentfulImageProps) => {
+const contentfulLoader = ({
+  src,
+  width,
+  quality,
+}: Pick<ImageProps, "src" | "width" | "quality">) => {
   return `${src}?w=${width}&q=${quality || 75}`;
 };
 
-export function Video(props: ContentfulImageProps) {
+const defaultImageProps: Omit<ImageProps, "src" | "alt"> = {
+  loader: contentfulLoader,
+  placeholder: "blur",
+  blurDataURL:
+    "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOsrgcAAXsA/KZ1G74AAAAASUVORK5CYII=",
+};
+
+export function Video(props: { src: string }) {
   return (
-    <div className="h-full w-full">
-      <video
-        width="100%"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="none"
-        aria-label="Video player"
-      >
-        <source src={props.src} type="video/mp4" />
-        <source src={props.src} type="video/webm" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
+    <video
+      width="100%"
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="none"
+      aria-label="Video player"
+      className="h-full w-full"
+    >
+      <source src={props.src} type="video/mp4" />
+      <source src={props.src} type="video/webm" />
+      Your browser does not support the video tag.
+    </video>
   );
 }
 
-export default function ContentfulImage(props: ContentfulImageProps) {
-  const placeholder = "blur";
-  const blurDataURL =
-    "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOsrgcAAXsA/KZ1G74AAAAASUVORK5CYII=";
-
-  if (props.src.includes(".mp4") || props.src.includes(".webm")) {
-    return <Video src={props.src} />;
-  } else {
-    return props.style?.objectFit ? (
-      <Image
-        alt={props.alt}
-        loader={contentfulLoader}
-        style={{
-          objectFit: props.style?.objectFit,
-        }}
-        placeholder={placeholder}
-        blurDataURL={blurDataURL}
-        {...props}
-      />
-    ) : (
-      <Image
-        alt={props.alt}
-        loader={contentfulLoader}
-        placeholder={placeholder}
-        blurDataURL={blurDataURL}
-        {...props}
-      />
-    );
-  }
+export default function ContentfulMedia({
+  src,
+  alt,
+  imageProps,
+}: {
+  src: string;
+  alt: string;
+  imageProps?: Omit<ImageProps, "src" | "alt">;
+}) {
+  // TODO we should probably use the contentType property for this
+  return src.includes(".mp4") || src.includes(".webm") ? (
+    <Video src={src} />
+  ) : (
+    <Image src={src} alt={alt} {...{ ...defaultImageProps, ...imageProps }} />
+  );
 }

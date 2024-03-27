@@ -1,7 +1,7 @@
 "use client";
 
+import ContentfulMedia from "@/lib/contentful-image";
 import { useState } from "react";
-import ContentfulImage from "@/lib/contentful-image";
 
 function ServicePreview({ service }: { service: any }) {
   return (
@@ -9,12 +9,14 @@ function ServicePreview({ service }: { service: any }) {
       <div className="flex w-full flex-col">
         {/* TODO: Link to service page (/services/:slug) - not done yet for MVP */}
         {service.coverImage?.url && (
-          <ContentfulImage
+          <ContentfulMedia
             src={service.coverImage.url}
             alt={service.title}
-            width={522}
-            height={300}
-            className="mb-5 h-[300px] rounded-br-[30px] rounded-tl-[30px]"
+            imageProps={{
+              width: 522,
+              height: 300,
+              className: "mb-5 h-[300px] rounded-br-[30px] rounded-tl-[30px]",
+            }}
           />
         )}
 

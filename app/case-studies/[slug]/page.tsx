@@ -1,11 +1,11 @@
-import { draftMode } from "next/headers";
-import { Markdown } from "@/lib/markdown";
-import { getCaseStudies, getCaseStudyBySlug } from "@/lib/api";
-import type { ResolvingMetadata, Metadata } from "next";
-import ContentfulImage from "@/lib/contentful-image";
-import ReactNative from "@/app/components/ReactNative";
 import DiscoveryProcess from "@/app/components/DiscoveryProcess";
+import ReactNative from "@/app/components/ReactNative";
+import { getCaseStudies, getCaseStudyBySlug } from "@/lib/api";
 import { generateContentBlocks } from "@/lib/contentful-content-blocks";
+import ContentfulMedia from "@/lib/contentful-image";
+import { Markdown } from "@/lib/markdown";
+import type { Metadata, ResolvingMetadata } from "next";
+import { draftMode } from "next/headers";
 
 export async function generateMetadata(
   {
@@ -61,14 +61,13 @@ export default async function CaseStudyPage({
           </h1>
         </div>
         <div className="relative mb-32 h-[450px] w-full bg-scroll sm:h-[700px] md:h-[812px] lg:absolute lg:right-0 lg:top-0 lg:w-1/2 xl:h-[1183px]">
-          <ContentfulImage
-            priority
+          <ContentfulMedia
             src={caseStudy.coverImage.url}
             alt={caseStudy.title}
-            className="rounded-br-[100px]"
-            fill
-            style={{
-              objectFit: "cover",
+            imageProps={{
+              priority: true,
+              className: "rounded-br-[100px] object-cover",
+              fill: true,
             }}
           />
         </div>

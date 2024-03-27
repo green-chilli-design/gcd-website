@@ -1,6 +1,6 @@
 import { getPageBySlug } from "@/lib/api";
 import { generateContentBlocks } from "@/lib/contentful-content-blocks";
-import ContentfulImage from "@/lib/contentful-image";
+import ContentfulMedia from "@/lib/contentful-image";
 import CallToActionBlock from "./components/contentful-content-blocks/CallToActionBlock";
 
 export default async function HomePage() {
@@ -15,16 +15,16 @@ export default async function HomePage() {
       {homePage.heroImage?.url && (
         <div className="absolute right-0 top-0 h-[776px] w-full lg:h-[980px]">
           <div className="relative h-full mix-blend-multiply dark:mix-blend-normal">
-            <ContentfulImage
-              priority
+            <ContentfulMedia
               src={homePage.heroImage.url}
               alt="GCD Hero Image"
-              className="absolute rounded-br-[100px] bg-light-shadow"
-              fill
-              style={{
-                objectFit: "cover",
+              imageProps={{
+                priority: true,
+                className:
+                  "absolute rounded-br-[100px] bg-light-shadow object-cover",
+                fill: true,
+                sizes: "100vw",
               }}
-              sizes="100vw"
             />
             <div className="absolute h-full w-2/3 bg-gradient-to-r from-black"></div>
             <div className="absolute h-2/3 w-full bg-gradient-to-b from-black"></div>

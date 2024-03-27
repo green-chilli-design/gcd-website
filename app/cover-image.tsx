@@ -1,4 +1,4 @@
-import ContentfulImage from "@/lib/contentful-image";
+import ContentfulMedia from "@/lib/contentful-image";
 import Link from "next/link";
 
 export default function CoverImage({
@@ -13,15 +13,15 @@ export default function CoverImage({
   slug?: string;
 }) {
   const image = (
-    <ContentfulImage
-      alt={`Cover Image for ${title}`}
-      priority
+    <ContentfulMedia
       src={url}
-      fill={true}
-      style={{
-        objectFit: "cover",
+      alt={`Cover Image for ${title}`}
+      imageProps={{
+        priority: true,
+        fill: true,
+        className: "object-cover",
+        sizes: "(max-width: 320px) 90vw, 80vw",
       }}
-      sizes="(max-width: 320px) 90vw, 80vw"
     />
   );
 
