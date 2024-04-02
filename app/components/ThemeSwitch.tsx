@@ -1,7 +1,6 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 export default function ThemeSwitch({
@@ -10,11 +9,9 @@ export default function ThemeSwitch({
   isMobile?: boolean;
 }) {
   const { setTheme, resolvedTheme } = useTheme();
-  const pathname = usePathname();
   const [effect, setEffect] = useState(false);
-  let iconColor =
-    resolvedTheme === "dark" || pathname === "/" ? "#F7F4F3" : "#080708";
-  if (resolvedTheme === "light" && pathname === "/" && isMobile) {
+  let iconColor = resolvedTheme === "dark" ? "#F7F4F3" : "#080708";
+  if (resolvedTheme === "light" && isMobile) {
     iconColor = "#080708";
   }
   return (
