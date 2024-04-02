@@ -37,7 +37,7 @@ export function Video(props: { src: string }) {
 }
 
 /**
- * Component to render contentful media. Source can either be an image or a vide.
+ * Component to render contentful media. Source can either be an image or a video.
  *
  * Note: Image props can be modified by passing values via `imageProps`, but video props can not be modified.
  */
