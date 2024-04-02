@@ -18,7 +18,7 @@ const contactFormSchema = z.object({
 });
 
 export async function sendContact(
-  prevState: any,
+  _: any,
   formData: FormData,
 ): Promise<ActionResponse> {
   try {
@@ -172,7 +172,7 @@ const subscribeFormSchema = z.object({
 
 // TODO: just a dummy function at the moment / disabled for MVP
 export async function sendSubscribe(
-  prevState: any,
+  _: any,
   formData: FormData,
 ): Promise<ActionResponse> {
   try {

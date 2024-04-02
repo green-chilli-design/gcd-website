@@ -370,6 +370,16 @@ const PAGE_GRAPHQL_FIELDS = `
     width
     height
   }
+  bannerContent {
+    imagesCollection {
+      items {
+        title
+        url
+        width
+        height
+      }
+    }
+  }
   description
   pageContentCollection(limit: 10) {
     items { 
