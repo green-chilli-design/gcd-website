@@ -1,5 +1,5 @@
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import ContentfulImage from "@/lib/contentful-image";
+import ContentfulMedia from "@/lib/contentful-media";
 
 export default function ParkingModal({
   url,
@@ -24,13 +24,16 @@ export default function ParkingModal({
       </DialogTrigger>
       <DialogContent className="py-0 pt-6 lg:py-6">
         <div className="pt-14">
-          <ContentfulImage
-            alt={description}
-            width={width}
-            height={height}
-            quality={100}
-            className="relative h-full w-full rounded-br-[100px] rounded-tl-[100px]"
+          <ContentfulMedia
             src={url}
+            alt={description}
+            imageProps={{
+              width,
+              height,
+              quality: 100,
+              className:
+                "relative h-full w-full rounded-br-[100px] rounded-tl-[100px]",
+            }}
           />
         </div>
       </DialogContent>

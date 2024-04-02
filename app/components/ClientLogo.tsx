@@ -1,5 +1,5 @@
 "use client";
-import ContentfulImage from "@/lib/contentful-image";
+import ContentfulMedia from "@/lib/contentful-media";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 
@@ -13,11 +13,10 @@ export default function ClientLogo({ client }: { client: any }) {
   return (
     url && (
       <Link href={client.url} target="_blank">
-        <ContentfulImage
+        <ContentfulMedia
           src={url}
           alt={client.name}
-          width={width}
-          height={height}
+          imageProps={{ width, height }}
         />
       </Link>
     )

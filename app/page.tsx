@@ -1,6 +1,6 @@
 import { getPageBySlug } from "@/lib/api";
 import { generateContentBlocks } from "@/lib/contentful-content-blocks";
-import ContentfulImage from "@/lib/contentful-image";
+import ContentfulMedia from "@/lib/contentful-media";
 import CallToActionBlock from "./components/contentful-content-blocks/CallToActionBlock";
 
 export default async function HomePage() {
@@ -27,18 +27,21 @@ export default async function HomePage() {
             <div className="absolute h-[130px] w-full from-transparent to-neutral dark:from-transparent dark:to-black md:bg-gradient-to-t"></div>
             <div className="grid grid-flow-col grid-rows-2 items-center gap-3 md:items-start md:justify-end lg:gap-5">
               {bannerImages.map((image: any, index) => (
-                <ContentfulImage
+                <ContentfulMedia
                   key={image.url}
                   src={image.url}
                   alt={image.title}
-                  width={image.width}
-                  height={image.height}
-                  className={`rounded-br-[30px] rounded-tl-[30px] object-cover md:w-full md:max-w-[305px] ${
-                    index === 2
-                      ? "row-span-2 h-[350px] md:h-[709px]"
-                      : "h-[240px] md:h-[400px]"
-                  }`}
-                  sizes="(max-width: 320px) 50vw, 305px"
+                  imageProps={{
+                    priority: true,
+                    className: `rounded-br-[30px] rounded-tl-[30px] object-cover md:w-full md:max-w-[305px] ${
+                      index === 2
+                        ? "row-span-2 h-[350px] md:h-[709px]"
+                        : "h-[240px] md:h-[400px]"
+                    }`,
+                    width: image.width,
+                    height: image.height,
+                    sizes: "(max-width: 320px) 50vw, 305px",
+                  }}
                 />
               ))}
             </div>

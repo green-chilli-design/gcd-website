@@ -1,4 +1,4 @@
-import ContentfulImage from "@/lib/contentful-image";
+import ContentfulMedia from "@/lib/contentful-media";
 import Link from "next/link";
 
 export default function Card({
@@ -16,15 +16,15 @@ export default function Card({
       className="relative h-[440px] w-full max-w-[800px] cursor-pointer overflow-hidden rounded-br-[30px] rounded-tl-[30px] bg-black-80"
     >
       <div className="absolute h-full w-full transition duration-500 hover:scale-105">
-        <ContentfulImage
-          priority
+        <ContentfulMedia
           src={image.url}
           alt={title}
-          fill={true}
-          style={{
-            objectFit: "cover",
+          imageProps={{
+            priority: true,
+            fill: true,
+            className: "object-cover",
+            sizes: "(max-width: 320px) 90vw, (max-width: 1024px) 50vw, 33vw",
           }}
-          sizes="(max-width: 320px) 90vw, (max-width: 1024px) 50vw, 33vw"
         />
         <div className="absolute bottom-0 h-2/3 w-full bg-gradient-to-t from-black"></div>
       </div>
