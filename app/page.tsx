@@ -25,7 +25,7 @@ export default async function HomePage() {
         {bannerImages.length && (
           <div className="w-full md:mt-[-130px]">
             <div className="absolute h-[130px] w-full from-transparent to-neutral dark:from-transparent dark:to-black md:bg-gradient-to-t"></div>
-            <div className="grid grid-flow-col grid-rows-2 items-center gap-3 md:items-start md:justify-end">
+            <div className="grid grid-flow-col grid-rows-2 items-center gap-3 md:items-start md:justify-end lg:gap-5">
               {bannerImages.map((image: any, index) => (
                 <ContentfulImage
                   key={image.url}
