@@ -14,7 +14,7 @@ export default async function HomePage() {
 
   return (
     <div>
-      <section className="main-content flex flex-col md:flex-row">
+      <section className="main-content flex flex-col gap-3 md:flex-row">
         <div className="mb-8 mt-12">
           <h1 className="mb-5">
             Don&apos;t just <br /> build.Build better.
@@ -23,8 +23,9 @@ export default async function HomePage() {
         </div>
 
         {bannerImages.length && (
-          <div className="w-full md:mt-[-120px]">
-            <div className="grid grid-flow-col grid-rows-2 items-center gap-3 md:items-start">
+          <div className="w-full md:mt-[-130px]">
+            <div className="absolute h-[130px] w-full from-transparent to-neutral dark:from-transparent dark:to-black md:bg-gradient-to-t"></div>
+            <div className="grid grid-flow-col grid-rows-2 items-center gap-3 md:items-start md:justify-end">
               {bannerImages.map((image: any, index) => (
                 <ContentfulImage
                   key={image.url}
@@ -32,7 +33,7 @@ export default async function HomePage() {
                   alt={image.title}
                   width={image.width}
                   height={image.height}
-                  className={`w-full max-w-[305px] rounded-br-[30px] rounded-tl-[30px] object-cover ${
+                  className={`rounded-br-[30px] rounded-tl-[30px] object-cover md:w-full md:max-w-[305px] ${
                     index === 2
                       ? "row-span-2 h-[350px] md:h-[709px]"
                       : "h-[240px] md:h-[400px]"
