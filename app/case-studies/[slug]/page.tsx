@@ -55,7 +55,7 @@ export default async function CaseStudyPage({
     caseStudy.pageContentCollection.items,
   );
 
-  const caseStudies = await getCaseStudies(isEnabled, caseStudy.category.name);
+  const caseStudies = await getCaseStudies(isEnabled, caseStudy.category?.name);
   if (caseStudies.length) {
     caseStudies.splice(
       caseStudies.findIndex((c) => c.slug === caseStudy.slug),
