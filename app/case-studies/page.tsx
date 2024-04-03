@@ -49,7 +49,7 @@ function FeaturedCaseStudy({ caseStudy }: { caseStudy: any }) {
       </div>
       <div className="flex justify-between">
         <div className="max-w-[740px]">
-          <h3 className="mb-5 text-4xl">{caseStudy.title}</h3>
+          <h3 className="mb-5">{caseStudy.title}</h3>
           <p className="mb-5">{caseStudy.summary}</p>
         </div>
         <div className="ml-10 shrink-0">

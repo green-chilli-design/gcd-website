@@ -28,7 +28,7 @@ function CaseStudyPreview({
       </div>
       <div className="flex w-full justify-between">
         <div>
-          <h3 className="mb-5 text-4xl">{title}</h3>
+          <h3 className="mb-5">{title}</h3>
           <p className="mb-5">{summary}</p>
         </div>
         <div className="ml-10 shrink-0">
