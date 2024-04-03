@@ -234,6 +234,9 @@ const CASE_STUDY_GRAPHQL_FIELDS = `
     height
   }
   summary
+  category {
+    name
+  }
   description {
     json
     links {

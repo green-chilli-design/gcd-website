@@ -35,7 +35,6 @@ function RichTextAsset({
   assets?: Asset[] | undefined;
 }) {
   const asset = assets?.find((asset) => asset.sys.id === id);
-  console.log("asset", asset);
 
   if (asset?.url) {
     return (

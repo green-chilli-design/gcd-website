@@ -5,7 +5,7 @@ import { useState } from "react";
 import ViewMore from "../components/ViewMore";
 import ReactNative from "../components/ReactNative";
 
-function CaseStudyPreview({
+export function CaseStudyPreview({
   title,
   summary,
   coverImage,
