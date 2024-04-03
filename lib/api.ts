@@ -49,6 +49,8 @@ const POST_GRAPHQL_FIELDS = `
           }
           url
           description
+          width
+          height
         }
       }
     }
@@ -160,6 +162,8 @@ const SERVICE_GRAPHQL_FIELDS = `
           }
           url
           description
+          width
+          height
         }
       }
     }
@@ -230,6 +234,15 @@ const CASE_STUDY_GRAPHQL_FIELDS = `
     height
   }
   summary
+  category {
+    name
+  }
+  client {
+    name
+  }
+  projectType
+  industry
+  deliverables
   description {
     json
     links {
@@ -240,6 +253,8 @@ const CASE_STUDY_GRAPHQL_FIELDS = `
           }
           url
           description
+          width
+          height
         }
       }
     }
@@ -254,6 +269,8 @@ const CASE_STUDY_GRAPHQL_FIELDS = `
           }
           url
           description
+          width
+          height
         }
       }
     }

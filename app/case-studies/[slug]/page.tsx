@@ -1,11 +1,14 @@
 import DiscoveryProcess from "@/app/components/DiscoveryProcess";
 import ReactNative from "@/app/components/ReactNative";
+import CallToActionBlock from "@/app/components/contentful-content-blocks/CallToActionBlock";
 import { getCaseStudies, getCaseStudyBySlug } from "@/lib/api";
 import { generateContentBlocks } from "@/lib/contentful-content-blocks";
 import ContentfulMedia from "@/lib/contentful-media";
 import { Markdown } from "@/lib/markdown";
 import type { Metadata, ResolvingMetadata } from "next";
 import { draftMode } from "next/headers";
+import Link from "next/link";
+import { CaseStudyPreview } from "../all-case-studies";
 
 export async function generateMetadata(
   {
@@ -52,44 +55,90 @@ export default async function CaseStudyPage({
     caseStudy.pageContentCollection.items,
   );
 
+  const caseStudies = await getCaseStudies(isEnabled, caseStudy.category.name);
+  if (caseStudies.length) {
+    caseStudies.splice(
+      caseStudies.findIndex((c) => c.slug === caseStudy.slug),
+      1,
+    );
+  }
+
   return (
     <div>
-      <section className="xl:mb-[44rem]">
-        <div className="main-content">
-          <h1 className="mb-5 mt-16 lg:mb-[416px] lg:mt-[210px] lg:w-1/2 xl:mb-[616px] xl:mt-[410px]">
-            {caseStudy.title}
-          </h1>
+      <section className="mb-24 mt-20 flex flex-col gap-3 lg:mt-0 lg:flex-row lg:items-center">
+        <div className="main-content mb-6 h-full w-full lg:mt-20">
+          <h1>{caseStudy.title}</h1>
         </div>
-        <div className="relative mb-32 h-[450px] w-full bg-scroll sm:h-[700px] md:h-[812px] lg:absolute lg:right-0 lg:top-0 lg:w-1/2 xl:h-[1183px]">
+        <div className="h-full w-full lg:max-w-[710px]">
           <ContentfulMedia
             src={caseStudy.coverImage.url}
             alt={caseStudy.title}
             imageProps={{
               priority: true,
-              className: "rounded-br-[100px] object-cover",
-              fill: true,
+              className:
+                "rounded-br-[30px] rounded-tl-[30px] object-cover w-full h-full",
+              width: caseStudy.coverImage.width,
+              height: caseStudy.coverImage.height,
+              sizes: "(max-width: 320px) 100vw, 710px",
             }}
           />
         </div>
       </section>
 
-      {caseStudy.description && (
-        <section className="main-content mb-32 flex justify-center">
-          <div className="w-full lg:max-w-[846px] xl:max-w-[1274px]">
-            <Markdown content={caseStudy.description} />
-          </div>
-        </section>
-      )}
+      <main className="main-content flex flex-row justify-between">
+        {/* case study content */}
+        <div className="w-full">
+          {caseStudy.description && (
+            <section className="mb-32 flex justify-center">
+              <div className="w-full lg:max-w-[846px]">
+                <Markdown content={caseStudy.description} />
+              </div>
+            </section>
+          )}
 
-      {caseStudy.body && (
-        <section className="main-content mb-32 flex justify-center">
-          <div className="w-full lg:max-w-[846px]">
-            <Markdown content={caseStudy.body} />
-          </div>
-        </section>
-      )}
+          {caseStudy.body && (
+            <section className="mb-32 flex justify-center">
+              <div className="w-full font-light lg:max-w-[846px]">
+                <Markdown content={caseStudy.body} />
+              </div>
+            </section>
+          )}
 
-      <main className="mt-[200px]">{contentBlocks}</main>
+          <div className="mt-[200px]">{contentBlocks}</div>
+        </div>
+
+        {/* sticky sidebar */}
+        <div className="sticky top-0 max-w-[197px] self-start">
+          {caseStudy.client?.name && (
+            <div>
+              <p className="small font-bold">Client:</p>
+              <p className="small">{caseStudy.client.name}</p>
+              <br />
+            </div>
+          )}
+          {caseStudy.projectType && (
+            <div>
+              <p className="small font-bold">Project Type:</p>
+              <p className="small">{caseStudy.projectType}</p>
+              <br />
+            </div>
+          )}
+          {caseStudy.industry && (
+            <div>
+              <p className="small font-bold">Industry:</p>
+              <p className="small">{caseStudy.industry}</p>
+              <br />
+            </div>
+          )}
+          {caseStudy.deliverables?.length && (
+            <div>
+              <p className="small font-bold">Deliverables:</p>
+              <p className="small">{caseStudy.deliverables.join(", ")}</p>
+              <br />
+            </div>
+          )}
+        </div>
+      </main>
 
       {caseStudy.backgroundImage?.url && (
         <section>
@@ -102,9 +151,34 @@ export default async function CaseStudyPage({
         </section>
       )}
 
-      <DiscoveryProcess />
+      <section className="main-content">
+        <div className="mb-10 flex flex-row items-center justify-between">
+          <h2>Explore more like this</h2>
+          <Link
+            href={"/case-studies"}
+            className="btn dark:light dark flex items-center justify-center p-5 dark:text-black"
+          >
+            More Case Studies
+          </Link>
+        </div>
+        <div className="w-full">
+          {caseStudies.length && (
+            <div className="mb-24 grid grid-cols-1 gap-20 md:grid-cols-2 xl:grid-cols-3">
+              {caseStudies.map((caseStudy) => (
+                <CaseStudyPreview
+                  key={caseStudy.slug}
+                  title={caseStudy.title}
+                  coverImage={caseStudy.coverImage}
+                  slug={caseStudy.slug}
+                  summary={caseStudy.summary}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
 
-      <ReactNative />
+      <CallToActionBlock />
     </div>
   );
 }
