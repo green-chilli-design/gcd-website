@@ -1,5 +1,6 @@
 import DiscoveryProcess from "@/app/components/DiscoveryProcess";
 import ReactNative from "@/app/components/ReactNative";
+import CallToActionBlock from "@/app/components/contentful-content-blocks/CallToActionBlock";
 import { getCaseStudies, getCaseStudyBySlug } from "@/lib/api";
 import { generateContentBlocks } from "@/lib/contentful-content-blocks";
 import ContentfulMedia from "@/lib/contentful-media";
@@ -54,20 +55,21 @@ export default async function CaseStudyPage({
 
   return (
     <div>
-      <section className="xl:mb-[44rem]">
-        <div className="main-content">
-          <h1 className="mb-5 mt-16 lg:mb-[416px] lg:mt-[210px] lg:w-1/2 xl:mb-[616px] xl:mt-[410px]">
-            {caseStudy.title}
-          </h1>
+      <section className="mb-24 mt-20 flex flex-col gap-3 lg:mt-0 lg:flex-row lg:items-center">
+        <div className="main-content mb-6 h-full w-full lg:mt-20">
+          <h1>{caseStudy.title}</h1>
         </div>
-        <div className="relative mb-32 h-[450px] w-full bg-scroll sm:h-[700px] md:h-[812px] lg:absolute lg:right-0 lg:top-0 lg:w-1/2 xl:h-[1183px]">
+        <div className="h-full w-full lg:max-w-[710px]">
           <ContentfulMedia
             src={caseStudy.coverImage.url}
             alt={caseStudy.title}
             imageProps={{
               priority: true,
-              className: "rounded-br-[100px] object-cover",
-              fill: true,
+              className:
+                "rounded-br-[30px] rounded-tl-[30px] object-cover w-full h-full",
+              width: caseStudy.coverImage.width,
+              height: caseStudy.coverImage.height,
+              sizes: "(max-width: 320px) 100vw, 710px",
             }}
           />
         </div>
@@ -102,9 +104,7 @@ export default async function CaseStudyPage({
         </section>
       )}
 
-      <DiscoveryProcess />
-
-      <ReactNative />
+      <CallToActionBlock />
     </div>
   );
 }
