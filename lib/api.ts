@@ -49,6 +49,8 @@ const POST_GRAPHQL_FIELDS = `
           }
           url
           description
+          width
+          height
         }
       }
     }
@@ -160,6 +162,8 @@ const SERVICE_GRAPHQL_FIELDS = `
           }
           url
           description
+          width
+          height
         }
       }
     }
@@ -240,6 +244,8 @@ const CASE_STUDY_GRAPHQL_FIELDS = `
           }
           url
           description
+          width
+          height
         }
       }
     }
@@ -254,6 +260,8 @@ const CASE_STUDY_GRAPHQL_FIELDS = `
           }
           url
           description
+          width
+          height
         }
       }
     }

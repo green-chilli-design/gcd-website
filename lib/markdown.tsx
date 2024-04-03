@@ -4,6 +4,7 @@ import {
   documentToReactComponents,
 } from "@contentful/rich-text-react-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
+import ContentfulMedia from "./contentful-media";
 
 interface Asset {
   sys: {
@@ -34,16 +35,18 @@ function RichTextAsset({
   assets?: Asset[] | undefined;
 }) {
   const asset = assets?.find((asset) => asset.sys.id === id);
+  console.log("asset", asset);
 
   if (asset?.url) {
     return (
-      <Image
+      <ContentfulMedia
         src={asset.url}
-        width={asset.width}
-        height={asset.height}
-        objectPosition="relative"
         alt={asset.description}
-        className="rounded-br-[100px] rounded-tl-[100px]"
+        imageProps={{
+          width: asset.width,
+          height: asset.height,
+          className: "rounded-br-[30px] rounded-tl-[30px] w-full my-12",
+        }}
       />
     );
   }

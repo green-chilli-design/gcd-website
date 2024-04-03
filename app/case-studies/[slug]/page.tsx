@@ -77,7 +77,7 @@ export default async function CaseStudyPage({
 
       {caseStudy.description && (
         <section className="main-content mb-32 flex justify-center">
-          <div className="w-full lg:max-w-[846px] xl:max-w-[1274px]">
+          <div className="w-full lg:max-w-[846px]">
             <Markdown content={caseStudy.description} />
           </div>
         </section>
