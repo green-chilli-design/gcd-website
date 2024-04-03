@@ -85,24 +85,59 @@ export default async function CaseStudyPage({
         </div>
       </section>
 
-      <main>
-        {caseStudy.description && (
-          <section className="main-content mb-32 flex justify-center">
-            <div className="w-full lg:max-w-[846px]">
-              <Markdown content={caseStudy.description} />
-            </div>
-          </section>
-        )}
+      <main className="main-content flex flex-row justify-between">
+        {/* case study content */}
+        <div className="w-full">
+          {caseStudy.description && (
+            <section className="mb-32 flex justify-center">
+              <div className="w-full lg:max-w-[846px]">
+                <Markdown content={caseStudy.description} />
+              </div>
+            </section>
+          )}
 
-        {caseStudy.body && (
-          <section className="main-content mb-32 flex justify-center">
-            <div className="w-full font-light lg:max-w-[846px]">
-              <Markdown content={caseStudy.body} />
-            </div>
-          </section>
-        )}
+          {caseStudy.body && (
+            <section className="mb-32 flex justify-center">
+              <div className="w-full font-light lg:max-w-[846px]">
+                <Markdown content={caseStudy.body} />
+              </div>
+            </section>
+          )}
 
-        <div className="mt-[200px]">{contentBlocks}</div>
+          <div className="mt-[200px]">{contentBlocks}</div>
+        </div>
+
+        {/* sticky sidebar */}
+        <div className="sticky top-0 max-w-[197px] self-start">
+          {caseStudy.client?.name && (
+            <div>
+              <p className="small font-bold">Client:</p>
+              <p className="small">{caseStudy.client.name}</p>
+              <br />
+            </div>
+          )}
+          {caseStudy.projectType && (
+            <div>
+              <p className="small font-bold">Project Type:</p>
+              <p className="small">{caseStudy.projectType}</p>
+              <br />
+            </div>
+          )}
+          {caseStudy.industry && (
+            <div>
+              <p className="small font-bold">Industry:</p>
+              <p className="small">{caseStudy.industry}</p>
+              <br />
+            </div>
+          )}
+          {caseStudy.deliverables?.length && (
+            <div>
+              <p className="small font-bold">Deliverables:</p>
+              <p className="small">{caseStudy.deliverables.join(", ")}</p>
+              <br />
+            </div>
+          )}
+        </div>
       </main>
 
       {caseStudy.backgroundImage?.url && (

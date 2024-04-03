@@ -237,6 +237,12 @@ const CASE_STUDY_GRAPHQL_FIELDS = `
   category {
     name
   }
+  client {
+    name
+  }
+  projectType
+  industry
+  deliverables
   description {
     json
     links {
