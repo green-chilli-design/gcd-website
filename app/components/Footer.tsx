@@ -9,6 +9,7 @@ import gcdLogoGreen from "@/public/gcd-logo-square-green.svg";
 import gcdLogoWhite from "@/public/gcd-logo-square-white.svg";
 import paehokohokoLogo from "@/public/images/pae-hokohoko-marketplace.png";
 import paehokohokoLogoWhite from "@/public/images/pae-hokohoko-marketplace-white.svg";
+import { LinkedinIcon } from "react-share";
 
 export default function Footer() {
   const { resolvedTheme } = useTheme();
@@ -18,6 +19,10 @@ export default function Footer() {
     logoSrc = gcdLogoWhite;
     paehokohokoLogoSrc = paehokohokoLogoWhite;
   }
+
+  // Social icon colors
+  const fillColor = resolvedTheme === "dark" ? "#080708" : "#F7F4F3";
+  const bgColor = resolvedTheme === "dark" ? "#F7F4F3" : "#080708";
 
   return (
     <footer className="main-content pb-5 pt-[50px] md:py-14">
@@ -72,11 +77,11 @@ export default function Footer() {
             href="https://www.linkedin.com/company/green-chilli-digital/"
             target="_blank"
           >
-            <Image
-              width={40}
-              height={40}
-              src={"/icons/linkedin.svg"}
-              alt="linkedin logo"
+            <LinkedinIcon
+              size={40}
+              iconFillColor={fillColor}
+              bgStyle={{ fill: bgColor }}
+              round
             />
           </Link>
         </div>
