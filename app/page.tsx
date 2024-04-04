@@ -15,7 +15,7 @@ export default async function HomePage() {
   return (
     <div>
       <section className="main-content flex flex-col gap-3 md:flex-row">
-        <div className="mb-8 mt-12">
+        <div className="mb-8 mt-12 md:self-center">
           <h1 className="mb-5">
             Don&apos;t just <br /> build.Build better.
           </h1>
@@ -23,8 +23,7 @@ export default async function HomePage() {
         </div>
 
         {bannerImages.length && (
-          <div className="w-full md:mt-[-130px]">
-            <div className="absolute h-[130px] w-full from-transparent to-neutral dark:from-transparent dark:to-black md:bg-gradient-to-t"></div>
+          <div className="w-full">
             <div className="grid grid-flow-col grid-rows-2 items-center gap-3 md:items-start md:justify-end lg:gap-5">
               {bannerImages.map((image: any, index) => (
                 <ContentfulMedia
