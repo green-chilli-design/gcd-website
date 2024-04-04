@@ -1,5 +1,3 @@
-import DiscoveryProcess from "@/app/components/DiscoveryProcess";
-import ReactNative from "@/app/components/ReactNative";
 import CallToActionBlock from "@/app/components/contentful-content-blocks/CallToActionBlock";
 import { getCaseStudies, getCaseStudyBySlug } from "@/lib/api";
 import { generateContentBlocks } from "@/lib/contentful-content-blocks";
@@ -9,6 +7,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { draftMode } from "next/headers";
 import Link from "next/link";
 import { CaseStudyPreview } from "../all-case-studies";
+import SocialShare from "@/app/components/SocialShare";
 
 export async function generateMetadata(
   {
@@ -85,30 +84,9 @@ export default async function CaseStudyPage({
         </div>
       </section>
 
-      <main className="main-content flex flex-row justify-between">
-        {/* case study content */}
-        <div className="w-full">
-          {caseStudy.description && (
-            <section className="mb-32 flex justify-center">
-              <div className="w-full lg:max-w-[846px]">
-                <Markdown content={caseStudy.description} />
-              </div>
-            </section>
-          )}
-
-          {caseStudy.body && (
-            <section className="mb-32 flex justify-center">
-              <div className="w-full font-light lg:max-w-[846px]">
-                <Markdown content={caseStudy.body} />
-              </div>
-            </section>
-          )}
-
-          <div className="mt-[200px]">{contentBlocks}</div>
-        </div>
-
+      <main className="main-content justify-between md:flex md:flex-row-reverse">
         {/* sticky sidebar */}
-        <div className="sticky top-0 max-w-[197px] self-start">
+        <div className="mb-24 self-start md:sticky md:top-0 md:mb-10 md:ml-10 md:max-w-[197px]">
           {caseStudy.client?.name && (
             <div>
               <p className="small font-bold">Client:</p>
@@ -137,6 +115,28 @@ export default async function CaseStudyPage({
               <br />
             </div>
           )}
+          <SocialShare />
+        </div>
+
+        {/* case study content */}
+        <div className="w-full">
+          {caseStudy.description && (
+            <section className="mb-24 flex justify-center md:mb-32">
+              <div className="w-full lg:max-w-[846px]">
+                <Markdown content={caseStudy.description} />
+              </div>
+            </section>
+          )}
+
+          {caseStudy.body && (
+            <section className="mb-24 flex justify-center md:mb-32">
+              <div className="w-full lg:max-w-[846px]">
+                <Markdown content={caseStudy.body} />
+              </div>
+            </section>
+          )}
+
+          <div className="mt-[200px]">{contentBlocks}</div>
         </div>
       </main>
 
@@ -152,11 +152,11 @@ export default async function CaseStudyPage({
       )}
 
       <section className="main-content">
-        <div className="mb-10 flex flex-row items-center justify-between">
+        <div className="mb-10 flex flex-row flex-wrap items-center justify-between gap-5 md:flex-nowrap">
           <h2>Explore more like this</h2>
           <Link
             href={"/case-studies"}
-            className="btn dark:light dark flex items-center justify-center p-5 dark:text-black"
+            className="btn dark:light dark flex items-center justify-center p-5 text-neutral dark:text-black"
           >
             More Case Studies
           </Link>
