@@ -54,13 +54,17 @@ export default async function CaseStudyPage({
     caseStudy.pageContentCollection.items,
   );
 
-  const caseStudies = await getCaseStudies(isEnabled, caseStudy.category?.name);
-  if (caseStudies.length) {
-    caseStudies.splice(
-      caseStudies.findIndex((c) => c.slug === caseStudy.slug),
-      1,
-    );
+  // Get 3 other case studies to display, excluding the current one
+  // If there are no case studies from the same category, it will use the first 3 from all case studies
+  let caseStudies = await getCaseStudies(isEnabled, caseStudy.category?.name);
+  if (caseStudies.length === 1) {
+    caseStudies = await getCaseStudies(isEnabled, null);
   }
+  caseStudies.splice(
+    caseStudies.findIndex((c) => c.slug === caseStudy.slug),
+    1,
+  );
+  caseStudies = caseStudies.slice(0, 3);
 
   return (
     <div>
@@ -151,7 +155,7 @@ export default async function CaseStudyPage({
         </section>
       )}
 
-      <section className="main-content">
+      <section className="main-content mt-12">
         <div className="mb-10 flex flex-row flex-wrap items-center justify-between gap-5 md:flex-nowrap">
           <h2>Explore more like this</h2>
           <Link
@@ -161,21 +165,19 @@ export default async function CaseStudyPage({
             More Case Studies
           </Link>
         </div>
-        <div className="w-full">
-          {caseStudies.length && (
-            <div className="mb-24 grid grid-cols-1 gap-20 md:grid-cols-2 xl:grid-cols-3">
-              {caseStudies.map((caseStudy) => (
-                <CaseStudyPreview
-                  key={caseStudy.slug}
-                  title={caseStudy.title}
-                  coverImage={caseStudy.coverImage}
-                  slug={caseStudy.slug}
-                  summary={caseStudy.summary}
-                />
-              ))}
-            </div>
-          )}
-        </div>
+        {caseStudies.length > 0 && (
+          <div className="mb-24 grid w-full grid-cols-1 gap-20 md:grid-cols-2 xl:grid-cols-3">
+            {caseStudies.map((caseStudy) => (
+              <CaseStudyPreview
+                key={caseStudy.slug}
+                title={caseStudy.title}
+                coverImage={caseStudy.coverImage}
+                slug={caseStudy.slug}
+                summary={caseStudy.summary}
+              />
+            ))}
+          </div>
+        )}
       </section>
 
       <CallToActionBlock />
