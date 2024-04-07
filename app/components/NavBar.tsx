@@ -12,7 +12,7 @@ export default function NavBar() {
   const { resolvedTheme } = useTheme();
 
   let logoSrc = "/gcd-logo-round-black.svg";
-  if (resolvedTheme === "dark" || pathname === "/") {
+  if (resolvedTheme === "dark") {
     logoSrc = "/gcd-logo-round-white.svg";
   }
 

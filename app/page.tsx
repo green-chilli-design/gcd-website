@@ -14,7 +14,7 @@ export default async function HomePage() {
 
   return (
     <div>
-      <section className="main-content flex flex-col gap-3 md:flex-row">
+      <section className="main-content flex flex-col gap-8 md:flex-row">
         <div className="mb-8 mt-12 md:self-center">
           <h1 className="mb-5">
             Don&apos;t just <br /> build.Build better.
@@ -39,7 +39,6 @@ export default async function HomePage() {
                     }`,
                     width: image.width,
                     height: image.height,
-                    sizes: "(max-width: 320px) 50vw, 305px",
                   }}
                 />
               ))}

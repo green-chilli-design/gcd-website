@@ -7,7 +7,7 @@ export default function ContentBlock({
   contentBlock: ContentBlock;
 }) {
   return (
-    <section className="main-content flex justify-center py-5 lg:py-40">
+    <section className="main-content flex justify-center py-20 lg:py-32">
       <div
         className={`max-w-[846px] text-${contentBlock.textAlignment.toLowerCase()}`}
       >

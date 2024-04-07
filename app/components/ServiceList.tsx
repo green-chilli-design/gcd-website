@@ -16,7 +16,7 @@ function ServicePreview({ service }: { service: any }) {
             width: 522,
             height: 300,
             className:
-              "mt-3 md:mt-0 mb-5 h-[300px] rounded-br-[30px] rounded-tl-[30px]",
+              "mt-3 md:mt-0 mb-5 h-[300px] rounded-br-[30px] rounded-tl-[30px] object-cover w-full md:w-[522px] md:h-[300px]",
           }}
         />
       )}

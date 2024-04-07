@@ -6,7 +6,7 @@ import Image from "next/image";
 import SubscribeForm from "@/app/components/forms/SubscribeForm";
 import { useTheme } from "next-themes";
 import gcdLogoGreen from "@/public/gcd-logo-square-green.svg";
-import gcdLogoWhite from "@/public/gcd-logo-square-white.svg";
+import gcdLogoWhite from "@/public/gcd-logo-white-text.svg";
 import paehokohokoLogo from "@/public/images/pae-hokohoko-marketplace.png";
 import paehokohokoLogoWhite from "@/public/images/pae-hokohoko-marketplace-white.svg";
 import { LinkedinIcon } from "react-share";
@@ -25,7 +25,7 @@ export default function Footer() {
   const bgColor = resolvedTheme === "dark" ? "#F7F4F3" : "#080708";
 
   return (
-    <footer className="main-content pb-5 pt-[50px] md:py-14">
+    <footer className="main-content border-t border-black pb-5 pt-[50px] dark:border-neutral md:py-14">
       <div className="mb-[50px] justify-between md:mb-14 md:flex">
         <div className="mb-[50px] md:mb-0">
           <Link href="/">
