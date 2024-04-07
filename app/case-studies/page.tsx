@@ -6,6 +6,7 @@ import AllCaseStudies from "./all-case-studies";
 import CaseStudySearchBar from "./case-study-search-bar";
 import { Suspense } from "react";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 const title = "GCD | Case Studies";
 export const metadata: Metadata = {
@@ -91,8 +92,18 @@ export default async function Page({ searchParams }: { searchParams: any }) {
       </div>
 
       {featuredCaseStudy && <FeaturedCaseStudy caseStudy={featuredCaseStudy} />}
-      {total > 0 && (
+      {total > 0 ? (
         <AllCaseStudies caseStudies={caseStudies} showMore={true} />
+      ) : (
+        <div className="main-content flex flex-col items-center justify-center py-12">
+          <p className="mb-5">No case studies found.</p>
+          <Link
+            href={"/case-studies"}
+            className="btn dark:light dark flex w-44 items-center justify-center p-5 text-neutral dark:text-black"
+          >
+            Clear Filters
+          </Link>
+        </div>
       )}
     </div>
   );
