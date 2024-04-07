@@ -76,6 +76,7 @@ export default function Footer() {
           <Link
             href="https://www.linkedin.com/company/green-chilli-digital/"
             target="_blank"
+            className="transition duration-500 hover:scale-110"
           >
             <LinkedinIcon
               size={40}
