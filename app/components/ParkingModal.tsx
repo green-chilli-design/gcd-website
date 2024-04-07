@@ -15,14 +15,14 @@ export default function ParkingModal({
   return (
     <Dialog>
       <DialogTrigger>
-        <p className="small mb-2.5 flex cursor-pointer items-center uppercase">
+        <p className="small mb-2.5 flex cursor-pointer items-center uppercase hover:text-green">
           <span className="material-symbols-outlined icon-24 mr-2">
             visibility
           </span>
           View Parking Instructions
         </p>
       </DialogTrigger>
-      <DialogContent className="py-0 pt-6 lg:py-6">
+      <DialogContent className="h-full w-full py-0 pt-6 xl:w-4/5 xl:py-6">
         <div className="pt-14">
           <ContentfulMedia
             src={url}
@@ -31,8 +31,7 @@ export default function ParkingModal({
               width,
               height,
               quality: 100,
-              className:
-                "relative h-full w-full rounded-br-[100px] rounded-tl-[100px]",
+              className: "rounded-br-[30px] rounded-tl-[30px] object-cover",
             }}
           />
         </div>
