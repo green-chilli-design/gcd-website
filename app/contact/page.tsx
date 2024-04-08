@@ -59,7 +59,7 @@ export default async function ContactPage() {
               </a>
             </p>
 
-            <p>Our opening hours are Monday - Friday 8:30am - 5:30pm.</p>
+            <p>Our business hours are Monday - Friday 8:30am - 5:30pm.</p>
           </div>
 
           <ContactForm />
