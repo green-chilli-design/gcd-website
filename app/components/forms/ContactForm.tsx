@@ -125,20 +125,12 @@ export default function ContactForm() {
       <SubmitButton />
 
       {state?.type === "success" && (
-        <p
-          className="mt-2 text-2xs text-green"
-          aria-live="polite"
-          role="status"
-        >
+        <p className="mt-2 text-green" aria-live="polite" role="status">
           {state?.message}
         </p>
       )}
       {state?.type === "error" && state?.message && (
-        <p
-          className="mt-2 text-2xs text-rose-500"
-          aria-live="polite"
-          role="status"
-        >
+        <p className="mt-2 text-rose-500" aria-live="polite" role="status">
           {state?.message}
         </p>
       )}
