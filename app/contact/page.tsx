@@ -42,20 +42,12 @@ export default async function ContactPage() {
                 2.4 Whatever Building, 18 Sale Street, Auckland 1010
               </a>
             </p>
-            <p className="small mb-5 flex items-center">
+            <p className="small mb-12 flex items-center">
               <span className="material-symbols-outlined icon-20 mr-2">
                 call
               </span>
               <a href="tel:+64 09 300 3039" className="hover:text-green">
                 +64 09 300 3039
-              </a>
-            </p>
-            <p className="small mb-12 flex items-center">
-              <span className="material-symbols-outlined icon-20 mr-2 ">
-                email
-              </span>
-              <a href="mailto:hello@gcd.nz" className="hover:text-green">
-                hello@gcd.nz
               </a>
             </p>
 
