@@ -17,10 +17,10 @@
     @apply text-2xl font-light lg:text-4xl xl:text-5xl;
   }
   h4 {
-    @apply text-base lg:text-xl xl:text-3xl;
+    @apply text-base leading-snug lg:text-xl xl:text-3xl;
   }
   h5 {
-    @apply text-sm uppercase lg:text-base xl:text-lg;
+    @apply text-sm uppercase leading-snug lg:text-base lg:leading-snug xl:text-lg;
   }
   body {
     @apply text-sm lg:text-base;
