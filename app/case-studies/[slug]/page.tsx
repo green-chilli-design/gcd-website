@@ -26,10 +26,12 @@ export async function generateMetadata(
     title: `GCD | ${caseStudy.title}`,
     openGraph: {
       title: `GCD | ${caseStudy.title}`,
+      description: caseStudy.summary,
       images: [caseStudy.coverImage.url, ...previousImages],
     },
     twitter: {
       title: `GCD | ${caseStudy.title}`,
+      description: caseStudy.summary,
       images: [caseStudy.coverImage.url, ...previousImages],
     },
   };

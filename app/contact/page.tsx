@@ -22,43 +22,6 @@ export default async function ContactPage() {
 
   return (
     <div>
-      <section className="m-auto max-w-[600px]">
-        {/* test section test all typography */}
-        <h1 className="mb-5">
-          Heading 1 example with some log title that overflows to the next line
-        </h1>
-        <h2 className="mb-5">
-          Heading 2 example with some log title that overflows to the next line
-        </h2>
-        <h3 className="mb-5">
-          Heading 3 example with some log title that overflows to the next line
-        </h3>
-        <h4 className="mb-5">
-          Heading 4 example with some log title that overflows to the next line
-        </h4>
-        <h5 className="mb-5">
-          Heading 5 example with some log title that overflows to the next line
-        </h5>
-        <h6 className="mb-5">
-          Heading 6 example with some log title that overflows to the next line
-        </h6>
-        <p className="mb-5">
-          Paragraph example with some log title that overflows to the next line
-        </p>
-        <p className="small mb-5">
-          Paragraph small example with some log title that overflows to the next
-          line
-        </p>
-        <label className="mb-5">
-          Label example with some log title that overflows to the next line
-        </label>
-        <br />
-        <label className="small mb-5">
-          Label small example with some log title that overflows to the next
-          line
-        </label>
-      </section>
-
       <div className="main-content mt-24 lg:mt-28">
         <section className="mb-24">
           <h2 className="mb-5">{subtitle}</h2>
