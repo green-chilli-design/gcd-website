@@ -46,8 +46,8 @@ export default async function ContactPage() {
               <span className="material-symbols-outlined icon-20 mr-2">
                 call
               </span>
-              <a href="tel:+64 09 300 3039" className="hover:text-green">
-                +64 09 300 3039
+              <a href="tel:+64 9 300 3039" className="hover:text-green">
+                +64 9 300 3039
               </a>
             </p>
 
