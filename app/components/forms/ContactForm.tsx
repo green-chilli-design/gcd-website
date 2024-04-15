@@ -94,6 +94,22 @@ export default function ContactForm() {
         )}
       </div>
       <div className="mb-4">
+        <label htmlFor="phone" className="small text-dark-grey">
+          Phone
+        </label>
+        <input
+          id="phone"
+          name="phone"
+          className="h-14 w-full rounded-md border border-dark-grey bg-neutral p-2.5 dark:text-black"
+          type="phone"
+        />
+        {state?.errors?.phone && (
+          <span className="text-2xs text-rose-500">
+            {state.errors.phone.join(",")}
+          </span>
+        )}
+      </div>
+      <div className="mb-4">
         <label htmlFor="website" className="small text-dark-grey">
           Company Website (if any)
         </label>

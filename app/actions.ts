@@ -12,6 +12,7 @@ const contactFormSchema = z.object({
   firstName: z.string().min(1, { message: "Required" }),
   lastName: z.string().min(1, { message: "Required" }),
   email: z.string().email(),
+  phone: z.string(),
   website: z.string(),
   message: z.string(),
   gRecaptchaResponse: z.string(),
@@ -30,6 +31,7 @@ export async function sendContact(
       firstName: formData.get("first-name") ?? "",
       lastName: formData.get("last-name") ?? "",
       email: formData.get("email") ?? "",
+      phone: formData.get("phone") ?? "",
       website: formData.get("website") ?? "",
       message: formData.get("message") ?? "",
       gRecaptchaResponse: formData.get("g-recaptcha-response") ?? "",
@@ -117,6 +119,7 @@ async function sendEmail(
       html_body: `
           <p><strong>Name:</strong> ${data.firstName} ${data.lastName}</p>
           <p><strong>Email:</strong> ${data.email}</p>
+          <p><strong>Phone:</strong> ${data.phone}</p>
           <p><strong>Website:</strong> ${data.website}</p>
           <p><strong>Message:</strong> ${data.message}</p>
         `,
