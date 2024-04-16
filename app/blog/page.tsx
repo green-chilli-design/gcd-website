@@ -1,20 +1,32 @@
 import Link from "next/link";
 import { draftMode } from "next/headers";
 
-import Date from "../date";
-import CoverImage from "../cover-image";
-import Avatar from "../avatar";
-import MoreStories from "../more-stories";
+import Date from "@/app/date";
+import CoverImage from "@/app/cover-image";
+import Avatar from "@/app/avatar";
+import MoreStories from "@/app/blog/more-stories";
 
 import { getAllPosts } from "@/lib/api";
+import type { Metadata } from "next";
+
+const title = "GCD | Blog";
+export const metadata: Metadata = {
+  title,
+  openGraph: {
+    title,
+  },
+  twitter: {
+    title,
+  },
+};
 
 function Intro() {
   return (
-    <section className="flex-col md:flex-row flex items-center md:justify-between mb-16 md:mb-12">
-      <h1 className="text-xl md:text-5xl font-bold tracking-tighter leading-tight md:pr-8">
+    <section className="mb-16 flex flex-col items-center md:mb-12 md:flex-row md:justify-between">
+      <h1 className="text-xl font-bold leading-tight tracking-tighter md:pr-8 md:text-5xl">
         Blog.
       </h1>
-      <h2 className="text-center md:text-left text-lg mt-5 md:pl-8">
+      <h2 className="mt-5 text-center text-lg md:pl-8 md:text-left">
         Read what GCD is up to.
       </h2>
     </section>
@@ -46,19 +58,19 @@ function HeroPost({
           url={coverImage.url}
         />
       </div>
-      <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28">
+      <div className="mb-20 md:mb-28 md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8">
         <div>
-          <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">
+          <h3 className="mb-4 text-4xl leading-tight lg:text-6xl">
             <Link href={`/posts/${slug}`} className="hover:underline">
               {title}
             </Link>
           </h3>
-          <div className="mb-4 md:mb-0 text-lg">
+          <div className="mb-4 text-lg md:mb-0">
             <Date dateString={date} />
           </div>
         </div>
         <div>
-          <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
+          <p className="mb-4 text-lg leading-relaxed">{excerpt}</p>
           {author && <Avatar name={author.name} picture={author.picture} />}
         </div>
       </div>
@@ -73,7 +85,7 @@ export default async function Page() {
   const morePosts = allPosts.slice(1);
 
   return (
-    <div className="container mx-auto px-5">
+    <div className="main-content">
       <Intro />
       {heroPost && (
         <HeroPost

@@ -1,0 +1,11 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="arrow_forward">
+<mask id="mask0_314_817" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="40" height="40">
+<rect id="Bounding box" width="40" height="40" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_314_817)">
+<circle id="Ellipse 27" cx="20" cy="20" r="20" fill="#A8CF43"/>
+<path id="arrow_forward_2" d="M28.0415 21.3889H6.6665V18.6111H28.0415L18.0415 8.6111L19.9998 6.66669L33.3332 20L19.9998 33.3334L18.0415 31.3889L28.0415 21.3889Z" fill="#080708"/>
+</g>
+</g>
+</svg>

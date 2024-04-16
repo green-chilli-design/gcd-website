@@ -1,62 +1,41 @@
-import Image, { ImageLoader } from "next/image";
+"use client";
+
+import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
+import NavMenu from "./NavMenu";
+import NavMenuMobile from "./NavMenuMobile";
 
 export default function NavBar() {
+  const pathname = usePathname();
+  const { resolvedTheme } = useTheme();
+
+  let logoSrc = "/gcd-logo-round-black.svg";
+  if (resolvedTheme === "dark") {
+    logoSrc = "/gcd-logo-round-white.svg";
+  }
+
   return (
-    <nav className="flex w-full justify-between items-center  mb-10">
-      <div className="flex items-center">
-        <Link href="/">
-          <Image
-            src="/gcd-logo-white-text.svg"
-            alt="Green Chilli Design Logo"
-            width={80}
-            height={80}
-            className="hover:scale-110 transition duration-500"
-          />
-        </Link>
-      </div>
-      <div className="flex items-center gap-5">
-        <div>
-          <Link
-            href="/services"
-            className="font-bold text-xl hover:text-gcd-green transition duration-300"
-          >
-            Services
+    <header className="z-10 w-full">
+      <nav className="main-content flex items-center justify-between py-5 lg:pb-5 lg:pt-[30px]">
+        <div className="flex items-center">
+          <Link href="/">
+            <Image
+              src={logoSrc}
+              alt="Green Chilli Design Logo"
+              width={80}
+              height={80}
+              className="transition duration-500 hover:scale-110"
+            />
           </Link>
         </div>
+
         <div>
-          <Link
-            href="/Portfolio"
-            className="font-bold text-xl hover:text-gcd-green transition duration-300"
-          >
-            Portfolio
-          </Link>
+          <NavMenu />
+          <NavMenuMobile />
         </div>
-        <div>
-          <Link
-            href="/blog"
-            className="font-bold text-xl hover:text-gcd-green transition duration-300"
-          >
-            Blog
-          </Link>
-        </div>
-        <div>
-          <Link
-            href="/about"
-            className="font-bold text-xl hover:text-gcd-green transition duration-300"
-          >
-            About
-          </Link>
-        </div>
-        <div>
-          <Link
-            href="/Contact"
-            className="font-bold text-xl hover:text-gcd-green transition duration-300"
-          >
-            Contact
-          </Link>
-        </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }

@@ -1,16 +1,33 @@
-import "./globals.css";
-import { Inter } from "next/font/google";
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
+import "@/app/globals.css";
+import "@/app/globalicons.css";
 
-// TODO: This should be moved into each component, and if possible populated by Contentful page title
-export const metadata = {
-  title: `GCD | Digital Strategy & Software Development`,
-  description: `Digital Strategy & Software Development to Drive Your Business Success.`,
+import { Analytics } from "@vercel/analytics/react";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { Jost } from "next/font/google";
+import NavBar from "@/app/components/NavBar";
+import Footer from "@/app//components/Footer";
+import RecaptchaProvider from "@/app/components/providers/recaptcha-provider";
+import type { Metadata } from "next";
+import { sharedMetadata } from "./metadata";
+
+// temp fix for https://github.com/pacocoursey/next-themes/issues/169
+// basically forces it to be client side, which is not ideal
+// TODO: remove this once the issue is fixed or investigate a better solution
+import dynamic from "next/dynamic";
+const ThemeProvider = dynamic(
+  () => import("@/app/components/providers/theme-provider"),
+  {
+    ssr: false,
+  },
+);
+// end temp fix
+
+export const metadata: Metadata = {
+  ...sharedMetadata,
 };
 
-const inter = Inter({
-  variable: "--font-inter",
+const jost = Jost({
+  variable: "--font-jost",
   subsets: ["latin"],
   display: "swap",
 });
@@ -22,13 +39,19 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <main className="flex min-h-screen flex-col justify-start px-20 py-10  m-0 text-white bg-slate-950">
-          <NavBar />
-          <div>{children}</div>
-          <Footer />
-        </main>
+      <body className={jost.className}>
+        <ThemeProvider>
+          <RecaptchaProvider>
+            <main className="m-0 flex min-h-screen flex-col justify-start bg-neutral text-black dark:bg-black dark:text-neutral">
+              <NavBar />
+              <div className="flex-1">{children}</div>
+              <Footer />
+            </main>
+            <Analytics />
+          </RecaptchaProvider>
+        </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId="G-Z5E8C9JM8E" />
     </html>
   );
 }

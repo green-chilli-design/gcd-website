@@ -1,9 +1,5 @@
-import ContentfulImage from "../lib/contentful-image";
+import ContentfulMedia from "@/lib/contentful-media";
 import Link from "next/link";
-
-function cn(...classes: any[]) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default function CoverImage({
   title,
@@ -17,20 +13,20 @@ export default function CoverImage({
   slug?: string;
 }) {
   const image = (
-    <ContentfulImage
-      alt={`Cover Image for ${title}`}
-      priority
-      width={1000}
-      height={500}
-      className={cn("shadow-small", {
-        "hover:shadow-medium transition-shadow duration-200": slug,
-      })}
+    <ContentfulMedia
       src={url}
+      alt={`Cover Image for ${title}`}
+      imageProps={{
+        priority: true,
+        fill: true,
+        className: "object-cover",
+        sizes: "(max-width: 320px) 90vw, 80vw",
+      }}
     />
   );
 
   return (
-    <div className="sm:mx-0">
+    <div className="relative h-[500px] overflow-hidden rounded-br-[30px] rounded-tl-[30px] sm:mx-0">
       {slug ? (
         <Link href={`${path}/${slug}`} aria-label={title}>
           {image}

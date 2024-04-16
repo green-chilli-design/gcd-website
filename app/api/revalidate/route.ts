@@ -1,7 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 
-const CONTENT_TAGS = ["page", "post", "posts", "service", "services"];
+const CONTENT_TAGS = [
+  "page",
+  "post",
+  "posts",
+  "service",
+  "services",
+  "caseStudy",
+  "caseStudies",
+] as const;
 
 /**
  * TODO:

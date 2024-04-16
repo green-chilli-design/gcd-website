@@ -1,10 +1,38 @@
 import Link from "next/link";
 import { draftMode } from "next/headers";
 
-import CoverImage from "../../cover-image";
+import CoverImage from "@/app/cover-image";
 import { Markdown } from "@/lib/markdown";
 
 import { getAllServices, getServiceBySlug } from "@/lib/api";
+
+import type { ResolvingMetadata, Metadata } from "next";
+
+export async function generateMetadata(
+  {
+    params,
+  }: {
+    params: { slug: string };
+  },
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const service = await getServiceBySlug(params.slug, false);
+
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: `GCD | ${service.title}`,
+    openGraph: {
+      title: `GCD | ${service.title}`,
+      images: [service.coverImage?.url, ...previousImages],
+    },
+    twitter: {
+      title: `GCD | ${service.title}`,
+      images: [service.coverImage?.url, ...previousImages],
+    },
+  };
+}
 
 export async function generateStaticParams() {
   const allServices = await getAllServices(false);
@@ -23,29 +51,31 @@ export default async function ServicePage({
   const service = await getServiceBySlug(params.slug, isEnabled);
 
   return (
-    <div className="container mx-auto px-5">
-      <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
+    <div className="main-content">
+      <h2 className="mb-20 mt-8 text-2xl font-bold leading-tight tracking-tight md:text-4xl md:tracking-tighter">
         <Link href="/services" className="hover:underline">
           Services
         </Link>
         .
       </h2>
       <article>
-        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight md:leading-none mb-12 text-center md:text-left">
+        <h1 className="mb-12 text-center text-6xl font-bold leading-tight tracking-tighter md:text-left md:text-7xl md:leading-none lg:text-8xl">
           {service.title}
         </h1>
-        <div className="mb-8 md:mb-16 sm:mx-0">
-          <CoverImage title={service.title} url={service.coverImage.url} />
-        </div>
-        <div className="max-w-2xl mx-auto">
+        {service.coverImage?.url && (
+          <div className="mb-8 sm:mx-0 md:mb-16">
+            <CoverImage title={service.title} url={service.coverImage.url} />
+          </div>
+        )}
+        <div className="mx-auto max-w-2xl">
           <div className="mb-6 text-lg">
             <p>{service.summary}</p>
           </div>
         </div>
 
-        <div className="max-w-2xl mx-auto">
+        <div className="mx-auto max-w-2xl">
           <div className="prose">
-            <Markdown content={service.description} />
+            {service.description && <Markdown content={service.description} />}
           </div>
         </div>
       </article>
