@@ -40,7 +40,7 @@ export default function ServiceList({ services }: { services: any }) {
               setSelectedService(service), setHovered(true);
             }}
             key={service.title}
-            className={`items-center justify-between border-b-2 p-[0.8rem] hover:border-green dark:hover:border-green md:flex ${
+            className={`items-center justify-between border-b-2 py-[0.8rem] md:p-[0.8rem] hover:border-green dark:hover:border-green md:flex ${
               hovered && selectedService.title === service.title
                 ? "md:border-green"
                 : "border-black dark:border-neutral"
@@ -53,7 +53,7 @@ export default function ServiceList({ services }: { services: any }) {
                   : "border-none"
               }`}
             >
-              <h5>{service.title}</h5>
+              <h5 className="pb-[0.8rem] md:pb-0">{service.title}</h5>
               {hovered && selectedService.title === service.title ? (
                 <span className="icon-24 material-icons-outlined">
                   arrow_outward
