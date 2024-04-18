@@ -42,15 +42,9 @@ Additionally, a preview environment is automatically created for each pull reque
 
 There is also a dedicated development environment, which is deployed to on push to `dev`, and deployed to the domain [gcd-website-dev.vercel.app](https://gcd-website-dev.vercel.app/). Where the prod and preview environments use the master Contentful environment, the dev environment uses the dev Contentful environment (specific environment variables for this are set up in Vercel). The dev environment is where you can test changes to the Contentful content model.
 
-# ToDo:
+# Google Maps
 
-- [x] Figure out how to handle Contentful model for single page content
-- [ ] Update `Content Block` model to allow specifying background colour
-- [ ] Set up new Content models
-  - [ ] Allow linking of Services to Case Studies
-- [ ] Force cache revalidation on all posts
-- [ ] Deploy a permanent preview environment
-- [ ] Set up Doppler integration
-- [ ] Set up Google Analytics
-- [ ] Set up Hotjar
-- [ ] Set up Storybook
+Contact page uses Google Maps to display the location of the office. The API key is stored in the Vercel environment variables.
+If you need to update the allowed sites for the API key, you can do so in the Google Cloud Console:
+
+https://console.cloud.google.com/apis/credentials/key/b3d2a56f-4253-4a7f-87e8-1eaef9300681?project=green-chilli-map
