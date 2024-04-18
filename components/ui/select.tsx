@@ -32,7 +32,7 @@ const SelectTrigger = React.forwardRef<
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <span className="icon-20 material-symbols-outlined transition-transform duration-200">
+      <span className="icon-20 material-icons-outlined transition-transform duration-200">
         expand_more
       </span>
     </SelectPrimitive.Icon>
@@ -52,7 +52,7 @@ const SelectScrollUpButton = React.forwardRef<
     )}
     {...props}
   >
-    <span className="icon-20 material-symbols-outlined transition-transform duration-200">
+    <span className="icon-20 material-icons-outlined transition-transform duration-200">
       expand_less
     </span>
   </SelectPrimitive.ScrollUpButton>
@@ -71,7 +71,7 @@ const SelectScrollDownButton = React.forwardRef<
     )}
     {...props}
   >
-    <span className="icon-20 material-symbols-outlined transition-transform duration-200">
+    <span className="icon-20 material-icons-outlined transition-transform duration-200">
       expand_more
     </span>
   </SelectPrimitive.ScrollDownButton>
@@ -146,7 +146,7 @@ const SelectItem = React.forwardRef<
   >
     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <SelectPrimitive.ItemIndicator>
-        <span className="icon-20 material-symbols-outlined transition-transform duration-200">
+        <span className="icon-20 material-icons-outlined transition-transform duration-200">
           check
         </span>
       </SelectPrimitive.ItemIndicator>

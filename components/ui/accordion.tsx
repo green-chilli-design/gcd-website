@@ -33,7 +33,7 @@ const AccordionTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <span className="icon-20 material-symbols-outlined transition-transform duration-200">
+      <span className="icon-20 material-icons-outlined transition-transform duration-200">
         expand_circle_down
       </span>
     </AccordionPrimitive.Trigger>

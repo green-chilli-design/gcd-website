@@ -15,7 +15,7 @@ function SubmitButton() {
       className="btn green w-32"
     >
       {pending && (
-        <span className="material-symbols-outlined icon-24 m-2.5 animate-spin">
+        <span className="material-icons-outlined icon-24 m-2.5 animate-spin">
           progress_activity
         </span>
       )}

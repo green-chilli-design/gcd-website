@@ -16,7 +16,7 @@ export default function ParkingModal({
     <Dialog>
       <DialogTrigger>
         <p className="small mb-2.5 flex cursor-pointer items-center uppercase hover:text-green">
-          <span className="material-symbols-outlined icon-24 mr-2">
+          <span className="material-icons-outlined icon-24 mr-2">
             visibility
           </span>
           View Parking Instructions

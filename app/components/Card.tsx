@@ -30,7 +30,7 @@ export default function Card({
       </div>
       <div className="absolute bottom-0 flex w-full items-center justify-between px-5 pb-6 text-neutral">
         <h5>{title}</h5>
-        <span className="material-symbols-outlined icon-24 transition duration-500 hover:scale-125">
+        <span className="material-icons-outlined icon-24 transition duration-500 hover:scale-125">
           arrow_forward
         </span>
       </div>

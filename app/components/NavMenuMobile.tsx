@@ -55,11 +55,11 @@ export default function NavMenuMobile() {
         className="flex cursor-pointer transition duration-500 hover:scale-110 sm:hidden"
       >
         {menuOpen ? (
-          <span className="material-symbols-outlined icon-48">
+          <span className="material-icons-outlined icon-48">
             horizontal_rule
           </span>
         ) : (
-          <span className="material-symbols-outlined icon-48">menu</span>
+          <span className="material-icons-outlined icon-48">menu</span>
         )}
       </div>
     </div>
