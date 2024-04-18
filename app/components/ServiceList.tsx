@@ -55,11 +55,11 @@ export default function ServiceList({ services }: { services: any }) {
             >
               <h5>{service.title}</h5>
               {hovered && selectedService.title === service.title ? (
-                <span className="icon-24 material-symbols-outlined">
+                <span className="icon-24 material-icons-outlined">
                   arrow_outward
                 </span>
               ) : (
-                <span className="icon-24 material-symbols-outlined">
+                <span className="icon-24 material-icons-outlined">
                   arrow_forward
                 </span>
               )}

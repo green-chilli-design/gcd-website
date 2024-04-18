@@ -32,7 +32,7 @@ export default async function ContactPage() {
           <div className="mb-12 mr-12">
             <h5 className="mb-5 font-semibold">Auckland, New Zealand</h5>
             <p className="small mb-5 flex items-center">
-              <span className="material-symbols-outlined icon-20 mr-2">
+              <span className="material-icons-outlined icon-20 mr-2">
                 location_on
               </span>
               <a
@@ -43,7 +43,7 @@ export default async function ContactPage() {
               </a>
             </p>
             <p className="small mb-12 flex items-center">
-              <span className="material-symbols-outlined icon-20 mr-2">
+              <span className="material-icons-outlined icon-20 mr-2">
                 call
               </span>
               <a href="tel:+64 9 300 3039" className="hover:text-green">

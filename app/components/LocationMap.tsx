@@ -39,7 +39,7 @@ export default function LocationMap() {
 
       // Customise the pin
       const greenCircle = document.createElement("span");
-      greenCircle.className = "material-symbols-outlined icon-24 text-green";
+      greenCircle.className = "material-icons-outlined icon-24 text-green";
       greenCircle.innerText = "circle";
       const customPin = new PinElement({
         background: "transparent",
