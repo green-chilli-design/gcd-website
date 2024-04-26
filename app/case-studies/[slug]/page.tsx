@@ -8,6 +8,7 @@ import { draftMode } from "next/headers";
 import Link from "next/link";
 import { CaseStudyPreview } from "../all-case-studies";
 import SocialShare from "@/app/components/SocialShare";
+import { notFound } from 'next/navigation'
 
 export async function generateMetadata(
   {
@@ -18,6 +19,9 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const caseStudy = await getCaseStudyBySlug(params.slug, false);
+  if (!caseStudy) {
+    notFound();
+  }
 
   // optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || [];
@@ -52,6 +56,9 @@ export default async function CaseStudyPage({
 }) {
   const { isEnabled } = draftMode();
   const caseStudy = await getCaseStudyBySlug(params.slug, isEnabled);
+  if (!caseStudy) {
+    notFound();
+  }
   let contentBlocks = generateContentBlocks(
     caseStudy.pageContentCollection.items,
   );
