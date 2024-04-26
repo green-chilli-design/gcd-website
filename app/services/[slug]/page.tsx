@@ -7,6 +7,7 @@ import { Markdown } from "@/lib/markdown";
 import { getAllServices, getServiceBySlug } from "@/lib/api";
 
 import type { ResolvingMetadata, Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata(
   {
@@ -17,6 +18,9 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const service = await getServiceBySlug(params.slug, false);
+  if (!service) {
+    notFound();
+  }
 
   // optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || [];
@@ -49,6 +53,9 @@ export default async function ServicePage({
 }) {
   const { isEnabled } = draftMode();
   const service = await getServiceBySlug(params.slug, isEnabled);
+  if (!service) {
+    notFound();
+  }
 
   return (
     <div className="main-content">

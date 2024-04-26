@@ -10,6 +10,7 @@ import { Markdown } from "@/lib/markdown";
 import { getAllPosts, getPostAndMorePosts, getPostBySlug } from "@/lib/api";
 
 import type { ResolvingMetadata, Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata(
   {
@@ -20,6 +21,9 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const post = await getPostBySlug(params.slug, false);
+  if (!post) {
+    notFound();
+  }
 
   // optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || [];
@@ -52,6 +56,9 @@ export default async function PostPage({
 }) {
   const { isEnabled } = draftMode();
   const { post, morePosts } = await getPostAndMorePosts(params.slug, isEnabled);
+  if (!post) {
+    notFound();
+  }
 
   return (
     <div className="main-content">
