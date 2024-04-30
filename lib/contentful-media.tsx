@@ -7,7 +7,7 @@ const contentfulLoader = ({
   width,
   quality,
 }: Pick<ImageProps, "src" | "width" | "quality">) => {
-  return `${src}?w=${width}&q=${quality || 75}`;
+  return `${src}?w=${width}&q=${quality || 75}&fm=webp`;
 };
 
 const defaultImageProps: Omit<ImageProps, "src" | "alt"> = {
