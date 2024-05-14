@@ -55,7 +55,7 @@ module.exports = withSentryConfig(
 
     // Suppresses source map uploading logs during build
     silent: true,
-    org: "green-chilli-design",
+    org: "gcd-projects",
     project: "gcd-website",
   },
   {
