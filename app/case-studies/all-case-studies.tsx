@@ -1,9 +1,8 @@
 "use client";
 
 import CoverImage from "@/app/cover-image";
-import { useState } from "react";
-import ViewMore from "../components/ViewMore";
 import ReactNative from "../components/ReactNative";
+import ViewMore from "../components/ViewMore";
 
 export function CaseStudyPreview({
   title,
@@ -41,46 +40,22 @@ export function CaseStudyPreview({
 
 export default function AllCaseStudies({
   caseStudies,
-  showMore,
 }: {
   caseStudies: any[];
-  showMore: boolean;
 }) {
-  const initialItemNum = 4;
-  const [itemNum, setItemNum] = useState(initialItemNum);
-  function handleClick() {
-    setItemNum((prevItemNum) => prevItemNum + initialItemNum);
-  }
-  itemNum >= caseStudies.length ? (showMore = false) : (showMore = true);
-
   return (
     <section>
       <div className="main-content mb-24 grid grid-cols-1 gap-20 md:grid-cols-2 xl:grid-cols-3">
-        {caseStudies
-          ?.slice(0, itemNum)
-          .map((caseStudy) => (
-            <CaseStudyPreview
-              key={caseStudy.slug}
-              title={caseStudy.title}
-              coverImage={caseStudy.coverImage}
-              slug={caseStudy.slug}
-              summary={caseStudy.summary}
-            />
-          ))}
+        {caseStudies.map((caseStudy) => (
+          <CaseStudyPreview
+            key={caseStudy.slug}
+            title={caseStudy.title}
+            coverImage={caseStudy.coverImage}
+            slug={caseStudy.slug}
+            summary={caseStudy.summary}
+          />
+        ))}
       </div>
-
-      {showMore && (
-        <div className="mb-24 flex justify-center">
-          <button
-            type="button"
-            onClick={handleClick}
-            className="btn dark:light dark w-32 text-neutral dark:text-black"
-          >
-            Load More
-          </button>
-        </div>
-      )}
-
       <ReactNative />
     </section>
   );
