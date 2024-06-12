@@ -7,6 +7,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.10.5",
+    "@apollo/experimental-nextjs-app-support": "^0.11.2",
     "@contentful/rich-text-react-renderer": "^15.17.1",
     "@contentful/rich-text-types": "^16.2.1",
     "@googlemaps/js-api-loader": "^1.16.2",
