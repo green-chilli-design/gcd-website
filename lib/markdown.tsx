@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Maybe } from "@/gql/codegen/graphql";
 import {
   Options,
   documentToReactComponents,
@@ -6,35 +6,27 @@ import {
 import { BLOCKS } from "@contentful/rich-text-types";
 import ContentfulMedia from "./contentful-media";
 
-interface Asset {
+type Content = {
+  json: any;
+  links: {
+    assets: {
+      block?: Array<Maybe<Asset>>;
+    };
+  };
+};
+
+type Asset = {
+  url?: Maybe<string>;
   sys: {
     id: string;
   };
-  url: string;
-  description: string;
-  width: number;
-  height: number;
-}
+  description?: Maybe<string>;
+  width?: Maybe<number>;
+  height?: Maybe<number>;
+};
 
-interface AssetLink {
-  block: Asset[];
-}
-
-interface Content {
-  json: any;
-  links: {
-    assets: AssetLink;
-  };
-}
-
-function RichTextAsset({
-  id,
-  assets,
-}: {
-  id: string;
-  assets?: Asset[] | undefined;
-}) {
-  const asset = assets?.find((asset) => asset.sys.id === id);
+function RichTextAsset({ id, assets }: { id: string; assets: Maybe<Asset>[] }) {
+  const asset = assets?.find((asset) => asset?.sys.id === id);
 
   if (asset?.url) {
     return (
@@ -42,8 +34,8 @@ function RichTextAsset({
         src={asset.url}
         alt={asset.description}
         imageProps={{
-          width: asset.width,
-          height: asset.height,
+          width: asset.width || undefined,
+          height: asset.height || undefined,
           className: "rounded-br-[30px] rounded-tl-[30px] w-full my-12",
         }}
       />
@@ -62,7 +54,7 @@ export function Markdown({ content }: { content: Content }) {
       [BLOCKS.EMBEDDED_ASSET]: (node: any) => (
         <RichTextAsset
           id={node.data.target.sys.id}
-          assets={content.links.assets.block}
+          assets={content?.links.assets.block || []}
         />
       ),
       [BLOCKS.UL_LIST]: (node, children) => (

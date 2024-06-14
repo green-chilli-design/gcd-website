@@ -10,7 +10,7 @@ export default function CoverImage({
   title: string;
   url: string;
   path?: string;
-  slug?: string;
+  slug?: string | null;
 }) {
   const image = (
     <ContentfulMedia

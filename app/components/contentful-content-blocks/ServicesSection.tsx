@@ -1,6 +1,6 @@
-import { getAllServices } from "@/lib/api";
-import ContentBlock from "./ContentBlock";
+import { getAllServices } from "@/lib/apiv2";
 import ServiceList from "../ServiceList";
+import ContentBlock from "./ContentBlock";
 
 export default async function ServicesSection({
   contentBlock,

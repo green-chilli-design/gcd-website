@@ -1,12 +1,12 @@
-import Link from "next/link";
 import { draftMode } from "next/headers";
+import Link from "next/link";
 
 import CoverImage from "@/app/cover-image";
 import { Markdown } from "@/lib/markdown";
 
-import { getAllServices, getServiceBySlug } from "@/lib/api";
+import { getAllServices, getServiceBySlug } from "@/lib/apiv2";
 
-import type { ResolvingMetadata, Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata(
@@ -23,17 +23,20 @@ export async function generateMetadata(
   }
 
   // optionally access and extend (rather than replace) parent metadata
-  const previousImages = (await parent).openGraph?.images || [];
+  const images = (await parent).openGraph?.images || [];
+  if (service.coverImage?.url) {
+    images.unshift(service.coverImage.url);
+  }
 
   return {
     title: `GCD | ${service.title}`,
     openGraph: {
       title: `GCD | ${service.title}`,
-      images: [service.coverImage?.url, ...previousImages],
+      images: images,
     },
     twitter: {
       title: `GCD | ${service.title}`,
-      images: [service.coverImage?.url, ...previousImages],
+      images: images,
     },
   };
 }
@@ -41,8 +44,8 @@ export async function generateMetadata(
 export async function generateStaticParams() {
   const allServices = await getAllServices(false);
 
-  return allServices.map((service) => ({
-    slug: service.slug,
+  return allServices?.map((service) => ({
+    slug: service?.slug,
   }));
 }
 
@@ -71,7 +74,10 @@ export default async function ServicePage({
         </h1>
         {service.coverImage?.url && (
           <div className="mb-8 sm:mx-0 md:mb-16">
-            <CoverImage title={service.title} url={service.coverImage.url} />
+            <CoverImage
+              title={service.title || ""}
+              url={service.coverImage.url}
+            />
           </div>
         )}
         <div className="mx-auto max-w-2xl">

@@ -47,13 +47,17 @@ export default function ContentfulMedia({
   imageProps,
 }: {
   src: string;
-  alt: string;
+  alt?: string | null;
   imageProps?: Omit<ImageProps, "src" | "alt">;
 }) {
   // TODO we should probably use the contentType property for this
   return src.includes(".mp4") || src.includes(".webm") ? (
     <Video src={src} />
   ) : (
-    <Image src={src} alt={alt} {...{ ...defaultImageProps, ...imageProps }} />
+    <Image
+      src={src}
+      alt={alt || ""}
+      {...{ ...defaultImageProps, ...imageProps }}
+    />
   );
 }

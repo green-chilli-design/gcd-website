@@ -1,6 +1,6 @@
-import { getCaseStudies, getAllPosts, getAllServices } from "@/lib/api";
-import { MetadataRoute } from "next";
+import { getCaseStudies } from "@/lib/api";
 import * as Sentry from "@sentry/nextjs";
+import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://gcd.nz";

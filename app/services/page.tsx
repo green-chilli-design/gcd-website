@@ -1,9 +1,9 @@
-import Link from "next/link";
 import { draftMode } from "next/headers";
+import Link from "next/link";
 
 import CoverImage from "@/app/cover-image";
 
-import { getAllServices } from "@/lib/api";
+import { getAllServices } from "@/lib/apiv2";
 
 const title = "GCD | Services";
 export const metadata = {
@@ -35,20 +35,20 @@ function ServicePreview({
   coverImage,
   slug,
 }: {
-  title: string;
-  summary: string;
-  coverImage: any;
-  slug: string;
+  title?: string | null;
+  summary?: string | null;
+  coverImage?: string | null;
+  slug?: string | null;
 }) {
   return (
-    <div>
+    <>
       <div className="mb-5">
-        {coverImage?.url && (
+        {coverImage && title && (
           <CoverImage
             title={title}
             path="/services"
             slug={slug}
-            url={coverImage.url}
+            url={coverImage}
           />
         )}
       </div>
@@ -58,21 +58,23 @@ function ServicePreview({
         </Link>
       </h3>
       <p className="mb-4 text-lg leading-relaxed">{summary}</p>
-    </div>
+    </>
   );
 }
 
-function AllServices({ services }: { services: any[] }) {
+async function AllServices() {
+  const { isEnabled } = draftMode();
+  const services = await getAllServices(isEnabled);
   return (
     <section>
       <div className="mb-32 grid grid-cols-1 gap-y-20 md:grid-cols-2 md:gap-x-16 md:gap-y-32 lg:gap-x-32">
         {services?.map((service) => (
           <ServicePreview
-            key={service.slug}
-            title={service.title}
-            coverImage={service.coverImage}
-            slug={service.slug}
-            summary={service.summary}
+            key={service?.slug}
+            title={service?.title}
+            coverImage={service?.coverImage?.url}
+            slug={service?.slug}
+            summary={service?.summary}
           />
         ))}
       </div>
@@ -80,14 +82,11 @@ function AllServices({ services }: { services: any[] }) {
   );
 }
 
-export default async function Page() {
-  const { isEnabled } = draftMode();
-  const allServices = await getAllServices(isEnabled);
-
+export default function Page() {
   return (
     <div className="main-content">
       <Intro />
-      <AllServices services={allServices} />
+      <AllServices />
     </div>
   );
 }

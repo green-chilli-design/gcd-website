@@ -1,6 +1,6 @@
+import { getServiceBySlug } from "@/lib/apiv2";
 import { draftMode } from "next/headers";
 import { redirect } from "next/navigation";
-import { getServiceBySlug } from "@/lib/api";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
