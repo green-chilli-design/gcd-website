@@ -67,6 +67,8 @@ export async function sendContact(
     await sendEmailToGcd(data);
     await sendSlackNotification(data);
 
+    await sendEmailToLead(data);
+
     return { type: "success", message: "Message sent" };
   } catch (error) {
     console.log(error);
@@ -115,20 +117,40 @@ async function validateRecaptcha(recaptchaResponse: string) {
   }
 }
 
-async function sendEmailToGcd(from: Contact) {
-  const subject = `Contact Form Submission - ${from.firstName}, ${from.lastName}`;
+async function sendEmailToGcd(lead: Contact) {
+  const subject = `Contact Form Submission - ${lead.firstName}, ${lead.lastName}`;
   const html = `
-    <p><strong>Name:</strong> ${from.firstName} ${from.lastName}</p>
-    <p><strong>Email:</strong> ${from.email}</p>
-    <p><strong>Phone:</strong> ${from?.phone}</p>
-    <p><strong>Website:</strong> ${from?.website}</p>
-    <p><strong>Message:</strong> ${from?.message}</p>
+    <p><strong>Name:</strong> ${lead.firstName} ${lead.lastName}</p>
+    <p><strong>Email:</strong> ${lead.email}</p>
+    <p><strong>Phone:</strong> ${lead?.phone}</p>
+    <p><strong>Website:</strong> ${lead?.website}</p>
+    <p><strong>Message:</strong> ${lead?.message}</p>
   `;
 
-  return await sendEmail(from, GCD_CONTACT, subject, from.message, html);
+  return await sendEmail(
+    GCD_LEADS,
+    GCD_CONTACT,
+    subject,
+    lead.message,
+    html,
+    lead,
+  );
 }
 
-function formatEmail(details: {
+async function sendEmailToLead(lead: Contact) {
+  const subject = "Thank You for Contacting GCD.";
+  const html = `
+    <p>Dear ${lead.firstName},</p>
+    <p>Thank you for reaching out to us via our website contact form. We have received your message and appreciate you taking the time to get in touch.</p>
+    <p>Our team will review your inquiry and respond to you as soon as possible. In the meantime, if you have any additional information or questions, please feel free to reply to this email.</p>
+    <p>Thank you again for contacting us. We look forward to assisting you!</p>
+    <p>Best regards,<br>GCD</p>
+  `;
+
+  return await sendEmail(GCD_CONTACT, lead, subject, undefined, html);
+}
+
+function composeEmailAddress(details: {
   firstName: string;
   lastName: string;
   email: string;
@@ -138,12 +160,12 @@ function formatEmail(details: {
 
 /**
  *
- * @param from Sender of the email. `Reply-To` header will be set from this contact
+ * @param from Sender of the email. Defaults to `hello@gcd.nz`.❗Warning: Only set to email on gcd.nz address to avoid spoofing.
  * @param to Recipient of the email
  * @param subject Subject line
  * @param textBody Plain text body
  * @param htmlBody HTML formatted body
- * @param sender The actual sender of the email.  Defaults to `leads@gcd.nz`.❗Warning: Only set to email on gcd.nz address to avoid spoofing.
+ * @param sender The actual sender of the email.
  *
  * @returns smtp2go response
  */
@@ -153,7 +175,7 @@ async function sendEmail(
   subject: string,
   textBody?: string,
   htmlBody?: string,
-  sender: Contact = GCD_LEADS,
+  replyTo?: Contact,
 ): Promise<Response> {
   const smptp2goApiKey = process.env.SMTP2GO_API_KEY;
   if (!smptp2goApiKey) {
@@ -166,21 +188,19 @@ async function sendEmail(
     },
     body: JSON.stringify({
       api_key: smptp2goApiKey,
-      sender: formatEmail({
-        firstName: "New",
-        lastName: "Lead",
-        email: "leads@gcd.nz",
-      }),
-      to: [formatEmail(to)],
+      sender: composeEmailAddress(from),
+      to: [composeEmailAddress(to)],
       subject,
       text_body: textBody,
       html_body: htmlBody,
-      custom_headers: [
-        {
-          header: "Reply-To",
-          value: formatEmail(from),
-        },
-      ],
+      custom_headers: replyTo
+        ? [
+            {
+              header: "Reply-To",
+              value: composeEmailAddress(replyTo),
+            },
+          ]
+        : [],
     }),
     cache: "no-cache",
   });
