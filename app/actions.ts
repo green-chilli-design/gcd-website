@@ -1,6 +1,6 @@
 "use server";
-import { z } from "zod";
 import * as Sentry from "@sentry/nextjs";
+import { z } from "zod";
 
 export interface ActionResponse {
   type: "success" | "error";
@@ -8,12 +8,33 @@ export interface ActionResponse {
   errors?: { [key: string]: string[] | undefined };
 }
 
+export type Contact = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone?: string;
+  website?: string;
+  message?: string;
+};
+
+const GCD_CONTACT = {
+  firstName: "Hello",
+  lastName: "GCD",
+  email: "hello@gcd.nz",
+} as const satisfies Contact;
+
+const GCD_LEADS = {
+  firstName: "New",
+  lastName: "Lead",
+  email: "leads@gcd.nz",
+} as const satisfies Contact;
+
 const contactFormSchema = z.object({
   firstName: z.string().min(1, { message: "Required" }),
   lastName: z.string().min(1, { message: "Required" }),
   email: z.string().email(),
-  phone: z.string(),
-  website: z.string(),
+  phone: z.string().optional(),
+  website: z.string().optional(),
   message: z.string(),
   gRecaptchaResponse: z.string(),
 });
@@ -28,13 +49,13 @@ export async function sendContact(
     }
 
     const data = contactFormSchema.parse({
-      firstName: formData.get("first-name") ?? "",
-      lastName: formData.get("last-name") ?? "",
-      email: formData.get("email") ?? "",
-      phone: formData.get("phone") ?? "",
-      website: formData.get("website") ?? "",
-      message: formData.get("message") ?? "",
-      gRecaptchaResponse: formData.get("g-recaptcha-response") ?? "",
+      firstName: formData.get("first-name"),
+      lastName: formData.get("last-name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      website: formData.get("website"),
+      message: formData.get("message"),
+      gRecaptchaResponse: formData.get("g-recaptcha-response"),
     });
 
     if (!data.gRecaptchaResponse) {
@@ -43,8 +64,7 @@ export async function sendContact(
 
     await validateRecaptcha(data.gRecaptchaResponse);
 
-    await sendEmail(data);
-
+    await sendEmailToGcd(data);
     await sendSlackNotification(data);
 
     return { type: "success", message: "Message sent" };
@@ -95,8 +115,45 @@ async function validateRecaptcha(recaptchaResponse: string) {
   }
 }
 
+async function sendEmailToGcd(from: Contact) {
+  const subject = `Contact Form Submission - ${from.firstName}, ${from.lastName}`;
+  const html = `
+    <p><strong>Name:</strong> ${from.firstName} ${from.lastName}</p>
+    <p><strong>Email:</strong> ${from.email}</p>
+    <p><strong>Phone:</strong> ${from?.phone}</p>
+    <p><strong>Website:</strong> ${from?.website}</p>
+    <p><strong>Message:</strong> ${from?.message}</p>
+  `;
+
+  return await sendEmail(from, GCD_CONTACT, subject, from.message, html);
+}
+
+function formatEmail(details: {
+  firstName: string;
+  lastName: string;
+  email: string;
+}) {
+  return `${details.firstName} ${details.lastName} <${details.email}>` as const;
+}
+
+/**
+ *
+ * @param from Sender of the email. `Reply-To` header will be set from this contact
+ * @param to Recipient of the email
+ * @param subject Subject line
+ * @param textBody Plain text body
+ * @param htmlBody HTML formatted body
+ * @param sender The actual sender of the email.  Defaults to `leads@gcd.nz`.❗Warning: Only set to email on gcd.nz address to avoid spoofing.
+ *
+ * @returns smtp2go response
+ */
 async function sendEmail(
-  data: z.infer<typeof contactFormSchema>,
+  from: Contact,
+  to: Contact,
+  subject: string,
+  textBody?: string,
+  htmlBody?: string,
+  sender: Contact = GCD_LEADS,
 ): Promise<Response> {
   const smptp2goApiKey = process.env.SMTP2GO_API_KEY;
   if (!smptp2goApiKey) {
@@ -109,30 +166,28 @@ async function sendEmail(
     },
     body: JSON.stringify({
       api_key: smptp2goApiKey,
-      sender: ""
-        .concat(data.firstName, " ")
-        .concat(data.lastName, " <")
-        .concat(data.email, ">"),
-      to: ["Hello GCD <hello@gcd.nz>"],
-      subject: `Contact Form Submission - ${data.firstName}, ${data.lastName}`,
-      text_body: data.message,
-      html_body: `
-          <p><strong>Name:</strong> ${data.firstName} ${data.lastName}</p>
-          <p><strong>Email:</strong> ${data.email}</p>
-          <p><strong>Phone:</strong> ${data.phone}</p>
-          <p><strong>Website:</strong> ${data.website}</p>
-          <p><strong>Message:</strong> ${data.message}</p>
-        `,
+      sender: formatEmail({
+        firstName: "New",
+        lastName: "Lead",
+        email: "leads@gcd.nz",
+      }),
+      to: [formatEmail(to)],
+      subject,
+      text_body: textBody,
+      html_body: htmlBody,
+      custom_headers: [
+        {
+          header: "Reply-To",
+          value: formatEmail(from),
+        },
+      ],
     }),
     cache: "no-cache",
   });
 
   if (!response.ok) {
-    const body = await response.json();
     throw new Error(
-      `Failed to send email: ${response.status} ${
-        response.statusText
-      }, ${JSON.stringify(body)}`,
+      `Failed to send email: ${response.status} ${response.statusText}`,
     );
   }
 
