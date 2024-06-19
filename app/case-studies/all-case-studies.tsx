@@ -45,7 +45,7 @@ export default function AllCaseStudies({
     <section>
       <div className="main-content mb-24 grid grid-cols-1 gap-20 md:grid-cols-2 xl:grid-cols-3">
         {caseStudies
-          .sort((a, b) => a.sortOrder - b.sortOrder)
+          .sort((a, b) => sortCaseStudies(a.sortOrder, b.sortOrder))
           .map((caseStudy) => (
             <CaseStudyPreview
               key={caseStudy.slug}
@@ -59,4 +59,15 @@ export default function AllCaseStudies({
       <ReactNative />
     </section>
   );
+}
+
+function sortCaseStudies(a?: number | null, b?: number | null) {
+  // if a is falsy b goes before a if b is not falsy
+  // if b is also falsy they are equal
+  if (!a) return b ? 1 : 0;
+  // here we know a must be a number so if b is falsy it should go after a
+  if (!b) return -1;
+
+  // both are numbers so we sort normally
+  return a - b;
 }
