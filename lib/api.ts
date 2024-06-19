@@ -215,6 +215,7 @@ export async function getServiceBySlug(
 const CASE_STUDIES_GRAPHQL_FIELDS = `
   slug
   title
+  sortOrder
   coverImage {
     url
   }

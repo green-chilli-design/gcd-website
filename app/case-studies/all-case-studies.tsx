@@ -44,15 +44,17 @@ export default function AllCaseStudies({
   return (
     <section>
       <div className="main-content mb-24 grid grid-cols-1 gap-20 md:grid-cols-2 xl:grid-cols-3">
-        {caseStudies.map((caseStudy) => (
-          <CaseStudyPreview
-            key={caseStudy.slug}
-            title={caseStudy.title}
-            coverImage={caseStudy.coverImage}
-            slug={caseStudy.slug}
-            summary={caseStudy.summary}
-          />
-        ))}
+        {caseStudies
+          .sort((a, b) => a.sortOrder - b.sortOrder)
+          .map((caseStudy) => (
+            <CaseStudyPreview
+              key={caseStudy.slug}
+              title={caseStudy.title}
+              coverImage={caseStudy.coverImage}
+              slug={caseStudy.slug}
+              summary={caseStudy.summary}
+            />
+          ))}
       </div>
       <ReactNative />
     </section>
