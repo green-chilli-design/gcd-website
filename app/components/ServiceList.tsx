@@ -40,7 +40,7 @@ export default function ServiceList({ services }: { services: any }) {
               setSelectedService(service), setHovered(true);
             }}
             key={service.title}
-            className={`items-center justify-between border-b-2 py-[0.8rem] md:p-[0.8rem] hover:border-green dark:hover:border-green md:flex ${
+            className={`items-center justify-between border-b-2 py-[0.8rem] hover:border-green dark:hover:border-green md:flex md:p-[0.8rem] ${
               hovered && selectedService.title === service.title
                 ? "md:border-green"
                 : "border-black dark:border-neutral"
@@ -49,7 +49,7 @@ export default function ServiceList({ services }: { services: any }) {
             <div
               className={`mb-2 flex w-full justify-between md:mb-0 ${
                 hovered && selectedService.title === service.title
-                  ? "border-b border-green md:border-none"
+                  ? "border-b border-green text-green md:border-none"
                   : "border-none"
               }`}
             >
