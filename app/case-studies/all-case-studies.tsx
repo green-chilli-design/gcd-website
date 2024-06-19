@@ -1,5 +1,3 @@
-"use client";
-
 import CoverImage from "@/app/cover-image";
 import ReactNative from "../components/ReactNative";
 import ViewMore from "../components/ViewMore";
