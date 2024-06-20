@@ -1,14 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import "@/app/globals.css";
-import Image from "next/image";
-import SubscribeForm from "@/app/components/forms/SubscribeForm";
-import { useTheme } from "next-themes";
 import gcdLogoGreen from "@/public/gcd-logo-square-green.svg";
 import gcdLogoWhite from "@/public/gcd-logo-white-text.svg";
-import paehokohokoLogo from "@/public/images/pae-hokohoko-marketplace.png";
 import paehokohokoLogoWhite from "@/public/images/pae-hokohoko-marketplace-white.svg";
+import paehokohokoLogo from "@/public/images/pae-hokohoko-marketplace.png";
+import { useTheme } from "next-themes";
+import Image from "next/image";
+import Link from "next/link";
 import { LinkedinIcon } from "react-share";
 
 export default function Footer() {
@@ -68,7 +67,9 @@ export default function Footer() {
           />
         </Link>
         <div className="order-last text-2xs md:order-none">
-          Green Chilli Design · Copyright © {new Date().getFullYear()}
+          &copy;2008&ndash;
+          {new Date().toLocaleDateString("en", { year: "2-digit" })} GCD, Ltd
+          All rights reserved
         </div>
         <div className="mb-[37px] flex flex-row items-center gap-5 md:mb-0">
           {/* TODO: Disabled Subscribe form for MVP */}
