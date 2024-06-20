@@ -1,12 +1,12 @@
-import { draftMode } from "next/headers";
+import ViewMore from "@/app/components/ViewMore";
 import CoverImage from "@/app/cover-image";
 import { getCaseStudies, getCategoryByName, getPageBySlug } from "@/lib/api";
-import ViewMore from "@/app/components/ViewMore";
+import type { Metadata } from "next";
+import { draftMode } from "next/headers";
+import Link from "next/link";
+import { Suspense } from "react";
 import AllCaseStudies from "./all-case-studies";
 import CaseStudySearchBar from "./case-study-search-bar";
-import { Suspense } from "react";
-import type { Metadata } from "next";
-import Link from "next/link";
 
 const title = "GCD | Case Studies";
 export const metadata: Metadata = {
@@ -93,7 +93,7 @@ export default async function Page({ searchParams }: { searchParams: any }) {
 
       {featuredCaseStudy && <FeaturedCaseStudy caseStudy={featuredCaseStudy} />}
       {total > 0 ? (
-        <AllCaseStudies caseStudies={caseStudies} showMore={true} />
+        <AllCaseStudies caseStudies={caseStudies} />
       ) : (
         <div className="main-content flex flex-col items-center justify-center py-12">
           <p className="mb-5">No case studies found.</p>
