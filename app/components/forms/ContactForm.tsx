@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { sendContact } from "../../actions";
+import LoadingSpinner from "./LoadingSpinner";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -12,13 +13,9 @@ function SubmitButton() {
       type="submit"
       disabled={pending}
       aria-disabled={pending}
-      className="btn green mt-10 w-32"
+      className="btn green mt-10 flex w-32 items-center justify-center"
     >
-      {pending && (
-        <span className="material-icons-outlined icon-24 m-2.5 animate-spin">
-          progress_activity
-        </span>
-      )}
+      {pending && <LoadingSpinner />}
       {!pending && "Submit"}
     </button>
   );
