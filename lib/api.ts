@@ -457,7 +457,7 @@ export async function getPageBySlug(
         }
       }`,
     preview,
-    ["pages"],
+    ["page"],
   );
   return extractPage(entry);
 }
