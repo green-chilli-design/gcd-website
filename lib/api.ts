@@ -1,9 +1,11 @@
 // TODO: This should be refactored into something reusable
 
+import { ContentTag } from "@/app/api/revalidate/route";
+
 async function fetchGraphQL(
   query: string,
   preview: boolean = false,
-  tags = ["posts"],
+  tags: ContentTag[] = ["posts"],
 ): Promise<any> {
   return fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${process.env.CONTENTFUL_ENVIRONMENT}`,
