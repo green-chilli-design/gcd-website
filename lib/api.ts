@@ -5,7 +5,7 @@ import { ContentTag } from "@/app/api/revalidate/route";
 async function fetchGraphQL(
   query: string,
   preview: boolean = false,
-  tags: ContentTag[] = ["posts"],
+  tags: ContentTag[],
 ): Promise<any> {
   return fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${process.env.CONTENTFUL_ENVIRONMENT}`,
@@ -80,6 +80,7 @@ export async function getPostBySlug(
       }
     }`,
     preview,
+    ["posts"],
   );
   return extractPost(entry);
 }
