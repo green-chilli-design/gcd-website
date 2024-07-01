@@ -64,10 +64,13 @@ function FeaturedCaseStudy({ caseStudy }: { caseStudy: any }) {
 export default async function Page({ searchParams }: { searchParams: any }) {
   const category = searchParams?.category || null;
   const { isEnabled } = draftMode();
-  const { title, subtitle } = await getPageBySlug("case-studies");
+  const { title, subtitle } = await getPageBySlug("case-studies", isEnabled);
   const caseStudies = await getCaseStudies(isEnabled, category);
   const total = caseStudies?.length;
-  const caseStudyCategories = await getCategoryByName("Case Studies");
+  const caseStudyCategories = await getCategoryByName(
+    "Case Studies",
+    isEnabled,
+  );
 
   let featuredCaseStudy;
   if (caseStudies?.length > 0) {

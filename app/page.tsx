@@ -1,10 +1,12 @@
 import { getPageBySlug } from "@/lib/api";
 import { generateContentBlocks } from "@/lib/contentful-content-blocks";
 import ContentfulMedia from "@/lib/contentful-media";
+import { draftMode } from "next/headers";
 import CallToActionBlock from "./components/contentful-content-blocks/CallToActionBlock";
 
 export default async function HomePage() {
-  const homePage = await getPageBySlug("home");
+  const { isEnabled } = draftMode();
+  const homePage = await getPageBySlug("home", isEnabled);
 
   const bannerImages: [] = homePage.bannerContent?.imagesCollection?.items;
 
