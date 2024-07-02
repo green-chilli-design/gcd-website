@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
+import { NextRequest, NextResponse } from "next/server";
 
 const CONTENT_TAGS = [
   "page",
@@ -9,7 +9,15 @@ const CONTENT_TAGS = [
   "services",
   "caseStudy",
   "caseStudies",
+  "assets",
+  "contentBlocks",
+  "persons",
+  "person",
+  "clients",
+  "category",
 ] as const;
+
+export type ContentTag = (typeof CONTENT_TAGS)[number];
 
 /**
  * TODO:
