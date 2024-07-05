@@ -1,9 +1,9 @@
-import { getAssetByTitle, getPageBySlug } from "@/lib/api";
-import React from "react";
-import ContactForm from "@/app/components/forms/ContactForm";
-import ParkingModal from "@/app/components/ParkingModal";
 import LocationMap from "@/app/components/LocationMap";
+import ParkingModal from "@/app/components/ParkingModal";
+import ContactForm from "@/app/components/forms/ContactForm";
+import { getAssetByTitle, getPageBySlug } from "@/lib/api";
 import type { Metadata } from "next";
+import { draftMode } from "next/headers";
 
 const title = "GCD | Contact Us";
 export const metadata: Metadata = {
@@ -17,7 +17,8 @@ export const metadata: Metadata = {
 };
 
 export default async function ContactPage() {
-  const { subtitle, description } = await getPageBySlug("contact");
+  const { isEnabled } = draftMode();
+  const { subtitle, description } = await getPageBySlug("contact", isEnabled);
   const parkingMap = await getAssetByTitle("Parking Map");
 
   return (
@@ -43,9 +44,7 @@ export default async function ContactPage() {
               </a>
             </p>
             <p className="small mb-12 flex items-center">
-              <span className="material-icons-outlined icon-20 mr-2">
-                call
-              </span>
+              <span className="material-icons-outlined icon-20 mr-2">call</span>
               <a href="tel:+64 9 300 3039" className="hover:text-green">
                 +64 9 300 3039
               </a>

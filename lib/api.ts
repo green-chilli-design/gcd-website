@@ -10,7 +10,9 @@ async function fetchGraphQL(
   return fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${process.env.CONTENTFUL_ENVIRONMENT}`,
     {
-      cache: `${process.env.DISABLE_CACHING ? "no-cache" : "force-cache"}`, // Disables caching when true
+      cache: `${
+        process.env.DISABLE_CACHING || preview ? "no-cache" : "force-cache"
+      }`, // Disables caching when true
       method: "POST",
       headers: {
         "Content-Type": "application/json",

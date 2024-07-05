@@ -16,12 +16,14 @@ export function CaseStudyPreview({
   return (
     <div>
       <div className="mb-10">
-        <CoverImage
-          title={title}
-          path="/case-studies"
-          slug={slug}
-          url={coverImage.url}
-        />
+        {coverImage && (
+          <CoverImage
+            title={title}
+            path="/case-studies"
+            slug={slug}
+            url={coverImage.url}
+          />
+        )}
       </div>
       <div className="flex w-full justify-between">
         <div>

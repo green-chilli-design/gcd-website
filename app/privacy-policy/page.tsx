@@ -1,7 +1,7 @@
 import { getPageBySlug } from "@/lib/api";
 import { generateContentBlocks } from "@/lib/contentful-content-blocks";
-import React from "react";
 import type { Metadata } from "next";
+import { draftMode } from "next/headers";
 
 const title = "GCD | Privacy Policy";
 export const metadata: Metadata = {
@@ -15,7 +15,11 @@ export const metadata: Metadata = {
 };
 
 export default async function PrivacyPolicyPage() {
-  const { pageContentCollection } = await getPageBySlug("privacy-policy");
+  const { isEnabled } = draftMode();
+  const { pageContentCollection } = await getPageBySlug(
+    "privacy-policy",
+    isEnabled,
+  );
 
   let contentBlocks = generateContentBlocks(pageContentCollection.items);
 
