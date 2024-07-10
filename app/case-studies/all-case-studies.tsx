@@ -1,5 +1,4 @@
 import CoverImage from "@/app/cover-image";
-import ReactNative from "../components/ReactNative";
 import ViewMore from "../components/ViewMore";
 
 export function CaseStudyPreview({
@@ -58,7 +57,6 @@ export default function AllCaseStudies({
             />
           ))}
       </div>
-      <ReactNative />
     </section>
   );
 }
