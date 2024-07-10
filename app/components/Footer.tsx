@@ -69,7 +69,7 @@ export default function Footer() {
         <div className="order-last text-2xs md:order-none">
           &copy;2008&ndash;
           {new Date().toLocaleDateString("en", { year: "2-digit" })} GCD, Ltd
-          All rights reserved
+          All rights reserved. NZBN 9429032928655
         </div>
         <div className="mb-[37px] flex flex-row items-center gap-5 md:mb-0">
           {/* TODO: Disabled Subscribe form for MVP */}
