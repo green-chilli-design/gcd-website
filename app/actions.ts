@@ -1,4 +1,5 @@
 "use server";
+import { addNewLead } from "@/lib/addLead";
 import * as Sentry from "@sentry/nextjs";
 import { z } from "zod";
 
@@ -315,56 +316,4 @@ async function createSubscription(email: string): Promise<Response> {
   }
 
   return response;
-}
-
-const ADD_CLIENT_MUTATION = `
-mutation createItem($name: String!, $columnValues: JSON!) {
-  create_item(
-    board_id: 7002702691
-    item_name: $name
-    column_values: $columnValues
-  ) {
-    id
-  }
-}
-`;
-
-async function addNewLead(contact: Contact) {
-  if (!process.env.MONDAY_API_TOKEN) {
-    throw new Error("Please provide MONDAY_API_TOKEN in your environment.");
-  }
-
-  const columnValues = {
-    status: "New Lead",
-    // Monday requires this formatting for type email
-    // The second string determines the value that is visible to us in Monday.com and can't be left empty
-    email: `${contact.email} ${contact.email}`,
-    text8: contact.website || "",
-    phone: contact.phone || "",
-  };
-
-  const variables = {
-    name: `${contact.firstName} ${contact.lastName}`,
-    columnValues: JSON.stringify(columnValues),
-  };
-
-  console.log(variables);
-
-  const response = await fetch(new URL("https://api.monday.com/v2/"), {
-    method: "POST",
-    cache: "no-cache",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: process.env.MONDAY_API_TOKEN,
-      "API-Version": "2023-10",
-    },
-    body: JSON.stringify({ query: ADD_CLIENT_MUTATION, variables }),
-  });
-
-  if (!response.ok) {
-    Sentry.captureMessage(
-      `Error adding new lead to Monday: ${response.status} ${response.statusText}`,
-      "error",
-    );
-  }
 }
