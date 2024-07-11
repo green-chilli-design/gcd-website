@@ -5,6 +5,7 @@ import { useFormState, useFormStatus } from "react-dom";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { sendContact } from "../../actions";
 import LoadingSpinner from "./LoadingSpinner";
+import { useRouter } from "next/navigation";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -25,6 +26,7 @@ export default function ContactForm() {
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [state, formAction] = useFormState(sendContact, null);
   const ref = useRef<HTMLFormElement>(null);
+  const router = useRouter();
   const onSubmit = async (formData: FormData) => {
     if (!executeRecaptcha) {
       console.log("Execute Recaptcha not yet available");
@@ -37,6 +39,7 @@ export default function ContactForm() {
 
   if (state?.type === "success") {
     ref.current?.reset();
+    router.push("/thank-you", { scroll: false });
   }
 
   return (
