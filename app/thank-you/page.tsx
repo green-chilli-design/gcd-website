@@ -20,7 +20,7 @@ export default async function ThankYouPage() {
           <div className={"max-w-lg justify-between lg:flex"}>
             <Link
               href={"/"}
-              className="btn green mb-5 flex w-52 items-center justify-center text-black lg:mb-0"
+              className="btn md:green mb-5 flex w-52 items-center justify-center border border-green text-green md:text-black lg:mb-0"
             >
               Back to Home Page
             </Link>
