@@ -39,7 +39,7 @@ export default function ContactForm() {
 
   if (state?.type === "success") {
     ref.current?.reset();
-    router.push("/thank-you", { scroll: false });
+    router.push("/thank-you");
   }
 
   return (
