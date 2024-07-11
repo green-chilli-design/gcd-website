@@ -13,9 +13,7 @@ export default async function ThankYouPage() {
               <br />
               Reaching Out!
             </h2>
-            <p className="break-all">
-              We received your message and will get back to you shortly.
-            </p>
+            <p>We received your message and will get back to you shortly.</p>
           </section>
           <div className={"max-w-lg justify-between lg:flex"}>
             <Link
