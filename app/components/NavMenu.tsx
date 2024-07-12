@@ -1,12 +1,12 @@
-import ThemeSwitch from "./ThemeSwitch";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeSwitch from "./ThemeSwitch";
 
 export const NAV_LINKS = [
-  // {
-  //   href: "/services",
-  //   label: "Services",
-  // },
+  {
+    href: "/#services",
+    label: "Services",
+  },
   {
     href: "/case-studies",
     label: "Case Studies",

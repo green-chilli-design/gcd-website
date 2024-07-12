@@ -1,13 +1,13 @@
-import "@/app/globals.css";
 import "@/app/globalicons.css";
+import "@/app/globals.css";
 
-import { Analytics } from "@vercel/analytics/react";
-import { GoogleAnalytics } from "@next/third-parties/google";
-import { Jost } from "next/font/google";
-import NavBar from "@/app/components/NavBar";
 import Footer from "@/app//components/Footer";
+import NavBar from "@/app/components/NavBar";
 import RecaptchaProvider from "@/app/components/providers/recaptcha-provider";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
+import { Jost } from "next/font/google";
 import { sharedMetadata } from "./metadata";
 
 // temp fix for https://github.com/pacocoursey/next-themes/issues/169
@@ -38,7 +38,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className={jost.className}>
         <ThemeProvider>
           <RecaptchaProvider>
