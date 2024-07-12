@@ -66,10 +66,13 @@ export default function Footer() {
             alt="pae hokohoko marketplace logo"
           />
         </Link>
-        <div className="order-last text-2xs md:order-none">
-          &copy;2008&ndash;
-          {new Date().toLocaleDateString("en", { year: "2-digit" })} GCD, Ltd
-          All rights reserved. NZBN 9429032928655
+        <div className="order-last flex flex-col items-center text-2xs md:order-none">
+          <span>
+            &copy;2008&ndash;
+            {new Date().toLocaleDateString("en", { year: "2-digit" })} GCD, Ltd.
+            All rights reserved
+          </span>
+          <span className="text-dark-grey">NZBN 9429032928655</span>
         </div>
         <div className="mb-[37px] flex flex-row items-center gap-5 md:mb-0">
           {/* TODO: Disabled Subscribe form for MVP */}
