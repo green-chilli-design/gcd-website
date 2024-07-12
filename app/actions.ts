@@ -63,12 +63,12 @@ export async function sendContact(
       throw new Error("There was no reCAPTCHA token in the request");
     }
 
-    await validateRecaptcha(data.gRecaptchaResponse);
+    // await validateRecaptcha(data.gRecaptchaResponse);
 
-    await sendEmailToGcd(data);
-    await sendSlackNotification(data);
+    // await sendEmailToGcd(data);
+    // await sendSlackNotification(data);
 
-    await sendEmailToLead(data);
+    // await sendEmailToLead(data);
     await addNewLead(data);
 
     return { type: "success", message: "Message sent" };
