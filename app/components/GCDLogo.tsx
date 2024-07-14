@@ -19,15 +19,13 @@ export default function GCDLogo({ className = "" }: GCDLogoProps) {
 
   return (
     <div className="flex items-center">
-      <Link href="/">
-        <Image
-          src={logoSrc}
-          alt="Green Chilli Design Logo"
-          width="80"
-          height="80"
-          className={cn("transition duration-500 hover:scale-110", className)}
-        />
-      </Link>
+      <Image
+        src={logoSrc}
+        alt="Green Chilli Design Logo"
+        width="80"
+        height="80"
+        className={className}
+      />
     </div>
   );
 }
