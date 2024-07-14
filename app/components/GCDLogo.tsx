@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
 
 interface GCDLogoProps {
   className?: string;
@@ -24,7 +25,7 @@ export default function GCDLogo({ className = "" }: GCDLogoProps) {
           alt="Green Chilli Design Logo"
           width="80"
           height="80"
-          className={"transition duration-500 hover:scale-110 " + className}
+          className={cn("transition duration-500 hover:scale-110", className)}
         />
       </Link>
     </div>
