@@ -2,6 +2,10 @@ import { Contact } from "@/app/actions";
 import Sentry from "@sentry/nextjs";
 import { z } from "zod";
 
+if (!process.env.MONDAY_API_TOKEN) {
+  throw new Error("Please provide MONDAY_API_TOKEN in your environment.");
+}
+
 const ADD_CLIENT_MUTATION = `
 mutation addClient($name: String!, $columnValues: JSON!) {
   create_item(
@@ -21,6 +25,11 @@ const ADD_UPDATE_MUTATION = `
 }
 `;
 const MONDAY_URL = new URL("https://api.monday.com/v2/");
+const DEFAULT_HEADERS = {
+  "Content-Type": "application/json",
+  Authorization: process.env.MONDAY_API_TOKEN,
+  "API-Version": "2024-07",
+} as const;
 
 const schema = z.object({
   data: z.object({ create_item: z.object({ id: z.coerce.number() }) }),
@@ -30,18 +39,10 @@ async function executeMondayMutation(
   query: string,
   variables?: Record<string, any>,
 ) {
-  if (!process.env.MONDAY_API_TOKEN) {
-    throw new Error("Please provide MONDAY_API_TOKEN in your environment.");
-  }
-
   return await fetch(MONDAY_URL, {
     method: "POST",
     cache: "no-cache",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: process.env.MONDAY_API_TOKEN,
-      "API-Version": "2023-10",
-    },
+    headers: DEFAULT_HEADERS,
     body: JSON.stringify({ query, variables }),
   });
 }
