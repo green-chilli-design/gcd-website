@@ -3,7 +3,7 @@ import GCDLogo from "../components/GCDLogo";
 
 export default async function ThankYouPage() {
   return (
-    <div className="main-content my-56 flex justify-center  lg:my-60">
+    <div className="main-content m-auto flex justify-center">
       <div className="items-start justify-between lg:flex">
         <GCDLogo
           className={
