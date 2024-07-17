@@ -1,14 +1,8 @@
-"use client";
 import ContentfulMedia from "@/lib/contentful-media";
-import { useTheme } from "next-themes";
 import Link from "next/link";
 
 export default function ClientLogo({ client }: { client: any }) {
-  const { resolvedTheme } = useTheme();
-  const { url, width, height } =
-    client.logoDarkMode && resolvedTheme === "dark"
-      ? client.logoDarkMode
-      : client.logo;
+  const { url, width, height } = client.logo;
 
   return (
     url && (

@@ -1,4 +1,5 @@
 "use server";
+import { addNewLead } from "@/lib/addLead";
 import * as Sentry from "@sentry/nextjs";
 import { z } from "zod";
 
@@ -68,6 +69,7 @@ export async function sendContact(
     await sendSlackNotification(data);
 
     await sendEmailToLead(data);
+    await addNewLead(data);
 
     return { type: "success", message: "Message sent" };
   } catch (error) {
