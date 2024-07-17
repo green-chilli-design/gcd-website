@@ -1,5 +1,5 @@
-import CoverImage from "@/app/cover-image";
-import ViewMore from "../components/ViewMore";
+import CoverImage from "@/app/(main)/cover-image";
+import ViewMore from "../../components/ViewMore";
 
 export function CaseStudyPreview({
   title,

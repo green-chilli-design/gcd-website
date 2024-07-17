@@ -3,9 +3,13 @@ import GCDLogo from "../components/GCDLogo";
 
 export default async function ThankYouPage() {
   return (
-    <div className="main-content my-24 flex justify-center lg:my-28">
+    <div className="main-content my-56 flex justify-center  lg:my-60">
       <div className="items-start justify-between lg:flex">
-        <GCDLogo className="mb-10 me-24 h-20 w-20 lg:mb-0 lg:h-48 lg:w-48" />
+        <GCDLogo
+          className={
+            "mb-10 me-24 h-20 w-20 transition duration-500 hover:scale-110 lg:mb-0 lg:h-48 lg:w-48"
+          }
+        />
         <div>
           <section className="mb-16 max-w-lg">
             <h2 className="mb-5 text-6xl lg:text-10xl">
