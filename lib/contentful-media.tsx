@@ -7,7 +7,9 @@ const contentfulLoader = ({
   width,
   quality,
 }: Pick<ImageProps, "src" | "width" | "quality">) => {
-  return `${src}?w=${width}&q=${quality || 75}&fm=webp`;
+  return `${src}?w=${width}&q=${quality || 100}${
+    typeof src === "string" && src.endsWith(".svg") ? "" : "&fm=webp"
+  }`;
 };
 
 const defaultImageProps: Omit<ImageProps, "src" | "alt"> = {
@@ -54,6 +56,6 @@ export default function ContentfulMedia({
   return src.includes(".mp4") || src.includes(".webm") ? (
     <Video src={src} />
   ) : (
-    <Image src={src} alt={alt} {...{ ...defaultImageProps, ...imageProps }} />
+    <Image src={src} alt={alt} {...defaultImageProps} {...imageProps} />
   );
 }
