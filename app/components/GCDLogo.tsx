@@ -6,13 +6,14 @@ import { useTheme } from "next-themes";
 
 interface GCDLogoProps {
   className?: string;
+  darkNavBar?: boolean;
 }
 
-export default function GCDLogo({ className = "" }: GCDLogoProps) {
+export default function GCDLogo({ className = "", darkNavBar }: GCDLogoProps) {
   const { resolvedTheme } = useTheme();
 
   let logoSrc = "/gcd-logo-round-black.svg";
-  if (resolvedTheme === "dark") {
+  if (resolvedTheme === "dark" || darkNavBar) {
     logoSrc = "/gcd-logo-round-white.svg";
   }
 

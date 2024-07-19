@@ -56,3 +56,40 @@
     @apply bg-neutral hover:shadow-hover-btn hover:shadow-light-shadow;
   }
 }
+
+/* 
+* Sticky Navbar
+*/
+@keyframes stickyNavbar {
+  0% {
+    background-color: black;
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes stickyNavbarScrolled {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background-color: black;
+  }
+}
+
+.sticky-navbar {
+  background-color: rgba(0, 0, 0, 0);
+  position: sticky;
+  top: 0;
+  animation-duration: 0.2s;
+  animation-name: stickyNavbar;
+}
+
+.sticky-navbar-dark {
+  background-color: black;
+  position: sticky;
+  top: 0;
+  animation-duration: 0.2s;
+  animation-name: stickyNavbarScrolled;
+}

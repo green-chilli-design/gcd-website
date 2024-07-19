@@ -3,8 +3,13 @@ import ThemeSwitch from "./ThemeSwitch";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "./NavMenu";
+import { cn } from "@/lib/utils";
 
-export default function NavMenuMobile() {
+interface NavMenMobileProps {
+  darkNavBar: boolean;
+}
+
+export default function NavMenuMobile({ darkNavBar }: NavMenMobileProps) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -21,11 +26,13 @@ export default function NavMenuMobile() {
         <Link
           href="/"
           onClick={handleMenu}
-          className={`mb-10 ${
+          className={cn(
+            "mb-10",
             pathname.length === 1
               ? "text-green"
-              : "hover:text-green hover:underline"
-          }`}
+              : "hover:text-green hover:underline",
+            darkNavBar && pathname.length !== 1 ? "text-white" : "",
+          )}
         >
           <h4>Home</h4>
         </Link>
@@ -37,9 +44,11 @@ export default function NavMenuMobile() {
               key={label}
               onClick={handleMenu}
               href={href}
-              className={`mb-10 ${
-                isActive ? "text-green" : "hover:text-green hover:underline"
-              }`}
+              className={cn(
+                "mb-10",
+                isActive ? "text-green" : "hover:text-green hover:underline",
+                darkNavBar && !menuOpen ? "text-white" : "",
+              )}
             >
               <h4>{label}</h4>
             </Link>
@@ -52,7 +61,10 @@ export default function NavMenuMobile() {
       {/* menu icons */}
       <div
         onClick={handleMenu}
-        className="flex cursor-pointer transition duration-500 hover:scale-110 sm:hidden"
+        className={cn(
+          "flex cursor-pointer transition duration-500 hover:scale-110 sm:hidden",
+          darkNavBar ? "text-white" : "",
+        )}
       >
         {menuOpen ? (
           <span className="material-icons-outlined icon-48">

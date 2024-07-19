@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ThemeSwitch from "./ThemeSwitch";
+import { cn } from "@/lib/utils";
 
 export const NAV_LINKS = [
   {
@@ -25,7 +26,11 @@ export const NAV_LINKS = [
   },
 ];
 
-export default function NavMenu() {
+interface NavMenuProps {
+  darkNavBar: boolean;
+}
+
+export default function NavMenu({ darkNavBar }: NavMenuProps) {
   const pathname = usePathname();
 
   return (
@@ -37,15 +42,17 @@ export default function NavMenu() {
           <Link
             key={label}
             href={href}
-            className={`text-sm font-bold ${
-              isActive ? "text-green" : "hover:text-green hover:underline"
-            }`}
+            className={cn(
+              "ext-sm font-bold",
+              darkNavBar && !isActive ? "text-white" : "",
+              isActive ? "text-green" : "hover:text-green hover:underline",
+            )}
           >
             {label}
           </Link>
         );
       })}
-      <ThemeSwitch />
+      <ThemeSwitch darkNavBar={darkNavBar} />
     </div>
   );
 }

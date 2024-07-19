@@ -3,14 +3,19 @@
 import { useTheme } from "next-themes";
 import { useState } from "react";
 
+interface ThemeSwitchProps {
+  isMobile?: boolean;
+  darkNavBar?: boolean;
+}
+
 export default function ThemeSwitch({
   isMobile = false,
-}: {
-  isMobile?: boolean;
-}) {
+  darkNavBar,
+}: ThemeSwitchProps) {
   const { setTheme, resolvedTheme } = useTheme();
   const [effect, setEffect] = useState(false);
-  let iconColor = resolvedTheme === "dark" ? "#F7F4F3" : "#080708";
+  let iconColor =
+    resolvedTheme === "dark" || darkNavBar ? "#F7F4F3" : "#080708";
   if (resolvedTheme === "light" && isMobile) {
     iconColor = "#080708";
   }
