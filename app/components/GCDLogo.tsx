@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { cn } from "@/lib/utils";
 
 interface GCDLogoProps {
   className?: string;
