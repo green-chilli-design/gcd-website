@@ -62,7 +62,6 @@
 */
 @keyframes stickyNavbar {
   0% {
-    /* background-color: black; */
     @apply bg-black;
   }
   100% {
@@ -93,4 +92,36 @@
   top: 0;
   animation-duration: 0.2s;
   animation-name: stickyNavbarScrolled;
+}
+
+/*
+* Sticky Navbar Text
+*/
+@keyframes stickyNavbarText {
+  0% {
+    @apply text-black;
+  }
+  100% {
+    @apply text-white;
+  }
+}
+
+@keyframes stickyNavbarTextScrolled {
+  0% {
+    @apply text-white;
+  }
+  100% {
+    @apply text-black;
+  }
+}
+
+.sticky-navbar-text-white {
+  @apply text-white;
+  animation-duration: 0.2s;
+  animation-name: stickyNavbarText;
+}
+
+.sticky-navbar-text {
+  animation-duration: 0.2s;
+  animation-name: stickyNavbarTextScrolled;
 }

@@ -30,7 +30,6 @@ export default function NavMenuMobile() {
             pathname.length === 1
               ? "text-green"
               : "hover:text-green hover:underline",
-            darkNavBar && pathname.length !== 1 ? "text-white" : "",
           )}
         >
           <h4>Home</h4>
@@ -43,11 +42,9 @@ export default function NavMenuMobile() {
               key={label}
               onClick={handleMenu}
               href={href}
-              className={cn(
-                "mb-10",
-                isActive ? "text-green" : "hover:text-green hover:underline",
-                darkNavBar && !menuOpen ? "text-white" : "",
-              )}
+              className={`mb-10 ${
+                isActive ? "text-green" : "hover:text-green hover:underline"
+              }`}
             >
               <h4>{label}</h4>
             </Link>
@@ -60,10 +57,7 @@ export default function NavMenuMobile() {
       {/* menu icons */}
       <div
         onClick={handleMenu}
-        className={cn(
-          "flex cursor-pointer transition duration-500 hover:scale-110 sm:hidden",
-          darkNavBar ? "text-white" : "",
-        )}
+        className="flex cursor-pointer transition duration-500 hover:scale-110 sm:hidden"
       >
         {menuOpen ? (
           <span className="material-icons-outlined icon-48">

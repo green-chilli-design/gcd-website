@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ThemeSwitch from "./ThemeSwitch";
-import { cn } from "@/lib/utils";
 import { useContext } from "react";
 import { DarkNavBarContext } from "./NavBar";
+import { useRouter } from "next/router";
+import { cn } from "@/lib/utils";
 
 export const NAV_LINKS = [
   {
@@ -14,14 +15,6 @@ export const NAV_LINKS = [
     href: "/case-studies",
     label: "Case Studies",
   },
-  // {
-  //   href: "/blog",
-  //   label: "Blog",
-  // },
-  // {
-  //   href: "/about",
-  //   label: "About",
-  // },
   {
     href: "/contact",
     label: "Contact Us",
@@ -43,7 +36,6 @@ export default function NavMenu() {
             href={href}
             className={cn(
               "ext-sm font-bold",
-              darkNavBar && !isActive ? "text-white" : "",
               isActive ? "text-green" : "hover:text-green hover:underline",
             )}
           >
@@ -51,7 +43,7 @@ export default function NavMenu() {
           </Link>
         );
       })}
-      <ThemeSwitch darkNavBar={darkNavBar} />
+      <ThemeSwitch />
     </div>
   );
 }

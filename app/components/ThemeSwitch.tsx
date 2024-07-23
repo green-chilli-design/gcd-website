@@ -1,19 +1,17 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { DarkNavBarContext } from "./NavBar";
 
 interface ThemeSwitchProps {
   isMobile?: boolean;
-  darkNavBar?: boolean;
 }
 
-export default function ThemeSwitch({
-  isMobile = false,
-  darkNavBar,
-}: ThemeSwitchProps) {
+export default function ThemeSwitch({ isMobile = false }: ThemeSwitchProps) {
   const { setTheme, resolvedTheme } = useTheme();
   const [effect, setEffect] = useState(false);
+  const darkNavBar = useContext(DarkNavBarContext);
   let iconColor =
     resolvedTheme === "dark" || darkNavBar ? "#F7F4F3" : "#080708";
   if (resolvedTheme === "light" && isMobile) {
