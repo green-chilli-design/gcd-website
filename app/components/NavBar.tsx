@@ -1,5 +1,3 @@
-"use client";
-
 import NavMenu from "./NavMenu";
 import NavMenuMobile from "./NavMenuMobile";
 import GCDLogo from "./GCDLogo";
