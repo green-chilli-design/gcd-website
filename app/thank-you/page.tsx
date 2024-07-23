@@ -19,10 +19,10 @@ export default async function ThankYouPage() {
             </h2>
             <p>We received your message and will get back to you shortly.</p>
           </section>
-          <div className={"max-w-lg justify-between lg:flex"}>
+          <div className={"max-w-lg justify-center lg:flex"}>
             <Link
               href={"/"}
-              className="btn lg:green mb-5 flex w-52 items-center justify-center border border-green text-green lg:mb-0 lg:text-black"
+              className="btn lg:green mb-5 me-10 flex w-52 items-center justify-center border border-green text-green lg:mb-0 lg:text-black"
             >
               Back to Home Page
             </Link>
