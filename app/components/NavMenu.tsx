@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { DarkNavBarContext } from "./NavBar";
 import { useRouter } from "next/router";
 import { cn } from "@/lib/utils";
+import { useTheme } from "next-themes";
 
 export const NAV_LINKS = [
   {
@@ -23,6 +24,7 @@ export const NAV_LINKS = [
 
 export default function NavMenu() {
   const pathname = usePathname();
+  const { resolvedTheme } = useTheme();
   const darkNavBar = useContext(DarkNavBarContext);
 
   return (
@@ -37,6 +39,9 @@ export default function NavMenu() {
             className={cn(
               "ext-sm font-bold",
               isActive ? "text-green" : "hover:text-green hover:underline",
+              darkNavBar && resolvedTheme !== "dark"
+                ? "sticky-navbar-text-white"
+                : "sticky-navbar-text",
             )}
           >
             {label}
