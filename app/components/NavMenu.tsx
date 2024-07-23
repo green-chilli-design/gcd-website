@@ -48,6 +48,12 @@ export default function NavMenu() {
           </Link>
         );
       })}
+      <Link
+        href={"/contact"}
+        className="btn green flex w-44 items-center justify-center text-black"
+      >
+        Start a Project
+      </Link>
       <ThemeSwitch />
     </div>
   );
