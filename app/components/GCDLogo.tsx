@@ -3,14 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import { useContext } from "react";
+import { DarkNavBarContext } from "./NavBar";
 
 interface GCDLogoProps {
   className?: string;
-  darkNavBar?: boolean;
 }
 
-export default function GCDLogo({ className = "", darkNavBar }: GCDLogoProps) {
+export default function GCDLogo({ className = "" }: GCDLogoProps) {
   const { resolvedTheme } = useTheme();
+  const darkNavBar = useContext(DarkNavBarContext);
 
   let logoSrc = "/gcd-logo-round-black.svg";
   if (resolvedTheme === "dark" || darkNavBar) {

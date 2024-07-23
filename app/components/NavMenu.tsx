@@ -2,6 +2,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ThemeSwitch from "./ThemeSwitch";
 import { cn } from "@/lib/utils";
+import { useContext } from "react";
+import { DarkNavBarContext } from "./NavBar";
 
 export const NAV_LINKS = [
   {
@@ -26,12 +28,9 @@ export const NAV_LINKS = [
   },
 ];
 
-interface NavMenuProps {
-  darkNavBar: boolean;
-}
-
-export default function NavMenu({ darkNavBar }: NavMenuProps) {
+export default function NavMenu() {
   const pathname = usePathname();
+  const darkNavBar = useContext(DarkNavBarContext);
 
   return (
     <div className="hidden items-center gap-16 sm:flex">

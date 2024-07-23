@@ -1,16 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ThemeSwitch from "./ThemeSwitch";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "./NavMenu";
 import { cn } from "@/lib/utils";
+import { DarkNavBarContext } from "./NavBar";
 
-interface NavMenMobileProps {
-  darkNavBar: boolean;
-}
-
-export default function NavMenuMobile({ darkNavBar }: NavMenMobileProps) {
+export default function NavMenuMobile() {
   const pathname = usePathname();
+  const darkNavBar = useContext(DarkNavBarContext);
+
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleMenu = () => {
