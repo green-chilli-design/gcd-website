@@ -62,7 +62,8 @@
 */
 @keyframes stickyNavbar {
   0% {
-    background-color: black;
+    /* background-color: black; */
+    @apply bg-black;
   }
   100% {
     background-color: rgba(0, 0, 0, 0);
@@ -74,7 +75,7 @@
     background-color: rgba(0, 0, 0, 0);
   }
   100% {
-    background-color: black;
+    @apply bg-black;
   }
 }
 
@@ -87,7 +88,7 @@
 }
 
 .sticky-navbar-dark {
-  background-color: black;
+  @apply bg-black;
   position: sticky;
   top: 0;
   animation-duration: 0.2s;
