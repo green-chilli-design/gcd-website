@@ -9,6 +9,7 @@ import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Jost } from "next/font/google";
 import { sharedMetadata } from "./metadata";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 // temp fix for https://github.com/pacocoursey/next-themes/issues/169
 // basically forces it to be client side, which is not ideal
@@ -39,6 +40,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <GoogleTagManager gtmId="GTM-5TVL55S" />
       <body className={jost.className}>
         <ThemeProvider>
           <RecaptchaProvider>
