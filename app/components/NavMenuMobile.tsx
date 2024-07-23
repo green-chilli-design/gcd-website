@@ -8,7 +8,6 @@ import { DarkNavBarContext } from "./NavBar";
 
 export default function NavMenuMobile() {
   const pathname = usePathname();
-  const darkNavBar = useContext(DarkNavBarContext);
 
   const [menuOpen, setMenuOpen] = useState(false);
 

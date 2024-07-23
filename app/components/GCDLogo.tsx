@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useContext } from "react";
-import { DarkNavBarContext } from "./NavBar";
+import { DarkNavBarContext, IsMobileContext } from "./NavBar";
 
 interface GCDLogoProps {
   className?: string;
@@ -13,9 +13,10 @@ interface GCDLogoProps {
 export default function GCDLogo({ className = "" }: GCDLogoProps) {
   const { resolvedTheme } = useTheme();
   const darkNavBar = useContext(DarkNavBarContext);
+  const isMobile = useContext(IsMobileContext);
 
   let logoSrc = "/gcd-logo-round-black.svg";
-  if (resolvedTheme === "dark" || darkNavBar) {
+  if (resolvedTheme === "dark" || (darkNavBar && !isMobile)) {
     logoSrc = "/gcd-logo-round-white.svg";
   }
 
