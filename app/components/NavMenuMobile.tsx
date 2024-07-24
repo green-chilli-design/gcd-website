@@ -1,23 +1,32 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ThemeSwitch from "./ThemeSwitch";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "./NavMenu";
 import { cn } from "@/lib/utils";
+import { IsMobileContext } from "./NavBar";
 
 export default function NavMenuMobile() {
   const pathname = usePathname();
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const isMobile = useContext(IsMobileContext);
 
   const handleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+  useEffect(() => {
+    // Close menu if not mobile
+    if (!isMobile) {
+      setMenuOpen(false);
+    }
+  }, [isMobile]);
+
   return (
     <div>
       <div
-        className={`main-content absolute bottom-0 right-0 top-[120px] flex h-screen w-full flex-col bg-neutral pb-[120px] pt-14 duration-300 ease-in-out dark:bg-black lg:hidden
+        className={`main-content absolute bottom-0 right-0 top-[120px] mt-4 flex h-screen w-full flex-col bg-neutral pb-[120px] pt-10 duration-300 ease-in-out dark:bg-black lg:hidden
         ${menuOpen ? "left-0" : "left-[-100%]"}`}
       >
         <Link
@@ -48,11 +57,15 @@ export default function NavMenuMobile() {
             </Link>
           );
         })}
-        <Link key={"Start a Project"} href={"/contact"} className={"mb-10 "}>
+        <Link
+          key={"Start a Project"}
+          href={"/contact"}
+          className={"mb-10 hover:text-green hover:underline"}
+        >
           <h4>Start a Project</h4>
         </Link>
 
-        <ThemeSwitch isMobile={true} />
+        <ThemeSwitch />
       </div>
 
       {/* menu icons */}
