@@ -4,7 +4,7 @@ import NavMenu from "./NavMenu";
 import NavMenuMobile from "./NavMenuMobile";
 import GCDLogo from "./GCDLogo";
 import { cn } from "@/lib/utils";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { useClientMediaQuery } from "@/lib/hooks/useClientMediaQuery";
 import resolveConfig from "tailwindcss/resolveConfig";
@@ -32,11 +32,18 @@ export default function NavBar() {
   }
 
   // Get scroll position to apply sticky navbar
+  const onScroll = useCallback(() => {
+    const { scrollY } = window;
+    setNavBarScrolled(scrollY > 0);
+    setNavBarContainerScrolled(scrollY > 50);
+  }, []);
+
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      setNavBarScrolled(window.scrollY > 0);
-      setNavBarContainerScrolled(window.scrollY > 50);
-    });
+    window.addEventListener("scroll", onScroll, { passive: true });
+    // remove event on unmount to prevent a memory leak with the cleanup
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
   });
 
   useEffect(() => {});
