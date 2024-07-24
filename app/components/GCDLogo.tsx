@@ -14,8 +14,8 @@ interface GCDLogoProps {
 export default function GCDLogo({
   className = "",
   logoSrc,
-  width = 80,
-  height = 80,
+  width = 90,
+  height = 90,
 }: GCDLogoProps) {
   const { resolvedTheme } = useTheme();
 

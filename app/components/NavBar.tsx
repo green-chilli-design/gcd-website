@@ -43,14 +43,15 @@ export default function NavBar() {
           className={cn(
             "z-10 h-[150px]",
             isMobile && "sticky top-0",
-            navBarScrolled && !isMobile && "sticky top-0 ",
+            navBarScrolled && !isMobile && "sticky top-0",
+            !navBarScrolled && !isMobile && "pt-[50px]",
           )}
         >
           <header
             className={cn(
-              "z-10 flex h-[150px] w-full py-5 lg:pb-5 lg:pt-[30px]",
+              "z-10 flex h-[50px] w-full py-5 lg:pb-5 lg:pt-[30px]",
               navBarScrolled && !isMobile
-                ? "sticky-navbar-dark m-auto flex h-[50px] py-0 lg:pb-0 lg:pt-[0px]"
+                ? "sticky-navbar-dark m-auto flex py-0 lg:pb-0 lg:pt-[0px]"
                 : resolvedTheme === "dark"
                   ? "sticky-navbar-dark"
                   : "sticky-navbar",
