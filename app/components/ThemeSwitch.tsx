@@ -2,16 +2,16 @@
 
 import { useTheme } from "next-themes";
 import { useContext, useState } from "react";
-import { NavBarContainerScrolledContext } from "./NavBar";
+import { IsMobileContext, NavBarContainerScrolledContext } from "./NavBar";
 
-interface ThemeSwitchProps {
-  isMobile?: boolean;
-}
-
-export default function ThemeSwitch({ isMobile = false }: ThemeSwitchProps) {
+export default function ThemeSwitch() {
   const { setTheme, resolvedTheme } = useTheme();
+
   const [effect, setEffect] = useState(false);
+
   const navBarScrolled = useContext(NavBarContainerScrolledContext);
+  const isMobile = useContext(IsMobileContext);
+
   let iconColor =
     resolvedTheme === "dark" || navBarScrolled ? "#F7F4F3" : "#080708";
   if (resolvedTheme === "light" && isMobile) {
