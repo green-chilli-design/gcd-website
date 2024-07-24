@@ -113,11 +113,11 @@
 
 .sticky-navbar-text-white {
   @apply text-white;
-  /* animation-duration: 0.2s; */
+  animation-duration: 0.4s;
   animation-name: stickyNavbarText;
 }
 
 .sticky-navbar-text {
-  /* animation-duration: 0.2s; */
+  animation-duration: 0.4s;
   animation-name: stickyNavbarTextScrolled;
 }

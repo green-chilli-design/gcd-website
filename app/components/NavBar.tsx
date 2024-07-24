@@ -81,7 +81,6 @@ export default function NavBar() {
                   height={navBarContainerScrolled && !isMobile ? 72 : 90}
                 />
               </div>
-
               <div>
                 <NavMenu />
                 <NavMenuMobile />
