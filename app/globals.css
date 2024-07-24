@@ -62,37 +62,31 @@
 */
 @keyframes stickyNavbar {
   0% {
-    opacity: 0.5;
-    @apply bg-black;
+    @apply sticky-navbar-dark;
   }
   100% {
-    opacity: 1;
-    @apply bg-neutral;
+    @apply sticky-navbar;
   }
 }
 
 @keyframes stickyNavbarScrolled {
   0% {
-    opacity: 0.5;
-    @apply bg-neutral;
+    @apply sticky-navbar;
   }
   100% {
-    opacity: 1;
-    @apply bg-black;
+    @apply sticky-navbar-dark;
   }
 }
 
 .sticky-navbar {
   @apply bg-neutral;
-  animation-duration: 0s;
+  animation-duration: 0.4s;
   animation-name: stickyNavbar;
 }
 
 .sticky-navbar-dark {
   @apply bg-black;
-  position: sticky;
-  top: 0;
-  animation-duration: 0s;
+  animation-duration: 0.4s;
   animation-name: stickyNavbarScrolled;
 }
 

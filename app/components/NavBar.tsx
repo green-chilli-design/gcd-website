@@ -39,6 +39,8 @@ export default function NavBar() {
     });
   });
 
+  useEffect(() => {});
+
   return (
     <IsMobileContext.Provider value={isMobile}>
       <NavBarContainerScrolledContext.Provider value={navBarContainerScrolled}>
@@ -47,7 +49,13 @@ export default function NavBar() {
             "z-10 flex h-[150px] w-full items-center ",
             !isMobile &&
               navBarContainerScrolled &&
-              "sticky -top-[100px] bg-black",
+              (resolvedTheme === "dark"
+                ? "sticky -top-[100px] bg-black"
+                : "sticky-navbar-dark sticky -top-[100px]"),
+            !isMobile &&
+              !navBarContainerScrolled &&
+              resolvedTheme !== "dark" &&
+              "sticky-navbar sticky -top-[100px]",
             isMobile &&
               (resolvedTheme === "dark"
                 ? "sticky top-0 bg-black"
