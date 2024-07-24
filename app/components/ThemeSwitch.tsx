@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useContext, useState } from "react";
-import { DarkNavBarContext } from "./NavBar";
+import { NavBarScrolledContext } from "./NavBar";
 
 interface ThemeSwitchProps {
   isMobile?: boolean;
@@ -11,9 +11,9 @@ interface ThemeSwitchProps {
 export default function ThemeSwitch({ isMobile = false }: ThemeSwitchProps) {
   const { setTheme, resolvedTheme } = useTheme();
   const [effect, setEffect] = useState(false);
-  const darkNavBar = useContext(DarkNavBarContext);
+  const navBarScrolled = useContext(NavBarScrolledContext);
   let iconColor =
-    resolvedTheme === "dark" || darkNavBar ? "#F7F4F3" : "#080708";
+    resolvedTheme === "dark" || navBarScrolled ? "#F7F4F3" : "#080708";
   if (resolvedTheme === "light" && isMobile) {
     iconColor = "#080708";
   }

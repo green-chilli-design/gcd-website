@@ -3,21 +3,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { useContext } from "react";
-import { DarkNavBarContext, IsMobileContext } from "./NavBar";
 
 interface GCDLogoProps {
   className?: string;
+  logoSrc?: string;
 }
 
-export default function GCDLogo({ className = "" }: GCDLogoProps) {
+export default function GCDLogo({ className = "", logoSrc }: GCDLogoProps) {
   const { resolvedTheme } = useTheme();
-  const darkNavBar = useContext(DarkNavBarContext);
-  const isMobile = useContext(IsMobileContext);
 
-  let logoSrc = "/gcd-logo-round-black.svg";
-  if (resolvedTheme === "dark" || (darkNavBar && !isMobile)) {
-    logoSrc = "/gcd-logo-round-white.svg";
+  if (!logoSrc) {
+    logoSrc = "/gcd-logo-round-black.svg";
+    if (resolvedTheme === "dark") {
+      logoSrc = "/gcd-logo-round-white.svg";
+    }
   }
 
   return (

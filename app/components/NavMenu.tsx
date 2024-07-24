@@ -2,7 +2,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ThemeSwitch from "./ThemeSwitch";
 import { useContext } from "react";
-import { DarkNavBarContext } from "./NavBar";
+import { NavBarScrolledContext } from "./NavBar";
 import { useRouter } from "next/router";
 import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
@@ -25,7 +25,7 @@ export const NAV_LINKS = [
 export default function NavMenu() {
   const pathname = usePathname();
   const { resolvedTheme } = useTheme();
-  const darkNavBar = useContext(DarkNavBarContext);
+  const navBarScrolled = useContext(NavBarScrolledContext);
 
   return (
     <div className="hidden items-center gap-16 lg:flex">
@@ -39,7 +39,7 @@ export default function NavMenu() {
             className={cn(
               "ext-sm font-bold",
               isActive ? "text-green" : "hover:text-green hover:underline",
-              darkNavBar && resolvedTheme !== "dark"
+              navBarScrolled && resolvedTheme !== "dark"
                 ? "sticky-navbar-text-white"
                 : "sticky-navbar-text",
             )}
@@ -51,7 +51,7 @@ export default function NavMenu() {
       <Link
         href={"/contact"}
         className={
-          darkNavBar
+          navBarScrolled
             ? "ext-sm flex w-44 items-center justify-center font-bold text-green hover:text-green hover:underline"
             : "btn green flex w-44 items-center justify-center text-black"
         }

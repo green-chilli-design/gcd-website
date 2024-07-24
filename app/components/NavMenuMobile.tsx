@@ -1,10 +1,9 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import ThemeSwitch from "./ThemeSwitch";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "./NavMenu";
 import { cn } from "@/lib/utils";
-import { DarkNavBarContext } from "./NavBar";
 
 export default function NavMenuMobile() {
   const pathname = usePathname();
