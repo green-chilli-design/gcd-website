@@ -6,16 +6,19 @@ import GCDLogo from "./GCDLogo";
 import { createContext, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { useClientMediaQuery } from "@/lib/hooks/useClientMediaQuery";
+import resolveConfig from "tailwindcss/resolveConfig";
+import tailwindConfig from "../../tailwind.config";
 
 export const DarkNavBarContext = createContext(false);
 export const IsMobileContext = createContext(false);
 
 export default function NavBar() {
   const { resolvedTheme } = useTheme();
+  const { theme } = resolveConfig(tailwindConfig);
 
   const [darkNavBar, setDarkNavBar] = useState(false);
 
-  const isMobile = useClientMediaQuery("(max-width: 600px)");
+  const isMobile = useClientMediaQuery(`(max-width: ${theme.screens.lg})`);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {

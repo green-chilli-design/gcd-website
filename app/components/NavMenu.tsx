@@ -28,7 +28,7 @@ export default function NavMenu() {
   const darkNavBar = useContext(DarkNavBarContext);
 
   return (
-    <div className="hidden items-center gap-16 sm:flex">
+    <div className="hidden items-center gap-16 lg:flex">
       {NAV_LINKS.map(({ href, label }) => {
         const isActive = pathname.startsWith(href);
 
@@ -50,7 +50,11 @@ export default function NavMenu() {
       })}
       <Link
         href={"/contact"}
-        className="btn green flex w-44 items-center justify-center text-black"
+        className={
+          darkNavBar
+            ? "ext-sm flex w-44 items-center justify-center font-bold text-green hover:text-green hover:underline"
+            : "btn green flex w-44 items-center justify-center text-black"
+        }
       >
         Start a Project
       </Link>

@@ -18,7 +18,7 @@ export default function NavMenuMobile() {
   return (
     <div>
       <div
-        className={`main-content absolute bottom-0 right-0 top-[120px] flex h-screen w-full flex-col bg-neutral pb-[120px] pt-14 duration-300 ease-in-out dark:bg-black sm:hidden
+        className={`main-content absolute bottom-0 right-0 top-[120px] flex h-screen w-full flex-col bg-neutral pb-[120px] pt-14 duration-300 ease-in-out dark:bg-black lg:hidden
         ${menuOpen ? "left-0" : "left-[-100%]"}`}
       >
         <Link
@@ -63,7 +63,7 @@ export default function NavMenuMobile() {
       {/* menu icons */}
       <div
         onClick={handleMenu}
-        className="flex cursor-pointer transition duration-500 hover:scale-110 sm:hidden"
+        className="flex cursor-pointer transition duration-500 hover:scale-110 lg:hidden"
       >
         {menuOpen ? (
           <span className="material-icons-outlined icon-48">
