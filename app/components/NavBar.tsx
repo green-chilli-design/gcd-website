@@ -41,7 +41,7 @@ export default function NavBar() {
       <IsMobileContext.Provider value={isMobile}>
         <div
           className={cn(
-            "h-[150px]",
+            "z-10 h-[150px]",
             isMobile && "sticky top-0",
             navBarScrolled && !isMobile && "sticky top-0 ",
           )}
