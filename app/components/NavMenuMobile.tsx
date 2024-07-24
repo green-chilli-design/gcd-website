@@ -48,11 +48,7 @@ export default function NavMenuMobile() {
             </Link>
           );
         })}
-        <Link
-          key={"Start a Project"}
-          href={"/contact"}
-          className={"mb-10 text-black"}
-        >
+        <Link key={"Start a Project"} href={"/contact"} className={"mb-10 "}>
           <h4>Start a Project</h4>
         </Link>
 
