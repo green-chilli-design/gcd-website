@@ -1,16 +1,19 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { NavBarContainerScrolledContext } from "./NavBar";
 
-export default function ThemeSwitch({
-  isMobile = false,
-}: {
+interface ThemeSwitchProps {
   isMobile?: boolean;
-}) {
+}
+
+export default function ThemeSwitch({ isMobile = false }: ThemeSwitchProps) {
   const { setTheme, resolvedTheme } = useTheme();
   const [effect, setEffect] = useState(false);
-  let iconColor = resolvedTheme === "dark" ? "#F7F4F3" : "#080708";
+  const navBarScrolled = useContext(NavBarContainerScrolledContext);
+  let iconColor =
+    resolvedTheme === "dark" || navBarScrolled ? "#F7F4F3" : "#080708";
   if (resolvedTheme === "light" && isMobile) {
     iconColor = "#080708";
   }

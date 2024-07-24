@@ -27,7 +27,7 @@ export default function NavBar() {
   if (resolvedTheme === "dark") {
     logoSrc = "/gcd-logo-round-white.svg";
   }
-  if (navBarContainerScrolled) {
+  if (navBarContainerScrolled && !isMobile) {
     logoSrc = "/gcd-logo-square-white.svg";
   }
 
@@ -40,12 +40,18 @@ export default function NavBar() {
   });
 
   return (
-    <IsMobileContext.Provider value={false}>
+    <IsMobileContext.Provider value={isMobile}>
       <NavBarContainerScrolledContext.Provider value={navBarContainerScrolled}>
         <header
           className={cn(
-            "z-10 flex h-[150px] w-full items-center bg-neutral",
-            navBarContainerScrolled && "sticky -top-[100px] bg-black",
+            "z-10 flex h-[150px] w-full items-center ",
+            !isMobile &&
+              navBarContainerScrolled &&
+              "sticky -top-[100px] bg-black",
+            isMobile &&
+              (resolvedTheme === "dark"
+                ? "sticky top-0 bg-black"
+                : "sticky top-0 bg-neutral"),
           )}
         >
           <nav
@@ -56,15 +62,15 @@ export default function NavBar() {
             <div
               className={cn(
                 "flex h-[50px] w-full items-center justify-between",
-                navBarScrolled && "sticky -top-[0px]",
+                navBarScrolled && !isMobile && "sticky -top-[0px]",
               )}
             >
               <div className={"flex w-[90px] justify-center"}>
                 <GCDLogo
                   className={"transition duration-500 hover:scale-110"}
                   logoSrc={logoSrc}
-                  width={navBarContainerScrolled ? 72 : 90}
-                  height={navBarContainerScrolled ? 72 : 90}
+                  width={navBarContainerScrolled && !isMobile ? 72 : 90}
+                  height={navBarContainerScrolled && !isMobile ? 72 : 90}
                 />
               </div>
 

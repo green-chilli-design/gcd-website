@@ -3,7 +3,6 @@ import { usePathname } from "next/navigation";
 import ThemeSwitch from "./ThemeSwitch";
 import { useContext } from "react";
 import { NavBarContainerScrolledContext } from "./NavBar";
-import { useRouter } from "next/router";
 import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
 
