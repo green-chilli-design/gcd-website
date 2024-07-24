@@ -62,19 +62,19 @@
 */
 @keyframes stickyNavbar {
   0% {
-    @apply bg-black;
+    opacity: 0.5;
   }
   100% {
-    background-color: rgba(0, 0, 0, 0);
+    opacity: 1;
   }
 }
 
 @keyframes stickyNavbarScrolled {
   0% {
-    background-color: rgba(0, 0, 0, 0);
+    opacity: 0.5;
   }
   100% {
-    @apply bg-black;
+    opacity: 1;
   }
 }
 

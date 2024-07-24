@@ -8,6 +8,7 @@ import { useTheme } from "next-themes";
 import { useClientMediaQuery } from "@/lib/hooks/useClientMediaQuery";
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "../../tailwind.config";
+import { cn } from "@/lib/utils";
 
 export const NavBarScrolledContext = createContext(false);
 export const IsMobileContext = createContext(false);
@@ -21,39 +22,56 @@ export default function NavBar() {
 
   // Set the logo color based on the theme and scroll position
   let logoSrc = "/gcd-logo-round-black.svg";
-  if (resolvedTheme === "dark" || (navBarScrolled && !isMobile)) {
+  if (resolvedTheme === "dark") {
     logoSrc = "/gcd-logo-round-white.svg";
   }
+  if (navBarScrolled && !isMobile) {
+    logoSrc = "/gcd-logo-square-white.svg";
+  }
 
+  // Get scroll position to apply sticky navbar
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      setNavBarScrolled(window.scrollY >= 10);
+      setNavBarScrolled(window.scrollY >= 52);
     });
   });
 
   return (
     <NavBarScrolledContext.Provider value={navBarScrolled}>
       <IsMobileContext.Provider value={isMobile}>
-        <header
-          className={`z-10 w-full ${
-            navBarScrolled && !isMobile
-              ? "sticky-navbar-dark"
-              : resolvedTheme === "dark"
-                ? "sticky-navbar-dark"
-                : "sticky-navbar"
-          }`}
+        <div
+          className={cn(
+            "h-[150px]",
+            isMobile && "sticky top-0",
+            navBarScrolled && !isMobile && "sticky top-0 ",
+          )}
         >
-          <nav className="main-content flex items-center justify-between py-5 lg:pb-5 lg:pt-[30px]">
-            <GCDLogo
-              className={"transition duration-500 hover:scale-110"}
-              logoSrc={logoSrc}
-            />
-            <div>
-              <NavMenu />
-              <NavMenuMobile />
-            </div>
-          </nav>
-        </header>
+          <header
+            className={cn(
+              "z-10 flex h-[150px] w-full py-5 lg:pb-5 lg:pt-[30px]",
+              navBarScrolled && !isMobile
+                ? "sticky-navbar-dark m-auto flex h-[50px] py-0 lg:pb-0 lg:pt-[0px]"
+                : resolvedTheme === "dark"
+                  ? "sticky-navbar-dark"
+                  : "sticky-navbar",
+            )}
+          >
+            <nav className={"main-content flex justify-between"}>
+              <div className={"flex w-[90px] justify-center"}>
+                <GCDLogo
+                  className={"transition duration-500 hover:scale-110"}
+                  logoSrc={logoSrc}
+                  width={navBarScrolled && !isMobile ? 72 : 90}
+                  height={navBarScrolled && !isMobile ? 72 : 90}
+                />
+              </div>
+              <div className="flex items-center">
+                <NavMenu />
+                <NavMenuMobile />
+              </div>
+            </nav>
+          </header>
+        </div>
       </IsMobileContext.Provider>
     </NavBarScrolledContext.Provider>
   );

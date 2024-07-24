@@ -7,9 +7,16 @@ import { useTheme } from "next-themes";
 interface GCDLogoProps {
   className?: string;
   logoSrc?: string;
+  width?: number;
+  height?: number;
 }
 
-export default function GCDLogo({ className = "", logoSrc }: GCDLogoProps) {
+export default function GCDLogo({
+  className = "",
+  logoSrc,
+  width = 80,
+  height = 80,
+}: GCDLogoProps) {
   const { resolvedTheme } = useTheme();
 
   if (!logoSrc) {
@@ -25,8 +32,8 @@ export default function GCDLogo({ className = "", logoSrc }: GCDLogoProps) {
         <Image
           src={logoSrc}
           alt="Green Chilli Design Logo"
-          width="80"
-          height="80"
+          width={width}
+          height={height}
           className={className}
         />
       </Link>
