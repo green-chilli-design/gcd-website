@@ -20,9 +20,14 @@ export default function NavBar() {
   const [navBarScrolled, setNavBarScrolled] = useState<boolean>(false);
   const [navBarContainerScrolled, setNavBarContainerScrolled] =
     useState<boolean>(false);
-  const isMobile = useClientMediaQuery(`(max-width: ${theme.screens.lg})`);
+  const [animateStickyNav, setAnimateStickyNav] = useState<boolean>(false);
 
-  // Set the logo color based on the theme and scroll position
+  const isMobile = useClientMediaQuery(`(max-width: ${theme.screens.lg})`);
+  const headerEl = document.querySelector("#header");
+
+  /**
+   * Set the logo color based on the theme and scroll position
+   */
   let logoSrc = "/gcd-logo-round-black.svg";
   if (resolvedTheme === "dark") {
     logoSrc = "/gcd-logo-round-white.svg";
@@ -31,7 +36,9 @@ export default function NavBar() {
     logoSrc = "/gcd-logo-square-white.svg";
   }
 
-  // Get scroll position to apply sticky navbar
+  /**
+   * Get scroll position to apply sticky navbar
+   */
   const onScroll = useCallback(() => {
     const { scrollY } = window;
     setNavBarScrolled(scrollY > 0);
@@ -40,18 +47,33 @@ export default function NavBar() {
 
   useEffect(() => {
     window.addEventListener("scroll", onScroll, { passive: true });
+
     // remove event on unmount to prevent a memory leak with the cleanup
     return () => {
       window.removeEventListener("scroll", onScroll);
     };
   });
 
-  useEffect(() => {});
+  /**
+   * Only animate sticky nav transition when scrolling; disable on refresh or screen size change
+   */
+  useEffect(() => {
+    // When scrolling, animate the sticky nav animation
+    if (headerEl?.classList.contains("sticky-navbar-dark")) {
+      setAnimateStickyNav(true);
+    }
+
+    // When changing screen size, disable sticky nav animation
+    if (isMobile) {
+      setAnimateStickyNav(false);
+    }
+  });
 
   return (
     <IsMobileContext.Provider value={isMobile}>
       <NavBarContainerScrolledContext.Provider value={navBarContainerScrolled}>
         <header
+          id="header"
           className={cn(
             "z-10 flex h-[150px] w-full items-center ",
             !isMobile &&
@@ -62,7 +84,9 @@ export default function NavBar() {
             !isMobile &&
               !navBarContainerScrolled &&
               resolvedTheme !== "dark" &&
-              "sticky-navbar sticky -top-[100px]",
+              (animateStickyNav
+                ? "sticky-navbar sticky -top-[100px]"
+                : "sticky -top-[100px] bg-neutral"),
             isMobile &&
               (resolvedTheme === "dark"
                 ? "sticky top-0 bg-black"

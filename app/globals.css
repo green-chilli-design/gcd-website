@@ -95,19 +95,19 @@
 */
 @keyframes stickyNavbarText {
   0% {
-    @apply text-black;
+    @apply sticky-navbar-text;
   }
   100% {
-    @apply text-white;
+    @apply sticky-navbar-text-white;
   }
 }
 
 @keyframes stickyNavbarTextScrolled {
   0% {
-    @apply text-white;
+    @apply sticky-navbar-text-white;
   }
   100% {
-    @apply text-black;
+    @apply sticky-navbar-text;
   }
 }
 
@@ -118,6 +118,7 @@
 }
 
 .sticky-navbar-text {
+  @apply text-black;
   animation-duration: 0.4s;
   animation-name: stickyNavbarTextScrolled;
 }

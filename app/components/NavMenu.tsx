@@ -38,9 +38,13 @@ export default function NavMenu() {
             className={cn(
               "ext-sm font-bold",
               isActive ? "text-green" : "hover:text-green hover:underline",
-              navBarScrolled && resolvedTheme !== "dark"
-                ? "sticky-navbar-text-white"
-                : "sticky-navbar-text",
+              navBarScrolled &&
+                resolvedTheme !== "dark" &&
+                "sticky-navbar-text-white",
+              !navBarScrolled &&
+                resolvedTheme !== "dark" &&
+                "sticky-navbar-text",
+              resolvedTheme === "dark" && "sticky-navbar-text-white",
             )}
           >
             {label}
