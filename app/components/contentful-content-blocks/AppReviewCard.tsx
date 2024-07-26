@@ -11,25 +11,29 @@ export default function AppReviewCard({ contentBlock }: { contentBlock: any }) {
   return (
     <section
       key={contentBlock.heading}
-      className="grid-cols-subgrid col-span-full grid"
+      className="grid-cols-subgrid col-span-full mb-20 grid"
     >
       {/* Image Column */}
-      <div id="img-col" className="col-span-6">
+      <div
+        id="img-col"
+        className={`col-span-6 ${!contentBlock.orientation && "order-2"}`}
+      >
         <ContentfulMedia
           key={contentBlock.image.url}
           src={contentBlock.image.url}
           alt={contentBlock.image.title}
           imageProps={{
             priority: true,
-            className: `col-span-full md:col-span-4 -rounded-br-[30px] rounded-tl-[30px] object-cover min-h-full ${
-              contentBlock.index !== 0 && "hidden md:block"
-            }`,
+            className: `col-span-full md:col-span-4 -rounded-br-[30px] rounded-tl-[30px] object-cover min-h-full`,
             width: contentBlock.image.width,
             height: contentBlock.image.height,
           }}
         />
       </div>
-      <div id="review-col" className="col-span-6 my-auto flex flex-col gap-8">
+      <div
+        id="review-col"
+        className={`col-span-6  my-auto flex flex-col gap-8`}
+      >
         {/* {JSON.stringify(contentBlock)} */}
         <h1>{contentBlock.title}</h1>
         <h3>{contentBlock.subtitle}</h3>
@@ -43,12 +47,14 @@ export default function AppReviewCard({ contentBlock }: { contentBlock: any }) {
         </div>
         <div
           id="review-quote"
-          className="bg-dark-offwhite rounded-3xl  p-[20px]"
+          className="bg-dark-offwhite rounded-3xl p-[20px]  dark:bg-dark-green"
         >
           <div>{contentBlock.reviewQuote}</div>
           <div className="mt-5 text-right text-sm text-dark-grey">
             <div>App Store Review</div>
-            <div className=" tracking-wider text-black">★★★★★</div>
+            <div className=" tracking-wider text-black dark:text-white">
+              ★★★★★
+            </div>
           </div>
         </div>
       </div>
