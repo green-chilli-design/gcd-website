@@ -16,7 +16,9 @@ export default function AppReviewCard({ contentBlock }: { contentBlock: any }) {
       {/* Image Column */}
       <div
         id="img-col"
-        className={`col-span-6 ${!contentBlock.orientation && "order-2"}`}
+        className={`col-span-full md:col-span-6 ${
+          !contentBlock.orientation && "md:order-2"
+        }`}
       >
         <ContentfulMedia
           key={contentBlock.image.url}
@@ -32,11 +34,13 @@ export default function AppReviewCard({ contentBlock }: { contentBlock: any }) {
       </div>
       <div
         id="review-col"
-        className={`col-span-6  my-auto flex flex-col gap-8`}
+        className={`col-span-full my-auto  flex flex-col gap-8 pt-10 md:col-span-6 md:pt-0`}
       >
         {/* {JSON.stringify(contentBlock)} */}
-        <h1>{contentBlock.title}</h1>
-        <h3>{contentBlock.subtitle}</h3>
+        <h1 className="text-9xl md:text-10xl">{contentBlock.title}</h1>
+        <h3 className="text-6xl font-semibold uppercase md:text-7xl">
+          {contentBlock.subtitle}
+        </h3>
         <div id="card-cta">
           <Link
             href={"/case-studies/" + contentBlock.caseStudy.slug}
