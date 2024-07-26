@@ -4,6 +4,7 @@ import ContentfulMedia from "@/lib/contentful-media";
 import { Metadata } from "next";
 import { draftMode } from "next/headers";
 import Link from "next/link";
+import ReactNative from "../components/ReactNative";
 
 const title = "GCD | Mobile";
 export const metadata: Metadata = {
@@ -73,9 +74,15 @@ export default async function MobilePage() {
       {/* App review  cards */}
       <section
         id="app-review-cards"
-        className="grid-cols-subgrid col-span-full mb-20 grid"
+        className="grid-cols-subgrid col-span-full grid"
       >
         {contentBlocks}
+      </section>
+      <section
+        id="react-native-advantages"
+        className="col-span-full mb-20 flex flex-col items-center"
+      >
+        <ReactNative bannerHidden />
       </section>
     </article>
   );
