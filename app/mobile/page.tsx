@@ -75,12 +75,9 @@ export default async function MobilePage() {
         {/* App review  cards */}
         <section
           id="app-review-cards"
-          className="grid-cols-subgrid col-span-full grid"
+          className="grid-cols-subgrid col-span-full mb-20 grid"
         >
-          {/* {mobilePage.appReviewCardsCollection.items.map((card: any) => (
-            <div>{card.title}</div>
-          ))} */}
-          Content blocks: {contentBlocks}
+          {contentBlocks}
         </section>
       </article>
     </>

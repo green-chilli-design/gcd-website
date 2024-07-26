@@ -15,7 +15,6 @@ import AppReviewCard from "@/app/components/contentful-content-blocks/AppReviewC
  * @returns A list of content blocks
  */
 export function generateContentBlocks(contentBody: any[]) {
-  console.log("CONTENT BODY: ", contentBody);
   return Object.entries(contentBody).map(([key, value]) => {
     switch (value.__typename) {
       case "ContentBlock":

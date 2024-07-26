@@ -3,12 +3,55 @@
 import ContentfulMedia from "@/lib/contentful-media";
 import { Markdown } from "@/lib/markdown";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 
 export default function AppReviewCard({ contentBlock }: { contentBlock: any }) {
   const { resolvedTheme } = useTheme();
+
   return (
-    <section key={contentBlock.heading}>
-      <pre>{JSON.stringify(contentBlock, null, 2)}</pre>
+    <section
+      key={contentBlock.heading}
+      className="grid-cols-subgrid col-span-full grid"
+    >
+      {/* Image Column */}
+      <div id="img-col" className="col-span-6">
+        <ContentfulMedia
+          key={contentBlock.image.url}
+          src={contentBlock.image.url}
+          alt={contentBlock.image.title}
+          imageProps={{
+            priority: true,
+            className: `col-span-full md:col-span-4 -rounded-br-[30px] rounded-tl-[30px] object-cover min-h-full ${
+              contentBlock.index !== 0 && "hidden md:block"
+            }`,
+            width: contentBlock.image.width,
+            height: contentBlock.image.height,
+          }}
+        />
+      </div>
+      <div id="review-col" className="col-span-6 my-auto flex flex-col gap-8">
+        {/* {JSON.stringify(contentBlock)} */}
+        <h1>{contentBlock.title}</h1>
+        <h3>{contentBlock.subtitle}</h3>
+        <div id="card-cta">
+          <Link
+            href={"/case-studies/" + contentBlock.caseStudy.slug}
+            className="btn dark:light dark flex  h-fit w-fit flex-col flex-nowrap whitespace-nowrap px-5  py-1 text-neutral dark:text-black"
+          >
+            See the Case Study
+          </Link>
+        </div>
+        <div
+          id="review-quote"
+          className="bg-dark-offwhite rounded-3xl  p-[20px]"
+        >
+          <div>{contentBlock.reviewQuote}</div>
+          <div className="mt-5 text-right text-sm text-dark-grey">
+            <div>App Store Review</div>
+            <div className=" tracking-wider text-black">★★★★★</div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

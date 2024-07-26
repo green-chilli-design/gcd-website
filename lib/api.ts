@@ -459,6 +459,7 @@ const PAGE_GRAPHQL_FIELDS = `
           height
           description
         }
+        reviewQuote
       }
     }
   }
