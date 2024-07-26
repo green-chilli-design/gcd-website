@@ -4,6 +4,7 @@ import ContentBlockWithImage from "@/app/components/contentful-content-blocks/Co
 import OurClients from "@/app/components/contentful-content-blocks/OurClients";
 import SuccessSection from "@/app/components/contentful-content-blocks/SuccessSection";
 import ServicesSection from "@/app/components/contentful-content-blocks/ServicesSection";
+import AppReviewCard from "@/app/components/contentful-content-blocks/AppReviewCard";
 
 /**
  * This function generates the content blocks for pages with content blocks
@@ -14,6 +15,7 @@ import ServicesSection from "@/app/components/contentful-content-blocks/Services
  * @returns A list of content blocks
  */
 export function generateContentBlocks(contentBody: any[]) {
+  console.log("CONTENT BODY: ", contentBody);
   return Object.entries(contentBody).map(([key, value]) => {
     switch (value.__typename) {
       case "ContentBlock":
@@ -34,6 +36,8 @@ export function generateContentBlocks(contentBody: any[]) {
         return (
           <ContentBlockWithImage key={value.heading} contentBlock={value} />
         );
+      case "AppReviewCard":
+        return <AppReviewCard key={value.heading} contentBlock={value} />;
       default:
         return null;
     }

@@ -1,4 +1,5 @@
 import { getPageBySlug } from "@/lib/api";
+import { generateContentBlocks } from "@/lib/contentful-content-blocks";
 import ContentfulMedia from "@/lib/contentful-media";
 import { Metadata } from "next";
 import { draftMode } from "next/headers";
@@ -20,8 +21,14 @@ export default async function MobilePage() {
   const mobilePage = await getPageBySlug("mobile", isEnabled);
   const bannerImages: [] = mobilePage.bannerContent?.imagesCollection?.items;
 
+  let contentBlocks = generateContentBlocks(
+    mobilePage.pageContentCollection.items,
+  );
+  console.log(JSON.stringify(contentBlocks, null, 2));
+
   return (
     <>
+      {/* <div className="my-20">{JSON.stringify(appReviewCards)}</div> */}
       <article className="main-content grid grid-cols-[repeat(4,1fr)] gap-5 md:grid-cols-[repeat(12,1fr)]">
         {/* Header (contains title only) */}
         <header className="grid-cols-subgrid col-span-full grid">
@@ -44,6 +51,7 @@ export default async function MobilePage() {
             </Link>
           </div>
         </section>
+        {/* Banner Image Section (3 on desktop, 1 on mob) */}
         <section
           id="banner-images"
           className="grid-cols-subgrid col-span-full mb-20 grid"
@@ -63,6 +71,16 @@ export default async function MobilePage() {
               }}
             />
           ))}
+        </section>
+        {/* App review  cards */}
+        <section
+          id="app-review-cards"
+          className="grid-cols-subgrid col-span-full grid"
+        >
+          {/* {mobilePage.appReviewCardsCollection.items.map((card: any) => (
+            <div>{card.title}</div>
+          ))} */}
+          Content blocks: {contentBlocks}
         </section>
       </article>
     </>

@@ -445,6 +445,21 @@ const PAGE_GRAPHQL_FIELDS = `
           }
         }
       }
+      ... on AppReviewCard {
+        title
+        subtitle
+        caseStudy {
+          title
+          slug
+        }
+        orientation
+        image {
+          url
+          width
+          height
+          description
+        }
+      }
     }
   }
 `;
