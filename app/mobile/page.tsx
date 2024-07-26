@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import { draftMode } from "next/headers";
 import Link from "next/link";
 import ReactNative from "../components/ReactNative";
+import CallToActionBlock from "../components/contentful-content-blocks/CallToActionBlock";
 
 const title = "GCD | Mobile";
 export const metadata: Metadata = {
@@ -80,9 +81,15 @@ export default async function MobilePage() {
       </section>
       <section
         id="react-native-advantages"
-        className="col-span-full mb-20 flex flex-col items-center"
+        className="col-span-full  flex flex-col items-center"
       >
         <ReactNative bannerHidden />
+      </section>
+      <section
+        id="call-to-action"
+        className="col-span-full mb-20 flex flex-col items-center"
+      >
+        <CallToActionBlock mobileVariant />
       </section>
     </article>
   );
