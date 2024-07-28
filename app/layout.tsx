@@ -4,7 +4,6 @@ import "@/app/globals.css";
 import Footer from "@/app//components/Footer";
 import NavBar from "@/app/components/NavBar";
 import RecaptchaProvider from "@/app/components/providers/recaptcha-provider";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Jost } from "next/font/google";
@@ -40,7 +39,6 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <GoogleTagManager gtmId="GTM-5TVL55S" />
       <body className={jost.className}>
         <ThemeProvider>
           <RecaptchaProvider>
@@ -53,7 +51,7 @@ export default async function RootLayout({
           </RecaptchaProvider>
         </ThemeProvider>
       </body>
-      <GoogleAnalytics gaId="G-Z5E8C9JM8E" />
+      <GoogleTagManager gtmId="GTM-5TVL55S" />
     </html>
   );
 }
