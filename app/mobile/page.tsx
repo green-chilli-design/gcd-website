@@ -6,6 +6,9 @@ import { draftMode } from "next/headers";
 import Link from "next/link";
 import ReactNative from "../components/ReactNative";
 import CallToActionBlock from "../components/contentful-content-blocks/CallToActionBlock";
+import AllCaseStudies, {
+  CaseStudyPreview,
+} from "../case-studies/all-case-studies";
 
 const title = "GCD | Mobile";
 export const metadata: Metadata = {
@@ -26,18 +29,28 @@ export default async function MobilePage() {
   let contentBlocks = generateContentBlocks(
     mobilePage.pageContentCollection.items,
   );
-  console.log(JSON.stringify(contentBlocks, null, 2));
+
+  const caseStudies = mobilePage.pageContentCollection.items
+    .map(
+      (item: any) => item.caseStudy, // NOW filter any undefined/null values
+    )
+    .filter((item: any) => !!item);
+
+  console.log(caseStudies);
 
   return (
-    <article className="main-content grid grid-cols-[repeat(4,1fr)] gap-5 md:grid-cols-[repeat(12,1fr)]">
+    <article className="main-content mt-10 grid grid-cols-[repeat(4,1fr)] gap-5 md:mt-20 md:grid-cols-[repeat(12,1fr)]">
+      {/* <pre className="text-sm">
+        {JSON.stringify(mobilePage.pageContentCollection, null, 2)}
+      </pre> */}
       {/* Header (contains title only) */}
-      <header className="grid-cols-subgrid col-span-full grid">
+      <header className="col-span-full grid grid-cols-subgrid">
         <h1 className="col-span-full text-5xl md:col-span-9 md:text-10xl">
           Crafting Exceptional Mobile Experiences with React Native.
         </h1>
       </header>
       {/* Subtitle + CTA Section */}
-      <section className="grid-cols-subgrid col-span-full my-10 grid items-center">
+      <section className="col-span-full my-10 grid grid-cols-subgrid items-center">
         <h3 className="col-span-full md:col-span-6">{mobilePage.subtitle}</h3>
         <div
           id="tell-us-cta"
@@ -54,7 +67,7 @@ export default async function MobilePage() {
       {/* Banner Image Section (3 on desktop, 1 on mob) */}
       <section
         id="banner-images"
-        className="grid-cols-subgrid col-span-full mb-20 grid"
+        className="col-span-full mb-20 grid grid-cols-subgrid"
       >
         {bannerImages.map((image: any, index) => (
           <ContentfulMedia
@@ -75,9 +88,26 @@ export default async function MobilePage() {
       {/* App review  cards */}
       <section
         id="app-review-cards"
-        className="grid-cols-subgrid col-span-full grid"
+        className="col-span-full grid grid-cols-subgrid"
       >
         {contentBlocks}
+      </section>
+      <section
+        id="case-studies"
+        className="main-content col-span-full my-20 mb-24 grid grid-cols-1 gap-20 md:grid-cols-2 xl:grid-cols-3"
+      >
+        <div id="case-study-header" className="col-span-full text-center">
+          <h2>Case Studies of GCD Clients</h2>
+        </div>
+        {caseStudies.map((caseStudy: any) => (
+          <CaseStudyPreview
+            key={caseStudy.slug}
+            title={caseStudy.title}
+            coverImage={caseStudy.coverImage}
+            slug={caseStudy.slug}
+            summary={caseStudy.summary}
+          />
+        ))}
       </section>
       <section
         id="react-native-advantages"

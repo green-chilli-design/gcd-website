@@ -451,6 +451,14 @@ const PAGE_GRAPHQL_FIELDS = `
         caseStudy {
           title
           slug
+          coverImage {
+            url
+          }
+          summary
+          category {
+            name
+          }
+          sortOrder
         }
         orientation
         image {
@@ -460,6 +468,19 @@ const PAGE_GRAPHQL_FIELDS = `
           description
         }
         reviewQuote
+      }
+      ... on CaseStudy {
+        title
+        slug
+        coverImage {
+          url
+        }
+        summary
+        category {
+          name
+        }
+      
+
       }
     }
   }

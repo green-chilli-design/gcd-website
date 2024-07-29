@@ -5,6 +5,7 @@ import OurClients from "@/app/components/contentful-content-blocks/OurClients";
 import SuccessSection from "@/app/components/contentful-content-blocks/SuccessSection";
 import ServicesSection from "@/app/components/contentful-content-blocks/ServicesSection";
 import AppReviewCard from "@/app/components/contentful-content-blocks/AppReviewCard";
+import { CaseStudyPreview } from "@/app/case-studies/all-case-studies";
 
 /**
  * This function generates the content blocks for pages with content blocks
@@ -37,6 +38,8 @@ export function generateContentBlocks(contentBody: any[]) {
         );
       case "AppReviewCard":
         return <AppReviewCard key={value.heading} contentBlock={value} />;
+      // case "CaseStudy":
+      //   return <CaseStudyPreview key={value.slug} {...value} />;
       default:
         return null;
     }
