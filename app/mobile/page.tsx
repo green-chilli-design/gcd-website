@@ -27,6 +27,7 @@ export default async function MobilePage() {
   const { isEnabled } = draftMode();
   const mobilePage = await getPageBySlug("mobile", isEnabled);
   const bannerImages: [] = mobilePage.bannerContent?.imagesCollection?.items;
+  const clients = await getAllClients();
 
   let reviewCardContentBlocks = generateContentBlocks(
     mobilePage.pageContentCollection.items.filter(
@@ -39,13 +40,6 @@ export default async function MobilePage() {
       (item: any) =>
         item.__typename === "ContentBlockWithImage" &&
         item.heading === "Shaking Up the QA Process",
-    ),
-  );
-
-  const clientGalleryContentBlock = generateContentBlocks(
-    mobilePage.pageContentCollection.items.filter(
-      (item: any) =>
-        item.__typename === "ContentBlock" && item.heading === "Our Clients",
     ),
   );
 
@@ -114,10 +108,10 @@ export default async function MobilePage() {
         Transforming Business
       </section>
       {/* Collab approach section */}
-      <section className="col-span-full my-20 grid grid-cols-subgrid  py-20">
-        <div className="col-span-full">Our Collaborative approach</div>
+      <section className="col-span-full my-20 grid grid-cols-subgrid py-20">
+        {/* <div className="col-span-full">Our Collaborative approach</div> */}
         <div className="col-span-full flex w-full flex-col">
-          {clientGalleryContentBlock}
+          <ClientGallery clients={clients} className={"justify-between"} />
         </div>
       </section>
       {/* Shaking up the QA Process section */}
