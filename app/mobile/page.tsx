@@ -1,4 +1,4 @@
-import { getPageBySlug } from "@/lib/api";
+import { getAllClients, getPageBySlug } from "@/lib/api";
 import { generateContentBlocks } from "@/lib/contentful-content-blocks";
 import ContentfulMedia from "@/lib/contentful-media";
 import { Metadata } from "next";
@@ -9,6 +9,8 @@ import CallToActionBlock from "../components/contentful-content-blocks/CallToAct
 import AllCaseStudies, {
   CaseStudyPreview,
 } from "../case-studies/all-case-studies";
+import ClientGallery from "../components/ClientGallery";
+import OurClients from "../components/contentful-content-blocks/OurClients";
 
 const title = "GCD | Mobile";
 export const metadata: Metadata = {
@@ -37,6 +39,13 @@ export default async function MobilePage() {
       (item: any) =>
         item.__typename === "ContentBlockWithImage" &&
         item.heading === "Shaking Up the QA Process",
+    ),
+  );
+
+  const clientGalleryContentBlock = generateContentBlocks(
+    mobilePage.pageContentCollection.items.filter(
+      (item: any) =>
+        item.__typename === "ContentBlock" && item.heading === "Our Clients",
     ),
   );
 
@@ -100,12 +109,23 @@ export default async function MobilePage() {
       >
         {reviewCardContentBlocks}
       </section>
+      {/* Transforming business section */}
+      <section className="col-span-full my-20 grid grid-cols-subgrid bg-pink-100 py-20">
+        Transforming Business
+      </section>
+      {/* Collab approach section */}
+      <section className="col-span-full my-20 grid grid-cols-subgrid  py-20">
+        <div className="col-span-full">Our Collaborative approach</div>
+        <div className="col-span-full flex w-full flex-col">
+          {clientGalleryContentBlock}
+        </div>
+      </section>
       {/* Shaking up the QA Process section */}
       <section
         id="shaking-up-qa-section"
-        className="main-content col-span-full my-20 mb-24 grid grid-cols-1 gap-20 md:grid-cols-2 xl:grid-cols-3"
+        className="col-span-full grid grid-cols-subgrid"
       >
-        <div className="col-span-full  flex  w-full flex-col">
+        <div className="col-span-full flex w-full flex-col">
           {shakingUpTheQAProcessContentBlock}
         </div>
       </section>
@@ -113,7 +133,10 @@ export default async function MobilePage() {
         id="case-studies"
         className="main-content col-span-full my-20 mb-24 grid grid-cols-1 gap-20 md:grid-cols-2 xl:grid-cols-3"
       >
-        <div id="case-study-header" className="col-span-full text-center">
+        <div
+          id="case-study-header"
+          className="col-span-full flex flex-row items-center"
+        >
           <h2>Case Studies of GCD Clients</h2>
         </div>
         {caseStudies.map((caseStudy: any) => (
