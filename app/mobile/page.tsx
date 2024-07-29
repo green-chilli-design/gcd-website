@@ -26,8 +26,18 @@ export default async function MobilePage() {
   const mobilePage = await getPageBySlug("mobile", isEnabled);
   const bannerImages: [] = mobilePage.bannerContent?.imagesCollection?.items;
 
-  let contentBlocks = generateContentBlocks(
-    mobilePage.pageContentCollection.items,
+  let reviewCardContentBlocks = generateContentBlocks(
+    mobilePage.pageContentCollection.items.filter(
+      (item: any) => item.__typename === "AppReviewCard",
+    ),
+  );
+
+  const shakingUpTheQAProcessContentBlock = generateContentBlocks(
+    mobilePage.pageContentCollection.items.filter(
+      (item: any) =>
+        item.__typename === "ContentBlockWithImage" &&
+        item.heading === "Shaking Up the QA Process",
+    ),
   );
 
   const caseStudies = mobilePage.pageContentCollection.items
@@ -35,8 +45,6 @@ export default async function MobilePage() {
       (item: any) => item.caseStudy, // NOW filter any undefined/null values
     )
     .filter((item: any) => !!item);
-
-  console.log(caseStudies);
 
   return (
     <article className="main-content mt-10 grid grid-cols-[repeat(4,1fr)] gap-5 md:mt-20 md:grid-cols-[repeat(12,1fr)]">
@@ -90,7 +98,16 @@ export default async function MobilePage() {
         id="app-review-cards"
         className="col-span-full grid grid-cols-subgrid"
       >
-        {contentBlocks}
+        {reviewCardContentBlocks}
+      </section>
+      {/* Shaking up the QA Process section */}
+      <section
+        id="shaking-up-qa-section"
+        className="main-content col-span-full my-20 mb-24 grid grid-cols-1 gap-20 md:grid-cols-2 xl:grid-cols-3"
+      >
+        <div className="col-span-full  flex  w-full flex-col">
+          {shakingUpTheQAProcessContentBlock}
+        </div>
       </section>
       <section
         id="case-studies"
@@ -111,7 +128,7 @@ export default async function MobilePage() {
       </section>
       <section
         id="react-native-advantages"
-        className="col-span-full  flex flex-col items-center"
+        className="col-span-full  my-20 flex w-full flex-col"
       >
         <ReactNative bannerHidden />
       </section>
