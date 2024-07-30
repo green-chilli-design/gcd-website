@@ -30,7 +30,7 @@ export default function NavBar() {
     logoSrc = "/gcd-logo-round-white.svg";
   }
   if (navBarContainerScrolled && !isMobile) {
-    logoSrc = "/gcd-logo-square-white.svg";
+    logoSrc = "/gcd-logo-white-text.svg";
   }
 
   /**
@@ -72,7 +72,7 @@ export default function NavBar() {
         <header
           id="header"
           className={cn(
-            "z-10 flex h-[150px] w-full items-center ",
+            "z-10 flex h-20 w-full items-center lg:h-[150px] ",
             !isMobile &&
               navBarContainerScrolled &&
               (resolvedTheme === "dark"
@@ -92,7 +92,7 @@ export default function NavBar() {
         >
           <nav
             className={cn(
-              "main-content flex h-[150px] items-center justify-between",
+              "main-content flex h-20 items-center justify-between lg:h-[150px]",
             )}
           >
             <div
@@ -101,12 +101,20 @@ export default function NavBar() {
                 navBarScrolled && !isMobile && "sticky -top-[0px]",
               )}
             >
-              <div className={"flex w-[90px] justify-center"}>
+              <div
+                className={cn(
+                  "flex w-[90px]",
+                  navBarContainerScrolled && !isMobile && "ps-[10px]",
+                )}
+              >
                 <GCDLogo
-                  className={"transition duration-500 hover:scale-110"}
+                  className={cn(
+                    "transition duration-500 hover:scale-110",
+                    isMobile && "w-10",
+                  )}
                   logoSrc={logoSrc}
-                  width={navBarContainerScrolled && !isMobile ? 72 : 90}
-                  height={navBarContainerScrolled && !isMobile ? 72 : 90}
+                  width={navBarContainerScrolled && !isMobile ? 72 : undefined} // Pass undfined to use the default value in GCDLogo component
+                  height={navBarContainerScrolled && !isMobile ? 72 : undefined} // Pass undfined to use the default value in GCDLogo component
                 />
               </div>
               <div>
