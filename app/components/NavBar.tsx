@@ -7,22 +7,19 @@ import { cn } from "@/lib/utils";
 import { createContext, useCallback, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { useClientMediaQuery } from "@/lib/hooks/useClientMediaQuery";
-import resolveConfig from "tailwindcss/resolveConfig";
-import tailwindConfig from "../../tailwind.config";
 
 export const NavBarContainerScrolledContext = createContext(false);
 export const IsMobileContext = createContext(false);
 
 export default function NavBar() {
   const { resolvedTheme } = useTheme();
-  const { theme } = resolveConfig(tailwindConfig);
 
   const [navBarScrolled, setNavBarScrolled] = useState<boolean>(false);
   const [navBarContainerScrolled, setNavBarContainerScrolled] =
     useState<boolean>(false);
   const [animateStickyNav, setAnimateStickyNav] = useState<boolean>(false);
 
-  const isMobile = useClientMediaQuery(`(max-width: ${theme.screens.lg})`);
+  const isMobile = useClientMediaQuery(`(max-width: 1024px)`);
   const headerEl = document.querySelector("#header");
 
   /**
