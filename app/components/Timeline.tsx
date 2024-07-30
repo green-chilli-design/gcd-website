@@ -15,10 +15,10 @@ function Timeline() {
         </div>
       </div>
       <div
-        className="main-content flex flex-col justify-around gap-20 text-left md:mt-10 md:flex-row"
+        className="main-content flex flex-col justify-around gap-12 text-left md:flex-row md:gap-10 lg:mt-10"
         id="3-cols"
       >
-        <div className=" flex-1  md:w-1/3">
+        <div className=" flex-1 md:w-1/3">
           <h2 className="uppercase">Strong Stakeholder Alignment</h2>
           <p>
             Your feedback is integrated throughout the design to clickable
@@ -26,14 +26,14 @@ function Timeline() {
             even starts.
           </p>
         </div>
-        <div className=" flex-1  md:w-1/3">
+        <div className=" flex-1 md:w-1/3">
           <h2 className="uppercase">User-Centered Design</h2>
           <p>
             User and stakeholder input guides design refinements at every stage,
             ensuring high levels of satisfaction.
           </p>
         </div>
-        <div className=" flex-1  md:w-1/3">
+        <div className=" flex-1 md:w-1/3">
           <h2 className="uppercase">Drastically Reduce Risk</h2>
           <p>
             Iterative feedback loops catch issues early, saving both time and
