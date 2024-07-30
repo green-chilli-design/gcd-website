@@ -50,18 +50,18 @@ export default async function MobilePage() {
     .filter((item: any) => !!item);
 
   return (
-    <article className="main-content mt-10 grid grid-cols-[repeat(4,1fr)] gap-5 md:mt-20 md:grid-cols-[repeat(12,1fr)]">
+    <article className="relative mt-10 grid grid-cols-[repeat(4,1fr)] gap-5 md:mt-20 md:grid-cols-[repeat(12,1fr)]">
       {/* <pre className="text-sm">
         {JSON.stringify(mobilePage.pageContentCollection, null, 2)}
       </pre> */}
       {/* Header (contains title only) */}
-      <header className="col-span-full grid grid-cols-subgrid">
+      <header className="main-content col-span-full grid grid-cols-subgrid">
         <h1 className="col-span-full text-5xl md:col-span-9 md:text-10xl">
           Crafting Exceptional Mobile Experiences with React Native.
         </h1>
       </header>
       {/* Subtitle + CTA Section */}
-      <section className="col-span-full my-10 grid grid-cols-subgrid items-center">
+      <section className="main-content col-span-full my-10 grid grid-cols-subgrid items-center">
         <h3 className="col-span-full md:col-span-6">{mobilePage.subtitle}</h3>
         <div
           id="tell-us-cta"
@@ -78,7 +78,7 @@ export default async function MobilePage() {
       {/* Banner Image Section (3 on desktop, 1 on mob) */}
       <section
         id="banner-images"
-        className="col-span-full mb-20 grid grid-cols-subgrid"
+        className="col-span-full mx-10 mb-20 grid grid-cols-subgrid"
       >
         {bannerImages.map((image: any, index) => (
           <ContentfulMedia
@@ -99,7 +99,7 @@ export default async function MobilePage() {
       {/* App review  cards */}
       <section
         id="app-review-cards"
-        className="col-span-full grid grid-cols-subgrid"
+        className="main-content col-span-full grid grid-cols-subgrid"
       >
         {reviewCardContentBlocks}
       </section>
@@ -107,12 +107,17 @@ export default async function MobilePage() {
       <section className="col-span-full my-20 grid grid-cols-subgrid bg-pink-100 py-20">
         Transforming Business
       </section>
-      {/* Collab approach section */}
-      <section className="col-span-full my-20 grid grid-cols-subgrid py-20">
-        {/* <div className="col-span-full">Our Collaborative approach</div> */}
-        <div className="col-span-full flex w-full flex-col">
+      {/* Collab approach/logos section */}
+      <section className="col-span-full mt-20 grid grid-cols-subgrid ">
+        <div className="main-content col-span-full flex w-full flex-col">
           <ClientGallery clients={clients} className={"justify-between"} />
         </div>
+      </section>
+      <section
+        id="timeline"
+        className="col-span-full  w-full  bg-dark-offwhite py-20"
+      >
+        Timeline
       </section>
       {/* Shaking up the QA Process section */}
       <section
