@@ -11,6 +11,7 @@ import AllCaseStudies, {
 } from "../case-studies/all-case-studies";
 import ClientGallery from "../components/ClientGallery";
 import OurClients from "../components/contentful-content-blocks/OurClients";
+import Timeline from "../components/Timeline";
 
 const title = "GCD | Mobile";
 export const metadata: Metadata = {
@@ -115,9 +116,9 @@ export default async function MobilePage() {
       </section>
       <section
         id="timeline"
-        className="col-span-full  w-full  bg-dark-offwhite py-20"
+        className="col-span-full  w-full  bg-dark-offwhite py-20  dark:bg-black-80"
       >
-        Timeline
+        <Timeline />
       </section>
       {/* Shaking up the QA Process section */}
       <section
