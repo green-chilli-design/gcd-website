@@ -129,24 +129,36 @@ export default async function MobilePage() {
           {shakingUpTheQAProcessContentBlock}
         </div>
       </section>
+      {/* Case Study Section: These cards are generated from the case studies linked above in the review cards */}
       <section
         id="case-studies"
-        className="main-content col-span-full my-20 mb-24 grid grid-cols-1 gap-20 md:grid-cols-2 xl:grid-cols-3"
+        className="main-content col-span-full my-20 mb-24 grid grid-cols-subgrid"
       >
         <div
           id="case-study-header"
-          className="col-span-full flex flex-row items-center"
+          className="col-span-full grid grid-cols-subgrid"
         >
-          <h2>Case Studies of GCD Clients</h2>
+          <h2 className="col-span-full mb-10 text-center">
+            Case Studies of GCD Clients
+          </h2>
         </div>
         {caseStudies.map((caseStudy: any) => (
-          <CaseStudyPreview
+          <div
+            className="
+              col-span-full
+              md:col-span-6
+              lg:col-span-4
+            "
             key={caseStudy.slug}
-            title={caseStudy.title}
-            coverImage={caseStudy.coverImage}
-            slug={caseStudy.slug}
-            summary={caseStudy.summary}
-          />
+          >
+            <CaseStudyPreview
+              key={caseStudy.slug}
+              title={caseStudy.title}
+              coverImage={caseStudy.coverImage}
+              slug={caseStudy.slug}
+              summary={caseStudy.summary}
+            />
+          </div>
         ))}
       </section>
       <section
