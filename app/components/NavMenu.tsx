@@ -36,7 +36,7 @@ export default function NavMenu() {
             key={label}
             href={href}
             className={cn(
-              "ext-sm font-bold",
+              "text-sm font-bold",
               isActive ? "text-green" : "hover:text-green hover:underline",
               navBarScrolled &&
                 resolvedTheme !== "dark" &&
@@ -55,7 +55,7 @@ export default function NavMenu() {
         href={"/contact"}
         className={
           navBarScrolled
-            ? "ext-sm flex w-44 items-center justify-center font-bold text-green hover:text-green hover:underline"
+            ? "flex w-44 items-center justify-center text-sm font-bold text-green hover:text-green hover:underline"
             : "btn green flex w-44 items-center justify-center text-black"
         }
       >
