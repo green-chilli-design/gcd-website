@@ -2,8 +2,8 @@ import { getPageBySlug } from "@/lib/api";
 import { generateContentBlocks } from "@/lib/contentful-content-blocks";
 import ContentfulMedia from "@/lib/contentful-media";
 import { draftMode } from "next/headers";
-import CallToActionBlock from "./components/contentful-content-blocks/CallToActionBlock";
 import Link from "next/link";
+import CallToActionBlock from "../components/contentful-content-blocks/CallToActionBlock";
 
 export default async function HomePage() {
   const { isEnabled } = draftMode();

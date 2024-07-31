@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/select";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
-import { SubCategoryItem } from "../types/contentful-types";
+import { SubCategoryItem } from "../../types/contentful-types";
 
 export default function CaseStudySearchBar({
   categories,

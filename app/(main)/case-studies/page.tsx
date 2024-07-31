@@ -1,5 +1,5 @@
 import ViewMore from "@/app/components/ViewMore";
-import CoverImage from "@/app/cover-image";
+import CoverImage from "@/app/(main)/cover-image";
 import { getCaseStudies, getCategoryByName, getPageBySlug } from "@/lib/api";
 import type { Metadata } from "next";
 import { draftMode } from "next/headers";
