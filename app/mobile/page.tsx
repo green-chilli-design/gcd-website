@@ -31,7 +31,7 @@ export default async function MobilePage() {
   const bannerImages: [] = mobilePage.bannerContent?.imagesCollection?.items;
   const clients = await getAllClients();
 
-  let reviewCardContentBlocks = generateContentBlocks(
+  const reviewCardContentBlocks = generateContentBlocks(
     mobilePage.pageContentCollection.items.filter(
       (item: any) => item.__typename === "AppReviewCard",
     ),
@@ -53,6 +53,14 @@ export default async function MobilePage() {
     ),
   );
 
+  const collaborativeApproachSection = generateContentBlocks(
+    mobilePage.pageContentCollection.items.filter(
+      (item: any) =>
+        item.__typename === "ContentBlock" &&
+        item.heading === "Our Collaborative Approach to Mobile App Development",
+    ),
+  );
+
   const caseStudies = mobilePage.pageContentCollection.items
     .map(
       (item: any) => item.caseStudy, // NOW filter any undefined/null values
@@ -61,9 +69,6 @@ export default async function MobilePage() {
 
   return (
     <article className="relative mt-10 grid grid-cols-[repeat(4,1fr)] gap-5 md:mt-20 md:grid-cols-[repeat(12,1fr)]">
-      {/* <pre className="text-sm">
-        {JSON.stringify(mobilePage.pageContentCollection, null, 2)}
-      </pre> */}
       {/* Header (contains title only) */}
       <header className="main-content col-span-full grid grid-cols-subgrid">
         <h1 className="col-span-full text-5xl md:col-span-9 md:text-10xl">
@@ -114,15 +119,22 @@ export default async function MobilePage() {
         {reviewCardContentBlocks}
       </section>
       {/* Transforming business section */}
-      <section className="col-span-full my-20 grid grid-cols-subgrid  py-20">
+      <section className="col-span-full mt-20 grid grid-cols-subgrid  md:pt-20">
         {transformingBusinessContentBlock}
       </section>
       {/* Collab approach/logos section */}
-      <section className="col-span-full mt-20 grid grid-cols-subgrid ">
-        <div className="main-content col-span-full flex w-full flex-col">
-          <ClientGallery clients={clients} className={"justify-between"} />
+      <section className="col-span-full grid grid-cols-subgrid ">
+        <div className="col-span-full flex w-full flex-col">
+          <div className="self-start">{collaborativeApproachSection}</div>
         </div>
+        <CollaborativeBenefits />
       </section>
+      <div className="col-span-full mt-20">
+        <ClientGallery
+          clients={clients}
+          className={"main-content justify-between"}
+        />
+      </div>
       <section
         id="timeline"
         className="col-span-full  w-full  bg-dark-offwhite py-20  dark:bg-black-80"
@@ -183,5 +195,36 @@ export default async function MobilePage() {
         <CallToActionBlock mobileVariant />
       </section>
     </article>
+  );
+}
+
+// TODO: This should be migrated to Contentful and support for 3 column layout added
+function CollaborativeBenefits() {
+  return (
+    <div className="main-content col-span-full grid w-full grid-cols-subgrid gap-10 md:mb-20">
+      {/* 3 Columns */}
+      <div className="col-span-full md:col-span-4">
+        <h4 className="mb-2 uppercase">Increased Confidence</h4>
+        <p>
+          You'll have peace of mind knowing that your app is being developed
+          with a deep understanding of your vision and a commitment to user
+          satisfaction.
+        </p>
+      </div>
+      <div className="col-span-full md:col-span-4">
+        <h4 className="mb-2 uppercase">Higher Quality Product</h4>
+        <p>
+          By incorporating user feedback and addressing issues early, we deliver
+          a polished, user-friendly app that exceeds expectations.
+        </p>
+      </div>
+      <div className="col-span-full md:col-span-4">
+        <h4 className="mb-2 uppercase">Cost and Time Savings</h4>
+        <p>
+          Our collaborative approach minimises the risk of costly rework,
+          ensuring your project stays on track and within budget.
+        </p>
+      </div>
+    </div>
   );
 }
