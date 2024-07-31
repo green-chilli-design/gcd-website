@@ -1,4 +1,4 @@
-import { getAllClients, getPageBySlug } from "@/lib/api";
+import { ContentBlock, getAllClients, getPageBySlug } from "@/lib/api";
 import { generateContentBlocks } from "@/lib/contentful-content-blocks";
 import ContentfulMedia from "@/lib/contentful-media";
 import { Metadata } from "next";
@@ -12,6 +12,7 @@ import AllCaseStudies, {
 import ClientGallery from "../components/ClientGallery";
 import OurClients from "../components/contentful-content-blocks/OurClients";
 import Timeline from "../components/Timeline";
+import { Markdown } from "@/lib/markdown";
 
 const title = "GCD | Mobile";
 export const metadata: Metadata = {
@@ -41,6 +42,14 @@ export default async function MobilePage() {
       (item: any) =>
         item.__typename === "ContentBlockWithImage" &&
         item.heading === "Shaking Up the QA Process",
+    ),
+  );
+
+  const transformingBusinessContentBlock = generateContentBlocks(
+    mobilePage.pageContentCollection.items.filter(
+      (item: any) =>
+        item.__typename === "ContentBlock" &&
+        item.heading === "Transforming Business Ideas into Reality",
     ),
   );
 
@@ -105,8 +114,8 @@ export default async function MobilePage() {
         {reviewCardContentBlocks}
       </section>
       {/* Transforming business section */}
-      <section className="col-span-full my-20 grid grid-cols-subgrid bg-pink-100 py-20">
-        Transforming Business
+      <section className="col-span-full my-20 grid grid-cols-subgrid  py-20">
+        {transformingBusinessContentBlock}
       </section>
       {/* Collab approach/logos section */}
       <section className="col-span-full mt-20 grid grid-cols-subgrid ">

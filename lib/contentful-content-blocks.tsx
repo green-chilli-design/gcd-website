@@ -31,6 +31,15 @@ export function generateContentBlocks(contentBody: any[]) {
         if (value.heading === "Services") {
           return <ServicesSection key={value.heading} contentBlock={value} />;
         }
+        if (value.heading === "Transforming Business Ideas into Reality") {
+          return (
+            <ContentBlock
+              contentBlock={value}
+              layout="two-column"
+              className="main-content col-span-full gap-10 lg:gap-20"
+            />
+          );
+        }
         return <ContentBlock key={value.heading} contentBlock={value} />;
       case "ContentBlockWithImage":
         return (
@@ -38,8 +47,6 @@ export function generateContentBlocks(contentBody: any[]) {
         );
       case "AppReviewCard":
         return <AppReviewCard key={value.heading} contentBlock={value} />;
-      // case "CaseStudy":
-      //   return <CaseStudyPreview key={value.slug} {...value} />;
       default:
         return null;
     }
