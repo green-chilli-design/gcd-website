@@ -59,6 +59,7 @@ export default function NavMenuMobile() {
         })}
         <Link
           key={"Start a Project"}
+          onClick={handleMenu}
           href={"/contact"}
           className={"mb-10 hover:text-green hover:underline"}
         >
