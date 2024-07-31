@@ -8,7 +8,7 @@ export default function ContentBlock({
   className,
 }: {
   contentBlock: ContentBlock;
-  layout?: "centered" | "two-column";
+  layout?: "centered" | "two-column" | "full-bleed";
   className?: string;
 }) {
   if (layout === "two-column") {
@@ -33,7 +33,9 @@ export default function ContentBlock({
       )}
     >
       <div
-        className={`max-w-[846px] text-${contentBlock.textAlignment.toLowerCase()}`}
+        className={`${
+          layout != "full-bleed" && "max-w-[846px]"
+        } text-${contentBlock.textAlignment.toLowerCase()}`}
       >
         {contentBlock.heading && (
           <h2 className="mb-5">{contentBlock.heading}</h2>

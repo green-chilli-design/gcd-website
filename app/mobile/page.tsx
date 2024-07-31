@@ -61,6 +61,12 @@ export default async function MobilePage() {
     ),
   );
 
+  const faqSection = generateContentBlocks(
+    mobilePage.pageContentCollection.items.filter(
+      (item: any) => item.heading === "FAQ's",
+    ),
+  );
+
   const caseStudies = mobilePage.pageContentCollection.items
     .map(
       (item: any) => item.caseStudy, // NOW filter any undefined/null values
@@ -182,12 +188,18 @@ export default async function MobilePage() {
           </div>
         ))}
       </section>
+      {/* React Native Advantages Section */}
       <section
         id="react-native-advantages"
-        className="col-span-full  my-20 flex w-full flex-col"
+        className="col-span-full mt-20 flex w-full flex-col"
       >
         <ReactNative bannerHidden />
       </section>
+      {/* FAQs section */}
+      <section className="col-span-full grid grid-cols-subgrid" id="faqs">
+        <div className="col-span-full">{faqSection}</div>
+      </section>
+      {/* Call to Action section */}
       <section
         id="call-to-action"
         className="col-span-full mb-20 flex flex-col items-center"

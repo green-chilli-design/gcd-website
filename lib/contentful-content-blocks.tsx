@@ -40,6 +40,15 @@ export function generateContentBlocks(contentBody: any[]) {
             />
           );
         }
+        if (value.heading === "FAQ's") {
+          return (
+            <ContentBlock
+              contentBlock={value}
+              layout="full-bleed"
+              className="main-content col-span-full gap-10 lg:gap-20"
+            />
+          );
+        }
         return <ContentBlock key={value.heading} contentBlock={value} />;
       case "ContentBlockWithImage":
         return (
