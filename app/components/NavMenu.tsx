@@ -36,8 +36,7 @@ export default function NavMenu() {
             key={label}
             href={href}
             className={cn(
-              "text-sm font-bold",
-              isActive ? "text-green" : "hover:text-green hover:underline",
+              "text-sm font-bold hover:text-green hover:underline",
               navBarScrolled &&
                 resolvedTheme !== "dark" &&
                 "sticky-navbar-text-white",
