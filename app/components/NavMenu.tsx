@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import ThemeSwitch from "./ThemeSwitch";
 import { useContext } from "react";
 import { NavBarContainerScrolledContext } from "./NavBar";
@@ -22,15 +21,12 @@ export const NAV_LINKS = [
 ];
 
 export default function NavMenu() {
-  const pathname = usePathname();
   const { resolvedTheme } = useTheme();
   const navBarScrolled = useContext(NavBarContainerScrolledContext);
 
   return (
     <div className="hidden items-center gap-16 lg:flex">
       {NAV_LINKS.map(({ href, label }) => {
-        const isActive = pathname.startsWith(href);
-
         return (
           <Link
             key={label}
