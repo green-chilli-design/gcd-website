@@ -18,10 +18,10 @@ export default function NavMenuMobile() {
 
   useEffect(() => {
     // Close menu if not mobile
-    if (!isMobile) {
+    if (!isMobile || pathname === "/") {
       setMenuOpen(false);
     }
-  }, [isMobile]);
+  }, [isMobile, pathname]);
 
   return (
     <div>
@@ -29,19 +29,6 @@ export default function NavMenuMobile() {
         className={`main-content absolute bottom-0 right-0 top-16 mt-4 flex h-screen w-full flex-col bg-neutral pb-[120px] pt-10 duration-300 ease-in-out dark:bg-black lg:hidden
         ${menuOpen ? "left-0" : "left-[-100%]"}`}
       >
-        <Link
-          href="/"
-          onClick={handleMenu}
-          className={cn(
-            "mb-10",
-            pathname.length === 1
-              ? "text-green"
-              : "hover:text-green hover:underline",
-          )}
-        >
-          <h4>Home</h4>
-        </Link>
-
         {NAV_LINKS.map(({ href, label }) => {
           const isActive = pathname.startsWith(href);
           return (
