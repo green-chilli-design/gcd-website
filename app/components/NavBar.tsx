@@ -72,7 +72,7 @@ export default function NavBar() {
         <header
           id="header"
           className={cn(
-            "z-10 flex h-20 w-full items-center lg:h-[150px] ",
+            "z-10 flex h-[94.77px] w-full items-center lg:h-[150px] ",
             !isMobile &&
               navBarContainerScrolled &&
               (resolvedTheme === "dark"
@@ -92,7 +92,7 @@ export default function NavBar() {
         >
           <nav
             className={cn(
-              "main-content flex h-20 items-center justify-between lg:h-[150px]",
+              "main-content flex h-[94.77px] items-center justify-between lg:h-[150px]",
             )}
           >
             <div
@@ -110,7 +110,7 @@ export default function NavBar() {
                 <GCDLogo
                   className={cn(
                     "transition duration-500 hover:scale-110",
-                    isMobile && "w-10",
+                    isMobile && "w-[62.77px]",
                   )}
                   logoSrc={logoSrc}
                   width={navBarContainerScrolled && !isMobile ? 72 : undefined} // Pass undfined to use the default value in GCDLogo component
