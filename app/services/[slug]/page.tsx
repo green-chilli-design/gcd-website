@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { draftMode } from "next/headers";
 
-import CoverImage from "@/app/cover-image";
+import CoverImage from "@/app/(main)/cover-image";
 import { Markdown } from "@/lib/markdown";
 
 import { getAllServices, getServiceBySlug } from "@/lib/api";

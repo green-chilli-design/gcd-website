@@ -1,8 +1,6 @@
 import "@/app/globalicons.css";
 import "@/app/globals.css";
 
-import Footer from "@/app//components/Footer";
-import NavBar from "@/app/components/NavBar";
 import RecaptchaProvider from "@/app/components/providers/recaptcha-provider";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
@@ -43,9 +41,7 @@ export default async function RootLayout({
         <ThemeProvider>
           <RecaptchaProvider>
             <main className="m-0 flex min-h-screen flex-col justify-start bg-neutral text-black dark:bg-black dark:text-neutral">
-              <NavBar />
-              <div className="flex-1">{children}</div>
-              <Footer />
+              {children}
             </main>
             <Analytics />
           </RecaptchaProvider>

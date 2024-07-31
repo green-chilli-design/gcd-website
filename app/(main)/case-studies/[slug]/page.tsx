@@ -8,7 +8,7 @@ import { draftMode } from "next/headers";
 import Link from "next/link";
 import { CaseStudyPreview } from "../all-case-studies";
 import SocialShare from "@/app/components/SocialShare";
-import { notFound } from 'next/navigation'
+import { notFound } from "next/navigation";
 
 export async function generateMetadata(
   {
@@ -79,7 +79,9 @@ export default async function CaseStudyPage({
     <div>
       <section className="mb-24 mt-20 flex flex-col gap-3 lg:mt-0 lg:flex-row lg:items-center">
         <div className="main-content mb-6 h-full w-full lg:mt-20">
-          <h1 className="text-7xl font-medium sm:text-9xl lg:text-10xl xl:text-11xl break-words">{caseStudy.title}</h1>
+          <h1 className="break-words text-7xl font-medium sm:text-9xl lg:text-10xl xl:text-11xl">
+            {caseStudy.title}
+          </h1>
         </div>
         <div className="h-full w-full lg:max-w-[710px]">
           <ContentfulMedia
