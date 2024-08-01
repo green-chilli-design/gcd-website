@@ -1,7 +1,14 @@
+"use client";
+
+import { useTheme } from "next-themes";
 import Image from "next/image";
+import timeline from "@/public/images/timeline.svg";
+import darkTimeline from "@/public/images/timeline-dark.svg";
 
 // TODO: Migrate this to Contentful
 function Timeline() {
+  const { resolvedTheme } = useTheme();
+
   return (
     <div className="flex w-full flex-col justify-center gap-10   text-center">
       <h2>Our Our End-to-End Mobile App Development Service</h2>
@@ -11,7 +18,11 @@ function Timeline() {
           id="timeline-img-container"
           className="relative h-[400px] w-full min-w-[6000px]"
         >
-          <Image src="/images/timeline.svg" alt="timeline" fill={true} />
+          <Image
+            src={resolvedTheme === "dark" ? darkTimeline : timeline}
+            alt="GCD End-to-End Process"
+            fill={true}
+          />
         </div>
       </div>
       <div
