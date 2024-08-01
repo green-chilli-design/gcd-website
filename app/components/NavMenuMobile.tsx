@@ -26,7 +26,7 @@ export default function NavMenuMobile() {
   return (
     <div>
       <div
-        className={`main-content absolute bottom-0 right-0 top-16 mt-4 flex h-screen w-full flex-col bg-neutral pb-[120px] pt-10 duration-300 ease-in-out dark:bg-black lg:hidden
+        className={`main-content absolute bottom-0 right-0 top-16 mt-5 flex h-screen w-full flex-col bg-neutral pb-[120px] pt-10 duration-300 ease-in-out dark:bg-black lg:hidden
         ${menuOpen ? "left-0" : "left-[-100%]"}`}
       >
         {NAV_LINKS.map(({ href, label }) => {
