@@ -31,6 +31,7 @@ export default async function MobilePage() {
   const bannerImages: [] = mobilePage.bannerContent?.imagesCollection?.items;
   const clients = await getAllClients();
 
+  // Generate content blocks to be used in the page
   const reviewCardContentBlocks = generateContentBlocks(
     mobilePage.pageContentCollection.items.filter(
       (item: any) => item.__typename === "AppReviewCard",
@@ -68,9 +69,7 @@ export default async function MobilePage() {
   );
 
   const caseStudies = mobilePage.pageContentCollection.items
-    .map(
-      (item: any) => item.caseStudy, // NOW filter any undefined/null values
-    )
+    .map((item: any) => item.caseStudy)
     .filter((item: any) => !!item);
 
   return (
@@ -125,7 +124,7 @@ export default async function MobilePage() {
         {reviewCardContentBlocks}
       </section>
       {/* Transforming business section */}
-      <section className="col-span-full mt-20 grid grid-cols-subgrid  md:pt-20">
+      <section className="col-span-full grid grid-cols-subgrid  md:pt-20">
         {transformingBusinessContentBlock}
       </section>
       {/* Collab approach/logos section */}
@@ -191,7 +190,7 @@ export default async function MobilePage() {
       {/* React Native Advantages Section */}
       <section
         id="react-native-advantages"
-        className="col-span-full mt-20 flex w-full flex-col"
+        className="col-span-full flex w-full flex-col md:mt-20"
       >
         <ReactNative bannerHidden />
       </section>
@@ -202,7 +201,7 @@ export default async function MobilePage() {
       {/* Call to Action section */}
       <section
         id="call-to-action"
-        className="col-span-full mb-20 flex flex-col items-center"
+        className="col-span-full flex flex-col items-center md:mb-20"
       >
         <CallToActionBlock mobileVariant />
       </section>
@@ -210,7 +209,7 @@ export default async function MobilePage() {
   );
 }
 
-// TODO: This should be migrated to Contentful and support for 3 column layout added
+// TODO: This should be migrated to Contentful and support for 3 column layouts added
 function CollaborativeBenefits() {
   return (
     <div className="main-content col-span-full grid w-full grid-cols-subgrid gap-10 md:mb-20">

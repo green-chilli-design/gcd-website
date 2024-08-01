@@ -13,7 +13,7 @@ export default function CallToActionBlock({
         className={`main-content absolute ${!mobileVariant && "my-[200px]"}`}
       >
         <div className="flex w-full flex-col rounded-br-[30px] rounded-tl-[30px] bg-black px-5 py-16 text-neutral dark:bg-neutral dark:text-black lg:px-28 lg:py-20">
-          <h1>
+          <h1 className="max-md:text-8xl">
             {mobileVariant
               ? "Looking for Mobile App Development Services?"
               : "Ready to build better?"}
