@@ -2,6 +2,7 @@ import { getPageBySlug } from "@/lib/api";
 import { generateContentBlocks } from "@/lib/contentful-content-blocks";
 import ContentfulMedia from "@/lib/contentful-media";
 import { draftMode } from "next/headers";
+import Link from "next/link";
 import CallToActionBlock from "../components/contentful-content-blocks/CallToActionBlock";
 
 export default async function HomePage() {
@@ -22,6 +23,12 @@ export default async function HomePage() {
             Don&apos;t just <br /> build.Build better.
           </h1>
           <h4 className="max-w-[629px]">{homePage.subtitle}</h4>
+          <Link
+            href={"/contact"}
+            className="btn green mt-8 flex w-44 items-center justify-center text-black"
+          >
+            Start a Project
+          </Link>
         </div>
 
         {bannerImages.length && (

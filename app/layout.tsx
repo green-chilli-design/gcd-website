@@ -2,11 +2,11 @@ import "@/app/globalicons.css";
 import "@/app/globals.css";
 
 import RecaptchaProvider from "@/app/components/providers/recaptcha-provider";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Jost } from "next/font/google";
 import { sharedMetadata } from "./metadata";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 // temp fix for https://github.com/pacocoursey/next-themes/issues/169
 // basically forces it to be client side, which is not ideal
@@ -47,7 +47,7 @@ export default async function RootLayout({
           </RecaptchaProvider>
         </ThemeProvider>
       </body>
-      <GoogleAnalytics gaId="G-Z5E8C9JM8E" />
+      <GoogleTagManager gtmId="GTM-5TVL55S" />
     </html>
   );
 }

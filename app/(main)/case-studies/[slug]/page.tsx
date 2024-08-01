@@ -83,7 +83,7 @@ export default async function CaseStudyPage({
             {caseStudy.title}
           </h1>
         </div>
-        <div className="h-full w-full lg:max-w-[710px]">
+        <div className="h-full w-full">
           <ContentfulMedia
             src={caseStudy.coverImage.url}
             alt={caseStudy.title}
