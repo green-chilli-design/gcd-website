@@ -6,14 +6,24 @@ import { useTheme } from "next-themes";
 
 interface GCDLogoProps {
   className?: string;
+  logoSrc?: string;
+  width?: number;
+  height?: number;
 }
 
-export default function GCDLogo({ className = "" }: GCDLogoProps) {
+export default function GCDLogo({
+  className = "",
+  logoSrc,
+  width = 90,
+  height = 90,
+}: GCDLogoProps) {
   const { resolvedTheme } = useTheme();
 
-  let logoSrc = "/gcd-logo-round-black.svg";
-  if (resolvedTheme === "dark") {
-    logoSrc = "/gcd-logo-round-white.svg";
+  if (!logoSrc) {
+    logoSrc = "/gcd-logo-round-black.svg";
+    if (resolvedTheme === "dark") {
+      logoSrc = "/gcd-logo-round-white.svg";
+    }
   }
 
   return (
@@ -22,8 +32,8 @@ export default function GCDLogo({ className = "" }: GCDLogoProps) {
         <Image
           src={logoSrc}
           alt="Green Chilli Design Logo"
-          width="80"
-          height="80"
+          width={width}
+          height={height}
           className={className}
         />
       </Link>
