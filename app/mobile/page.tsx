@@ -217,9 +217,9 @@ function CollaborativeBenefits() {
       <div className="col-span-full md:col-span-4">
         <h4 className="mb-2 uppercase">Increased Confidence</h4>
         <p>
-          You'll have peace of mind knowing that your app is being developed
-          with a deep understanding of your vision and a commitment to user
-          satisfaction.
+          You&aspos;ll have peace of mind knowing that your app is being
+          developed with a deep understanding of your vision and a commitment to
+          user satisfaction.
         </p>
       </div>
       <div className="col-span-full md:col-span-4">
