@@ -15,7 +15,7 @@ export default function CallToActionBlock() {
             href={"/contact"}
             className="btn green flex w-32 items-center justify-center text-black"
           >
-            Let's Talk
+            Let&#39;s Talk
           </Link>
         </div>
       </div>

@@ -27,7 +27,7 @@ export default async function HomePage() {
             href={"/contact"}
             className="btn green mt-8 flex w-32 items-center justify-center text-black"
           >
-            Let's Talk
+            Let&#39;s Talk
           </Link>
         </div>
 
