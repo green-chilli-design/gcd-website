@@ -25,9 +25,9 @@ export default async function HomePage() {
           <h4 className="max-w-[629px]">{homePage.subtitle}</h4>
           <Link
             href={"/contact"}
-            className="btn green mt-8 flex w-44 items-center justify-center text-black"
+            className="btn green mt-8 flex w-32 items-center justify-center text-black"
           >
-            Start a Project
+            Let's Talk
           </Link>
         </div>
 
