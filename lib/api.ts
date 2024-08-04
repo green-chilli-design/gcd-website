@@ -148,6 +148,9 @@ const SERVICES_GRAPHQL_FIELDS = `
     url
   }
   summary
+  servicePage  {
+    slug
+  }
 `;
 
 const SERVICE_GRAPHQL_FIELDS = `
