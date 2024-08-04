@@ -134,7 +134,7 @@ export default async function MobilePage() {
         </div>
         <CollaborativeBenefits />
       </section>
-      <div className="col-span-full mt-20">
+      <div className="col-span-full my-20">
         <ClientGallery
           clients={clients}
           className={"main-content justify-between"}
