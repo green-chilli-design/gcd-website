@@ -96,7 +96,10 @@ export default async function MobilePage() {
       {/* Banner Image Section (3 on desktop, 1 on mob) */}
       <section
         id="banner-images"
-        className="col-span-full mx-10 mb-20 grid grid-cols-subgrid"
+        className={`
+          main-content col-span-full mb-20 flex flex-col overflow-x-clip
+          md:flex-row md:gap-5 md:pr-0
+        `}
       >
         {bannerImages.map((image: any, index) => (
           <ContentfulMedia
@@ -105,7 +108,7 @@ export default async function MobilePage() {
             alt={image.title}
             imageProps={{
               priority: true,
-              className: `col-span-full md:col-span-4 -rounded-br-[30px] rounded-tl-[30px] object-cover min-h-full ${
+              className: `md:w-1/3 md:flex-1 md:shrink-0 md:object-cover -rounded-br-[30px] rounded-tl-[30px] ${
                 index !== 0 && "hidden md:block"
               }`,
               width: image.width,
