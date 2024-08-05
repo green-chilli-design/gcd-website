@@ -56,7 +56,7 @@ function Timeline() {
         id="3-cols"
       >
         <div className=" flex-1 md:w-1/3">
-          <h2 className="uppercase">Strong Stakeholder Alignment</h2>
+          <h4 className="uppercase">Strong Stakeholder Alignment</h4>
           <p>
             Your feedback is integrated throughout the design to clickable
             wireframes so everyone knows what they’re getting before development
@@ -64,14 +64,14 @@ function Timeline() {
           </p>
         </div>
         <div className=" flex-1 md:w-1/3">
-          <h2 className="uppercase">User-Centered Design</h2>
+          <h4 className="uppercase">User-Centered Design</h4>
           <p>
             User and stakeholder input guides design refinements at every stage,
             ensuring high levels of satisfaction.
           </p>
         </div>
         <div className=" flex-1 md:w-1/3">
-          <h2 className="uppercase">Drastically Reduce Risk</h2>
+          <h4 className="uppercase">Drastically Reduce Risk</h4>
           <p>
             Iterative feedback loops catch issues early, saving both time and
             money efficiently.
