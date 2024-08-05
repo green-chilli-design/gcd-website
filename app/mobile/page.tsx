@@ -6,13 +6,11 @@ import { draftMode } from "next/headers";
 import Link from "next/link";
 import ReactNative from "../components/ReactNative";
 import CallToActionBlock from "../components/contentful-content-blocks/CallToActionBlock";
-import AllCaseStudies, {
-  CaseStudyPreview,
-} from "../case-studies/all-case-studies";
 import ClientGallery from "../components/ClientGallery";
 import OurClients from "../components/contentful-content-blocks/OurClients";
 import Timeline from "../components/Timeline";
 import { Markdown } from "@/lib/markdown";
+import { CaseStudyPreview } from "../(main)/case-studies/all-case-studies";
 
 const title = "GCD | Mobile";
 export const metadata: Metadata = {
@@ -135,10 +133,7 @@ export default async function MobilePage() {
         <CollaborativeBenefits />
       </section>
       <div className="col-span-full my-20">
-        <ClientGallery
-          clients={clients}
-          className={"main-content justify-between"}
-        />
+        <ClientGallery clients={clients} className={""} />
       </div>
       <section
         id="timeline"
