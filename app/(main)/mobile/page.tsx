@@ -4,13 +4,13 @@ import ContentfulMedia from "@/lib/contentful-media";
 import { Metadata } from "next";
 import { draftMode } from "next/headers";
 import Link from "next/link";
-import ReactNative from "../components/ReactNative";
-import CallToActionBlock from "../components/contentful-content-blocks/CallToActionBlock";
-import ClientGallery from "../components/ClientGallery";
-import OurClients from "../components/contentful-content-blocks/OurClients";
-import Timeline from "../components/Timeline";
+import ReactNative from "../../components/ReactNative";
+import CallToActionBlock from "../../components/contentful-content-blocks/CallToActionBlock";
+import ClientGallery from "../../components/ClientGallery";
+import OurClients from "../../components/contentful-content-blocks/OurClients";
+import Timeline from "../../components/Timeline";
 import { Markdown } from "@/lib/markdown";
-import { CaseStudyPreview } from "../(main)/case-studies/all-case-studies";
+import { CaseStudyPreview } from "../case-studies/all-case-studies";
 
 const title = "GCD | Mobile";
 export const metadata: Metadata = {
@@ -212,7 +212,7 @@ function CollaborativeBenefits() {
       <div className="col-span-full md:col-span-4">
         <h4 className="mb-2 uppercase">Increased Confidence</h4>
         <p>
-          You&aspos;ll have peace of mind knowing that your app is being
+          You&apos;ll have peace of mind knowing that your app is being
           developed with a deep understanding of your vision and a commitment to
           user satisfaction.
         </p>
