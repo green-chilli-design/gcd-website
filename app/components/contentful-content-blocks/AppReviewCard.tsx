@@ -11,7 +11,7 @@ export default function AppReviewCard({ contentBlock }: { contentBlock: any }) {
   return (
     <section
       key={contentBlock.heading}
-      className="grid-cols-subgrid col-span-full mb-20 grid"
+      className="col-span-full mb-28 grid  grid-cols-subgrid"
     >
       {/* Image Column */}
       <div
@@ -51,7 +51,7 @@ export default function AppReviewCard({ contentBlock }: { contentBlock: any }) {
         </div>
         <div
           id="review-quote"
-          className="bg-dark-offwhite rounded-3xl p-[20px]  dark:bg-dark-green"
+          className="rounded-3xl bg-dark-offwhite p-[20px]  dark:bg-dark-green"
         >
           <div>{contentBlock.reviewQuote}</div>
           <div className="mt-5 text-right text-sm text-dark-grey">
