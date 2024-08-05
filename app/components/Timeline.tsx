@@ -28,7 +28,7 @@ function Timeline() {
       x: () =>
         -(document.querySelector("#timeline-img-container") as HTMLElement)
           .offsetWidth + window.innerWidth,
-      duration: 40,
+      duration: 45,
     });
   }, []);
 
@@ -42,7 +42,7 @@ function Timeline() {
       <div id="overflow-wrapper" className=" overflow-x-clip">
         <div
           id="timeline-img-container"
-          className="relative h-[200px] w-full min-w-[4000px] md:h-[300px] md:min-w-[6000px]"
+          className="relative h-[300px] w-full min-w-[6000px]"
         >
           <Image
             src={resolvedTheme === "dark" ? darkTimeline : timeline}

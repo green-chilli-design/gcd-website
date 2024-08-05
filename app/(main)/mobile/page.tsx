@@ -129,12 +129,14 @@ export default async function MobilePage() {
         {transformingBusinessContentBlock}
       </section>
       {/* Collab approach/logos section */}
-      <section className="col-span-full grid grid-cols-subgrid ">
+      <section className="col-span-full grid grid-cols-subgrid">
         <div className="col-span-full flex w-full flex-col">
           <div className="self-start">{collaborativeApproachSection}</div>
         </div>
-        <CollaborativeBenefits />
       </section>
+      <div className="col-span-full grid grid-cols-subgrid">
+        <CollaborativeBenefits />
+      </div>
       <div className="col-span-full my-20">
         <ClientGallery clients={clients} className={""} />
       </div>
