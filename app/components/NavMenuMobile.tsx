@@ -3,7 +3,6 @@ import ThemeSwitch from "./ThemeSwitch";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "./NavMenu";
-import { cn } from "@/lib/utils";
 import { IsMobileContext } from "./NavBar";
 
 export default function NavMenuMobile() {
@@ -45,12 +44,11 @@ export default function NavMenuMobile() {
           );
         })}
         <Link
-          key={"Start a Project"}
           onClick={handleMenu}
           href={"/contact"}
           className={"mb-10 hover:text-green hover:underline"}
         >
-          <h4>Start a Project</h4>
+          <h4>Let&#39;s Talk</h4>
         </Link>
 
         <ThemeSwitch />
