@@ -1,35 +1,34 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ThemeSwitch from "./ThemeSwitch";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "./NavMenu";
+import { cn } from "@/lib/utils";
+import { IsMobileContext } from "./NavBar";
 
 export default function NavMenuMobile() {
   const pathname = usePathname();
+
   const [menuOpen, setMenuOpen] = useState(false);
+  const isMobile = useContext(IsMobileContext);
 
   const handleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+  useEffect(() => {
+    // Close menu if not mobile
+    if (!isMobile || pathname === "/") {
+      setMenuOpen(false);
+    }
+  }, [isMobile, pathname]);
+
   return (
     <div>
       <div
-        className={`main-content absolute bottom-0 right-0 top-[120px] flex h-screen w-full flex-col bg-neutral pb-[120px] pt-14 duration-300 ease-in-out dark:bg-black sm:hidden
+        className={`main-content absolute bottom-0 right-0 top-16 mt-5 flex h-screen w-full flex-col bg-neutral pb-[120px] pt-10 duration-300 ease-in-out dark:bg-black lg:hidden
         ${menuOpen ? "left-0" : "left-[-100%]"}`}
       >
-        <Link
-          href="/"
-          onClick={handleMenu}
-          className={`mb-10 ${
-            pathname.length === 1
-              ? "text-green"
-              : "hover:text-green hover:underline"
-          }`}
-        >
-          <h4>Home</h4>
-        </Link>
-
         {NAV_LINKS.map(({ href, label }) => {
           const isActive = pathname.startsWith(href);
           return (
@@ -45,14 +44,22 @@ export default function NavMenuMobile() {
             </Link>
           );
         })}
+        <Link
+          key={"Start a Project"}
+          onClick={handleMenu}
+          href={"/contact"}
+          className={"mb-10 hover:text-green hover:underline"}
+        >
+          <h4>Start a Project</h4>
+        </Link>
 
-        <ThemeSwitch isMobile={true} />
+        <ThemeSwitch />
       </div>
 
       {/* menu icons */}
       <div
         onClick={handleMenu}
-        className="flex cursor-pointer transition duration-500 hover:scale-110 sm:hidden"
+        className="flex cursor-pointer transition duration-500 hover:scale-110 lg:hidden"
       >
         {menuOpen ? (
           <span className="material-icons-outlined icon-48">

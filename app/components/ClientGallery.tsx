@@ -9,15 +9,15 @@ export default function ClientGallery({
   className?: any;
 }) {
   return (
-    <div className="block">
+    <div className="main-content block">
       <div
         className={cn(
-          "flex w-full flex-wrap items-center justify-center gap-20 lg:-mt-20",
+          "grid w-full grid-cols-1 gap-y-20 xs:grid-cols-2 md:grid-cols-3 lg:-mt-20 lg:grid-cols-6",
           className,
         )}
       >
         {clients.map((client) => (
-          <div key={client.name}>
+          <div className="flex items-center justify-center" key={client.name}>
             {client.logo && <ClientLogo client={client} />}
           </div>
         ))}

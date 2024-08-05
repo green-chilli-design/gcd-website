@@ -51,9 +51,17 @@ export function generateContentBlocks(contentBody: any[]) {
         }
         return <ContentBlock key={value.heading} contentBlock={value} />;
       case "ContentBlockWithImage":
-        return (
-          <ContentBlockWithImage key={value.heading} contentBlock={value} />
-        );
+        if (value.heading === "Unmatched support") {
+          return (
+            <div className="-mb-10">
+              <ContentBlockWithImage key={value.heading} contentBlock={value} />
+            </div>
+          );
+        } else {
+          return (
+            <ContentBlockWithImage key={value.heading} contentBlock={value} />
+          );
+        }
       case "AppReviewCard":
         return <AppReviewCard key={value.heading} contentBlock={value} />;
       default:

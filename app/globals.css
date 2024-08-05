@@ -56,3 +56,69 @@
     @apply bg-neutral hover:shadow-hover-btn hover:shadow-light-shadow;
   }
 }
+
+/* 
+* Sticky Navbar
+*/
+@keyframes stickyNavbar {
+  0% {
+    @apply sticky-navbar-dark;
+  }
+  100% {
+    @apply sticky-navbar;
+  }
+}
+
+@keyframes stickyNavbarScrolled {
+  0% {
+    @apply sticky-navbar;
+  }
+  100% {
+    @apply sticky-navbar-dark;
+  }
+}
+
+.sticky-navbar {
+  @apply bg-neutral;
+  animation-duration: 0.4s;
+  animation-name: stickyNavbar;
+}
+
+.sticky-navbar-dark {
+  @apply bg-black;
+  animation-duration: 0.4s;
+  animation-name: stickyNavbarScrolled;
+}
+
+/*
+* Sticky Navbar Text
+*/
+@keyframes stickyNavbarText {
+  0% {
+    @apply sticky-navbar-text;
+  }
+  100% {
+    @apply sticky-navbar-text-white;
+  }
+}
+
+@keyframes stickyNavbarTextScrolled {
+  0% {
+    @apply sticky-navbar-text-white;
+  }
+  100% {
+    @apply sticky-navbar-text;
+  }
+}
+
+.sticky-navbar-text-white {
+  @apply text-white;
+  animation-duration: 0.4s;
+  animation-name: stickyNavbarText;
+}
+
+.sticky-navbar-text {
+  @apply text-black;
+  animation-duration: 0.4s;
+  animation-name: stickyNavbarTextScrolled;
+}
