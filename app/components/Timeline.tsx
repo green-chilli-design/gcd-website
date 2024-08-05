@@ -4,19 +4,45 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import timeline from "@/public/images/timeline.svg";
 import darkTimeline from "@/public/images/timeline-dark.svg";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // TODO: Migrate this to Contentful
 function Timeline() {
+  gsap.registerPlugin(ScrollTrigger);
+
   const { resolvedTheme } = useTheme();
+  useGSAP(() => {
+    // When the #timeline-img-container is scrolled into view, animate the timeline image by starting it to scroll to the right
+    gsap.to("#timeline-img-container", {
+      scrollTrigger: {
+        trigger: "#timeline-container",
+        start: "-80% top",
+        end: "bottom 200%",
+        scrub: false,
+        // markers: true,
+        toggleActions: "play none resume reset",
+      },
+      x: () =>
+        -(document.querySelector("#timeline-img-container") as HTMLElement)
+          .offsetWidth + window.innerWidth,
+      duration: 40,
+    });
+  }, []);
 
   return (
-    <div className="flex w-full flex-col justify-center gap-10   text-center">
+    <div
+      id="timeline-container"
+      className="flex w-full flex-col justify-center gap-10   text-center"
+    >
       <h2>Our Our End-to-End Mobile App Development Service</h2>
       <h3 className=" uppercase text-dark-grey">GCD END - TO - END PROCESS</h3>
-      <div id="overflow-wrapper" className="overflow-x-scroll">
+      <div id="overflow-wrapper" className=" overflow-x-clip">
         <div
           id="timeline-img-container"
-          className="relative h-[400px] w-full min-w-[6000px]"
+          className="relative h-[200px] w-full min-w-[4000px] md:h-[300px] md:min-w-[6000px]"
         >
           <Image
             src={resolvedTheme === "dark" ? darkTimeline : timeline}
