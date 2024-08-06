@@ -18,12 +18,12 @@ function Timeline() {
     // When the #timeline-img-container is scrolled into view, animate the timeline image by starting it to scroll to the right
     gsap.to("#timeline-img-container", {
       scrollTrigger: {
-        trigger: "#timeline-container",
-        start: "-80% top",
-        end: "bottom 200%",
+        trigger: "#timeline-img",
+        start: "-80% bottom",
+        end: "bottom top",
         scrub: false,
-        // markers: true,
-        toggleActions: "play none resume reset",
+        markers: true,
+        toggleActions: "play reset play reset",
       },
       x: () =>
         -(document.querySelector("#timeline-img-container") as HTMLElement)
@@ -45,6 +45,7 @@ function Timeline() {
           className="relative h-[300px] w-full min-w-[6000px]"
         >
           <Image
+            id="timeline-img"
             src={resolvedTheme === "dark" ? darkTimeline : timeline}
             alt="GCD End-to-End Process"
             fill={true}
