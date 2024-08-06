@@ -14,10 +14,6 @@ export const NAV_LINKS = [
     href: "/case-studies",
     label: "Case Studies",
   },
-  {
-    href: "/contact",
-    label: "Contact Us",
-  },
 ];
 
 export default function NavMenu() {
@@ -50,11 +46,11 @@ export default function NavMenu() {
         href={"/contact"}
         className={
           navBarScrolled
-            ? "flex w-44 items-center justify-center text-sm font-bold text-green hover:text-green hover:underline"
-            : "btn green flex w-44 items-center justify-center text-black"
+            ? "flex w-32 items-center justify-center text-sm font-bold text-green hover:text-green hover:underline"
+            : "btn green flex w-32 items-center justify-center text-black"
         }
       >
-        Start a Project
+        Let&#39;s Talk
       </Link>
       <ThemeSwitch />
     </div>
