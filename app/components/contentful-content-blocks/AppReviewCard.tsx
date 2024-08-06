@@ -11,12 +11,12 @@ export default function AppReviewCard({ contentBlock }: { contentBlock: any }) {
   return (
     <section
       key={contentBlock.heading}
-      className="col-span-full mb-28 grid  grid-cols-subgrid"
+      className=" col-span-full my-10 grid grid-cols-subgrid"
     >
       {/* Image Column */}
       <div
         id="img-col"
-        className={`col-span-full md:col-span-6 ${
+        className={`relative col-span-full h-[50vh] max-h-[1000px] md:col-span-6 ${
           !contentBlock.orientation && "md:order-2"
         }`}
       >
@@ -26,15 +26,14 @@ export default function AppReviewCard({ contentBlock }: { contentBlock: any }) {
           alt={contentBlock.image.title}
           imageProps={{
             priority: true,
-            className: `col-span-full md:col-span-4 -rounded-br-[30px] rounded-tl-[30px] object-cover min-h-full`,
-            width: contentBlock.image.width,
-            height: contentBlock.image.height,
+            className: `col-span-full md:col-span-4 -rounded-br-[30px] rounded-tl-[30px] min-h-full object-scale-down`,
+            fill: true,
           }}
         />
       </div>
       <div
         id="review-col"
-        className={`col-span-full my-auto  flex flex-col gap-8 pt-10 md:col-span-6 md:pt-0`}
+        className={`col-span-full my-auto  flex flex-col gap-10 pt-10 md:col-span-6 md:px-20 md:pt-0`}
       >
         {/* {JSON.stringify(contentBlock)} */}
         <h1 className="text-9xl md:text-10xl">{contentBlock.title}</h1>

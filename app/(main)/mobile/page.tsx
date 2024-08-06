@@ -83,7 +83,7 @@ export default async function MobilePage() {
         <h3 className="col-span-full md:col-span-6">{mobilePage.subtitle}</h3>
         <div
           id="tell-us-cta"
-          className="col-span-full  my-5 md:col-span-6 md:my-0 md:ml-auto"
+          className="col-span-full my-5 md:col-span-6 md:my-0 md:ml-auto"
         >
           <Link
             href={"/contact"}
@@ -97,8 +97,8 @@ export default async function MobilePage() {
       <section
         id="banner-images"
         className={`
-          main-content col-span-full mb-20 flex flex-col overflow-x-clip
-          md:flex-row md:gap-5 md:pr-0
+          main-content col-span-full flex h-[50vh] max-h-[300px] flex-row gap-5 
+          overflow-x-scroll md:mb-32 md:max-h-[1000px] md:overflow-x-clip md:pr-0
         `}
       >
         {bannerImages.map((image: any, index) => (
@@ -108,9 +108,7 @@ export default async function MobilePage() {
             alt={image.title}
             imageProps={{
               priority: true,
-              className: `md:w-1/3 md:flex-1 md:shrink-0 md:object-cover -rounded-br-[30px] rounded-tl-[30px] ${
-                index !== 0 && "hidden md:block"
-              }`,
+              className: `md:w-1/3 md:flex-1 shrink-0 object-cover -rounded-br-[30px] rounded-tl-[30px]`,
               width: image.width,
               height: image.height,
             }}
