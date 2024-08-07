@@ -10,7 +10,9 @@ import ClientGallery from "../../components/ClientGallery";
 import OurClients from "../../components/contentful-content-blocks/OurClients";
 import Timeline from "../../components/Timeline";
 import { Markdown } from "@/lib/markdown";
-import { CaseStudyPreview } from "../case-studies/all-case-studies";
+import AllCaseStudies, {
+  CaseStudyPreview,
+} from "../case-studies/all-case-studies";
 
 const title = "GCD | Mobile";
 export const metadata: Metadata = {
@@ -155,34 +157,10 @@ export default async function MobilePage() {
       {/* Case Study Section: These cards are generated from the case studies linked above in the review cards */}
       <section
         id="case-studies"
-        className="main-content col-span-full my-20 mb-24 grid grid-cols-subgrid"
+        className=" col-span-full my-10  flex flex-col items-center"
       >
-        <div
-          id="case-study-header"
-          className="col-span-full grid grid-cols-subgrid"
-        >
-          <h2 className="col-span-full mb-10 text-center">
-            Case Studies of GCD Clients
-          </h2>
-        </div>
-        {caseStudies.map((caseStudy: any) => (
-          <div
-            className="
-              col-span-full
-              md:col-span-6
-              lg:col-span-4
-            "
-            key={caseStudy.slug}
-          >
-            <CaseStudyPreview
-              key={caseStudy.slug}
-              title={caseStudy.title}
-              coverImage={caseStudy.coverImage}
-              slug={caseStudy.slug}
-              summary={caseStudy.summary}
-            />
-          </div>
-        ))}
+        <h2 className="mb-16 text-center">Case Studies of GCD Clients</h2>
+        <AllCaseStudies caseStudies={caseStudies} className="gap-5" />
       </section>
       {/* React Native Advantages Section */}
       <section
