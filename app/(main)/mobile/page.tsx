@@ -187,9 +187,8 @@ export default async function MobilePage() {
 // TODO: This should be migrated to Contentful and support for 3 column layouts added
 function CollaborativeBenefits() {
   return (
-    <div className="main-content col-span-full grid w-full grid-cols-subgrid gap-10 md:mb-20">
-      {/* 3 Columns */}
-      <div className="col-span-full md:col-span-4">
+    <div className="main-content col-span-full mb-10 flex flex-col gap-10 md:mb-32 md:flex-row md:gap-20">
+      <div className="w-full md:w-1/3">
         <h4 className="mb-2 uppercase">Increased Confidence</h4>
         <p>
           You&apos;ll have peace of mind knowing that your app is being
@@ -197,14 +196,14 @@ function CollaborativeBenefits() {
           user satisfaction.
         </p>
       </div>
-      <div className="col-span-full md:col-span-4">
+      <div className="w-full md:w-1/3">
         <h4 className="mb-2 uppercase">Higher Quality Product</h4>
         <p>
           By incorporating user feedback and addressing issues early, we deliver
           a polished, user-friendly app that exceeds expectations.
         </p>
       </div>
-      <div className="col-span-full md:col-span-4">
+      <div className="w-full md:w-1/3">
         <h4 className="mb-2 uppercase">Cost and Time Savings</h4>
         <p>
           Our collaborative approach minimises the risk of costly rework,
