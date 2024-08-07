@@ -159,7 +159,7 @@ export default async function MobilePage() {
         id="case-studies"
         className=" col-span-full my-10  flex flex-col items-center"
       >
-        <h2 className="mb-16 text-center">Case Studies of GCD Clients</h2>
+        <h2 className="text-center md:mb-16">Case Studies of GCD Clients</h2>
         <AllCaseStudies caseStudies={caseStudies} className="gap-5" />
       </section>
       {/* React Native Advantages Section */}

@@ -7,6 +7,10 @@ import { useTheme } from "next-themes";
 
 export const NAV_LINKS = [
   {
+    href: "/mobile",
+    label: "Mobile Apps",
+  },
+  {
     href: "/#services",
     label: "Services",
   },
