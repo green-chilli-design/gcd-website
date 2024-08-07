@@ -30,6 +30,7 @@ export default async function MobilePage() {
   const clients = await getAllClients();
 
   // Generate content blocks to be used in the page
+  // TODO: Suggest we refactor to directly use <ContentBlock> components with cn()
   const reviewCardContentBlocks = generateContentBlocks(
     mobilePage.pageContentCollection.items.filter(
       (item: any) => item.__typename === "AppReviewCard",
@@ -97,7 +98,7 @@ export default async function MobilePage() {
       <section
         id="banner-images"
         className={`
-          main-content col-span-full flex h-[50vh] max-h-[300px] flex-row gap-5 
+          main-content col-span-full flex h-[50vh] max-h-[300px] flex-row gap-5
           overflow-x-scroll md:mb-32 md:max-h-[1000px] md:overflow-x-clip md:pr-0
         `}
       >
@@ -108,7 +109,7 @@ export default async function MobilePage() {
             alt={image.title}
             imageProps={{
               priority: true,
-              className: `md:w-1/3 md:flex-1 shrink-0 object-cover -rounded-br-[30px] rounded-tl-[30px]`,
+              className: `md:w-1/3 w-[85vw] md:flex-1 shrink-0 object-cover -rounded-br-[30px] rounded-tl-[30px]`,
               width: image.width,
               height: image.height,
             }}
@@ -127,10 +128,8 @@ export default async function MobilePage() {
         {transformingBusinessContentBlock}
       </section>
       {/* Collab approach/logos section */}
-      <section className="col-span-full grid grid-cols-subgrid">
-        <div className="col-span-full flex w-full flex-col">
-          <div className="self-start">{collaborativeApproachSection}</div>
-        </div>
+      <section className="main-content my:py-10 col-span-full grid grid-cols-subgrid py-20">
+        {collaborativeApproachSection}
       </section>
       <div className="col-span-full grid grid-cols-subgrid">
         <CollaborativeBenefits />

@@ -48,6 +48,18 @@ export function generateContentBlocks(contentBody: any[]) {
             />
           );
         }
+        if (
+          value.heading ===
+          "Our Collaborative Approach to Mobile App Development"
+        ) {
+          return (
+            <ContentBlock
+              contentBlock={value}
+              layout="full-bleed"
+              className="main-content col-span-full flex max-w-[1200px] flex-col  p-0 text-left"
+            />
+          );
+        }
         return <ContentBlock key={value.heading} contentBlock={value} />;
       case "ContentBlockWithImage":
         if (value.heading === "Unmatched support") {

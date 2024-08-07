@@ -55,6 +55,17 @@
   .btn.light {
     @apply bg-neutral hover:shadow-hover-btn hover:shadow-light-shadow;
   }
+
+  /**
+  * Bespoke Styles
+  * - Please use these sparingly and only when necessary
+  * - Use specific selectors to target elements
+  */
+
+  /* Mobile Landing Page FAQs section has a bespoke maximum paragraph width  */
+  #faqs p {
+    padding-right: 15vw;
+  }
 }
 
 /* 
