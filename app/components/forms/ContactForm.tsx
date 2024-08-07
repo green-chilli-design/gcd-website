@@ -14,10 +14,10 @@ function SubmitButton() {
       type="submit"
       disabled={pending}
       aria-disabled={pending}
-      className="btn green mt-10 flex w-32 items-center justify-center text-black"
+      className="btn green mt-10 flex w-52 items-center justify-center text-black"
     >
       {pending && <LoadingSpinner />}
-      {!pending && "Submit"}
+      {!pending && "Send us a message"}
     </button>
   );
 }

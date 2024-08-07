@@ -27,7 +27,7 @@ export default function CallToActionBlock({
             href={"/contact"}
             className="btn green flex w-fit items-center justify-center px-5 text-black"
           >
-            {mobileVariant ? "Tell Us About Your App" : "Start a Project"}
+            {mobileVariant ? "Tell Us About Your App" : "Let&#39;s Talk"}
           </Link>
         </div>
       </div>
