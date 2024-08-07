@@ -157,10 +157,13 @@ export default async function MobilePage() {
       {/* Case Study Section: These cards are generated from the case studies linked above in the review cards */}
       <section
         id="case-studies"
-        className=" col-span-full my-10  flex flex-col items-center"
+        className="col-span-full my-10  flex flex-col items-center"
       >
         <h2 className="text-center md:mb-16">Case Studies of GCD Clients</h2>
-        <AllCaseStudies caseStudies={caseStudies} className="gap-5" />
+        <AllCaseStudies
+          caseStudies={caseStudies}
+          className="gap-5 md:grid-cols-3"
+        />
       </section>
       {/* React Native Advantages Section */}
       <section
