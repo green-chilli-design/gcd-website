@@ -99,23 +99,25 @@ export default async function MobilePage() {
       {/* Banner Image Section (3 on desktop, 1 on mob) */}
       <section
         id="banner-images"
-        className={`
-          main-content col-span-full flex h-[50vh] max-h-[300px] flex-row gap-5
-          overflow-x-scroll md:mb-32 md:max-h-[1000px] md:overflow-x-clip md:pr-0
-        `}
+        className="relative col-span-full flex flex-row gap-5 overflow-x-scroll px-[18px] md:mb-20 md:overflow-x-clip md:px-0 md:pl-[80px] lg:pl-[5rem] xl:pl-[10%]"
       >
         {bannerImages.map((image: any, index) => (
-          <ContentfulMedia
+          <div
             key={image.url}
-            src={image.url}
-            alt={image.title}
-            imageProps={{
-              priority: true,
-              className: `md:w-1/3 w-[85vw] md:flex-1 shrink-0 object-cover -rounded-br-[30px] rounded-tl-[30px]`,
-              width: image.width,
-              height: image.height,
-            }}
-          />
+            className="relative h-[50vh] max-h-[400px] min-w-[85vw] md:max-h-[1200px] md:w-1/3 md:min-w-fit"
+          >
+            <ContentfulMedia
+              key={image.url}
+              src={image.url}
+              alt={image.title}
+              imageProps={{
+                priority: true,
+                className:
+                  "object-cover rounded-br-[30px] rounded-tl-[30px] h-[50vh]",
+                fill: true,
+              }}
+            />
+          </div>
         ))}
       </section>
       {/* App review  cards */}
