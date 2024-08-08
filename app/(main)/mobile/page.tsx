@@ -99,12 +99,12 @@ export default async function MobilePage() {
       {/* Banner Image Section (3 on desktop, 1 on mob) */}
       <section
         id="banner-images"
-        className="relative col-span-full flex flex-row gap-5 overflow-x-scroll px-[18px] md:mb-20 md:overflow-x-clip md:px-0 md:pl-[80px] lg:pl-[5rem] xl:pl-[10%]"
+        className="relative col-span-full flex flex-row gap-5 overflow-x-scroll px-[18px] md:mb-20 md:overflow-x-clip md:px-0 md:pl-[80px] lg:pl-[5rem] xl:px-[10%]"
       >
         {bannerImages.map((image: any, index) => (
           <div
             key={image.url}
-            className="relative h-[50vh] max-h-[400px] min-w-[85vw] md:max-h-[1200px] md:w-1/3 md:min-w-fit"
+            className="relative h-[50vh] max-h-[500px] min-w-[80vw] md:max-h-[1200px] md:w-1/3 md:min-w-fit"
           >
             <ContentfulMedia
               key={image.url}
