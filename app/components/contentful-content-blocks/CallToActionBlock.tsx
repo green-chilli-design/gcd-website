@@ -20,7 +20,7 @@ export default function CallToActionBlock({
           </h1>
           <h3 className="my-5 max-w-[850px]">
             {mobileVariant
-              ? "Before we start, we would like to better understand your needs. Tell us more about your project and then we can  schedule a free estimation call."
+              ? "Before we start, we would like to better understand your needs. Tell us more about your project and then we can schedule a free estimation call."
               : "If you value long-term partnership, transparency and joint success, drop us a line."}
           </h3>
           <Link

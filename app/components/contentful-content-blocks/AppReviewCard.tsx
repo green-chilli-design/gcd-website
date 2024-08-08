@@ -35,7 +35,6 @@ export default function AppReviewCard({ contentBlock }: { contentBlock: any }) {
         id="review-col"
         className={`col-span-full my-auto  flex flex-col gap-10 pt-10 md:col-span-6 md:px-20 md:pt-0`}
       >
-        {/* {JSON.stringify(contentBlock)} */}
         <h1 className="text-9xl md:text-10xl">{contentBlock.title}</h1>
         <h3 className="text-6xl font-semibold uppercase md:text-7xl">
           {contentBlock.subtitle}
