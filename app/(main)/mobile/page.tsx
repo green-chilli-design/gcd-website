@@ -176,7 +176,7 @@ export default async function MobilePage() {
       </section>
       {/* FAQs section */}
       <section className="col-span-full grid grid-cols-subgrid" id="faqs">
-        <div className="col-span-full">{faqSection}</div>
+        <div className="col-span-full md:[&_p]:pr-[15vh]">{faqSection}</div>
       </section>
       {/* Call to Action section */}
       <section
