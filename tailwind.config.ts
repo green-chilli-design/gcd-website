@@ -68,6 +68,7 @@ module.exports = {
         "green-shadow": "#A8CF4399",
         "dark-shadow": "#7C8D8599",
         "light-shadow": "#D9D9D9",
+        "dark-offwhite": "#EFE9E7 ",
       },
       boxShadow: {
         "hover-btn": "0px 10px 20px 0px rgba(8, 7, 8, 0.25)",

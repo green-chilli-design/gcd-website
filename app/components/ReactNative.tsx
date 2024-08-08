@@ -4,29 +4,35 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import frameworkImg from "@/public/images/framework.jpg";
 
-export default function ReactNative() {
+interface ReactNativeProps {
+  bannerHidden?: boolean;
+}
+
+export default function ReactNative({ bannerHidden }: ReactNativeProps) {
   const { resolvedTheme } = useTheme();
   const colour = resolvedTheme === "dark" ? "#F7F4F3" : "#0E0F0E";
 
   return (
     <div className="mb-[120px]">
-      <section className="relative mb-[120px] flex w-full items-center">
-        <div className="main-content absolute z-10 text-neutral">
-          <h1 className="max-w-[847px]">
-            Building mobile apps in the React Native framework
-          </h1>
-        </div>
-        <div className="relative h-[430px] w-full">
-          <Image
-            priority
-            src={frameworkImg}
-            fill={true}
-            sizes="100vw"
-            alt="React Native Framework"
-            className="rounded-br-[100px] rounded-tl-[100px] object-cover object-center mix-blend-darken dark:mix-blend-lighten"
-          />
-        </div>
-      </section>
+      {!bannerHidden && (
+        <section className="relative mb-[120px] flex w-full items-center">
+          <div className="main-content absolute z-10 text-neutral">
+            <h1 className="max-w-[847px]">
+              Building mobile apps in the React Native framework
+            </h1>
+          </div>
+          <div className="relative h-[430px] w-full">
+            <Image
+              priority
+              src={frameworkImg}
+              fill={true}
+              sizes="100vw"
+              alt="React Native Framework"
+              className="rounded-br-[100px] rounded-tl-[100px] object-cover object-center mix-blend-darken dark:mix-blend-lighten"
+            />
+          </div>
+        </section>
+      )}
       <section className="main-content">
         <h2 className="mx-auto mb-14 max-w-[630px] text-center">
           React Native mobile apps offer multiple advantages

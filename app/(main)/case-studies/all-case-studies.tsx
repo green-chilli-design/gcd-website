@@ -1,5 +1,6 @@
 import CoverImage from "@/app/(main)/cover-image";
 import ViewMore from "../../components/ViewMore";
+import { cn } from "@/lib/utils";
 
 export function CaseStudyPreview({
   title,
@@ -39,12 +40,19 @@ export function CaseStudyPreview({
 
 export default function AllCaseStudies({
   caseStudies,
+  className,
 }: {
   caseStudies: any[];
+  className?: string;
 }) {
   return (
     <section>
-      <div className="main-content mb-24 grid grid-cols-1 gap-20 md:grid-cols-2 xl:grid-cols-3">
+      <div
+        className={cn(
+          `main-content mb-24 grid grid-cols-1 gap-20 md:grid-cols-2 xl:grid-cols-3`,
+          className,
+        )}
+      >
         {caseStudies
           .sort((a, b) => sortCaseStudies(a.sortOrder, b.sortOrder))
           .map((caseStudy) => (

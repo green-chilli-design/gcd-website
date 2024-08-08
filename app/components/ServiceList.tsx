@@ -1,6 +1,7 @@
 "use client";
 
 import ContentfulMedia from "@/lib/contentful-media";
+import Link from "next/link";
 import { useState } from "react";
 
 function ServicePreview({ service }: { service: any }) {
@@ -46,30 +47,32 @@ export default function ServiceList({ services }: { services: any }) {
                 : "border-black dark:border-neutral"
             }`}
           >
-            <div
-              className={`mb-2 flex w-full justify-between md:mb-0 ${
-                hovered && selectedService.title === service.title
-                  ? "border-b border-green text-green md:border-none"
-                  : "border-none"
-              }`}
-            >
-              <h5 className="pb-[0.8rem] md:pb-0">{service.title}</h5>
-              {hovered && selectedService.title === service.title ? (
-                <span className="icon-24 material-icons-outlined">
-                  arrow_outward
-                </span>
-              ) : (
-                <span className="icon-24 material-icons-outlined">
-                  arrow_forward
-                </span>
-              )}
-            </div>
-
-            {selectedService && selectedService.title === service.title && (
-              <div className="flex w-full flex-col md:hidden">
-                <ServicePreview service={selectedService} />
+            <Link href={service?.servicePage?.slug || "#services"}>
+              <div
+                className={`mb-2 flex w-full justify-between md:mb-0 ${
+                  hovered && selectedService.title === service.title
+                    ? "border-b border-green text-green md:border-none"
+                    : "border-none"
+                }`}
+              >
+                <h5 className="pb-[0.8rem] md:pb-0">{service.title}</h5>
+                {hovered && selectedService.title === service.title ? (
+                  <span className="icon-24 material-icons-outlined">
+                    arrow_outward
+                  </span>
+                ) : (
+                  <span className="icon-24 material-icons-outlined">
+                    arrow_forward
+                  </span>
+                )}
               </div>
-            )}
+
+              {selectedService && selectedService.title === service.title && (
+                <div className="flex w-full flex-col md:hidden">
+                  <ServicePreview service={selectedService} />
+                </div>
+              )}
+            </Link>
           </li>
         ))}
       </ul>
@@ -77,6 +80,13 @@ export default function ServiceList({ services }: { services: any }) {
       {selectedService && (
         <div className="hidden w-full flex-col md:flex">
           <ServicePreview service={selectedService} />
+          {selectedService?.servicePage?.slug && (
+            <Link href={selectedService?.servicePage?.slug}>
+              <button className="btn-primary mt-5 self-end justify-self-end text-right  hover:text-green hover:underline">
+                Learn More
+              </button>
+            </Link>
+          )}
         </div>
       )}
     </div>

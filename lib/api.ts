@@ -148,6 +148,9 @@ const SERVICES_GRAPHQL_FIELDS = `
     url
   }
   summary
+  servicePage  {
+    slug
+  }
 `;
 
 const SERVICE_GRAPHQL_FIELDS = `
@@ -444,6 +447,43 @@ const PAGE_GRAPHQL_FIELDS = `
             }
           }
         }
+      }
+      ... on AppReviewCard {
+        title
+        subtitle
+        caseStudy {
+          title
+          slug
+          coverImage {
+            url
+          }
+          summary
+          category {
+            name
+          }
+          sortOrder
+        }
+        orientation
+        image {
+          url
+          width
+          height
+          description
+        }
+        reviewQuote
+      }
+      ... on CaseStudy {
+        title
+        slug
+        coverImage {
+          url
+        }
+        summary
+        category {
+          name
+        }
+      
+
       }
     }
   }

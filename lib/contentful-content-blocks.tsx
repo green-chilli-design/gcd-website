@@ -4,6 +4,7 @@ import ContentBlockWithImage from "@/app/components/contentful-content-blocks/Co
 import OurClients from "@/app/components/contentful-content-blocks/OurClients";
 import SuccessSection from "@/app/components/contentful-content-blocks/SuccessSection";
 import ServicesSection from "@/app/components/contentful-content-blocks/ServicesSection";
+import AppReviewCard from "@/app/components/contentful-content-blocks/AppReviewCard";
 
 /**
  * This function generates the content blocks for pages with content blocks
@@ -29,6 +30,36 @@ export function generateContentBlocks(contentBody: any[]) {
         if (value.heading === "Services") {
           return <ServicesSection key={value.heading} contentBlock={value} />;
         }
+        if (value.heading === "Transforming Business Ideas into Reality") {
+          return (
+            <ContentBlock
+              contentBlock={value}
+              layout="two-column"
+              className="main-content col-span-full gap-10 lg:gap-20"
+            />
+          );
+        }
+        if (value.heading === "FAQ's") {
+          return (
+            <ContentBlock
+              contentBlock={value}
+              layout="full-bleed"
+              className="main-content col-span-full gap-10 lg:gap-20"
+            />
+          );
+        }
+        if (
+          value.heading ===
+          "Our Collaborative Approach to Mobile App Development"
+        ) {
+          return (
+            <ContentBlock
+              contentBlock={value}
+              layout="full-bleed"
+              className="main-content col-span-full flex max-w-[1200px] flex-col  p-0 text-left"
+            />
+          );
+        }
         return <ContentBlock key={value.heading} contentBlock={value} />;
       case "ContentBlockWithImage":
         if (value.heading === "Unmatched support") {
@@ -42,6 +73,8 @@ export function generateContentBlocks(contentBody: any[]) {
             <ContentBlockWithImage key={value.heading} contentBlock={value} />
           );
         }
+      case "AppReviewCard":
+        return <AppReviewCard key={value.heading} contentBlock={value} />;
       default:
         return null;
     }
