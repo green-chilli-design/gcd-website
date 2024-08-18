@@ -28,6 +28,11 @@ module.exports = {
         destination: "/404",
         permanent: false,
       },
+      {
+        source: "/mobile",
+        destination: "/app-development-auckland",
+        permanent: true,
+      },
     ];
   },
   images: {

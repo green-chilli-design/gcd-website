@@ -7,7 +7,7 @@ import { useTheme } from "next-themes";
 
 export const NAV_LINKS = [
   {
-    href: "/mobile",
+    href: "/app-development-auckland",
     label: "Mobile Apps",
   },
   {

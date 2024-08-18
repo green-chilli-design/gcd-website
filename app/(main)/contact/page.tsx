@@ -5,9 +5,11 @@ import { getAssetByTitle, getPageBySlug } from "@/lib/api";
 import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 
-const title = "GCD | Contact Us";
+const title = "Contact GCD for your next digital project";
 export const metadata: Metadata = {
   title,
+  description:
+    "GCD Auckland Custom web software and mobile app developers. Talk to one of our digital consultants about your digital projects now.",
   openGraph: {
     title,
   },
