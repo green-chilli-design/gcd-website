@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
-const title = "GCD | Digital Strategy & Software Development";
+const title =
+  "Custom web software and mobile app development Auckland | Website development | GCD";
 const description =
-  "Digital Strategy & Software Development to Drive Your Business Success.";
+  "Experts in custom Web and Mobile Apps | Driving Business Growth with over a decade of innovative digital solutions | GCD";
 const siteUrl = "https://gcd.nz";
 const imageUrl =
   "https://images.ctfassets.net/r9ulzvk6fhkd/5sjFy0FK8so2vEOTqNfYAR/73dc5468954502e74cee9803511e621f/WEV_Building.png";

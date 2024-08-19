@@ -14,9 +14,12 @@ import AllCaseStudies, {
   CaseStudyPreview,
 } from "../case-studies/all-case-studies";
 
-const title = "GCD | Mobile";
+const title =
+  "Mobile App Developers Auckland | Android, iPhone App Developers NZ | GCD";
 export const metadata: Metadata = {
   title,
+  description:
+    "GCD Mobile App Developers Auckland, crafting exceptional mobile experiences with React Native, high-performance iOS & Android apps that engage users and drive results, works on both iPad and iPhone devices.",
   openGraph: {
     title,
   },

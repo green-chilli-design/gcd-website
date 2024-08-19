@@ -8,9 +8,11 @@ import { Suspense } from "react";
 import AllCaseStudies from "./all-case-studies";
 import CaseStudySearchBar from "./case-study-search-bar";
 
-const title = "GCD | Case Studies";
+const title = "Our Work | Case Studies | App, Web Design | GCD";
 export const metadata: Metadata = {
   title,
+  description:
+    "GCD case studies highlighting recent work in custom software, mobile applications, performance websites and digital strategy.",
   openGraph: {
     title,
   },
