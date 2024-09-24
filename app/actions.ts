@@ -231,7 +231,25 @@ async function sendSlackNotification(
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      text: `New contact form submission from ${data.firstName} ${data.lastName} <${data.email}>`,
+      blocks: [
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: `New contact form submission from ${data.firstName} ${data.lastName} <${data.email}>`,
+          },
+        },
+        {
+          type: "divider",
+        },
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: `${data.message}`,
+          },
+        },
+      ],
     }),
     cache: "no-cache",
   });
