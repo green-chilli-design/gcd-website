@@ -72,3 +72,9 @@ Contact page uses Google Maps to display the location of the office. The API key
 If you need to update the allowed sites for the API key, you can do so in the Google Cloud Console:
 
 https://console.cloud.google.com/apis/credentials/key/b3d2a56f-4253-4a7f-87e8-1eaef9300681?project=green-chilli-map
+
+# Recaptcha
+
+Similar to Google Maps API, the Recaptcha only works on allowed domains. The list of allowed domains can be updated in the Google Recaptcha admin console:
+
+https://www.google.com/recaptcha/admin/site/689803774/settings
