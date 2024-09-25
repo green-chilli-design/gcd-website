@@ -11,27 +11,51 @@ _Built upon_: [Next.js Contentful Starter](https://github.com/vercel/next.js/blo
 
 # SiteMap
 
-## MVP
-
 ```
 / <- Home page
+/#services
+/app-development-auckland
 /case-studies
   /case-study-item-slug <- Contentful 'Case Study' content
 /contact
 ```
 
-## Final
+# Setup
 
+Install dependencies:
+
+```bash
+npm install
 ```
-/ <- Home page
-/services
-  /service-item-slug <- Contentful 'Service' content
-/blog
-  /post-slug <- Contentful 'Post' content
-/case-studies
-  /case-study-item-slug <- Contentful 'Case Study' content
-/contact
-/about
+
+## Vercel CLI
+
+Install vercel CLI (reference: https://vercel.com/docs/cli):
+
+```bash
+npm i -g vercel
+```
+
+Login to Vercel, ensure you use the GCD Dev github account:
+
+```bash
+vercel login
+```
+
+## Environment Variables
+
+Pull in the Vercel development environment variables to `env.local`:
+
+```bash
+vercel env pull
+```
+
+# Development
+
+To run the development server:
+
+```bash
+npm run dev
 ```
 
 # Deployment
