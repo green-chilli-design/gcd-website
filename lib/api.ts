@@ -574,7 +574,7 @@ const CONTENT_BLOCK_GRAPHQL_FIELDS = `
   }
 `;
 
-export interface ContentBlock {
+export interface ContentfulContentBlock {
   __typename: string;
   heading: string;
   subHeading: string;
@@ -587,7 +587,7 @@ export interface ContentBlockBody {
   links: any;
 }
 
-export interface ContentBlockWithImage extends ContentBlock {
+export interface ContentBlockWithImage extends ContentfulContentBlock {
   image: ContentfulImage;
   darkModeImage: ContentfulImage;
   imagePosition: "Left" | "Right";

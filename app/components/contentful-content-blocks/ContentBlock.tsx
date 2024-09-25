@@ -1,5 +1,5 @@
 import { Markdown } from "@/lib/markdown";
-import { ContentBlock } from "@/lib/api";
+import { ContentfulContentBlock } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 export default function ContentBlock({
@@ -7,7 +7,7 @@ export default function ContentBlock({
   layout,
   className,
 }: {
-  contentBlock: ContentBlock;
+  contentBlock: ContentfulContentBlock;
   layout?: "centered" | "two-column" | "full-bleed";
   className?: string;
 }) {
