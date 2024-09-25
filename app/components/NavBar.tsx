@@ -64,7 +64,7 @@ export default function NavBar() {
     if (isMobile) {
       setAnimateStickyNav(false);
     }
-  });
+  }, [headerEl?.classList, isMobile]);
 
   return (
     <IsMobileContext.Provider value={isMobile}>
