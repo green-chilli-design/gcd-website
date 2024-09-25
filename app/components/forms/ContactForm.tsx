@@ -136,8 +136,6 @@ export default function ContactForm() {
         />
       </div>
 
-      {/* <div id="recaptcha-badge"></div> */}
-
       <SubmitButton />
 
       {state?.type === "error" && state?.message && (
