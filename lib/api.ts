@@ -587,7 +587,8 @@ export interface ContentBlockBody {
   links: any;
 }
 
-export interface ContentBlockWithImage extends ContentfulContentBlock {
+export interface ContentfulContentBlockWithImage
+  extends ContentfulContentBlock {
   image: ContentfulImage;
   darkModeImage: ContentfulImage;
   imagePosition: "Left" | "Right";
