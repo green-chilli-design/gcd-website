@@ -4,7 +4,7 @@ import NavMenu from "./NavMenu";
 import NavMenuMobile from "./NavMenuMobile";
 import GCDLogo from "./GCDLogo";
 import { cn } from "@/lib/utils";
-import { createContext, useCallback, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 import { useClientMediaQuery } from "@/lib/hooks/useClientMediaQuery";
 
@@ -20,7 +20,7 @@ export default function NavBar() {
   const [animateStickyNav, setAnimateStickyNav] = useState<boolean>(false);
 
   const isMobile = useClientMediaQuery(`(max-width: 1024px)`);
-  const headerEl = document.querySelector("#header");
+  const headerEl = useRef<HTMLElement>(null);
 
   /**
    * Set the logo color based on the theme and scroll position
@@ -56,7 +56,7 @@ export default function NavBar() {
    */
   useEffect(() => {
     // When scrolling, animate the sticky nav animation
-    if (headerEl?.classList.contains("sticky-navbar-dark")) {
+    if (headerEl.current?.classList.contains("sticky-navbar-dark")) {
       setAnimateStickyNav(true);
     }
 
@@ -64,13 +64,13 @@ export default function NavBar() {
     if (isMobile) {
       setAnimateStickyNav(false);
     }
-  }, [headerEl?.classList, isMobile]);
+  }, [headerEl, isMobile]);
 
   return (
     <IsMobileContext.Provider value={isMobile}>
       <NavBarContainerScrolledContext.Provider value={navBarContainerScrolled}>
         <header
-          id="header"
+          ref={headerEl}
           className={cn(
             "z-10 flex h-[94.77px] w-full items-center lg:h-[150px] ",
             !isMobile &&
