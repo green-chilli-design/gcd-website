@@ -1,4 +1,4 @@
-import { ContentBlock, getAllClients, getPageBySlug } from "@/lib/api";
+import { getAllClients, getPageBySlug } from "@/lib/api";
 import { generateContentBlocks } from "@/lib/contentful-content-blocks";
 import ContentfulMedia from "@/lib/contentful-media";
 import { Metadata } from "next";
@@ -7,12 +7,8 @@ import Link from "next/link";
 import ReactNative from "../../components/ReactNative";
 import CallToActionBlock from "../../components/contentful-content-blocks/CallToActionBlock";
 import ClientGallery from "../../components/ClientGallery";
-import OurClients from "../../components/contentful-content-blocks/OurClients";
 import Timeline from "../../components/Timeline";
-import { Markdown } from "@/lib/markdown";
-import AllCaseStudies, {
-  CaseStudyPreview,
-} from "../case-studies/all-case-studies";
+import AllCaseStudies from "../case-studies/all-case-studies";
 
 const title =
   "Mobile App Developers Auckland | Android, iPhone App Developers NZ | GCD";
@@ -79,13 +75,13 @@ export default async function MobilePage() {
   return (
     <article className="relative mt-10 grid grid-cols-[repeat(4,1fr)] gap-5 md:mt-20 md:grid-cols-[repeat(12,1fr)]">
       {/* Header (contains title only) */}
-      <header className="main-content col-span-full grid grid-cols-subgrid">
+      <header className="main-content grid-cols-subgrid col-span-full grid">
         <h1 className="col-span-full text-5xl md:col-span-9 md:text-10xl">
           Crafting Exceptional Mobile Experiences with React Native.
         </h1>
       </header>
       {/* Subtitle + CTA Section */}
-      <section className="main-content col-span-full my-10 grid grid-cols-subgrid items-center">
+      <section className="main-content grid-cols-subgrid col-span-full my-10 grid items-center">
         <h3 className="col-span-full md:col-span-6">{mobilePage.subtitle}</h3>
         <div
           id="tell-us-cta"
@@ -126,19 +122,19 @@ export default async function MobilePage() {
       {/* App review  cards */}
       <section
         id="app-review-cards"
-        className="main-content col-span-full grid grid-cols-subgrid"
+        className="main-content grid-cols-subgrid col-span-full grid"
       >
         {reviewCardContentBlocks}
       </section>
       {/* Transforming business section */}
-      <section className="col-span-full grid grid-cols-subgrid  md:pt-20">
+      <section className="grid-cols-subgrid col-span-full grid  md:pt-20">
         {transformingBusinessContentBlock}
       </section>
       {/* Collab approach/logos section */}
-      <section className="main-content my:py-10 col-span-full grid grid-cols-subgrid py-20">
+      <section className="main-content my:py-10 grid-cols-subgrid col-span-full grid py-20">
         {collaborativeApproachSection}
       </section>
-      <div className="col-span-full grid grid-cols-subgrid">
+      <div className="grid-cols-subgrid col-span-full grid">
         <CollaborativeBenefits />
       </div>
       <div className="col-span-full my-20">
@@ -153,7 +149,7 @@ export default async function MobilePage() {
       {/* Shaking up the QA Process section */}
       <section
         id="shaking-up-qa-section"
-        className="col-span-full grid grid-cols-subgrid"
+        className="grid-cols-subgrid col-span-full grid"
       >
         <div className="col-span-full flex w-full flex-col">
           {shakingUpTheQAProcessContentBlock}
@@ -178,7 +174,7 @@ export default async function MobilePage() {
         <ReactNative bannerHidden />
       </section>
       {/* FAQs section */}
-      <section className="col-span-full grid grid-cols-subgrid" id="faqs">
+      <section className="grid-cols-subgrid col-span-full grid" id="faqs">
         <div className="col-span-full md:[&_p]:pr-[15vh]">{faqSection}</div>
       </section>
       {/* Call to Action section */}

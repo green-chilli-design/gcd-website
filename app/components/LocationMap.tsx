@@ -53,7 +53,6 @@ export default function LocationMap() {
         content: customPin.element,
         title:
           "WHATEVER Building 2.4/18 Sale Street, Auckland CBD, Auckland 1010, New Zealand",
-        
       });
 
       const infoWindow = new InfoWindow();
@@ -65,7 +64,7 @@ export default function LocationMap() {
     };
 
     initMap();
-  }, []);
+  }, [apiKey]);
 
   return <div ref={mapRef} className="h-[388px] w-full dark:text-black"></div>;
 }

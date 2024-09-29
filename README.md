@@ -11,27 +11,51 @@ _Built upon_: [Next.js Contentful Starter](https://github.com/vercel/next.js/blo
 
 # SiteMap
 
-## MVP
-
 ```
 / <- Home page
+/#services
+/app-development-auckland
 /case-studies
   /case-study-item-slug <- Contentful 'Case Study' content
 /contact
 ```
 
-## Final
+# Setup
 
+Install dependencies:
+
+```bash
+npm install
 ```
-/ <- Home page
-/services
-  /service-item-slug <- Contentful 'Service' content
-/blog
-  /post-slug <- Contentful 'Post' content
-/case-studies
-  /case-study-item-slug <- Contentful 'Case Study' content
-/contact
-/about
+
+## Vercel CLI
+
+Install vercel CLI (reference: https://vercel.com/docs/cli):
+
+```bash
+npm i -g vercel
+```
+
+Login to Vercel, ensure you use the GCD Dev github account:
+
+```bash
+vercel login
+```
+
+## Environment Variables
+
+Pull in the Vercel development environment variables to `env.local`:
+
+```bash
+vercel env pull
+```
+
+# Development
+
+To run the development server:
+
+```bash
+npm run dev
 ```
 
 # Deployment
@@ -48,3 +72,9 @@ Contact page uses Google Maps to display the location of the office. The API key
 If you need to update the allowed sites for the API key, you can do so in the Google Cloud Console:
 
 https://console.cloud.google.com/apis/credentials/key/b3d2a56f-4253-4a7f-87e8-1eaef9300681?project=green-chilli-map
+
+# Recaptcha
+
+Similar to Google Maps API, the Recaptcha only works on allowed domains. The list of allowed domains can be updated in the Google Recaptcha admin console:
+
+https://www.google.com/recaptcha/admin/site/689803774/settings
