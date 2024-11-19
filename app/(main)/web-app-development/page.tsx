@@ -24,22 +24,22 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function MobilePage() {
+export default async function WebPage() {
   const { isEnabled } = draftMode();
-  const mobilePage = await getPageBySlug("web-app-development", isEnabled);
-  const bannerImages: [] = mobilePage.bannerContent?.imagesCollection?.items;
+  const page = await getPageBySlug("web-app-development", isEnabled);
+  const bannerImages: [] = page.bannerContent?.imagesCollection?.items;
   const clients = await getAllClients();
 
   // Generate content blocks to be used in the page
   // TODO: Suggest we refactor to directly use <ContentBlock> components with cn()
   const reviewCardContentBlocks = generateContentBlocks(
-    mobilePage.pageContentCollection.items.filter(
+    page.pageContentCollection.items.filter(
       (item: any) => item.__typename === "AppReviewCard",
     ),
   );
 
   const shakingUpTheQAProcessContentBlock = generateContentBlocks(
-    mobilePage.pageContentCollection.items.filter(
+    page.pageContentCollection.items.filter(
       (item: any) =>
         item.__typename === "ContentBlockWithImage" &&
         item.heading === "Shaking Up the QA Process",
@@ -47,7 +47,7 @@ export default async function MobilePage() {
   );
 
   const transformingBusinessContentBlock = generateContentBlocks(
-    mobilePage.pageContentCollection.items.filter(
+    page.pageContentCollection.items.filter(
       (item: any) =>
         item.__typename === "ContentBlock" &&
         item.heading === "Transforming Business Ideas into Reality",
@@ -55,34 +55,34 @@ export default async function MobilePage() {
   );
 
   const collaborativeApproachSection = generateContentBlocks(
-    mobilePage.pageContentCollection.items.filter(
+    page.pageContentCollection.items.filter(
       (item: any) =>
         item.__typename === "ContentBlock" &&
-        item.heading === "Our Collaborative Approach to Mobile App Development",
+        item.heading === "Our Collaborative Approach to Web App Development",
     ),
   );
 
   const faqSection = generateContentBlocks(
-    mobilePage.pageContentCollection.items.filter(
+    page.pageContentCollection.items.filter(
       (item: any) => item.heading === "FAQ's",
     ),
   );
 
-  const caseStudies = mobilePage.pageContentCollection.items
+  const caseStudies = page.pageContentCollection.items
     .map((item: any) => item.caseStudy)
     .filter((item: any) => !!item);
 
   return (
     <article className="relative mt-10 grid grid-cols-[repeat(4,1fr)] gap-5 md:mt-20 md:grid-cols-[repeat(12,1fr)]">
       {/* Header (contains title only) */}
-      <header className="main-content grid-cols-subgrid col-span-full grid">
+      <header className="main-content col-span-full grid grid-cols-subgrid">
         <h1 className="col-span-full text-5xl md:col-span-9 md:text-10xl">
-          {mobilePage.title}
+          {page.title}
         </h1>
       </header>
       {/* Subtitle + CTA Section */}
-      <section className="main-content grid-cols-subgrid col-span-full my-10 grid items-center">
-        <h3 className="col-span-full md:col-span-6">{mobilePage.subtitle}</h3>
+      <section className="main-content col-span-full my-10 grid grid-cols-subgrid items-center">
+        <h3 className="col-span-full md:col-span-6">{page.subtitle}</h3>
         <div
           id="tell-us-cta"
           className="col-span-full my-5 md:col-span-6 md:my-0 md:ml-auto"
@@ -122,19 +122,19 @@ export default async function MobilePage() {
       {/* App review  cards */}
       <section
         id="app-review-cards"
-        className="main-content grid-cols-subgrid col-span-full grid"
+        className="main-content col-span-full grid grid-cols-subgrid"
       >
         {reviewCardContentBlocks}
       </section>
       {/* Transforming business section */}
-      <section className="grid-cols-subgrid col-span-full grid  md:pt-20">
+      <section className="col-span-full grid grid-cols-subgrid  md:pt-20">
         {transformingBusinessContentBlock}
       </section>
       {/* Collab approach/logos section */}
-      <section className="main-content my:py-10 grid-cols-subgrid col-span-full grid py-20">
+      <section className="main-content my:py-10 col-span-full grid grid-cols-subgrid py-20">
         {collaborativeApproachSection}
       </section>
-      <div className="grid-cols-subgrid col-span-full grid">
+      <div className="col-span-full grid grid-cols-subgrid">
         <CollaborativeBenefits />
       </div>
       <div className="col-span-full my-20">
@@ -144,7 +144,7 @@ export default async function MobilePage() {
         id="timeline"
         className="col-span-full  w-full  bg-dark-offwhite py-20  dark:bg-black-80"
       >
-        <Timeline variant={'Web'} />
+        <Timeline variant={"Web"} />
       </section>
       {/* Shaking up the QA Process section */}
       {/*<section*/}
@@ -174,7 +174,7 @@ export default async function MobilePage() {
       {/*  <ReactNative bannerHidden />*/}
       {/*</section>*/}
       {/* FAQs section */}
-      <section className="grid-cols-subgrid col-span-full grid" id="faqs">
+      <section className="col-span-full grid grid-cols-subgrid" id="faqs">
         <div className="col-span-full md:[&_p]:pr-[15vh]">{faqSection}</div>
       </section>
       {/* Call to Action section */}
