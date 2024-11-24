@@ -30,22 +30,20 @@ export default function Scoreapp() {
   }, [initialized]);
 
   return (
-    <div
+    <button
       id="scoreapp-widget"
-      data-sa-url="https://bfb127a2-e165-4df2-8b52-5070c9ecd196.scoreapp.com/?sa_target=_top"
-      data-sa-view="chat"
-      data-sa-icon="https://cdn.scoreapp.com/assets/icons/conversation.svg"
-      data-sa-auto-open="0"
-      data-sa-button-bg-color="#a8cf43"
-      data-sa-button-color="#323A3F"
-      data-sa-button-text="Ready for a Custom App? - Take the Quiz"
-      data-sa-font-size="16"
-    />
+      data-sa-url="https://9e841e57-0fa1-4d18-9592-adae748bba24.scoreapp.com/?sa_target=_top"
+      data-sa-view="popup"
+      data-sa-size="full"
+      className="btn green mt-8  flex h-fit w-fit flex-col flex-nowrap whitespace-nowrap px-5 py-1 dark:text-black"
+    >
+      <span>Start The Quiz</span>
+    </button>
   );
 }
 
 const SCORE_SCRIPT_SRC =
-  "https://static.scoreapp.com/js/integration/v1/embedding.js?v=hqAhYh";
+  "https://static.scoreapp.com/js/integration/v1/embedding.js?v=TyvlMR";
 
 const loadScript = () => {
   const script = document.createElement("script");

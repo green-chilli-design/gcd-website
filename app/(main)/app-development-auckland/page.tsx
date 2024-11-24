@@ -95,7 +95,9 @@ export default async function MobilePage() {
             Tell Us About Your App
           </Link>
         </div>
+        <Scoreapp />
       </section>
+      <div className="col-span-full w-full"></div>
       {/* Banner Image Section (3 on desktop, 1 on mob) */}
       <section
         id="banner-images"
@@ -185,7 +187,6 @@ export default async function MobilePage() {
       >
         <CallToActionBlock mobileVariant />
       </section>
-      <Scoreapp />
     </article>
   );
 }
