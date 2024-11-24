@@ -14,7 +14,7 @@ import AppReviewCard from "@/app/components/contentful-content-blocks/AppReviewC
  * @param contentBody
  * @returns A list of content blocks
  */
-export function generateContentBlocks(contentBody: any[]) {
+export function generateContentBlocks(contentBody: any[], variant?: string) {
   return Object.entries(contentBody).map(([key, value]) => {
     switch (value.__typename) {
       case "ContentBlock":
@@ -74,7 +74,13 @@ export function generateContentBlocks(contentBody: any[]) {
           );
         }
       case "AppReviewCard":
-        return <AppReviewCard key={value.heading} contentBlock={value} />;
+        return (
+          <AppReviewCard
+            key={value.heading}
+            contentBlock={value}
+            variant={variant}
+          />
+        );
       default:
         return null;
     }

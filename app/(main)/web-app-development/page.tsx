@@ -35,6 +35,7 @@ export default async function WebPage() {
     page.pageContentCollection.items.filter(
       (item: any) => item.__typename === "AppReviewCard",
     ),
+    "web",
   );
 
   const shakingUpTheQAProcessContentBlock = generateContentBlocks(
@@ -145,16 +146,6 @@ export default async function WebPage() {
       >
         <Timeline variant={"Web"} />
       </section>
-      {/* Shaking up the QA Process section */}
-      {/*<section*/}
-      {/*  id="shaking-up-qa-section"*/}
-      {/*  className="grid-cols-subgrid col-span-full grid"*/}
-      {/*>*/}
-      {/*  <div className="col-span-full flex w-full flex-col">*/}
-      {/*    {shakingUpTheQAProcessContentBlock}*/}
-      {/*  </div>*/}
-      {/*</section>*/}
-      {/* Case Study Section: These cards are generated from the case studies linked above in the review cards */}
       <section
         id="case-studies"
         className="col-span-full my-10  flex flex-col items-center"
@@ -165,13 +156,6 @@ export default async function WebPage() {
           className="gap-5 md:grid-cols-3"
         />
       </section>
-      {/* React Native Advantages Section */}
-      {/*<section*/}
-      {/*  id="react-native-advantages"*/}
-      {/*  className="col-span-full flex w-full flex-col md:mt-20"*/}
-      {/*>*/}
-      {/*  <ReactNative bannerHidden />*/}
-      {/*</section>*/}
       {/* FAQs section */}
       <section className="col-span-full grid grid-cols-subgrid" id="faqs">
         <div className="col-span-full md:[&_p]:pr-[15vh]">{faqSection}</div>
