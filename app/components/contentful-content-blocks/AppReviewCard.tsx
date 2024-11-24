@@ -5,7 +5,13 @@ import { Markdown } from "@/lib/markdown";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 
-export default function AppReviewCard({ contentBlock }: { contentBlock: any }) {
+export default function AppReviewCard({
+  contentBlock,
+  variant,
+}: {
+  contentBlock: any;
+  variant?: string;
+}) {
   const { resolvedTheme } = useTheme();
 
   return (
@@ -53,7 +59,7 @@ export default function AppReviewCard({ contentBlock }: { contentBlock: any }) {
         >
           <div>{contentBlock.reviewQuote}</div>
           <div className="mt-5 text-right text-sm text-dark-grey">
-            <div>App Store Review</div>
+            <div>{variant === "web" ? "Client" : "App Store"} Review</div>
             <div className=" tracking-wider text-black dark:text-white">
               ★★★★★
             </div>

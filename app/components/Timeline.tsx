@@ -10,7 +10,11 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // TODO: Migrate this to Contentful
-function Timeline() {
+function Timeline({
+  variant = 'Mobile',
+                  }: {
+  variant?: 'Web' | 'Mobile';
+}) {
   gsap.registerPlugin(ScrollTrigger);
 
   const { resolvedTheme } = useTheme();
@@ -37,7 +41,7 @@ function Timeline() {
       id="timeline-container"
       className="flex w-full flex-col justify-center gap-10   text-center"
     >
-      <h2>Our End-to-End Mobile App Development Service</h2>
+      <h2>Our End-to-End {variant} App Development Service</h2>
       <h3 className=" uppercase text-dark-grey">GCD END - TO - END PROCESS</h3>
       <div id="overflow-wrapper" className=" overflow-x-clip">
         <div
