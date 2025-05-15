@@ -44,15 +44,15 @@ export default async function ContactPage() {
                   href="https://maps.app.goo.gl/52MW8aJLZVwuGmQ47"
                   className="hover:text-green"
                 >
-                  2.4 Whatever Building, 18 Sale Street, Auckland 1010
+                 57L Livingstone Street, Westmere, Auckland 1022
                 </a>
               </p>
               <p className="small mb-12 flex items-center">
                 <span className="material-icons-outlined icon-20 mr-2">
                   call
                 </span>
-                <a href="tel:+64 9 300 3039" className="hover:text-green">
-                  +64 9 300 3039
+                <a href="tel:‭+64 9 887 3205‬" className="hover:text-green">
+                  ‭+64 9 887 3205‬
                 </a>
               </p>
 
