@@ -52,7 +52,7 @@ export default async function ContactPage() {
                   call
                 </span>
                 <a href="tel:‭+64 9 887 3205‬" className="hover:text-green">
-                  ‭+64 9 887 3205‬
+                  +64 9 887 3205
                 </a>
               </p>
 
