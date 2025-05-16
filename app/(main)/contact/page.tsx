@@ -61,13 +61,7 @@ export default async function ContactPage() {
 
             <ContactForm />
           </section>
-
-          <ParkingModal
-            url={parkingMap.url}
-            description={parkingMap.description}
-            width={parkingMap.width}
-            height={parkingMap.height}
-          />
+          
         </div>
 
         <LocationMap />
