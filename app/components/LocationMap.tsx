@@ -3,7 +3,6 @@
 import React, { useEffect } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 
-// ✅ Updated coordinates for 57L Livingstone Street, Westmere, Auckland
 const center = {
   lat: -36.85315287975184,
   lng: 174.72844437610172,
@@ -24,8 +23,7 @@ export default function LocationMap() {
       });
 
       const { Map, InfoWindow } = await loader.importLibrary("maps");
-
-      const { AdvancedMarkerElement, PinElement } =
+      const { AdvancedMarkerElement } =
         (await google.maps.importLibrary("marker")) as google.maps.MarkerLibrary;
 
       const mapOptions: google.maps.MapOptions = {
@@ -36,22 +34,27 @@ export default function LocationMap() {
 
       const map = new Map(mapRef.current as HTMLDivElement, mapOptions);
 
-      // Customise the pin
-      const greenCircle = document.createElement("span");
-      greenCircle.className = "material-icons-outlined icon-24 text-green";
-      greenCircle.innerText = "circle";
-      const customPin = new PinElement({
-        background: "transparent",
-        borderColor: "transparent",
-        glyph: greenCircle,
-      });
+      // 📍 SVG Pin Icon Element
+      const svgPin = document.createElement("div");
+      svgPin.innerHTML = `
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="48"
+          height="48"
+          fill="#00A859"
+          stroke="#ffffff"
+          stroke-width="1.5"
+        >
+          <path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/>
+        </svg>
+      `;
 
       const marker = new AdvancedMarkerElement({
         position: center,
         map,
-        content: customPin.element,
-        title:
-          "57L Livingstone Street, Westmere, Auckland 1022, New Zealand",
+        content: svgPin,
+        title: "57L Livingstone Street, Westmere, Auckland 1022, New Zealand",
       });
 
       const infoWindow = new InfoWindow();
