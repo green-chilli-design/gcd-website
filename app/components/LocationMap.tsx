@@ -34,7 +34,7 @@ export default function LocationMap() {
 
       const map = new Map(mapRef.current as HTMLDivElement, mapOptions);
 
-      // 📍 SVG Pin Icon Element
+      // 📍 SVG Pin Icon Element with updated fill color
       const svgPin = document.createElement("div");
       svgPin.innerHTML = `
         <svg
@@ -42,7 +42,7 @@ export default function LocationMap() {
           viewBox="0 0 24 24"
           width="48"
           height="48"
-          fill="#00A859"
+          fill="rgb(168, 207, 67)"
           stroke="#ffffff"
           stroke-width="1.5"
         >
