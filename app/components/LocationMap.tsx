@@ -3,9 +3,10 @@
 import React, { useEffect } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 
+// ✅ Updated coordinates for 57L Livingstone Street, Westmere, Auckland
 const center = {
-  lat: -36.84942242650752,
-  lng: 174.75708412460006,
+  lat: -36.85315287975184,
+  lng: 174.72844437610172,
 };
 
 export default function LocationMap() {
@@ -25,9 +26,7 @@ export default function LocationMap() {
       const { Map, InfoWindow } = await loader.importLibrary("maps");
 
       const { AdvancedMarkerElement, PinElement } =
-        (await google.maps.importLibrary(
-          "marker",
-        )) as google.maps.MarkerLibrary;
+        (await google.maps.importLibrary("marker")) as google.maps.MarkerLibrary;
 
       const mapOptions: google.maps.MapOptions = {
         center,
@@ -52,7 +51,7 @@ export default function LocationMap() {
         map,
         content: customPin.element,
         title:
-          "WHATEVER Building 2.4/18 Sale Street, Auckland CBD, Auckland 1010, New Zealand",
+          "57L Livingstone Street, Westmere, Auckland 1022, New Zealand",
       });
 
       const infoWindow = new InfoWindow();
